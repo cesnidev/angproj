@@ -1,6 +1,15 @@
 'use strict';
 
-eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$window,Session,$location) {
+eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig) {
+
+
+	var utoken = Session.getSession().token;
+	$scope.jbasic = {token:utoken,app_id:EventicaConfig.AppId,basic:''};
+	$scope.jprofile = {token:utoken,app_id:EventicaConfig.AppId,profile:''};
+	$scope.jexperience = {token:utoken,app_id:EventicaConfig.AppId,experience:''};
+	$scope.javailability = {token:utoken,app_id:EventicaConfig.AppId,availability:''};
+	$scope.jlegal = {token:utoken,app_id:EventicaConfig.AppId,legal:''};
+
 	//Notify CSS
 	cssInjector.add("assets/css/notify/bootstrap-notify.css");
 	cssInjector.add("assets/css/notify/notify.css");
@@ -96,8 +105,10 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		};
 		$scope.basicinfoclick = function(c)
 		{
+
 			if ($scope.binfo.$valid) {
-	            EventicaResource.saveBasicInfo($scope.basicinfo).$promise.then(function(response){
+				$scope.jbasic.basic = $scope.basicinfo;
+	            EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 	            	console.log(JSON.stringify(response));
 	            	animatex(c);
 	            });
@@ -110,7 +121,8 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		$scope.profileclick = function(c)
 		{
 			if ($scope.prof.$valid) {
-            	EventicaResource.saveBasicInfo().$promise.then(function(response){
+				$scope.jprofile.profile = $scope.profile;
+            	EventicaResource.saveBasicInfo($scope.jprofile).$promise.then(function(response){
 	            	console.log(JSON.stringify(response));
 	            	animatex(c);
 	            });
@@ -123,7 +135,8 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		$scope.experienceclick = function(c)
 		{
 			if ($scope.exp.$valid) {
-            	EventicaResource.saveExperience().$promise.then(function(response){
+				$scope.jexperience.basic = $scope.experience;
+            	EventicaResource.saveExperience($scope.jexperience).$promise.then(function(response){
 	            	console.log(JSON.stringify(response));
 	            	animatex(c);
 	            });
@@ -137,7 +150,8 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		$scope.availabilityclick = function(c)
 		{
 			if ($scope.avail.$valid) {
-            	EventicaResource.saveAvailability().$promise.then(function(response){
+				$scope.javailability.availability = $scope.availability;
+            	EventicaResource.saveAvailability($scope.javailability).$promise.then(function(response){
 	            	console.log(JSON.stringify(response));
 	            	animatex(c);
 	            });
@@ -150,7 +164,8 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		$scope.legalclick = function(c)
 		{
 			if ($scope.legl.$valid) {
-            	EventicaResource.saveLegal().$promise.then(function(response){
+				$scope.jlegal.legal = $scope.legal;
+            	EventicaResource.saveLegal($scope.jlegal).$promise.then(function(response){
 	            	console.log(JSON.stringify(response));
 	            	animatex(c);
 	            });

@@ -7,7 +7,7 @@ eventica.factory('EventicaResource', function($resource) {
 			},
       saveBasicInfo:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/basicinfos'
+        url:'http://localhost:3000/api/v1/basics'
       },
       saveProfile:{
         method:'POST',
