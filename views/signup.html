@@ -66,7 +66,6 @@
 					        </div>
 			        	
 			        </div>
-			        {{ croppedDataUrl | json }}
 			        
 			        <!--<button ng-click="upload(croppedDataUrl)">Submit</button>--> 
 			            
@@ -92,11 +91,10 @@
 
 						 	<div class="input-field">
 							<label class="active" for="first_name">First Name</label>
-						   <input ng-minlength="5" required="" type="text" name="first_name" id="first_name" ng-model="basicinfo.firstname">
+						   <input required="" type="text" name="first_name" id="first_name" ng-model="basicinfo.firstname">
 
 						   <div class="eventicaerror ng-inactive"  ng-messages="binfo.first_name.$error">
 					          <div ng-message="required">First name is required and must be a real name.</div>
-					          <div ng-message="minlength">At least 5 chars.</div>
 					        </div>
 					        </div>
 						 </div>

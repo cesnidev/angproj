@@ -69,7 +69,7 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 
 	$scope.submit = function(){
 		if ($scope.binfo.$valid) {
-            /*EventicaResource.save().then(function(response){
+            /*EventicaResource.saveBasicInfo().then(function(response){
             	console.log(JSON.stringify(response));
             });*/
         }
@@ -96,23 +96,69 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 		};
 		$scope.basicinfoclick = function(c)
 		{
-			animatex(c);
+			if ($scope.binfo.$valid) {
+	            EventicaResource.saveBasicInfo($scope.basicinfo).$promise.then(function(response){
+	            	console.log(JSON.stringify(response));
+	            	animatex(c);
+	            });
+        	}
+        	else
+        	{
+        		notificar("you must complete the register");
+        	}
 		};
 		$scope.profileclick = function(c)
 		{
-			animatex(c);
+			if ($scope.prof.$valid) {
+            	EventicaResource.saveBasicInfo().$promise.then(function(response){
+	            	console.log(JSON.stringify(response));
+	            	animatex(c);
+	            });
+        	}
+        	else
+        	{
+        		notificar("you must complete the register");
+        	}
 		};
 		$scope.experienceclick = function(c)
 		{
-			animatex(c);
+			if ($scope.exp.$valid) {
+            	EventicaResource.saveExperience().$promise.then(function(response){
+	            	console.log(JSON.stringify(response));
+	            	animatex(c);
+	            });
+        	}
+        	else
+        	{
+        		notificar("you must complete the register");
+        	}
+			
 		};
 		$scope.availabilityclick = function(c)
 		{
-			animatex(c);
+			if ($scope.avail.$valid) {
+            	EventicaResource.saveAvailability().$promise.then(function(response){
+	            	console.log(JSON.stringify(response));
+	            	animatex(c);
+	            });
+        	}
+        	else
+        	{
+        		notificar("you must complete the register");
+        	}
 		};
 		$scope.legalclick = function(c)
 		{
-			animatex(c);
+			if ($scope.legl.$valid) {
+            	EventicaResource.saveLegal().$promise.then(function(response){
+	            	console.log(JSON.stringify(response));
+	            	animatex(c);
+	            });
+        	}
+        	else
+        	{
+        		notificar("you must complete the register");
+        	}
 		};
 		$scope.logout = function(){
 	    	//checar si es sesion por social media o email

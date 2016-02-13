@@ -1,19 +1,30 @@
 eventica.factory('EventicaResource', function($resource) {
-		return $resource("http://localhost:8000/notes/:id", {
+		return $resource("http://localhost:3000/api/v1/", {
 			id: "@id"
 		}, {
 			update: {
 				method: "PUT"
 			},
-			login:{
-				method: "POST",
-				transformResponse: function(data, headers){
-                response = {}
-                response.data = data;
-                response.headers = headers();
-                return response;
-            }
-			}
+      saveBasicInfo:{
+        method:'POST',
+        url:'http://localhost:3000/api/v1/basicinfos'
+      },
+      saveProfile:{
+        method:'POST',
+        url:'http://localhost:3000/api/v1/profiles'
+      },
+      saveExperience:{
+        method:'POST',
+        url:'http://localhost:3000/api/v1/experiences'
+      },
+      saveAvailability:{
+        method:'POST',
+        url:'http://localhost:3000/api/v1/availabilities'
+      },
+      saveLegal:{
+        method:'POST',
+        url:'http://localhost:3000/api/v1/legals'
+      }
 		});
 	})
 .factory('EventicaLogin', function (Session,$http) {
@@ -25,15 +36,16 @@ eventica.factory('EventicaResource', function($resource) {
         email: credentials.email,
     		password:credentials.password
     	};
-		$http.post('http://localhost/api/v1/auth/',credentials,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
+		$http.post('http://localhost:3000/api/v1/auth/',credentials,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
 			console.log("sucess: "+response.data);
-      if(response.errors!='')
+      console.log("Token: "+response.data.data.relations.tokens.attributes.token);
+      if(response.data.errors!='')
       {
-        cookie.id = response.data.attributes.id;
-        cookie.stoken=response.data.relations.tokens.attributes.token;
-        cookie.email=response.data.attributes.email;
-        cookie.user=response.data.attributes.name;
+        cookie.id = response.data.data.attributes.id;
+        cookie.stoken=response.data.data.relations.tokens.attributes.token;
+        cookie.email=response.data.data.attributes.email;
+        cookie.user=response.data.data.attributes.name;
         Session.StoreSession(cookie);
       }
       else

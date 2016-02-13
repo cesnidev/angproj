@@ -23,7 +23,7 @@ eventica
 		{
 			var response = EventicaLogin.login($scope.login);
 			//console.log(JSON.stringify(response));
-			notificar("hi from angular: "+JSON.stringify($scope.login),6000);
+			notificar("hi from angular: "+JSON.stringify($scope.login),3000);
 			if(response.errors=='')
 			{
 				//exito
@@ -67,9 +67,7 @@ eventica
             $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
         });
     };
-    $scope.logout = function(){
-    	console.log("Closing session...");
-    };
+    
 	
 });
 
