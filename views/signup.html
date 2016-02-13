@@ -1,0 +1,2217 @@
+<section ng-controller="SignUpCtrl">
+        <div class="container">
+            <div class="header row" style="border-bottom: 3px solid #dc222b;" >
+                <div class="col s12 l4">
+                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.eventicateam.com/img/Logo4.png"></a>
+                </div>
+                <div class="col l5">&nbsp;</div>
+                <div class="col l3" align="right">
+                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					    <li class="collection-item avatar">
+					      <img ng-src="{{croppedDataUrl}}" style="background-color:#dc222b;" alt="" class="circle">
+					      <span class="title">Title</span>
+					      <p>{{ user.email }}<br>
+					         Second Line
+					      </p>
+					    </li>
+					 </ul>
+
+                	<!--<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					   <This is a dropdown
+					</a>-->
+
+					<ul id='demoDropdown' class='dropdown-content'>
+					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
+					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
+					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
+					</ul>
+                </div>
+            </div>
+        </div><br>
+
+
+<div id="eventicaforms" class="inputErrors" >
+
+			<ul id="progressbar">
+				<li id="#basicinfo_form" class="active">Basic Info</li>
+				<li id="#profile_form"  class="">Profile</li>
+				<li id="#experience_form" class="">Experience</li>
+				<li id="#basicinfo_form" class="">Availability</li>
+				<li id="#basicinfo_form" class="">Legal</li>
+			</ul>
+
+			<!-- fieldsets -->
+
+			<fieldset id="basicinfo_form">
+				<md-content layout-padding class="inputErrors">
+			<form name="binfo" id="basicuser" ng-submit="submit()" novalidate ng-cloak>
+
+				
+
+				<!--<div class="row" style="height:200px; border:1px solid #404040;border-radius:8px;">
+				</div><br>-->
+				<div class="row">
+			          <h2 class="fs-title">Profile Image</h2>
+			        <button ngf-select ng-model="picFile" accept="image/*" class="btn waves-effect">Select Picture</button><br><br><br>
+			        <div class="row" align="center">
+			        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="cropArea dropzone">
+					            <img-crop image="picFile  | ngfDataUrl"                 
+					            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+					            </img-crop>
+					        </div>
+					        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
+					        	<div ng-message="required">
+					        		profile image required.
+					        	</div>
+					        </div>
+			        	
+			        </div>
+			        {{ croppedDataUrl | json }}
+			        
+			        <!--<button ng-click="upload(croppedDataUrl)">Submit</button>--> 
+			            
+			        <span class="progress" ng-show="progress >= 0">
+			          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+			        </span>
+			        <span ng-show="result">Upload Successful</span>
+			        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+		        </div>
+		        <div class="row">
+		        	<h2 class="fs-title">Sign Up / Basic Information</h2>
+		        </div><br>
+
+
+				<div class="row">
+					<div class="col s12 l2 s12">
+						<label class="inline"><font size="-1">Full Name:</font></label>
+						
+					</div>
+					<div class="col s12 l6">
+						<div class="row">	 
+						 <div class="col s12 l4 s12">
+
+						 	<div class="input-field">
+							<label class="active" for="first_name">First Name</label>
+						   <input ng-minlength="5" required="" type="text" name="first_name" id="first_name" ng-model="basicinfo.firstname">
+
+						   <div class="eventicaerror ng-inactive"  ng-messages="binfo.first_name.$error">
+					          <div ng-message="required">First name is required and must be a real name.</div>
+					          <div ng-message="minlength">At least 5 chars.</div>
+					        </div>
+					        </div>
+						 </div>
+						 <div class="col s12 l4 s12">
+						   
+						 	<div class="input-field">
+							<label class="active" for="midinit_name">Middle Initial</label>
+						    	<input type="text" name="midinit_name" id="midinit_name" ng-model="basicinfo.middle_initial">
+					        </div>
+
+						
+						</div>
+						<div class="col s12 l4 s12">
+
+					        <div class="input-field">
+							<label class="active" for="last_name">Last Name</label>
+						   <input ng-minlength="5" required="" type="text" name="last_name" id="last_name" ng-model="basicinfo.lastname">
+					        <div class="eventicaerror" ng-messages="binfo.last_name.$error">
+					          <div ng-message="required">Last name is required.</div>
+					          <div ng-message="minlength">At least 5 chars.</div>
+					        </div>
+					        </div>
+
+						</div>
+											
+						</div>
+										
+					</div> <div class="col s12 l4"></div>
+				</div>
+
+				
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Date:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<div class="row">
+										<div class="col s12 l12">
+											 
+
+											    <div class="input-field">
+										<label for="inputCreated">Date:</label>
+											<input input-date
+											    type="text"
+											    name="created"
+											    id="inputCreated"
+											    ng-model="basicinfo.birthday"
+											    container="body"
+											    format="dd/mm/yyyy"
+											    months-full="{{ month }}"
+											    months-short="{{ monthShort }}"
+											    weekdays-full="{{ weekdaysFull }}" weekdays-short="{{ weekdaysShort }}" weekdays-letter="{{ weekdaysLetter }}" disable="disable" min="{{ minDate }}" max="{{ maxDate }}" today="today" clear="clear" close="close" required select-years="15" />
+											    <div class="eventicaerror" ng-messages="binfo.created.$error">
+										          <div ng-message="required">Date is required.</div>
+										        </div>
+								      
+							        </div> 
+										</div>
+									
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<!--
+				<div class="row ">
+							  <div class="col s12 l2">
+							     <label class="inline">Email: </label>
+    						  </div>
+    						  <div class="col s12 l6">
+
+    						  	<div class="input-field">
+									<label class="active" for="email">mail@domain.com</label>
+								   <input ng-minlength="5" required="" type="email" name="email" id="email" ng-model="basicinfo.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(yahoo|hotmail|gmail)\.com*$/">
+							        <div class="eventicaerror" ng-messages="binfo.email.$error">
+								          <div ng-message="required">
+							            Email is required.
+							          </div>
+							          <div ng-message="pattern">
+							            Your email dont look like an e-mail address.
+							          </div>
+							        </div>
+							    </div>
+
+    						  </div><div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Password:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<div class="password-field">
+
+										<div class="input-field">
+											<label class="active" for="password">Password</label>
+										   <input required="" type="password" name="password" id="password" ng-model="basicinfo.password"  >
+									        <div class="eventicaerror" ng-messages="binfo.password.$error">
+										          <div ng-message="required">
+									            Passwords is required.
+									          </div>
+									        </div>
+									    </div>
+
+									  </div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l6 offset-l2">
+									  <div class="password-field">
+									  <div class="input-field">
+											<label class="active" for="cpassword">Confirm password</label>
+										   <input required="" type="password" name="cpassword" id="cpassword"  ng-pattern="{{ basicinfo.password }}" ng-model="basicinfo.cpassword" >
+									        <div class="eventicaerror" ng-messages="binfo.cpassword.$error">
+										          <div ng-message="pattern">
+									            Passwords dont match.
+									          </div>
+									          <div ng-message="required">
+									            Confirm password is required.
+									          </div>
+									        </div>
+									    </div>
+									  </div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>-->
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Referred By:</font></label>
+								</div>
+								<div class="col s12 l6">
+
+									<div class="input-field">
+											<label class="active" for="referred">Referred By:</label>
+										   <input  type="text" name="referred" id="referred"  ng-model="basicinfo.referred" >
+									 
+									    </div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div><br>
+
+				<h2 class="fs-title">Contact Information</h2>
+
+				<div class="row">
+								<div class="col s12 l2">
+									&nbsp;
+								</div>
+								<div class="col s12 l6"> 
+									<div class="input-field">
+										<label class="active" for="address1">Address Line 1: Number, street</label>
+									<input type="text" ng-model="basicinfo.address1" id="address1"  name="address1"  required />
+									<div class="eventicaerror" ng-messages="binfo.address1.$error" role="alert">
+										<div ng-message="required">
+											Address Line 1 is required.
+										</div>
+									</div>
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Address Line 2:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<div class="input-field">
+									<label class="active" for="address2">Address Line 2: Apt#,Suite, etc...</label>
+									<input type="text" ng-model="basicinfo.address2"  name="address2" id="address2" />
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="l6 offset-l2 col">
+									<div class="row">
+										<div class="col s12 l6">
+											<div class="input-field">
+											<label class="active" for="city">City</label>
+			    							<input type="text" ng-model="basicinfo.city"  name="city" required />
+											   <div class="eventicaerror" ng-messages="binfo.city.$error" role="alert">
+													<div ng-message="required">
+														City is required.
+													</div>
+												</div>
+											</div>
+										 </div>
+										<div class="col s12 l3">
+
+											<div class="input-field">
+												<label class="active" for="state">State</label>
+									
+												<select class="" ng-model="basicinfo.state" name="state" id="state" required material-select watch>
+												    <option ng-repeat="state in states">{{state}}</option>
+												</select>
+									        
+
+									        <div class="eventicaerror" ng-messages="binfo.state.$error">
+									        	<div ng-message="required">
+									        		State is required.
+									        	</div>
+									        </div>
+
+									      </div>
+
+
+
+										</div>
+										<div class="col s12 l3">
+											<div class="input-field">
+												<label class="active" for="zip">Zip</label>
+												<input ng-minlength="5" ng-model="basicinfo.zip" id="zip"  name="zip" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
+											<div class="eventicaerror" ng-messages="binfo.zip.$error"  ng-messages-multiple role="alert">
+												<div ng-message="required">
+													Zip Code is required.
+												</div>
+												<div ng-message="pattern">
+													Zip Code must be a number.
+												</div>
+												<div ng-message="minlength">
+													Zip Code must be lower than 5.
+												</div>
+												
+											</div>
+											</div>
+												  
+										</div>
+									
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Phone:</font></label>
+								</div>
+								<div class="col s12 l3">
+									<div class="input-field">
+										<label class="active" for="phoneme">(000) 000-0000</label>
+										<input type="text" ng-model="basicinfo.phone" id="phoneme" name="phone" required ui-mask="(999) 999-9999">
+										
+									
+										<div class="eventicaerror" ng-messages="binfo.phone.$error" role="alert">
+											<div ng-message="required">
+												Phone Number is required and must be numbers .
+											</div>
+										</div>
+									</div>
+									
+
+								</div>
+								<div class="col s12 l7"></div>
+				</div>
+
+				
+				<h2 class="fs-title">Mailing Address</h2>
+
+				<div class="row">
+								<div class="col s12 l2 offset-l2">
+									<p>
+								      <input type="checkbox" ng-click="same(basicinfo.same_as_home_mailing)" ng-model="basicinfo.same_as_home_mailing" class="filled-in" id="filled-in-box" />
+								      <label for="filled-in-box">Same as Home Address</label>
+								    </p>
+									
+								</div>
+								<div class="col s12 l8 left" style="text-align:left;">
+									&nbsp;
+								</div>
+				</div>
+				<div class="row" >
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Address Line 1:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<label class="active" for="ship_address1">Number , Street </label>
+									<input type="text" ng-disabled="basicinfo.same_as_home_mailing" id="ship_address1" ng-model="basicinfo.ship_address1"  name="ship_address1" ng-required="!basicinfo.same_as_home_mailing" />
+									
+									<div class="eventicaerror" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_address1.$error" role="alert">
+												<div ng-message="required" >
+													Address is required.
+												</div>
+											</div>
+
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Address Line 2:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<label class="active" for="ship_address2">Apt#,Suite, etc. </label>
+									<input type="text" ng-disabled="basicinfo.same_as_home_mailing" ng-init="basicinfo.ship_address2=''" ng-model="basicinfo.ship_address2"  id="ship_address2" name="ship_address2" />
+
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+
+				<div class="row">
+								<div class="l6 offset-l2 col">
+									<div class="row">
+										<div class="col s12 l6">
+											<label class="active" for="shipcity">City</label>
+			    							<input type="text" ng-model="basicinfo.ship_city" id="ship_city" ng-disabled="basicinfo.same_as_home_mailing"  name="ship_city" ng-required="!basicinfo.same_as_home_mailing" />
+											   <div class="eventicaerror" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_city.$error" role="alert">
+												<div ng-message="required">
+													City is required.
+												</div>
+											</div>
+										 </div>
+										<div class="col s12 l3">
+											<div class="input-field">
+												<label class="active" for="ship_state">State</label>
+												
+												<select class="" ng-model="basicinfo.ship_state" name="ship_state" id="ship_state" disabled="basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" ng-required="!basicinfo.same_as_home_mailing" material-select watch>
+												    <option ng-repeat="state in states">{{state}}</option>
+												</select>
+
+									        <div class="eventicaerror" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_state.$error">
+									        	<div ng-message="required">
+									        		State is required.
+									        	</div>
+									        </div>
+
+									      </div>
+											
+    							
+										</div>
+										<div class="col s12 l3">
+											<div class="input-field">
+												<label class="active" for="ship_zip">Zip</label>
+												<input ng-minlength="5" type="text" ng-model="basicinfo.ship_zip" ng-required="!basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" id="ship_zip" name="ship_zip" required="!basicinfo.same_as_home_mailing" ng-pattern="/^[-+]?[1-9]\d*$/"/>
+
+												
+										
+												<div class="eventicaerror" ng-messages="binfo.ship_zip.$error"  ng-messages-multiple role="alert">
+												<div ng-message="required">
+													Zip Code is required.
+												</div>
+												<div ng-message="pattern">
+													Zip Code must be a number.
+												</div>
+												<div ng-message="minlength">
+													Zip Code must be lower than 5.
+												</div>
+												
+											</div>
+											</div>
+												  
+										</div>
+									
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+
+				<h2 class="fs-title">Emergency Contact Information</h2>
+
+				<div class="row">
+					<div class="col s12 l2">
+											   <label class="inline"><font size="-1">Full Name:</font></label>
+					</div>
+					<div class="col s12 l6">
+						<div class="row">
+											 
+											 <div class="col s12 l6">
+											 	<div class="input-field">
+											 		<label class="active" for="emrgncyfirst_name">First Name</label>
+											 		<input type="text"  id="emrgncyfirst_name" ng-model="basicinfo.emergency_first_name" name="emrgncyfirst_name" required />
+											   
+											   <div class="eventicaerror" ng-messages="binfo.emrgncyfirst_name.$error" role="alert">
+													<div ng-message="required">
+														First name is required and must be a real name.
+													</div>
+												</div>
+											 	</div>
+											   
+											 </div>
+											 <div class="col s12 l6">
+											 	<div class="input-field">
+											 		<label class="active" for="emrgncylast_name">Last Name</label>
+											 		<input type="text" ng-model="basicinfo.emergency_last_name"  id="emrgncylast_name" name="emrgncylast_name" required />
+											   
+											   <div class="eventicaerror" ng-messages="binfo.emrgncylast_name.$error" role="alert">
+													<div ng-message="required">
+														Last name is required.
+													</div>
+												</div>
+											 	</div>
+											   
+											</div>
+						</div>
+										
+					</div> <div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l6 offset-l2">
+									<div class="row">
+										
+										<div class="col s12 l4">
+
+											<!--<div class="input-field">
+												<label class="active" for="emrgncyrelation">Relation</label>
+												<select required class="" ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select watch>
+												    <option ng-repeat="rel in relation">{{rel.abbrev}}</option>
+												</select>
+									        
+
+									        <div class="eventicaerror" ng-messages="binfo.emrgncyrelation.$error">
+									        	<div ng-message="required">
+									        		State is required.
+									        	</div>
+									        </div>
+
+									      </div>-->
+									      <div class="input-field">
+												<label class="active" for="emrgncyrelation">Relation</label>
+												<select required ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select watch>
+												    <option ng-repeat="rel in relation">{{rel}}</option>
+												</select>
+
+									        <div class="eventicaerror" ng-messages="binfo.emrgncyrelation.$error">
+									        	<div ng-message="required">
+									        		Relation is required.
+									        	</div>
+									        </div>
+
+									      </div>
+
+										</div><div class="col s12 l8"></div>
+									
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Address Line 1:</font></label>
+								</div>
+								<div class="col s12 l6">
+
+									<div class="input-field">
+										<label class="active" for="emrgncyaddress1">Number , Street</label>
+										<input ng-model="basicinfo.emergency_address1" name="emrgncyaddress1" id="emrgncyaddress1" required type="text">
+										<div class="eventicaerror" ng-messages="binfo.emrgncyaddress1.$error" role="alert">
+											<div ng-message="required">Address is required.</div>
+										</div>
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Address Line 2:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<div class="input-field">
+										<label class="active" for="emrgncyaddress2">Apt#, Suite, etc.</label>
+										<input ng-model="basicinfo.emergency_address2" name="emrgncyaddress2" id="emrgncyaddress2" type="text">
+										
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+
+				<div class="row">
+								<div class="col s12 l6 offset-l2">
+									<div class="row">
+										<div class="col s12 l6">
+											<div class="input-field">
+												<label class="active" for="emrgncycity">City</label>
+												<input type="text" name="emrgncycity" id="emrgncycity" ng-model="basicinfo.emergency_city" required>
+												<div class="eventicaerror" ng-messages="binfo.emrgncycity.$error" role="alert">
+													<div ng-message="required">City is required.</div>
+												</div>
+											</div>
+										 </div>
+										<div class="col s12 l3">
+
+										<div class="input-field">
+												<label class="active" for="emrgncystate">State</label>
+												<select required class="" ng-model="basicinfo.emergency_state" id="emrgncystate" name="emrgncystate" material-select watch>
+												    <option ng-repeat="st in states">{{st}}</option>
+												</select>
+
+
+									        <div class="eventicaerror" ng-messages="binfo.emrgncystate.$error">
+									        	<div ng-message="required">
+									        		State is required.
+									        	</div>
+									        </div>
+
+									    </div>
+										</div>
+										<div class="col s12 l3">
+											<div class="input-field">
+												<label class="active" for="emrgncyzip">Zip</label>
+												<input ng-minlength="5" ng-pattern="/^[-+]?[1-9]\d*$/" type="text" name="emrgncyzip" id="emrgncyzip" ng-model="basicinfo.emergency_zip" required>
+
+
+												<div class="eventicaerror" ng-messages="binfo.emrgncyzip.$error"  ng-messages-multiple role="alert">
+												<div ng-message="required">
+													Zip Code is required.
+												</div>
+												<div ng-message="pattern">
+													Zip Code must be a number.
+												</div>
+												<div ng-message="minlength">
+													Zip Code must be lower than 5.
+												</div>
+												
+											</div>
+											</div>
+
+										</div>
+									
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Phone:</font></label>
+								</div>
+								<div class="col s12 l3">
+									<div class="input-field">
+										<label class="active" for="emrgncyphone">(000) 000-0000</label>
+										<input type="text" name="emrgncyphone" id="emrgncyphone" ng-model="basicinfo.emergency_phone" required ui-mask="(999) 999-9999">
+										<div class="eventicaerror" ng-messages="binfo.emrgncyphone.$error" role="alert">
+											<div ng-message="required">Phone Number is required and must be numbers.</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="col s12 l7"></div>
+				</div>
+				<div class="row">
+								<div class="col s12 l2">
+									<label class="inline"><font size="-1">Please provide any information we should know in case of an emergency:</font></label>
+								</div>
+								<div class="col s12 l6">
+									<div class="input-field">
+									    <textarea ng-model="basicinfo.emergency_info" class="materialize-textarea" watch></textarea>
+									    <label>Please provide any information we should know in case of an emergency:</label>
+									</div>
+								</div>
+								<div class="col s12 l4"></div>
+				</div>
+				
+				Basic Info: {{ basicinfo | json }}
+
+				<a tooltipped ng-click="basicinfoclick('#basicinfo_form')" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
+			</form>
+			</md-content>
+			</fieldset>
+
+			<fieldset id="profile_form">
+			<md-content>
+			<form name="prof" id="profile" data-abide="ajax">
+				<!--<a tooltipped ng-click="anatex('#profile_form')" ng-model="basicinfo.anima" class="nextbasic btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Animate</a>-->
+				<h1>Profile</h1>
+				<h2 class="fs-title">Gender</h2>
+				
+				<div class="row">
+								<div class="l5 col">&nbsp;
+								</div>
+								<div class="l2 col">
+									<div class="switch">
+									    <label>
+									      Male
+									      <input ng-model="profile.gender" id="gender" name="gender" type="checkbox">
+									      <span class="lever"></span>
+									      Female
+									    </label>
+									  </div>
+								</div>
+
+								<div class="l5 col"></div>
+				</div>
+				<br><hr>
+				<h2 class="fs-title">Characteristics (for Outfits, Costumes, Roles, Casting, Characters, etc)</h2>
+
+				<div class="row">
+								<div class="l6 col">
+									<div class="row">
+										<div class="l6 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+									          		
+    								<select ng-model="profile.height" name="height" required>
+    									<option value="" disabled selected>--</option>
+                                    	<option value="4'10">4'10</option>
+                                    	<option value="4'11">4'11</option>
+                                    	<option value="4'12">4'12</option>
+                                    	<option value="5'0">5'0</option>
+                                    	<option value="5'1">5'1</option>
+                                    	<option value="5'2">5'2</option>
+                                    	<option value="5'3">5'3</option>
+                                    	<option value="5'4">5'4</option>
+                                    	<option value="5'5">5'5</option>
+                                    	<option value="5'6">5'6</option>
+                                    	<option value="5'7">5'7</option>
+                                    	<option value="5'8">5'8</option>
+                                    	<option value="5'9">5'9</option>
+                                    	<option value="5'10">5'10</option>
+                                    	<option value="5'11">5'11</option>
+                                    	<option value="5'12">5'12</option>
+                                    	<option value="6'0">6'0</option>
+                                    	<option value="6'1">6'1</option>
+                                    	<option value="6,2">6,2</option>
+                                    	<option value="6'3">6'3</option>
+                                    	<option value="6'4">6'4</option>
+                                    	<option value="6'5">6'5</option>
+                                    	<option value="6'6">6'6</option>
+                                    	<option value="6'7">6'7</option>
+                                    	<option value="6'8">6'8</option>
+                                    	<option value="6'9">6'9</option>
+                                    	<option value="6'10">6'10</option>
+                                    	<option value="6'11">6'11</option>
+                                    	<option value="6'12">6'12</option>
+    								  
+    								</select>
+    								<label>Heigh</label>
+    								<div class="eventicaerror" ng-messages="prof.height.$error" role="alert">
+											<div ng-message="required">Height is required.</div>
+									</div>
+    							
+									        </div>
+									      </div>
+										</div>
+										<div class="l6 col">
+											<div class="row collapse">
+									        <div class="s9 col input-field">
+									        	<label class="active" for="weight">Weight</label>
+
+												<input ng-model="profile.weight" id="weight"  name="weight" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
+											<div class="eventicaerror" ng-messages="prof.weight.$error"  ng-messages-multiple role="alert">
+												<div ng-message="required">
+													Weight is required.
+												</div>
+												<div ng-message="pattern">
+													Weight must be a number.
+												</div>
+												
+											</div>
+									        </div>
+									        <div class="s3 col">
+									          &nbsp;
+									        </div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l6 col"></div>
+				</div>
+
+				<div class="row">
+								<div class="l9 col">
+									<div class="row">
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="eyecolor" ng-model="profile.eyecolor" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="Blue">Blue</option>
+				                                    	<option value="Brown">Brown</option>
+				                                    	<option value="Green">Green</option>
+				                                    	<option value="Hazel">Hazel</option>
+				                                    	<option value="Gray">Gray</option>
+				    								</select>
+				    							<label>Eye Color</label>
+				    							<div class="eventicaerror" ng-messages="prof.eyecolor.$error" role="alert">
+														<div ng-message="required">eye color is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="haircolor" ng-model="profile.haircolor" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="Auburn">Auburn</option>
+				                                    	<option value="Black">Black</option>
+				                                    	<option value="Blonde">Blonde</option>
+				                                    	<option value="Brunette">Brunette</option>
+				                                    	<option value="Other">Other</option>
+				    								</select>
+				    							<label>Hair Color</label>
+				    							<div class="eventicaerror" ng-messages="prof.haircolor.$error" role="alert">
+														<div ng-message="required">hair color is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="hairlength" ng-model="profile.hairlength" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="Short">Short</option>
+				                                    	<option value="Medium">Medium</option>
+				                                    	<option value="Long">Long</option>
+				                                    	<option value="Bald">Bald</option>
+				    								  
+				    								</select>
+				    							<label>Hair Length</label>
+				    							<div class="eventicaerror" ng-messages="prof.hairlength.$error" role="alert">
+														<div ng-message="required">hair length is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l9 col">
+									<div class="row">
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="tshirt" ng-model="profile.tshirt" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="XS">XS</option>
+				                                    	<option value="S">S</option>
+				                                    	<option value="M">M</option>
+				                                    	<option value="L">L</option>
+				                                    	<option value="XL">XL</option>
+				                                    	<option value="XXL+">XXL+</option>
+				    								</select>
+				    							<label>T-Shirt Size</label>
+				    							<div class="eventicaerror" ng-messages="prof.tshirt.$error" role="alert">
+														<div ng-message="required">t-shirt size is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="pantsize" ng-model="profile.pantsize" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="XS">XS</option>
+				                                    	<option value="S">S</option>
+				                                    	<option value="M">M</option>
+				                                    	<option value="L">L</option>
+				                                    	<option value="XL">XL</option>
+				                                    	<option value="XXL+">XXL+</option>
+				    								</select>
+				    							<label>Pants Shorts Size</label>
+				    							<div class="eventicaerror" ng-messages="prof.pantsize.$error" role="alert">
+														<div ng-message="required">pants shorts size is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="shoesize" ng-model="profile.shoesize" required>
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="5">5</option>
+				                                    	<option value="5.5">5.5</option>
+				                                    	<option value="6">6</option>
+				                                    	<option value="6.5">6.5</option>
+				                                    	<option value="7">7</option>
+				                                    	<option value="7.5">7.5</option>
+				                                    	<option value="8">8</option>
+				                                    	<option value="8.5">8.5</option>
+				                                    	<option value="9">9</option>
+				                                    	<option value="9.5">9.5</option>
+				                                    	<option value="10">10</option>
+				                                    	<option value="10.5">10.5</option>
+				                                    	<option value="11">11</option>
+				                                    	<option value="11.5">11.5</option>
+				                                    	<option value="12">12</option>
+				                                    	<option value="12.5">12.5</option>
+				                                    	<option value="13">13</option>
+				                                    	<option value="13.5">13.5</option>
+														<option value="14">14</option>
+				                                    	<option value="14+">14+</option>	 
+				    								</select>
+				    							<label>Shoe Size</label>
+				    							<div class="eventicaerror" ng-messages="prof.shoesize.$error" role="alert">
+														<div ng-message="required">shoe size is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<br>
+
+				<div id="male_data">
+
+				<hr>
+				<h2 class="fs-title">Male Specific</h2>
+
+				<div class="row">
+								<div class="l9 col">
+									<div class="row">
+										<div class="l3 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="chest" ng-model="profile.chest" >
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="36">36</option>
+				                                    	<option value="38">38</option>
+				                                    	<option value="40">40</option>
+				                                    	<option value="42">42</option>
+				                                    	<option value="44">44</option>
+				                                    	<option value="46">46</option>
+				                                    	<option value="48">48</option>
+				                                    	<option value="50">50</option>
+				    								</select>
+				    							<label>Chest</label>
+				    							<div class="eventicaerror" ng-messages="prof.chest.$error" role="alert">
+														<div ng-message="required">chest is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l3 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="jacketsize" ng-model="profile.jacketsize">
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="36">36</option>
+				                                    	<option value="38">38</option>
+				                                    	<option value="40">40</option>
+				                                    	<option value="42">42</option>
+				                                    	<option value="44">44</option>
+				                                    	<option value="46">46</option>
+				                                    	<option value="48">48</option>
+				                                    	<option value="50">50</option>
+				    								</select>
+				    							<label>Jacket Size</label>
+				    							<div class="eventicaerror" ng-messages="prof.jacketsize.$error" role="alert">
+														<div ng-message="required">ejacket size is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l3 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="waist" ng-model="profile.waist" >
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="28">28</option>
+				                                    	<option value="30">30</option>
+				                                    	<option value="32">32</option>
+				                                    	<option value="34">34</option>
+				                                    	<option value="36">36</option>
+				                                    	<option value="38">38</option>
+				                                    	<option value="40">40</option>
+				                                    	<option value="42">42</option>
+				    								</select>
+				    							<label>Waist</label>
+				    							<div class="eventicaerror" ng-messages="prof.waist.$error" role="alert">
+														<div ng-message="required">waist is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				
+				<br><hr>
+
+				</div>
+				<div id="female_data" style="display:none;">
+				<hr>
+				<h2 class="fs-title">Female Specific</h2>
+
+				<div class="row">
+								<div class="l9 col">
+									<div class="row">
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="waistfemale" ng-model="profile.waistfemale" >
+				    								    <option selected="selected">--</option>
+				                                    	<option value="24">24</option>
+				                                    	<option value="25">25</option>
+				                                    	<option value="26">26</option>
+				                                    	<option value="27">27</option>
+				                                    	<option value="28">28</option>
+				                                    	<option value="29">29</option>
+				                                    	<option value="30">30</option>
+				                                    	<option value="31">31</option>
+				                                    	<option value="32">32</option>
+				                                    	<option value="33">33</option>
+				                                    	<option value="34+">34+</option>
+				    								</select>
+				    							<label>Waist</label>
+				    							<div class="eventicaerror" ng-messages="prof.waistfemale.$error" role="alert">
+														<div ng-message="required">waist is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="hips" ng-model="profile.hips">
+				    								    <option value="" disabled selected>--</option>
+				                                    	<option value="33">33</option>
+				                                    	<option value="34">34</option>
+				                                    	<option value="35">35</option>
+				                                    	<option value="36">36</option>
+				                                    	<option value="37">37</option>
+				                                    	<option value="38">38</option>
+				                                    	<option value="39">39</option>
+				                                    	<option value="40">40</option>
+				                                    	<option value="41">41</option>
+				                                    	<option value="42">42</option>
+				                                    	<option value="43">43</option>
+				                                    	<option value="44+">44+</option>
+				    								</select>
+				    							<label>Hips</label>
+				    							<div class="eventicaerror" ng-messages="prof.hips.$error" role="alert">
+														<div ng-message="required">hips is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+										<div class="l4 col">
+											<div class="row collapse">
+									        <div class="s12 col input-field">
+				    								<select name="dressize" ng-model="profile.dressize">
+				    								    <option value="" selected="selected">--</option>
+				                                    	<option value="0">0</option>
+				                                    	<option value="2">2</option>
+				                                    	<option value="4">4</option>
+				                                    	<option value="6">6</option>
+				                                    	<option value="8">8</option>
+				                                    	<option value="10">10</option>
+				                                    	<option value="12+">12+</option>
+				    								</select>
+				    							<label>Dress Size</label>
+				    							<div class="eventicaerror" ng-messages="prof.dressize.$error" role="alert">
+														<div ng-message="required">dress size is required.</div>
+												</div>
+											</div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+
+				<br><hr>
+				</div>
+				<h2 class="fs-title">Language</h2>
+
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">Native/First Language:</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="nflanguage" ng-model="profile.nflanguage" required>
+    								    <option value="" disabled selected="selected">--</option>
+                                    	<option value="English">English</option>
+                                    	<option value="Spanish">Spanish</option>
+                                    	<option value="French">French</option>
+                                    	<option value="German">German</option>
+                                    	<option value="Italian">Italian</option>
+                                    	<option value="Portuguese">Portuguese</option>
+                                    	<option value="Russian">Russian</option>
+                                    	<option value="Chinese">Chinese</option>
+    								</select>
+    							<label>Native/First Language: </label>
+    							<div class="eventicaerror" ng-messages="prof.nflanguage.$error" role="alert">
+														<div ng-message="required">native/first language is required.</div>
+												</div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">Second Language:</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="slanguage" ng-model="profile.slanguage">
+    								    <option value="" selected="selected" disabled>*optional</option>
+                                    	<option value="English">English</option>
+                                    	<option value="Spanish">Spanish</option>
+                                    	<option value="French">French</option>
+                                    	<option value="German">German</option>
+                                    	<option value="Italian">Italian</option>
+                                    	<option value="Portuguese">Portuguese</option>
+                                    	<option value="Russian">Russian</option>
+                                    	<option value="Chinese">Chinese</option>
+    								</select>
+    							<label>Second Language</label> <!-- cesni mark checar referencias desde profile -->
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you speak english with an acent?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="englishacent" ng-model="profile.englishacent" type="checkbox" >
+													  <label for="englishacent"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you speak spanish fuently?</font></label>
+										</div>
+										<div class="l5 s12 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="englishfuently" ng-model="profile.englishfuently" type="checkbox" >
+													  <label for="englishfuently"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+
+				<br><hr>
+				<h2 class="fs-title">Piercings/Tattoos</h2>
+				
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have Tattoos?</font></label>
+										</div>
+										<div class="l5 s12 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="tatoos" ng-model="profile.tatoos" type="checkbox" >
+													  <label for="tatoos"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have Piercings?</font></label>
+										</div>
+										<div class="l5 s12 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="piercings" ng-model="profile.piercings" type="checkbox" >
+													  <label for="piercings"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+
+				<br><hr>
+				<h2 class="fs-title">Photos</h2>
+				
+					
+			</form>
+
+  				<div class="row" class="dropzone" style="">
+  					<div class="row" align="center" style="margin-bottom:10px;">
+  						<h2>Pictures Requirements.</h2>
+  					</div>
+  					<div class="l6 col">
+					<ul>
+					  <li style="text-align:left;"> Two Head Shots and Two Body Shots. </li>
+					  <li style="text-align:left;"> Pictures must be taken by someone else (No selfies).</li>
+					  <li style="text-align:left;"> No blurry, too dark or too bright pictures.</li>
+					  <li style="text-align:left;"> For Headshots only, face should be looking straight at the camera.</li>
+					  
+					</ul>
+  					</div>
+  					<div class="l6 col">
+  						<ul >
+					  <li style="text-align:left;"> No more than one person in the picture.</li>
+					  <li style="text-align:left;"> No props, no pets in the picture.</li>
+					  <li style="text-align:left;"> No hats or sunglasses.</li>
+					  <li style="text-align:left;"> At least 3 photos and maximum 5 photos.</li>
+					</ul>
+  					</div>
+				</div><br>
+
+				{{ profile | json }}
+
+			     <form action="http://alpha.eventicateam.com/index.php/api/up" class="dropzone" dropzone="dropzoneConfig" ></form><br>
+
+				<a tooltipped ng-click="profileclick('#profile_form')" ng-show="prof.$valid" ng-model="profile.submit" class="col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+			</md-content>
+			</fieldset>
+
+			<fieldset id="experience_form">
+			<md-content>
+			<form id="experience" name="exp" data-abide="ajax">
+				<h1>Experience</h1>
+
+				<div class="row">
+					<div class="l6 col">
+						<h2 class="fs-title">Brand Experience</h2><hr>
+						<p class="left">Providing a list of brands you're familiar with through past events or personal experience.</p>
+					</div>
+					<div class="l6 col">
+						<h2 class="fs-title">Job Experience</h2><hr>
+						<p class="left">Providing a list of Jobs that you have worked in the past.</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="l6 col">
+						<div class="row">
+							<p class="left">Enter one brand per field.</p><br>
+							<div class="row collapse" id="exp1">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.exp1" placeholder="Experience 1">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix">1</a>
+						        </div>
+						    </div>
+						    <div class="row collapse " id="exp2">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.exp2" placeholder="Experience 2">
+						        </div>
+						        <div class="s2 col">
+						          <a  class="btn postfix">2</a>
+						        </div>
+						    </div>
+						    <div class="row collapse " id="exp3">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.exp3" placeholder="Experience 3">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix">3</a>
+						        </div>
+						    </div>
+						    <div class="row collapse " id="exp4">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.exp4" placeholder="Experience 4">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix">4</a>
+						        </div>
+						    </div>
+						    <div class="row collapse " id="exp5">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.exp5" placeholder="Experience 5">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix">5</a>
+						        </div>
+						    </div>
+						</div>
+						<div class="row">
+							<div class="l4 col"><button class="btn radius" id="add_exp">+Add</button></div>
+							<div class="l4 col"><button class="btn radius" id="del_exp">Delete</button></div>
+						</div>
+					</div>
+					<div class="l6 col">
+						<div class="row">
+							<p class="left">Enter one job per field.</p><br>
+							<div class="row collapse" id="brand1">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.job1" placeholder="Job 1">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix" id="del_job_1">1</a>
+						        </div>
+						    </div>
+						    <div class="row collapse" id="brand2">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.job2" placeholder="Job 2">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix" id="del_job_2">2</a>
+						        </div>
+						    </div>
+						    <div class="row collapse" id="brand3">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.job3" placeholder="Job 3">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix" id="del_job_3">3</a>
+						        </div>
+						    </div>
+						    <div class="row collapse" id="brand4">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.job4" placeholder="Job 4">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix" id="del_job_4">4</a>
+						        </div>
+						    </div>
+						    <div class="row collapse" id="brand5">
+						        <div class="s10 col">
+						          <input type="text" ng-model="experience.job5" placeholder="Job 5">
+						        </div>
+						        <div class="s2 col">
+						          <a class="btn postfix" id="del_job_5">5</a>
+						        </div>
+						    </div>
+						</div>
+						<div class="row">
+							<div class="l4 col"><button class="btn radius" id="add_brand">+Add</button></div>
+							<div class="l4 col"><button class="btn radius" id="del_job">Delete</button></div>
+						</div>
+					</div>
+				</div>
+
+				<br>
+				<h2 class="fs-title">Event Experience</h2><hr>
+
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">How many events have you worked?</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="hmevents" ng-model="experience.hmevents" required>
+    									<option value="" selected disabled>select one</option>
+                                    	<option value="0" >0</option>
+                                    	<option value="10-25">10-25</option>
+                                    	<option value="25-50">25-50</option>
+                                    	<option value="50-100">50-100</option>
+                                    	<option value="100+">100+</option>
+    								</select>
+    							<label>How many events have you worked?</label>
+    							<div class="eventicaerror" ng-messages="exp.hmevents.$error">
+    								<div ng-message="required">required.</div>
+    							</div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">How long have you been doing events:</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="hlevents" ng-model="experience.hlevents" required>
+    								<option value="" selected disabled>select one</option>
+                                    	<option value="Just Getting Started" >Just Getting Started</option>
+                                    	<option value="Less than a year">Less than a year</option>
+                                    	<option value="1-3 years">1-3 years</option>
+                                    	<option value="3-5 years">3-5 years</option>
+                                    	<option value="5 years or more">5 years or more</option>
+    								</select>
+    							<label>How long have you been doing events:</label>
+    							<div class="eventicaerror" ng-messages="exp.hlevents.$error">
+    								<div ng-message="required">required.</div>
+    							</div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">How many events have you activated?</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="hmactivated" ng-model="experience.hmactivated" required>
+    								<option value="" selected disabled>select one</option>
+                                    	<option value="0" >0</option>
+                                    	<option value="1-5">1-5</option>
+                                    	<option value="6-10">6-10</option>
+                                    	<option value="More than 10">More than 10</option>
+    								</select>
+    							<label>How many events have you activated?</label>
+    							<div class="eventicaerror" ng-messages="exp.hmactivated.$error">
+    								<div ng-message="required">required.</div>
+    							</div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l6 col">
+											<label class="inline"><font size="-1">How many different brands do you work with on a regular basis?</font></label>
+										</div>
+										<div class="l6 col input-field">
+    								<select name="hmbrands" ng-model="experience.hmbrands" required>
+                                    	<option value="" selected disabled>select one</option>
+                                    	<option value="0">0</option>
+                                    	<option value="1-5">1-5</option>
+                                    	<option value="6-10">6-10</option>
+                                    	<option value="More than 10">More than 10</option>
+    								</select>
+    							<label>How many different brands do you work with on a regular basis?</label>
+    							<div class="eventicaerror" ng-messages="exp.hmbrands.$error">
+    								<div ng-message="required">required.</div>
+    							</div>
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Are you TABC Certified?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="tabcertified" ng-model="experience.tabcertied" type="checkbox" >
+													  <label for="tabcertified"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row" id="upload_tabc_" style="display:none;">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
+										</div>
+										<div class="l5 col">
+											<button id="upload_tabc" ng-model="experience.uploadtabc" class="btn radius" style="background-color:gray;" disabled>Upload image</button>
+										</div>
+										<!--<form><input type="text" placeholder="input"></form>-->
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+
+				<h2 class="fs-title">Special Skills</h2><hr>
+					<div class="row">
+						<div class="l9 col">
+							<div class="row">
+							</div>
+							<div class="row input-field">
+								<textarea id="skill" ng-model="experience.skills" class="materialize-textarea" cols="30" rows="4"></textarea>
+          						<label for="skills">Special Skills (e.g. dancing, singing, performing, etc.)</label>
+							</div>
+						</div>
+						<div class="l3 col"></div>
+					</div>
+					<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have event technology experience?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col ">
+													<div class="switch">
+													  <input id="xptech" ng-model="experience.xptech" type="checkbox" >
+													  <label for="xptech"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+					</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Have you captured event info on a smartphone, tablet or other device?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col ">
+													<div class="switch">
+													  <input id="cap_info" ng-model="experience.capinfo" type="checkbox" >
+													  <label for="cap_info"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<div class="row">
+								<div class="l7 loffset-1 col">
+									<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have experience with social media images, data and content, incluiding Facebook, Twitter and other Social Network?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="xpsocial" ng-model="experience.xpsocial" type="checkbox" >
+													  <label for="xpsocial"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+
+									</div>
+								</div>
+								<div class="l3 col"></div>
+				</div>
+				<h2 class="fs-title">Education</h2><hr>
+
+				<div class="row">
+								<div class="l6 col">
+									<div class="row">
+										<div class="l12 s12 col">
+											<div class="row ">
+        									<label class="left">What level of education have you completed?</label>
+									        <div class="s12 l6 col input-field">
+    								<select name="educationlevel" ng-model="experience.educationlevel" required>
+    									<option value="" selected disabled>select one</option>
+                                    	<option value="High School" >High School</option>
+                                    	<option value="Associate Degree">Associate Degree</option>
+                                    	<option value="Bachelors Degree">Bachelors Degree</option>
+                                    	<option value="Masters Degree">Masters Degree</option>
+                                    	<option value="Ph. D.">Ph. D.</option>
+                                    	<option value="Other">Other</option>
+                                    </select>
+    							<label>What level of education have you completed?</label>
+    							<div class="eventicaerror" ng-messages="exp.educationlevel.$error" role="alert">
+    								<div  ng-message="required">
+    									level education is required.
+    								</div>
+    							</div>
+									        </div>
+									      </div>
+										</div>
+									</div>
+								</div>
+								<div class="l6 col"></div>
+				</div>
+
+
+				<div class="row">
+					<div class="l6 col">
+						<h2 class="fs-title">Interests</h2><hr>
+						<p class="left">Please express the types of promotional industry opportunities you plan to solicit, and accept. (check all that apply)</p>
+						<div class="row">
+							<div class="l7 col">
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="emodeling" ng-model="experience.emodeling" type="checkbox" >
+										  <label for="emodeling"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="emodeling">Event Modeling</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="flashmg" ng-model="experience.flashmg" type="checkbox" >
+										  <label for="flashmg"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="flashmg">Flash Mob/Guerilla</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="tradeshow" ng-model="experience.tradeshow" type="checkbox" >
+										  <label for="tradeshow"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="tradeshow">Tradeshow</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="sampling" ng-model="experience.sampling" type="checkbox" >
+										  <label for="sampling"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="sampling">Sampling</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="indoor" ng-model="experience.indoor" type="checkbox" >
+										  <label for="indoor"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="indoor">Indoor</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="driving" ng-model="experience.driving" type="checkbox" >
+										  <label for="driving"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="driving">Driving</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="hostess" ng-model="experience.hostess" type="checkbox" >
+										  <label for="hostess"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="hostess">Host/Hostess</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="promos" ng-model="experience.promos" type="checkbox" >
+										  <label for="promos"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="promos">Promotions on Social Media Sites</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="techp" ng-model="experience.techp" type="checkbox" >
+										  <label for="techp"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="techp">Tech Product Specialist</label>
+									</div>
+								</div>
+							</div>
+							<div class="l5 col">
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="streeteam" ng-model="experience.streeteam" type="checkbox" >
+										  <label for="streeteam"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="streeteam">Street Team</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="demostore" ng-model="experience.demostore" type="checkbox" >
+										  <label for="demostore"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="demostore">In-Store Demostration</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="natours" ng-model="experience.natours" type="checkbox" >
+										  <label for="natours"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="natours">National Tours</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="liquor" ng-model="experience.liquor" type="checkbox" >
+										  <label for="liquor"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="liquor">Liquor</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="outdoor" ng-model="experience.outdoor" type="checkbox" >
+										  <label for="outdoor"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="outdoor">Outdoor</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="costume" ng-model="experience.costume" type="checkbox" >
+										  <label for="costume"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="costume">Costume</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="setbd" ng-model="experience.setbd" type="checkbox" >
+										  <label for="setbd"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="setbd">Set Up/Break-down</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="retailsales" ng-model="experience.retailsales" type="checkbox" >
+										  <label for="retailsales"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="retailsales">Retail Sales</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="l6 col">
+						<h2 class="fs-title">Roles</h2><hr>
+						<p class="left">For which of the following types of roles would your existing skillset qualify you? (check all that apply)</p>
+						<div class="l6 col">
+							<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="bambass" ng-model="experience.bambass" type="checkbox" >
+										  <label for="bambass"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="bambass">Brand Ambassador</label>
+									</div>
+							</div>
+							<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										
+										<div class="switch">
+										  <input id="teaml" ng-model="experience.teaml" type="checkbox" >
+										  <label for="teaml"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="teaml">Team Lead</label>
+									</div>
+							</div>
+							<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										
+										<div class="switch">
+										  <input id="emcee" ng-model="experience.emcee" type="checkbox" >
+										  <label for="emcee"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="emcee">Emcee</label>
+									</div>
+							</div>
+						</div>
+						<div class="l6 col">
+							<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										
+										<div class="switch">
+										  <input id="model" ng-model="experience.model" type="checkbox" >
+										  <label for="model"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="model">Model</label>
+									</div>
+							</div>
+							<div class="row">
+									<div class="l2 col input-field" style="margin-top:0px;">
+										
+										<div class="switch">
+										  <input id="driver" ng-model="experience.driver" type="checkbox" >
+										  <label for="driver"></label>
+										</div>
+										
+									</div>
+									<div class="l10 col left" >
+										<label for="driver">Driver</label>
+									</div>
+							</div>
+						</div>
+						
+					</div>
+				</div><br>
+				{{ experience | json }}
+
+				<a tooltipped ng-click="experienceclick('#experience_form')" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+			</form>
+			</md-content>
+			</fieldset>
+
+			<fieldset id="availability_form">
+			<md-content>
+			<form id="availability" name="avail" data-abide="ajax">
+				<h1>Availability</h1>
+				<h2 class="fs-title">Driving</h2><hr>
+				<div class="row">
+					<div class="l6 col">
+						<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have a valid driver's license?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="licensev" ng-init="availability.licensev=false" ng-model="availability.licensev" type="checkbox" >
+													  <label for="licensev"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									
+						</div>
+						<div class="row center" id="upload_drivlic_" style="display:none;">
+							<div class="row">
+								<p >Please provide an image of your driver's license</p>
+							</div>
+							<div class="row">
+								<button id="upload_drivlic" class="btn radius" ng-model="availability.drivlic" style="background-color:gray;" disabled>Upload image</button>
+							</div>
+									
+						</div>
+						<div class="row">
+										<div class="l7 col">
+											<label class="inline"><font size="-1">Do you have your own automobile?</font></label>
+										</div>
+										<div class="l5 col" >
+											<div class="row">
+												<div class="l4 s4  col">
+													<div class="switch">
+													  <input id="ownmb" ng-init="availability.ownmb=false" ng-model="availability.ownmb" type="checkbox" >
+													  <label for="ownmb"></label>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									
+						</div>
+						<div class="row">
+							<div class="l7 col">
+								<label class="inline"><font size="-1">Are you willing to receive event items to your home/apartment?</font></label>
+							</div>
+							<div class="l5 col" >
+								<div class="row">
+									<div class="l4 s4  col">
+										<div class="switch">
+										  <input id="apitm" ng-init="availability.apitm=false" ng-model="availability.apitm" type="checkbox" >
+										  <label for="apitm"></label>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+									
+						</div>
+					</div>
+					<div class="l6 col"></div>
+				</div>
+				<h2 class="fs-title">Shifts</h2><hr>
+				<div class="row left">
+					<strong >Check all that apply</strong><br>
+				</div>
+				<br><br>
+				<div class="row">
+				<div class="l9 col">
+				<div class="row">
+					<div class="l4 col">
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="days" ng-init="availability.days=false" ng-model="availability.days" type="checkbox" >
+										  <label for="days"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="days">One-off/One-day</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="cmdays" ng-init="availability.cmdays=false" ng-model="availability.cmdays" type="checkbox" >
+										  <label for="cmdays"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="cmdays">Consecutive/Multiple Days</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="cmmonths" ng-init="availability.cmmonths=false" ng-model="availability.cmmonths" type="checkbox" >
+										  <label for="cmmonths"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="cmmonths">Consecutive/Multiple Months</label>
+									</div>
+						</div>
+						
+					</div>
+					<div class="l4 col">
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="sshift" ng-init="availability.sshift=false" ng-model="availability.sshift" type="checkbox" >
+										  <label for="sshift"></label>
+										</div>
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="sshift">Short Shift(4 hours or less)</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="lshift" ng-init="availability.lshift=false" ng-model="availability.lshift" type="checkbox" >
+										  <label for="lshift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="lshift">Long Shift(8 hours or more)</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="mshift" ng-init="availability.mshift=false" ng-model="availability.mshift" type="checkbox" >
+										  <label for="mshift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="mshift">Morning Shift</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="ashift" ng-init="availability.ashift=false" ng-model="availability.ashift" type="checkbox" >
+										  <label for="ashift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="ashift">Afternoon Shift</label>
+									</div>
+						</div>
+					</div>
+					<div class="l4 col">
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="lmshift" ng-init="availability.lmshift=false" ng-model="availability.lmshift" type="checkbox" >
+										  <label for="lmshift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="lmshift">Last-minute Shifts(24 Hours or less)</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="hshift" ng-init="availability.hshift=false" ng-model="availability.hshift" type="checkbox" >
+										  <label for="hshift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="hshift">Holiday Shifts</label>
+									</div>
+						</div>
+						<div class="row">
+									<div class="l2 s2 col input-field" style="margin-top:0px;">
+										<div class="switch">
+										  <input id="bshift" ng-init="availability.bshift=false" ng-model="availability.bshift" type="checkbox" >
+										  <label for="bshift"></label>
+										</div>
+										
+									</div>
+									<div class="l10 s10 col left" >
+										<label for="bshift">Backup Shifts</label>
+									</div>
+						</div>
+					</div>
+				</div></div></div>
+				{{ availability }}
+
+				<a tooltipped ng-click="availabilityclick('#availability_form')" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+			</form>
+			</md-content>
+			</fieldset>
+
+			<fieldset id="legal_form">
+			<md-content>
+			<form id="legal" name="legl" data-abide="ajax" novalidate>
+				<h1>Legal</h1>
+				<h2 class="fs-title">Legal</h2><hr>
+
+				<div class="row">
+								
+							<div class="l8 col">
+								<p>Have you ever been convicted of a felony, or a misdemeanor involving any violent act, use or possession of a weapon or act of dishonesty for which the record has not been sealed or expunged?</p>
+							</div>
+							<div class="l4 col" >
+								<div class="row">
+									<div class="l4 s4  col input-field">
+										<div class="switch round large">
+										  <input id="answ1" ng-model="legal.answ1" ng-init="legal.answ1=false" type="checkbox" >
+										  <label for="answ1"></label>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+				</div>
+				<div class="row">
+					<div class="l8 col">
+						<p>Are you currently out on bail, the subject of a current warrant for arrest or released on your own recognizance pending trial?</p>
+					</div>
+					<div class="l4 col" >
+						<div class="row">
+							<div class="l4 s4  col input-field">
+								<div class="switch round large">
+								  <input id="answ2" ng-model="legal.answ2" ng-init="legal.answ2=false" type="checkbox" >
+								  <label for="answ2"></label>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="l8 col">
+						<p>Are you legally allowed to work in the US?</p>
+					</div>
+					<div class="l4 col" >
+						<div class="row">
+							<div class="l4 s4  col input-field">
+								<div class="switch round large">
+								  <input id="legally" name="legally" ng-model="legal.legally" ng-init="legal.legally=false" type="checkbox" >
+								  <label for="legally"></label>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+							<h2 class="fs-title">Social Security</h2><hr>
+							<div class="row">
+								<div class="l4 col">
+									<div class="row collapse prefix-radius">
+								        <div class="s3 col">
+								          <span class="prefix"><i class="step fi-lock size-24"></i></span>
+								          <!--<span class="prefix"><i class="step .fi-lock size-18"></i></span>-->
+								        </div>
+								        <div class="s9 col input'field">
+								        	<label class="active" for="ssn">Social Security Number</label>
+								          <input type="text" required name="ssn" ng-model="legal.ssn" id="ssn" ui-mask="999-99-9999">
+								          <div class="eventicaerror" ng-messages="legl.ssn.$error">
+								          	<div ng-message="required">Please provide your Social Security Number.</div>
+								          </div>
+								        </div>
+								     </div>
+									<div class="row">
+										
+										<div class="col">
+										    <a class="" href='#why' modal>Why do we need this?</a>
+										</div>
+										<!-- Modal Structure -->
+										<div id="why" class="modal">
+										    <div class="modal-content">
+										        <h4>Why need this</h4>
+										        <p>text</p>
+										    </div>
+										    <div class="modal-footer">
+										        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+										    </div>
+										</div>
+									</div>
+								</div>
+								<div class="l4 col">
+									
+								</div>
+								<div class="l4 col"></div>
+							</div>
+							
+							<div class="row">
+								<input id="termsofs" ng-model="legal.agreetp" type="checkbox" required><label for="termsofs">Agree Terms of Service and Privacy Policies</label>
+							</div>
+							
+							<br><br>
+					<a tooltipped ng-click="legalclick('#legal_form')" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
+				
+			</form>
+			</md-content>
+			</fieldset>
+		</div>
+ </section>
+
+
+<script src="assets/js/signup.js"></script>
+
+
+       

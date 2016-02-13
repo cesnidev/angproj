@@ -1,0 +1,93 @@
+
+
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+
+
+  <div id="login-page" class="row">
+    <div class="l4">&nbsp;</div>
+    <div class="col s12 l4 offset-l4 z-depth-4 card-panel">
+      <form class="login-form" name="flogin" novalidate ng-controller="RegisterCtrl">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <a href="#/"><img src="assets/img/logo4.png" class="logo" alt="" class="circle responsive-img valign profile-image-login">
+          </a></div>
+        </div>
+        <div class="eventicaerror" align="center" ng-if="msj!=null">
+            	Error: {{ msj }}
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="username" name="username" required type="text" ng-model="login.username">
+            <label for="username" class="center-align active">Username</label>
+            <div class="eventicaerror" ng-messages="flogin.username.$error" role="alert">
+            	<div ng-message="required">Username is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="email" name="email" required type="email" ng-model="login.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
+            <label for="email" class="center-align active">Email</label>
+            <div class="eventicaerror" ng-messages="flogin.email.$error" role="alert">
+              <div ng-message="required">Email is required.</div>
+              <div ng-message="pattern">This is not a email.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input required id="password" name="passwordl" type="password" ng-model="login.password">
+            <label for="password" class="active">Password</label>
+            <div class="eventicaerror" ng-messages="flogin.passwordl.$error" role="alert">
+            	<div ng-message="required">Password is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a ng-click="email()" ng-model="login.submit2" class="btn red radius col s12">Continue</a>
+          </div>
+        </div>
+        <hr>
+        <div align="center">
+        	<span><strong>Or</strong></span><br><span><strong>Register with:</strong></span>
+        </div><br>
+        <div class="row">
+          <div class="col l6">
+            <div ng-click="google()" style=" cursor:pointer;" class="social google-pluse"><i class="icon-google-plus icon-2x"></i></div>
+            </div>
+          <div class="col l6">
+            <div ng-click="facebook()" style=" cursor:pointer;" class="social facebook"><i class="icon-facebook-sign icon-2x"></i></div>
+            </div>
+        </div><br>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+
+  <!--prism-->
+  <!--
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script type="text/javascript" src="assets/js/prism/prism.js"></script>
+  <!--scrollbar--
+  <script type="text/javascript" src="assets/js/scrollbar/scrollbar.min.js"></script>
+
+      <!--plugins.js - Some Specific JS codes for Plugin Settings--
+    <script type="text/javascript" src="assets/js/plugins.min.js"></script>
+    -->

@@ -1,0 +1,90 @@
+	
+        <div class="container">
+            <div class="header row" style="border-bottom: 3px solid #dc222b;" >
+                <div class="col s12 l4">
+                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.eventicateam.com/img/Logo4.png"></a>
+                </div>
+                <div class="col l5">&nbsp;</div>
+                <div class="col l3" align="right">
+                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					    <li class="collection-item avatar">
+					      <img ng-src="{{croppedDataUrl}}" style="background-color:#dc222b;" alt="" class="circle">
+					      <span class="title">Title</span>
+					      <p>{{ user.email }}<br>
+					         Second Line
+					      </p>
+					    </li>
+					 </ul>
+
+                	<!--<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					   <This is a dropdown
+					</a>-->
+
+					<ul id='demoDropdown' class='dropdown-content'>
+					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
+					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
+					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
+					</ul>
+                </div>
+            </div>
+        </div><br>
+<section>
+<div class="row">
+	<div class="col l2 vertical-wrapper input-field">
+		<div class="row" align="center"><h3>Menu</h3></div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+		<div class="row">
+			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		</div>
+	</div>
+	<div class="col l8">
+		<div ng-controller="ViewCtrl">
+	<div class="row">
+		<div class="col l4"   ng-repeat="user in users">
+			<div class="card ">
+		      <div class="card-image">
+		        <img src="assets/img/profiles/{{ user.photo }}">
+		        <span class="card-title">{{user.name}}</span>
+		      </div>
+		      <div class="card-content">
+		        <p>{{ user.descripcion }}</p>
+		      </div>
+		      <div class="card-action">
+		        <a >Action 1 </a>
+		        <a >Action 2 </a>
+		        <a >More Info...</a>
+		      </div>
+		    </div>
+		</div>
+		
+	</div>
+
+</div>
+	</div>
+</div>

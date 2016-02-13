@@ -1,0 +1,387 @@
+
+.social {
+    text-align: center;
+    width:100%;
+    height:70px;
+    float: left;
+    margin: 0 10px 10px 0px;
+    padding: 17px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.google-pluse:hover {
+    background: #DD4B39;
+    color: #FFF;
+}
+.facebook:hover {
+    background: #3b5998;
+    color: #FFF;
+}
+.twitter:hover {
+    background: #00acee;
+    color: #FFF;
+}
+.pinterest:hover {
+    background: #c8232c;
+    color: #FFF;
+}
+.linkedin:hover {
+    background: #0e76a8;
+    color: #FFF;
+}
+.skype:hover {
+    background: #00aff0;
+    color: #FFF;
+}
+.youtube:hover {
+    background: #c4302b;
+    color: #FFF;
+}
+.tumblr:hover {
+    background: #34526f;
+    color: #FFF;
+}
+
+boady{
+  overflow-y: hidden;
+}
+
+.left{
+    text-align:left;
+	margin-top:10px;
+}
+
+.boton {
+    /*text-transform: uppercase;*/
+    background-color: transparent;
+}
+
+.logo{
+	width:100px;
+}
+
+.disabledo {
+
+    background-color: gray;
+
+}
+
+.boton.white:hover {
+    background-color: white;
+    color: #dc222b;
+    -webkit-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out
+}
+
+.boton.red {
+    border-color: red;
+    width:180px;
+	background-color:#dc222b;
+    margin-left: 40px;
+}
+.boton.red:hover {
+	-webkit-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out
+    background-color: white;
+    color: #dc222b;
+}
+
+
+.boton {
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0 0 1.33333rem;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    padding-top: 1.06667rem;
+    padding-right: 2.13333rem;
+    padding-bottom: 1.13333rem;
+    padding-left: 2.13333rem;
+    font-size: 1.06667rem;
+    background-color: transparent;
+    border-color: #1b6a9a;
+    color: blue;
+    -webkit-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out
+} 
+
+.boton.radius {
+    border-radius: 6px
+}
+.logo{
+	width:300px; 
+	margin-top:10px;
+}
+
+.navigation{
+  padding-top:30px;
+  padding-bottom:30px;
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:1;
+}
+
+.navbar-right{
+  float:right;
+  padding-right:10%;
+}
+
+.navbar-right a{
+  text-decoration:none;
+  padding:10px;
+  color: #fff;
+  font-family:Arial;
+  font-weight:900;
+}
+
+.navbar-right a:hover{
+  text-decoration:none;
+}
+.navbar-logo{
+  padding-left:10%;
+  font-family:Arial;
+  font-size:30px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#fff; 
+}
+
+.video-container {
+z-index: -100;
+width:100%;
+height:100%;
+overflow:hidden;
+position:absolute;
+top:0;
+left:0;
+}
+
+#video-bg{
+  width:100%;
+ 
+}
+
+.inputErrors .inputErrorsApp {
+  min-height: 48px; }
+
+.inputErrors md-input-container > p {
+  font-size: 0.8em;
+  text-align: left;
+  width: 100%; }
+
+.datepickerdemoBasicUsage {
+  /** Demo styles for mdCalendar. */ }
+  .datepickerdemoBasicUsage md-content {
+    padding-bottom: 200px; }
+  .datepickerdemoBasicUsage .validation-messages {
+    font-size: 11px;
+    color: darkred;
+    margin: 10px 0 0 25px; }
+
+.inlinet{
+	margin-top:100px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.eventicaerror {
+    transition:1s linear all;
+}
+
+.eventicaerror.ng-active {
+	color:red;
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+  
+}
+.eventicaerror.ng-active-enter {
+	color:blue;
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+  
+}
+.eventicaerror.ng-inactive {
+	color:red;
+ animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+}
+
+.eventicaerror.ng-enter {
+	color:red;
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+  
+}
+.eventicaerror.ng-leave {
+	color:red;
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+}
+/*
+
+.ng-hide-add         { animation:0.5s lightSpeedOut ease; }
+
+a .ng-hide-remove      { animation:0.5s flipInX ease; }
+
+
+
+
+.ng-enter {animation:2.5s flipInX ease;color:red;}
+
+.fade.ng-enter-active {animation:0.5s flipInX ease;color:red;
+}
+
+*/
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
+    transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+/* light speed out */
+@keyframes lightSpeedOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes lightSpeedOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0;
+  }
+}
+
+
+@media (min-width: 1401px) and (max-width: 1600px)
+{
+
+
+}
+
+@media (min-width: 1201px) and (max-width: 1400px)
+{
+
+
+}
+
+@media (min-width: 1025px) and (max-width: 1200px)
+{
+}
+
+@media (min-width: 801px) and (max-width: 1024px)
+{
+
+}
+
+@media (min-width: 641px) and (max-width: 800px)
+{
+
+
+}
+
+@media (min-width: 481px) and (max-width: 640px)
+{
+
+
+}
+
+@media (min-width: 321px) and (max-width: 480px)
+{
+
+
+}
+
+@media (min-width: 240px) and (max-width: 320px)
+{
+ 
+}
+
+
+
+.cropArea {
+    background: #E4E4E0;
+    overflow: hidden;
+    width:500px;
+    height:350px;
+}
+form .progress {
+    line-height: 15px;
+}
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
