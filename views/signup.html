@@ -1,34 +1,5 @@
 <section ng-controller="SignUpCtrl">
-        <div class="container">
-            <div class="header row" style="border-bottom: 3px solid #dc222b;" >
-                <div class="col s12 l4">
-                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.eventicateam.com/img/Logo4.png"></a>
-                </div>
-                <div class="col l5">&nbsp;</div>
-                <div class="col l3" align="right">
-                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
-					    <li class="collection-item avatar">
-					      <img ng-src="{{croppedDataUrl}}" style="background-color:#dc222b;" alt="" class="circle">
-					      <span class="title">Title</span>
-					      <p>{{ user.email }}<br>
-					         Second Line
-					      </p>
-					    </li>
-					 </ul>
-
-                	<!--<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
-					   <This is a dropdown
-					</a>-->
-
-					<ul id='demoDropdown' class='dropdown-content'>
-					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
-					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
-					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
-					</ul>
-                </div>
-            </div>
-        </div><br>
-
+<div ng-include="'views/assets/signup.html'"></div>
 
 <div id="eventicaforms" class="inputErrors" >
 
@@ -52,20 +23,56 @@
 				</div><br>-->
 				<div class="row">
 			          <h2 class="fs-title">Profile Image</h2>
-			        <button ngf-select ng-model="picFile" accept="image/*" class="btn waves-effect">Select Picture</button><br><br><br>
-			        <div class="row" align="center">
-			        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="cropArea dropzone">
-					            <img-crop image="picFile  | ngfDataUrl"                 
-					            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
-					            </img-crop>
-					        </div>
-					        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
-					        	<div ng-message="required">
-					        		profile image required.
-					        	</div>
-					        </div>
-			        	
-			        </div>
+				</div>
+
+				<div class="row">
+					<div ng-switch on="user.provider">
+						<div ng-switch-when="facebook">
+							<div class="col s12 l2 offset-l2" align="center">
+								<p>
+							      <input type="checkbox" ng-model="basicinfo.social" class="n" id="filled-in-box" />
+							      <label for="filled-in-box" style="color:black;">Use my facebook image</label>
+							    </p>
+								
+							</div>
+						</div>
+						<div ng-switch-when="google">
+							<div class="col s12 l2 offset-l2" align="center">
+								<p>
+							      <input type="checkbox" ng-model="basicinfo.social" class="n" id="filled-in-box" />
+							      <label for="filled-in-box" style="color:black;">Use my google image</label>
+							    </p>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="col s12 l8 left" style="text-align:left;">
+						&nbsp;
+					</div>
+				</div>
+
+				<div class="row picture" ng-show="!basicinfo.social">
+					<div class="l12 s12 m12">
+						<button ngf-select ng-model="picFile" accept="image/*" class="btn waves-effect">Select Picture</button><br><br><br>
+				        <div class="row" align="center">
+
+				        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="col l12 s12 m12 cropArea dropzone">
+						            <img-crop image="picFile  | ngfDataUrl"                 
+						            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+						            </img-crop>
+						        </div>
+						        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
+						        	<div ng-message="required">
+						        		profile image required.
+						        	</div>
+						        </div>
+				        	
+				        </div>
+						
+					</div>	
+
+			        
 			        
 			        <!--<button ng-click="upload(croppedDataUrl)">Submit</button>--> 
 			            
@@ -128,15 +135,15 @@
 				
 				<div class="row">
 								<div class="col s12 l2">
-									<label class="inline"><font size="-1">Date:</font></label>
+									<label class="inline"><font size="-1">Birthdate:</font></label>
 								</div>
 								<div class="col s12 l6">
 									<div class="row">
 										<div class="col s12 l12">
-											 
+
 
 											    <div class="input-field">
-										<label for="inputCreated">Date:</label>
+										<label for="inputCreated">Birthdate:</label>
 											<input input-date
 											    type="text"
 											    name="created"
@@ -146,7 +153,12 @@
 											    format="dd/mm/yyyy"
 											    months-full="{{ month }}"
 											    months-short="{{ monthShort }}"
-											    weekdays-full="{{ weekdaysFull }}" weekdays-short="{{ weekdaysShort }}" weekdays-letter="{{ weekdaysLetter }}" disable="disable" min="{{ minDate }}" max="{{ maxDate }}" today="today" clear="clear" close="close" required select-years="15" />
+											    weekdays-full="{{ weekdaysFull }}" 
+											    weekdays-short="{{ weekdaysShort }}" 
+											    weekdays-letter="{{ weekdaysLetter }}" 
+											    disable="disable" 
+											    min="{{ minDate }}" 
+											    max="{{ maxDate }}" required select-years="15" />
 											    <div class="eventicaerror" ng-messages="binfo.created.$error">
 										          <div ng-message="required">Date is required.</div>
 										        </div>
@@ -261,7 +273,7 @@
 								<div class="col s12 l6">
 									<div class="input-field">
 									<label class="active" for="address2">Address Line 2: Apt#,Suite, etc...</label>
-									<input type="text" ng-model="basicinfo.address2"  name="address2" id="address2" />
+									<input type="text" ng-model="basicinfo.addres2"  name="address2" id="address2" />
 									</div>
 								</div>
 								<div class="col s12 l4"></div>
@@ -353,10 +365,11 @@
 
 				<div class="row">
 								<div class="col s12 l2 offset-l2">
-									<p>
-								      <input type="checkbox" ng-click="same(basicinfo.same_as_home_mailing)" ng-model="basicinfo.same_as_home_mailing" class="filled-in" id="filled-in-box" />
-								      <label for="filled-in-box">Same as Home Address</label>
-								    </p>
+									
+								<p>
+							      <input ng-click="same(basicinfo.same_as_home_mailing)" ng-model="basicinfo.same_as_home_mailing" type="checkbox" id="same_as" />
+							      <label for="same_as">Same as Home Address</label>
+							    </p>
 									
 								</div>
 								<div class="col s12 l8 left" style="text-align:left;">
@@ -462,7 +475,7 @@
 											 <div class="col s12 l6">
 											 	<div class="input-field">
 											 		<label class="active" for="emrgncyfirst_name">First Name</label>
-											 		<input type="text"  id="emrgncyfirst_name" ng-model="basicinfo.emergency_first_name" name="emrgncyfirst_name" required />
+											 		<input type="text"  id="emrgncyfirst_name" ng-model="basicinfo.emergency_firstname" name="emrgncyfirst_name" required />
 											   
 											   <div class="eventicaerror" ng-messages="binfo.emrgncyfirst_name.$error" role="alert">
 													<div ng-message="required">
@@ -475,7 +488,7 @@
 											 <div class="col s12 l6">
 											 	<div class="input-field">
 											 		<label class="active" for="emrgncylast_name">Last Name</label>
-											 		<input type="text" ng-model="basicinfo.emergency_last_name"  id="emrgncylast_name" name="emrgncylast_name" required />
+											 		<input type="text" ng-model="basicinfo.emergency_last_name"  id="emrgncylastname" name="emrgncylast_name" required />
 											   
 											   <div class="eventicaerror" ng-messages="binfo.emrgncylast_name.$error" role="alert">
 													<div ng-message="required">
@@ -645,7 +658,8 @@
 				
 				Basic Info: {{ basicinfo | json }}
 
-				<a tooltipped ng-click="basicinfoclick('#basicinfo_form')" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="basicinfoclick('#basicinfo_form')" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#basicinfo_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
 			</md-content>
 			</fieldset>
@@ -660,7 +674,7 @@
 				<div class="row">
 								<div class="l5 col">&nbsp;
 								</div>
-								<div class="l2 col">
+								<div class="l2 s12 col">
 									<div class="switch">
 									    <label>
 									      Male
@@ -677,9 +691,9 @@
 				<h2 class="fs-title">Characteristics (for Outfits, Costumes, Roles, Casting, Characters, etc)</h2>
 
 				<div class="row">
-								<div class="l6 col">
+								<div class="l6 s12 col">
 									<div class="row">
-										<div class="l6 col">
+										<div class="l6 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 									          		
@@ -724,9 +738,9 @@
 									        </div>
 									      </div>
 										</div>
-										<div class="l6 col">
+										<div class="l6 s12 col">
 											<div class="row collapse">
-									        <div class="s9 col input-field">
+									        <div class="s12 col input-field">
 									        	<label class="active" for="weight">Weight</label>
 
 												<input ng-model="profile.weight" id="weight"  name="weight" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
@@ -753,7 +767,7 @@
 				<div class="row">
 								<div class="l9 col">
 									<div class="row">
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="eyecolor" ng-model="profile.eyecolor" required>
@@ -771,7 +785,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="haircolor" ng-model="profile.haircolor" required>
@@ -789,7 +803,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="hairlength" ng-model="profile.hairlength" required>
@@ -812,9 +826,9 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l9 col">
+								<div class="l9 s12 col">
 									<div class="row">
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="tshirt" ng-model="profile.tshirt" required>
@@ -833,7 +847,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="pantsize" ng-model="profile.pantsize" required>
@@ -852,7 +866,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="shoesize" ng-model="profile.shoesize" required>
@@ -897,9 +911,9 @@
 				<h2 class="fs-title">Male Specific</h2>
 
 				<div class="row">
-								<div class="l9 col">
+								<div class="l9 s12 col">
 									<div class="row">
-										<div class="l3 col">
+										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="chest" ng-model="profile.chest" >
@@ -920,7 +934,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l3 col">
+										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="jacketsize" ng-model="profile.jacketsize">
@@ -941,7 +955,7 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l3 col">
+										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
 				    								<select name="waist" ng-model="profile.waist" >
@@ -977,9 +991,9 @@
 				<div class="row">
 								<div class="l9 col">
 									<div class="row">
-										<div class="l4 col">
+										<div class="l4 s12 m12 col">
 											<div class="row collapse">
-									        <div class="s12 col input-field">
+									        <div class="s12 l12 m12 col input-field">
 				    								<select name="waistfemale" ng-model="profile.waistfemale" >
 				    								    <option selected="selected">--</option>
 				                                    	<option value="24">24</option>
@@ -1001,9 +1015,9 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 m12 col">
 											<div class="row collapse">
-									        <div class="s12 col input-field">
+									        <div class="s12 l12 m12 col input-field">
 				    								<select name="hips" ng-model="profile.hips">
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="33">33</option>
@@ -1026,9 +1040,9 @@
 											</div>
 									      </div>
 										</div>
-										<div class="l4 col">
+										<div class="l4 s12 m12 col">
 											<div class="row collapse">
-									        <div class="s12 col input-field">
+									        <div class="s12 m12 l12 col input-field">
 				    								<select name="dressize" ng-model="profile.dressize">
 				    								    <option value="" selected="selected">--</option>
 				                                    	<option value="0">0</option>
@@ -1056,12 +1070,12 @@
 				<h2 class="fs-title">Language</h2>
 
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
 										<div class="l6 col">
 											<label class="inline"><font size="-1">Native/First Language:</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="nflanguage" ng-model="profile.nflanguage" required>
     								    <option value="" disabled selected="selected">--</option>
                                     	<option value="English">English</option>
@@ -1083,12 +1097,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
 										<div class="l6 col">
 											<label class="inline"><font size="-1">Second Language:</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="slanguage" ng-model="profile.slanguage">
     								    <option value="" selected="selected" disabled>*optional</option>
                                     	<option value="English">English</option>
@@ -1107,12 +1121,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
-										<div class="l7 col">
+										<div class="l7 s7 m7 col">
 											<label class="inline"><font size="-1">Do you speak english with an acent?</font></label>
 										</div>
-										<div class="l5 col" >
+										<div class="l5 s5 m5 col" >
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
@@ -1128,12 +1142,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
-										<div class="l7 col">
+										<div class="l7 s7 m7 col">
 											<label class="inline"><font size="-1">Do you speak spanish fuently?</font></label>
 										</div>
-										<div class="l5 s12 col" >
+										<div class="l5 s5 m5 col" >
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
@@ -1153,12 +1167,12 @@
 				<h2 class="fs-title">Piercings/Tattoos</h2>
 				
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
-										<div class="l7 col">
+										<div class="l7 s7 m7 col">
 											<label class="inline"><font size="-1">Do you have Tattoos?</font></label>
 										</div>
-										<div class="l5 s12 col" >
+										<div class="l5 s5 m5 col" >
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
@@ -1174,12 +1188,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
-										<div class="l7 col">
+										<div class="l7 s7 m7 col">
 											<label class="inline"><font size="-1">Do you have Piercings?</font></label>
 										</div>
-										<div class="l5 s12 col" >
+										<div class="l5 s5 m5 col" >
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
@@ -1228,7 +1242,11 @@
 
 			     <form action="http://alpha.eventicateam.com/index.php/api/up" class="dropzone" dropzone="dropzoneConfig" ></form><br>
 
-				<a tooltipped ng-click="profileclick('#profile_form')" ng-show="prof.$valid" ng-model="profile.submit" class="col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="profileclick('#profile_form')" ng-show="prof.$valid" ng-model="profile.submit" class="col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+
+
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</md-content>
 			</fieldset>
 
@@ -1239,126 +1257,130 @@
 
 				<div class="row">
 					<div class="l6 col">
-						<h2 class="fs-title">Brand Experience</h2><hr>
-						<p class="left">Providing a list of brands you're familiar with through past events or personal experience.</p>
+						<div class="row">
+							<h2 class="fs-title">Brand Experience</h2><hr>
+							<p class="left">Providing a list of brands you're familiar with through past events or personal experience.</p>
+						</div>
+						<div class="row">
+							<div class="row">
+								<p class="left">Enter one brand per field.</p><br>
+								<div class="row collapse" id="exp1">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.exp1" placeholder="Experience 1">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix">1</a>
+							        </div>
+							    </div>
+							    <div class="row collapse " id="exp2">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.exp2" placeholder="Experience 2">
+							        </div>
+							        <div class="s2 col">
+							          <a  class="btn postfix">2</a>
+							        </div>
+							    </div>
+							    <div class="row collapse " id="exp3">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.exp3" placeholder="Experience 3">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix">3</a>
+							        </div>
+							    </div>
+							    <div class="row collapse " id="exp4">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.exp4" placeholder="Experience 4">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix">4</a>
+							        </div>
+							    </div>
+							    <div class="row collapse " id="exp5">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.exp5" placeholder="Experience 5">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix">5</a>
+							        </div>
+							    </div>
+							</div>
+							<div class="row">
+								<div class="l6 s6 m6 col"><button class="btn radius" id="add_exp">+Add</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" id="del_exp">Delete</button></div>
+							</div>
+						</div>
+						
 					</div>
 					<div class="l6 col">
-						<h2 class="fs-title">Job Experience</h2><hr>
-						<p class="left">Providing a list of Jobs that you have worked in the past.</p>
+						<div class="row">
+							<h2 class="fs-title">Job Experience</h2><hr>
+							<p class="left">Providing a list of Jobs that you have worked in the past.</p>
+						</div>
+						<div class="row">
+							<div class="row">
+								<p class="left">Enter one job per field.</p><br>
+								<div class="row collapse" id="brand1">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.job1" placeholder="Job 1">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix" id="del_job_1">1</a>
+							        </div>
+							    </div>
+							    <div class="row collapse" id="brand2">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.job2" placeholder="Job 2">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix" id="del_job_2">2</a>
+							        </div>
+							    </div>
+							    <div class="row collapse" id="brand3">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.job3" placeholder="Job 3">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix" id="del_job_3">3</a>
+							        </div>
+							    </div>
+							    <div class="row collapse" id="brand4">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.job4" placeholder="Job 4">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix" id="del_job_4">4</a>
+							        </div>
+							    </div>
+							    <div class="row collapse" id="brand5">
+							        <div class="s10 col">
+							          <input type="text" ng-model="experience.job5" placeholder="Job 5">
+							        </div>
+							        <div class="s2 col">
+							          <a class="btn postfix" id="del_job_5">5</a>
+							        </div>
+							    </div>
+							</div>
+							<div class="row">
+								<div class="l6 s6 m6 col"><button class="btn radius" id="add_brand">+Add</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" id="del_job">Delete</button></div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="l6 col">
-						<div class="row">
-							<p class="left">Enter one brand per field.</p><br>
-							<div class="row collapse" id="exp1">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.exp1" placeholder="Experience 1">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix">1</a>
-						        </div>
-						    </div>
-						    <div class="row collapse " id="exp2">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.exp2" placeholder="Experience 2">
-						        </div>
-						        <div class="s2 col">
-						          <a  class="btn postfix">2</a>
-						        </div>
-						    </div>
-						    <div class="row collapse " id="exp3">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.exp3" placeholder="Experience 3">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix">3</a>
-						        </div>
-						    </div>
-						    <div class="row collapse " id="exp4">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.exp4" placeholder="Experience 4">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix">4</a>
-						        </div>
-						    </div>
-						    <div class="row collapse " id="exp5">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.exp5" placeholder="Experience 5">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix">5</a>
-						        </div>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="l4 col"><button class="btn radius" id="add_exp">+Add</button></div>
-							<div class="l4 col"><button class="btn radius" id="del_exp">Delete</button></div>
-						</div>
-					</div>
-					<div class="l6 col">
-						<div class="row">
-							<p class="left">Enter one job per field.</p><br>
-							<div class="row collapse" id="brand1">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.job1" placeholder="Job 1">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix" id="del_job_1">1</a>
-						        </div>
-						    </div>
-						    <div class="row collapse" id="brand2">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.job2" placeholder="Job 2">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix" id="del_job_2">2</a>
-						        </div>
-						    </div>
-						    <div class="row collapse" id="brand3">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.job3" placeholder="Job 3">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix" id="del_job_3">3</a>
-						        </div>
-						    </div>
-						    <div class="row collapse" id="brand4">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.job4" placeholder="Job 4">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix" id="del_job_4">4</a>
-						        </div>
-						    </div>
-						    <div class="row collapse" id="brand5">
-						        <div class="s10 col">
-						          <input type="text" ng-model="experience.job5" placeholder="Job 5">
-						        </div>
-						        <div class="s2 col">
-						          <a class="btn postfix" id="del_job_5">5</a>
-						        </div>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="l4 col"><button class="btn radius" id="add_brand">+Add</button></div>
-							<div class="l4 col"><button class="btn radius" id="del_job">Delete</button></div>
-						</div>
-					</div>
-				</div>
 
 				<br>
 				<h2 class="fs-title">Event Experience</h2><hr>
 
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 offset-1 col">
 									<div class="row">
-										<div class="l6 col">
+										<div class="l6 s12 m12 col">
 											<label class="inline"><font size="-1">How many events have you worked?</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="hmevents" ng-model="experience.hmevents" required>
     									<option value="" selected disabled>select one</option>
                                     	<option value="0" >0</option>
@@ -1377,12 +1399,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 m12 offset-1 col">
 									<div class="row">
-										<div class="l6 col">
+										<div class="l6 s12 m12 col">
 											<label class="inline"><font size="-1">How long have you been doing events:</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="hlevents" ng-model="experience.hlevents" required>
     								<option value="" selected disabled>select one</option>
                                     	<option value="Just Getting Started" >Just Getting Started</option>
@@ -1401,12 +1423,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 offset-1 col">
 									<div class="row">
-										<div class="l6 col">
+										<div class="l6 s12 m12 col">
 											<label class="inline"><font size="-1">How many events have you activated?</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="hmactivated" ng-model="experience.hmactivated" required>
     								<option value="" selected disabled>select one</option>
                                     	<option value="0" >0</option>
@@ -1424,12 +1446,12 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 offset-1 col">
 									<div class="row">
-										<div class="l6 col">
+										<div class="l6 s12 m12 col">
 											<label class="inline"><font size="-1">How many different brands do you work with on a regular basis?</font></label>
 										</div>
-										<div class="l6 col input-field">
+										<div class="l6 s12 m12 col input-field">
     								<select name="hmbrands" ng-model="experience.hmbrands" required>
                                     	<option value="" selected disabled>select one</option>
                                     	<option value="0">0</option>
@@ -1447,13 +1469,13 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 m12 offset-1 col">
 									<div class="row">
 
-										<div class="l7 col">
+										<div class="l7 s12 m12 col">
 											<label class="inline"><font size="-1">Are you TABC Certified?</font></label>
 										</div>
-										<div class="l5 col" >
+										<div class="l5 s12 m12 col" >
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
@@ -1469,23 +1491,36 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row" id="upload_tabc_" style="display:none;">
-								<div class="l7 loffset-1 col">
+								<div class="l7 s12 offset-l1 col">
 									<div class="row">
-										<div class="l7 col">
+										<div class="l7 s12 col">
 											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
 										</div>
-										<div class="l5 col">
-											<button id="upload_tabc" ng-model="experience.uploadtabc" class="btn radius" style="background-color:gray;" disabled>Upload image</button>
+										<div class="l5 s12 col">
+											<div class="file-field input-field">
+										      <div id="upload_tabc" class="btn">
+										        <span>License/Permit</span>
+										        <input type="file" ng-file-model="experiencae.uploadtabc" />
+										      </div>
+										    </div>
 										</div>
-										<!--<form><input type="text" placeholder="input"></form>-->
+									</div>
+									<div class="row">
+										<div class="l7 s12 m12 col" align="center">
+											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
+										</div>
+										<div class="l5 s12 m12 col">
+											<img class="dropzone" ng-src="{{ experiencae.uploadtabc.data }}" style="width:100%;height:100%;" alt="">
+										</div>
 									</div>
 								</div>
 								<div class="l3 col"></div>
 				</div>
+				
 
 				<h2 class="fs-title">Special Skills</h2><hr>
 					<div class="row">
-						<div class="l9 col">
+						<div class="l9 s12 m12 col">
 							<div class="row">
 							</div>
 							<div class="row input-field">
@@ -1496,7 +1531,7 @@
 						<div class="l3 col"></div>
 					</div>
 					<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
 										<div class="l7 col">
 											<label class="inline"><font size="-1">Do you have event technology experience?</font></label>
@@ -1517,7 +1552,7 @@
 								<div class="l3 col"></div>
 					</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
 										<div class="l7 col">
 											<label class="inline"><font size="-1">Have you captured event info on a smartphone, tablet or other device?</font></label>
@@ -1538,7 +1573,7 @@
 								<div class="l3 col"></div>
 				</div>
 				<div class="row">
-								<div class="l7 loffset-1 col">
+								<div class="l7 offset-1 col">
 									<div class="row">
 										<div class="l7 col">
 											<label class="inline"><font size="-1">Do you have experience with social media images, data and content, incluiding Facebook, Twitter and other Social Network?</font></label>
@@ -1883,7 +1918,10 @@
 				</div><br>
 				{{ experience | json }}
 
-				<a tooltipped ng-click="experienceclick('#experience_form')" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form')" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
 			</md-content>
 			</fieldset>
@@ -1920,6 +1958,32 @@
 								<button id="upload_drivlic" class="btn radius" ng-model="availability.drivlic" style="background-color:gray;" disabled>Upload image</button>
 							</div>
 									
+						</div>
+						<div class="row" id="upload_drivlic_" style="display:none;">
+								<div class="l7 s12 offset-l1 col">
+									<div class="row">
+										<div class="l7 s12 col">
+											<label class="inline" disabled><font size="-1">Please provide an image of your driver's license</font></label>
+										</div>
+										<div class="l5 s12 col">
+											<div class="file-field input-field">
+										      <div id="upload_tabc" class="btn">
+										        <span>License/Permit</span>
+										        <input type="file" ng-file-model="experiencae.uploadtabc" />
+										      </div>
+										    </div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="l7 s12 m12 col" align="center">
+											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
+										</div>
+										<div class="l5 s12 m12 col">
+											<img class="dropzone" ng-src="{{ experiencae.uploadtabc.data }}" style="width:100%;height:100%;" alt="">
+										</div>
+									</div>
+								</div>
+								<div class="l3 col"></div>
 						</div>
 						<div class="row">
 										<div class="l7 col">
@@ -2093,9 +2157,12 @@
 						</div>
 					</div>
 				</div></div></div>
-				{{ availability }}
+				{{ availability | json }}
 
-				<a tooltipped ng-click="availabilityclick('#availability_form')" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form')" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
+				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
 			</md-content>
 			</fieldset>
@@ -2105,7 +2172,6 @@
 			<form id="legal" name="legl" data-abide="ajax" novalidate>
 				<h1>Legal</h1>
 				<h2 class="fs-title">Legal</h2><hr>
-
 				<div class="row">
 								
 							<div class="l8 col">
@@ -2200,7 +2266,9 @@
 							</div>
 							
 							<br><br>
-					<a tooltipped ng-click="legalclick('#legal_form')" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
+					<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="legalclick('#legal_form')" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
+
+					<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#legal_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				
 			</form>
 			</md-content>

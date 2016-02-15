@@ -1,6 +1,6 @@
 'use strict';
 
-eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,EventicaLogin,$location,GooglePlus) {
+eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,EventicaLogin,$location,GooglePlus,$Facebook) {
 
 	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
 
@@ -28,7 +28,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
 		}
 		else
 		{
-			//forma invalida
+			notificar("you must complete the register.");
 		}
 		
 		
@@ -39,20 +39,19 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
 		FB.login(
         function(response) {
             if (response.authResponse) {
-
                var url = '/me';
                     FB.api(url,{fields:'email,picture,birthday,name'} ,function (response) {
-                  
+                  		console.log("JSON: "+JSON.stringify(response));
                         $scope.credentials.auth.uid=response.id;
                         $scope.credentials.auth.info.name=response.name;
                         $scope.credentials.auth.info.email=response.email;
-                         console.log("JSON: "+JSON.stringify($scope.credentials));
+                        // console.log("JSON: "+JSON.stringify($scope.credentials));
                         var response = EventicaLogin.login($scope.credentials);
-						console.log(JSON.stringify(response));
+                        
                     });
                     
             } else {
-                $scope.msj='User cancelled login or did not fully authorize.';
+                notificar('User cancelled login or did not fully authorize.');
             }
         },
         {scope:'email,public_profile,user_friends,email,user_about_me'}
@@ -68,13 +67,16 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
             			$scope.credentials.auth.uid=user.id;
                         $scope.credentials.auth.info.name=user.name;
                         $scope.credentials.auth.info.email=user.email;
-                        console.log("JSON: "+JSON.stringify($scope.credentials));
+                        $scope.credentials.auth.info.picture=user.picture;
+                        //console.log("JSON: "+JSON.stringify($scope.credentials));
                 		var response = EventicaLogin.login($scope.credentials);
-						console.log(JSON.stringify(response));
+						console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {
             console.log(err);
+            notificar('User cancelled login or did not fully authorize.');
         });
 	};
+
 
 });

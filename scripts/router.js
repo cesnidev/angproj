@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Client',['ngFileUpload', 'ngImgCrop','ngResource','ngRoute','ngMessages','ui.materialize','ui.mask','ngAnimate','angular.css.injector','angularLocalStorage','dropzone','googleplus'])
+angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource','ngRoute','ngMessages','ui.materialize','ui.mask','ngAnimate','angular.css.injector','angularLocalStorage','dropzone','googleplus'])
 .constant('EVENTICA_ROLES', {
   admin: 'admin',
   user: 'user',
@@ -13,7 +13,9 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ngResource','ngRoute','ngM
 	expired:"Your session has been expired,please login again"
 })
 .constant('EventicaConfig',{
-	AppId:"87b358365d0b1e11d567485986a61d32"
+	AppId:"87b358365d0b1e11d567485986a61d32",
+	Min_Age:19,
+	Max_Age:30
 })
 .config(function($routeProvider, $locationProvider,cssInjectorProvider,EventicaLoginProvider,Stats,GooglePlusProvider){
 		cssInjectorProvider.setSinglePageMode(true);
@@ -23,6 +25,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ngResource','ngRoute','ngM
         apiKey: 'UuOPEsw-fKItFCvrERj89HUR'
      });
 
+		/**/
         $routeProvider
         .when('/signup',{
 			templateUrl: function(params){
@@ -30,6 +33,10 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ngResource','ngRoute','ngM
 				else
 					return 'views/signup.html';
 			},
+			controller: 'SignUpCtrl'
+		})
+		.when('/show',{
+			templateUrl: 'views/signup.html',
 			controller: 'SignUpCtrl'
 		})
 		.when('/login',{
@@ -63,7 +70,7 @@ window.fbAsyncInit = function() {
       status	  :true,
       cookie	  :true,
       xfbml      : true,
-      version    : 'v2.5'
+      version    : 'v2.1'
     });
   };
 

@@ -2,8 +2,11 @@
 
 eventica.controller('ViewCtrl',function($scope,Session){
 
-	$scope.user = Session.get('token');
+	$scope.user = Session.getSession();
 	console.log("COOKIE: "+JSON.stringify(Session.get('token')));
+
+	if($scope.user.provider=='facebook'||$scope.user.provider=='google')
+		$scope.img = $scope.user.image;
 
 	$scope.users=[
 		{name:'Armando',descripcion:"Informacion General del BA",photo:"1.jpg"},
@@ -21,4 +24,14 @@ eventica.controller('ViewCtrl',function($scope,Session){
 		{name:'Carlos',descripcion:"Informacion General del BA",photo:"6.jpg"},
 		{name:'Daniel',descripcion:"Informacion General del BA",photo:"7.jpg"}
 	];
+	$scope.criterio;
+
+	$scope.change = function(state){
+		if (state) {
+			$scope.criterio
+		}else
+		{
+
+		}
+	};
 });

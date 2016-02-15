@@ -374,6 +374,17 @@ form .progress {
     width: 0;
 }
 
+.picture{
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+.picture.ng-hide{
+  opacity: 0;
+}
+.picture.ng-show{
+  opacity: 1;
+}
+
 
 
 
