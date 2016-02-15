@@ -45,6 +45,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.uid=response.id;
                         $scope.credentials.auth.info.name=response.name;
                         $scope.credentials.auth.info.email=response.email;
+                        $scope.credentials.auth.info.password='facebook';
                         // console.log("JSON: "+JSON.stringify($scope.credentials));
                         var response = EventicaLogin.register($scope.credentials);
                         
@@ -68,6 +69,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.info.name=user.name;
                         $scope.credentials.auth.info.email=user.email;
                         $scope.credentials.auth.info.picture=user.picture;
+                        $scope.credentials.auth.info.password='google';
                         //console.log("JSON: "+JSON.stringify($scope.credentials));
                 		var response = EventicaLogin.register($scope.credentials);
 						console.log("USER: "+JSON.stringify(user));

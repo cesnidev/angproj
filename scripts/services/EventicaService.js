@@ -91,7 +91,9 @@ eventica.factory('EventicaResource', function($resource) {
       return reponse;
 
 		}, function errorCallback(response) {
-			console.log("error: "+response.data);
+			response.data.errors.foreach(function(entry){
+          notificar(entry);
+      });
       return response;
 		});
   };
@@ -115,7 +117,10 @@ eventica.factory('EventicaResource', function($resource) {
         notificar(errors.errors);
       };
     },function errorCallback(response){
-        notificar(response);
+        response.data.errors.foreach(function(entry){
+          notificar(entry);
+        });
+        
     });
   }
  
@@ -144,6 +149,7 @@ eventica.factory('EventicaResource', function($resource) {
         });
     });
    };
+
    facebook.isOnline = function(){
       FB.getLoginStatus(function(response) {
         if (response.status == 'connected')

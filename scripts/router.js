@@ -13,7 +13,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	expired:"Your session has been expired,please login again"
 })
 .constant('EventicaConfig',{
-	AppId:"87b358365d0b1e11d567485986a61d32",
+	AppId:"55483ba8a70cb1c5b69cee68c9ab7e0c",
 	Min_Age:19,
 	Max_Age:30
 })
