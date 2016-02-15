@@ -13,7 +13,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
             $scope.credentials.auth.info.email=$scope.login.email;
             $scope.credentials.auth.info.password=$scope.login.password;
 			console.log("JSON: "+JSON.stringify($scope.credentials));
-			var response = EventicaLogin.login($scope.credentials);
+			var response = EventicaLogin.register($scope.credentials);
 			console.log(JSON.stringify(response));
 			if(response.data.errors=='')
 			{
@@ -46,7 +46,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.info.name=response.name;
                         $scope.credentials.auth.info.email=response.email;
                         // console.log("JSON: "+JSON.stringify($scope.credentials));
-                        var response = EventicaLogin.login($scope.credentials);
+                        var response = EventicaLogin.register($scope.credentials);
                         
                     });
                     
@@ -69,7 +69,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.info.email=user.email;
                         $scope.credentials.auth.info.picture=user.picture;
                         //console.log("JSON: "+JSON.stringify($scope.credentials));
-                		var response = EventicaLogin.login($scope.credentials);
+                		var response = EventicaLogin.register($scope.credentials);
 						console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {

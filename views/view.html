@@ -1,64 +1,64 @@
 <div ng-include="'views/assets/nav.html'"></div>
 
 <section>
-<div class="row">
+<div class="row" ng-controller="ViewCtrl">
 	<div class="col l2 vertical-wrapper input-field">
-		<div class="row" align="center"><h3>Menu</h3></div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		<div class="row" align="center"><h4>Filter by:</h4></div> <hr>
+
+		<div class="row" align="center" style="margin-bottom:0px;">
+			<p>Gender</p>
 		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		<div class="row dropzone">
+			<div class="col l6" align="center">
+				<p>
+					    <input type="checkbox" ng-model="search.gender"
+				           ng-true-value="'male'" ng-false-value="''" id="sm">
+				           <label for="sm">Male</label>
+				</p>
+			</div>
+			<div class="col l6" align="center">
+				<p>
+					    <input type="checkbox" ng-model="search.gender"
+				           ng-true-value="'female'" ng-false-value="''" id="sf">
+				           <label for="sf">Female</label>
+				</p>
+			</div>
+		</div> <hr>
+
+		<div class="row" align="center">
+			<p>Age</p>
 		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		<div class="row dropzone">
+			<div class="col l5"> <input type="text" placeholder="from" ng-model="search.from"> </div>
+			<div class="col l2" align="center"> to </div>
+			<div class="col l5"> <input type="text" placeholder="to" ng-model="search.to" > </div>		
+		</div> <hr>
+
+		<div class="row" align="center">
+			<p>Criterio 1</p>
 		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		<div class="row dropzone"></div> <hr>
+		<div class="row" align="center">
+			<p>Criterio 2</p>
 		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
+		<div class="row dropzone"></div> <hr>
+		<div class="row" align="center">
+			<p>Criterio 3</p>
 		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
-		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
-		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
-		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
-		</div>
-		<div class="row">
-			<a class="btn waves-effect waves-light red lighten-3">Funcion 1</a>
-		</div>
+		<div class="row dropzone"></div> <hr>
+
 	</div>
 	<div class="col l8">
-		<div ng-controller="ViewCtrl">
+		<div >
 	<div class="row">
-		<input type="text" ng-model="search.jo">
-		<p>
-	      <input ng-model="search.jos" ng-true-value="'arman'" ng-false-value="''" type="checkbox" id="same_as" />
-	      <label for="same_as">daniel</label>
-	    </p>
-	    Valor: {{ search.jos }}
-<p>
-	    <input type="checkbox" ng-model="testing"
-           ng-true-value="'be'" ng-false-value="''" id="s">
-           <label for="s">Algo</label>
-</p>
-
-  <tt>value2 = {{testing}}</tt><br/>
-		<div class="col l4"   ng-repeat="userx in users | filter:search.jo | filter:search.jos | filter:testing">
-			<div class="card ">
+		<div class="col l4"   ng-repeat="userx in users | filter: AgeRange(search.from,search.to) | filter:search.gender">
+		<div class="card ">
 		      <div class="card-image">
 		        <img src="assets/img/profiles/{{ userx.photo }}">
 		        <span class="card-title">{{userx.name}}</span>
 		      </div>
 		      <div class="card-content">
-		        <p>{{ userx.descripcion }} {{ userx.photo }}</p>
+		        <p>{{ userx.descripcion }} {{ userx.photo }} <br> Age: {{ userx.age }} </p>
 		      </div>
 		      <div class="card-action">
 		        <a >Action 1 </a>

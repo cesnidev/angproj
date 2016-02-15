@@ -29,77 +29,43 @@ eventica.factory('EventicaResource', function($resource) {
 	})
 .factory('EventicaLogin', function (Session,$http,$location,$window) {
   var eventicalogin = {};
+  var data;
+  var errors;
 
-	eventicalogin.login = function (credentials) {
+	eventicalogin.register = function (dataregister) {
     	var cookie = {};
-      /*switch(credentials.auth.provider){
-            case 'facebook':
-            console.log('facebook elegido');
-              FB.api('/'+credentials.auth.uid+'/picture?width=800&height=800',function (picture) {
-                console.log("picture: "+JSON.stringify(picture));
-                cookie.id = credentials.auth.uid;
-                cookie.user=credentials.auth.info.name;
-                cookie.email= credentials.auth.info.email;
-                cookie.image=picture.data.url;
-                cookie.token='12345';
-                cookie.provider = credentials.auth.provider;
-                Session.StoreSession(cookie);
-                console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
-                $window.location.href = '#/signup';
-              });
-              break;
-            case 'google':
-                cookie.id = credentials.auth.uid;
-                cookie.user=credentials.auth.info.name;
-                cookie.email= credentials.auth.info.email;
-                cookie.image=credentials.auth.info.picture;
-                //cookie.token=response.data.data.relations.tokens[0].attributes.token;
-                cookie.token='12345';
-                cookie.provider = credentials.auth.provider;
-                Session.StoreSession(cookie);
-                $window.location.href = '#/signup';
-              break;
-            case 'angular':
-              cookie.id = response.data.data.attributes.id;
-              cookie.user=response.data.data.attributes.name;
-              cookie.email= response.data.data.attributes.email;
-              cookie.token=response.data.data.relations.tokens[0].attributes.token;
-              cookie.provider = credentials.auth.provider;
-              Session.StoreSession(cookie);
-              $window.location.href = '#/signup';
-              break;
-         };*/
 
-
-		$http.post('http://localhost:3000/api/v1/auth/',credentials,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
+		$http.post('http://localhost:3000/api/v1/auth/',dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
+      data=response.data.data;
+      errors = response.data.errors;
 			console.log("sucess: "+response.data);
       console.log("Token: "+response.data.data.relations.tokens.attributes.token);
-      if(response.data.errors!='')
+      if(errors==''|| !errors)
       {
-        switch(credentials.auth.provider){
+        switch(dataregister.auth.provider){
             case 'facebook':
             console.log('facebook elegido');
-              FB.api('/'+credentials.auth.uid+'/picture?width=800&height=800',function (picture) {
+              FB.api('/'+dataregister.auth.uid+'/picture?width=800&height=800',function (picture) {
                 console.log("picture: "+JSON.stringify(picture));
-                cookie.id = credentials.auth.uid;
-                cookie.user=credentials.auth.info.name;
-                cookie.email= credentials.auth.info.email;
+                cookie.id = dataregister.auth.uid;
+                cookie.user=dataregister.auth.info.name;
+                cookie.email= dataregister.auth.info.email;
                 cookie.image=picture.data.url;
-                cookie.token=response.data.data.relations.tokens[0].attributes.token
-                cookie.provider = credentials.auth.provider;
+                cookie.token=data.relations.tokens[0].attributes.token
+                cookie.provider = dataregister.auth.provider;
                 Session.StoreSession(cookie);
                 console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
                 $window.location.href = '#/signup';
               });
               break;
             case 'google':
-                cookie.id = credentials.auth.uid;
-                cookie.user=credentials.auth.info.name;
-                cookie.email= credentials.auth.info.email;
-                cookie.image=credentials.auth.info.picture;
-                cookie.token=response.data.data.relations.tokens[0].attributes.token
-                cookie.provider = credentials.auth.provider;
+                cookie.id = dataregister.auth.uid;
+                cookie.user=dataregister.auth.info.name;
+                cookie.email= dataregister.auth.info.email;
+                cookie.image=dataregister.auth.info.picture;
+                cookie.token=data.relations.tokens[0].attributes.token
+                cookie.provider = dataregister.auth.provider;
                 Session.StoreSession(cookie);
                 $window.location.href = '#/signup';
               break;
@@ -107,8 +73,8 @@ eventica.factory('EventicaResource', function($resource) {
               cookie.id = response.data.data.attributes.id;
               cookie.user=response.data.data.attributes.name;
               cookie.email= response.data.data.attributes.email;
-              cookie.token=response.data.data.relations.tokens[0].attributes.token;
-              cookie.provider = credentials.auth.provider;
+              cookie.token=data.relations.tokens[0].attributes.token;
+              cookie.provider = dataregister.auth.provider;
               Session.StoreSession(cookie);
               $window.location.href = '#/signup';
               break;
@@ -129,6 +95,28 @@ eventica.factory('EventicaResource', function($resource) {
       return response;
 		});
   };
+
+  eventicalogin.login = function(credentials){
+    var cookie={};
+    $http.post('http://localhost:3000/api/v1/login',credentials,{}).then(function successCallback(response){
+      data=response.data.data;
+      errors = response.data.errors;
+      if (errors==''|| !errors) {
+          cookie.id = data.id;
+          cookie.user=data.attributes.name;
+          cookie.email= data.attributes.email;
+          cookie.image=data.attributes.picture;
+          cookie.token=data.relations.tokens[0].attributes.token
+          cookie.provider = data.attributes.provider;
+          Session.StoreSession(cookie);
+          $window.location.href = '#/home';
+      } else{
+        notificar(errors);
+      };
+    },function errorCallback(response){
+        notificar(response);
+    });
+  }
  
   eventicalogin.isAuthenticated = function () {
     return Session.getSession()!=null;//validar campos validos
