@@ -25,7 +25,7 @@
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input id="email" name="email" required type="email" ng-model="login.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
+            <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
             <label for="email" class="center-align active">Email</label>
             <div class="eventicaerror" ng-messages="flogin.email.$error" role="alert">
               <div ng-message="required">Email is required.</div>
@@ -36,7 +36,7 @@
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
-            <input required id="password" name="passwordl" type="password" ng-model="login.password">
+            <input required id="password" name="passwordl" type="password" ng-model="log.password">
             <label for="password" class="active">Password</label>
             <div class="eventicaerror" ng-messages="flogin.passwordl.$error" role="alert">
             	<div ng-message="required">Password is required.</div>

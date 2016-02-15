@@ -1,7 +1,7 @@
 'use strict';
 eventica
 .controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session){
-	
+	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
 	cssInjector.add("assets/css/proyecto.form.css");
 	cssInjector.add("assets/css/fileup/dropzone.css");
 
@@ -20,9 +20,64 @@ eventica
 
 
 	$scope.msj=$routeParams.message;
-	$scope.submitlogin = function(){
-		notificar('Working...');
-	}
+	$scope.submitlogin = function(provider){
+		$scope.credentials.auth.provider='angular';
+		if($scope.flogin.$valid)
+		{
+			$scope.credentials.auth.uid='12345';
+            $scope.credentials.auth.info.email=$scope.log.email;
+            $scope.credentials.auth.info.password=$scope.log.password;
+			console.log("JSON: "+JSON.stringify($scope.credentials));
+			var response = EventicaLogin.login($scope.credentials);
+		}
+		else
+		{
+			notificar("incomplete information for login.");
+		}
+	};
+	$scope.ingoogle = function() {
+		$scope.credentials.auth.provider="google";
+			 GooglePlus.login().then(function (response) {
+            console.log(response);
+            
+
+            GooglePlus.getUser().then(function (user) {
+            			$scope.credentials.auth.uid=user.id;
+                        $scope.credentials.auth.info.name=user.name;
+                        $scope.credentials.auth.info.email=user.email;
+                        $scope.credentials.auth.info.picture=user.picture;
+                        //console.log("JSON: "+JSON.stringify($scope.credentials));
+                		var response = EventicaLogin.login($scope.credentials);
+						console.log("USER: "+JSON.stringify(user));
+            });
+        }, function (err) {
+            console.log(err);
+            notificar('User cancelled login or did not fully authorize.');
+        });
+	};
+	$scope.infacebook = function(){
+		$scope.credentials.auth.provider="facebook";
+		FB.login(
+        function(response) {
+            if (response.authResponse) {
+               var url = '/me';
+                    FB.api(url,{fields:'email,picture,birthday,name'} ,function (response) {
+                  		console.log("JSON: "+JSON.stringify(response));
+                        $scope.credentials.auth.uid=response.id;
+                        $scope.credentials.auth.info.name=response.name;
+                        $scope.credentials.auth.info.email=response.email;
+                        // console.log("JSON: "+JSON.stringify($scope.credentials));
+                        var response = EventicaLogin.login($scope.credentials);
+                        
+                    });
+                    
+            } else {
+                notificar('User cancelled login, not signed at facebook.com or did not fully authorize.');
+            }
+        },
+        {scope:'email,public_profile,user_friends,email,user_about_me'}
+        );
+	};
 
 	$scope.upload = function (dataUrl) {
         Upload.upload({

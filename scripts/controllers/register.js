@@ -9,9 +9,9 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
 		if($scope.flogin.$valid)
 		{
 			$scope.credentials.auth.uid='12345';
-            $scope.credentials.auth.info.name=$scope.login.username;
-            $scope.credentials.auth.info.email=$scope.login.email;
-            $scope.credentials.auth.info.password=$scope.login.password;
+            $scope.credentials.auth.info.name=$scope.reg.username;
+            $scope.credentials.auth.info.email=$scope.reg.email;
+            $scope.credentials.auth.info.password=$scope.reg.password;
 			console.log("JSON: "+JSON.stringify($scope.credentials));
 			var response = EventicaLogin.register($scope.credentials);
 			console.log(JSON.stringify(response));
