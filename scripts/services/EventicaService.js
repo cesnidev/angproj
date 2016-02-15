@@ -39,8 +39,9 @@ eventica.factory('EventicaResource', function($resource) {
 		.then(function successCallback(response) {
       data=response.data.data;
       errors = response.data.errors;
-			console.log("sucess: "+response.data);
-      console.log("Token: "+response.data.data.relations.tokens.attributes.token);
+			console.log("sucess: "+JSON.stringify(response.data));
+      console.log("sucess data: "+JSON.stringify(data));
+      console.log("Token: "+response.data.data.relations.tokens[0].attributes.token);
       if(errors==''|| !errors)
       {
         switch(dataregister.auth.provider){
@@ -52,7 +53,7 @@ eventica.factory('EventicaResource', function($resource) {
                 cookie.user=dataregister.auth.info.name;
                 cookie.email= dataregister.auth.info.email;
                 cookie.image=picture.data.url;
-                cookie.token=data.relations.tokens[0].attributes.token
+                cookie.token=data.relations.tokens[0].attributes.token;
                 cookie.provider = dataregister.auth.provider;
                 Session.StoreSession(cookie);
                 console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
@@ -91,9 +92,7 @@ eventica.factory('EventicaResource', function($resource) {
       return reponse;
 
 		}, function errorCallback(response) {
-			response.data.errors.foreach(function(entry){
-          notificar(entry);
-      });
+			notificar(response.data.errors[0]);
       return response;
 		});
   };
@@ -103,12 +102,15 @@ eventica.factory('EventicaResource', function($resource) {
     $http.post('http://localhost:3000/api/v1/login',credentials,{}).then(function successCallback(response){
       data=response.data.data;
       errors = response.data.errors;
+      console.log("sucess: "+JSON.stringify(response));
+      console.log("sucess data: "+JSON.stringify(data));
+      console.log("Token: "+data.relations.tokens[0].attributes.token);
       if (errors==''|| !errors) {
           cookie.id = data.id;
           cookie.user=data.attributes.name;
           cookie.email= data.attributes.email;
           cookie.image=data.attributes.picture;
-          cookie.token=data.relations.tokens[0].attributes.token
+          cookie.token=data.relations.tokens[0].attributes.token;
           cookie.provider = data.attributes.provider;
           Session.StoreSession(cookie);
           $window.location.href = '#/home';
@@ -117,9 +119,8 @@ eventica.factory('EventicaResource', function($resource) {
         notificar(errors.errors);
       };
     },function errorCallback(response){
-        response.data.errors.foreach(function(entry){
-          notificar(entry);
-        });
+          notificar(response.data.errors[0]);
+        
         
     });
   }

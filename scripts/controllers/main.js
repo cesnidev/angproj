@@ -42,7 +42,7 @@ eventica
             
 
             GooglePlus.getUser().then(function (user) {
-            			$scope.credentials.auth.info.uid=user.id;
+            			$scope.credentials.auth.uid=user.id;
                         $scope.credentials.auth.info.name=user.name;
                         $scope.credentials.auth.info.email=user.email;
                         $scope.credentials.auth.info.picture=user.picture;
@@ -64,7 +64,7 @@ eventica
                var url = '/me';
                     FB.api(url,{fields:'email,picture,birthday,name'} ,function (response) {
                   		console.log("JSON: "+JSON.stringify(response));
-                        $scope.credentials.auth.info.uid=response.id;
+                        $scope.credentials.auth.uid=response.id;
                         $scope.credentials.auth.info.name=response.name;
                         $scope.credentials.auth.info.email=response.email;
                         $scope.credentials.auth.info.password='facebook';
