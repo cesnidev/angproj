@@ -1,6 +1,6 @@
 'use strict';
 eventica
-.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session){
+.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session,EventicaConfig){
 	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
 	cssInjector.add("assets/css/proyecto.form.css");
 	cssInjector.add("assets/css/fileup/dropzone.css");
@@ -25,8 +25,8 @@ eventica
 		if($scope.flogin.$valid)
 		{
 			$scope.credentials.auth.uid='12345';
-            $scope.credentials.auth.info.email=$scope.log.email;
-            $scope.credentials.auth.info.password=$scope.log.password;
+            $scope.credentials.auth.email=$scope.log.email;
+            $scope.credentials.auth.password=$scope.log.password;
 			console.log("JSON: "+JSON.stringify($scope.credentials));
 			var response = EventicaLogin.login($scope.credentials);
 		}
@@ -43,9 +43,9 @@ eventica
 
             GooglePlus.getUser().then(function (user) {
             			$scope.credentials.auth.uid=user.id;
-                        $scope.credentials.auth.info.name=user.name;
-                        $scope.credentials.auth.info.email=user.email;
-                        $scope.credentials.auth.info.picture=user.picture;
+                        $scope.credentials.auth.name=user.name;
+                        $scope.credentials.auth.email=user.email;
+                        $scope.credentials.auth.picture=user.picture;
                         //console.log("JSON: "+JSON.stringify($scope.credentials));
                 		var response = EventicaLogin.login($scope.credentials);
 						console.log("USER: "+JSON.stringify(user));
@@ -64,8 +64,8 @@ eventica
                     FB.api(url,{fields:'email,picture,birthday,name'} ,function (response) {
                   		console.log("JSON: "+JSON.stringify(response));
                         $scope.credentials.auth.uid=response.id;
-                        $scope.credentials.auth.info.name=response.name;
-                        $scope.credentials.auth.info.email=response.email;
+                        $scope.credentials.auth.name=response.name;
+                        $scope.credentials.auth.email=response.email;
                         // console.log("JSON: "+JSON.stringify($scope.credentials));
                         var response = EventicaLogin.login($scope.credentials);
                         

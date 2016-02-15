@@ -111,7 +111,8 @@ eventica.factory('EventicaResource', function($resource) {
           Session.StoreSession(cookie);
           $window.location.href = '#/home';
       } else{
-        notificar(errors);
+        console.log("Sucess with errors: "+errors);
+        notificar(errors.errors);
       };
     },function errorCallback(response){
         notificar(response);
