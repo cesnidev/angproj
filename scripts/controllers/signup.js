@@ -28,7 +28,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	    }
 	};
 
-	angular.element('basicuser').ready(function () {
+	/*angular.element('basicuser').ready(function () {
         if($rootScope.forms.basicinfo){
 		$scope.basicinfo = $rootScope.forms.basicinfo;
 		if($scope.binfo.$valid){
@@ -44,7 +44,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		console.log("la forma no existe");
 		$scope.basicinfo = { "emergency_info": "", "emergency_address2": "", "ship_address1": "", "ship_city": "", "ship_state": "", "ship_zip": "", "address2": "", "referred": "", "middle_initial": "" };
 	}
-    });
+    });*/
 
 
 	$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};

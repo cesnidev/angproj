@@ -1,4 +1,4 @@
-eventica.factory('EventicaResource', function($resource) {
+eventica.factory('EventicaResource', function($resource,EventicaConfig) {
 		return $resource("http://"+EventicaConfig.IP+":3000/api/v1/", {
 			id: "@id"
 		}, {
@@ -103,7 +103,7 @@ eventica.factory('EventicaResource', function($resource) {
 
   eventicalogin.login = function(credentials,social){
     var cookie={};
-    $rootScope.forms={basicinfo:{}};
+    $rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
     var url = 'http://l'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
       if(social)
