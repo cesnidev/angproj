@@ -17,18 +17,28 @@ jQuery(document).ready(function($) {
     if(!document.getElementById("basicuser")){
         current_fs = $('.nextprofile').parent().parent();
         next_fs = current_fs.next();
+        $("#progressbar li").eq($("fieldset").index(1)).addClass("active");
     }
     else if(!document.getElementById("profile")){
         current_fs = $('.nextexperience').parent().parent();
         next_fs = current_fs.next();
+        $("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(2)).addClass("active");
     }
     else if(!document.getElementById("experience")){
         current_fs = $('.nextavailability').parent().parent();
-        next_fs = current_fs.next()
+        next_fs = current_fs.next();
+        $("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(3)).addClass("active");
     }
     else if(!document.getElementById("availability")){
         current_fs = $('.nextlegal').parent().parent();
-        next_fs = current_fs.next()
+        next_fs = current_fs.next();
+        $("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(3)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(4)).addClass("active");
     }
     else{
         current_fs = $('.nextbasic').parent().parent();

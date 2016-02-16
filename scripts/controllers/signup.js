@@ -2,13 +2,20 @@
 
 eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
 
-	 $scope.url = $location.absUrl();
-	 $scope.user = Session.getSession();
-	 console.log("Cookie Content: "+$scope.user);
+	if(!EventicaLogin.isAuthenticated())
+		$location.path("/login");
+	else
+	{
+		$scope.url = $location.absUrl();
+		$scope.user = Session.getSession();
+		console.log("Cookie Content: "+$scope.user);
 
-	var allcomplete = $scope.user.forms;
-	if(allcomplete.basic !== undefined && allcomplete.profile !== undefined && allcomplete.experience !== undefined && allcomplete.availability !== undefined && allcomplete.legal !== undefined)
-		$location.path('/home');
+		var allcomplete = $scope.user.forms;
+		if(allcomplete.basic !== undefined && allcomplete.profile !== undefined && allcomplete.experience !== undefined && allcomplete.availability !== undefined && allcomplete.legal !== undefined)
+			$location.path('/home');
+	}
+
+
 	$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
 	$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
 	$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
