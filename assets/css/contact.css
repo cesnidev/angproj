@@ -8427,51 +8427,51 @@ button.white,
 button.white:hover,
 .button.white:hover {
     background-color: white;
-    color: #dc222b;
+    color: #FE7133;
 }
 
-button.red,
-.button.red {
+button.calcomm,
+.button.calcomm {
     border-color: red;
-	background-color:#dc222b;
+	background-color:#FE7133;
 }
-button.red:hover,
-.button.red:hover {
+button.calcomm:hover,
+.button.calcomm:hover {
     background-color: white;
-    color: #dc222b;
+    color: #FE7133;
 }
 
 button.send,
 .button.send {
     border-color: red;
-	background-color:#dc222b;
+	background-color:#FE7133;
 }
 
 button.read_more,
 .button.read_more {
     background-color: white;
-    color: #dc222b;
-	border-color: #dc222b;
+    color: #FE7133;
+	border-color: #FE7133;
 }
 button.read_more:hover,
 .button.read_more:hover {
     border-color: red;
 	color:white;
-	background-color:#dc222b;
+	background-color:#FE7133;
 }
 
 button.send_form,
 .button.send_form {
     background-color: white;
-    color: #dc222b;
-	border-color: #dc222b;
+    color: #FE7133;
+	border-color: #FE7133;
 	width:200px;
 }
 button.send_form:hover,
 .button.send_form:hover {
     border-color: red;
 	color:white;
-	background-color:#dc222b;
+	background-color:#FE7133;
 }
 
 

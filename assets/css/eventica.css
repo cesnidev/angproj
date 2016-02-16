@@ -70,22 +70,43 @@ boady{
 
 .boton.white:hover {
     background-color: white;
-    color: #dc222b;
+    color: #FE7133;
     -webkit-transition: background-color 300ms ease-out;
     transition: background-color 300ms ease-out
 }
 
-.boton.red {
-    border-color: red;
+.boton.calcomm {
+    border-color: #FE7133;
     width:180px;
-	background-color:#dc222b;
+	/*background-color:#FE7133;*/
     margin-left: 40px;
+	/*color: #fff;*/
+	color:#FE7133;
+	background-color:#fff;
 }
-.boton.red:hover {
+.boton.calcomm:hover {
+	border-color: #FE7133;
+	background-color: #FE7133;
 	-webkit-transition: background-color 300ms ease-out;
-    transition: background-color 300ms ease-out
-    background-color: white;
-    color: #dc222b;
+    transition: background-color 300ms ease-out;
+    
+    color: #fff;
+}
+.boton.calcommr {
+    border-color: #fff;
+    width:180px;
+	/*background-color:#FE7133;*/
+    margin-left: 40px;
+	/*color: #fff;*/
+	color:#fff;
+	background-color:#FE7133;
+}
+.boton.calcommr:hover {
+	background-color: #fff;
+	-webkit-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out;
+    
+    color: #FE7133;
 }
 
 
@@ -137,12 +158,22 @@ boady{
   padding-right:10%;
 }
 
+/*
 .navbar-right a{
   text-decoration:none;
   padding:10px;
   color: #fff;
   font-family:Arial;
   font-weight:900;
+  background-color:yellow;
+}*/
+.navbar-right.calcomm{
+  text-decoration:none;
+  padding:10px;
+  color: #fff;
+  font-family:Arial;
+  font-weight:900;
+  background-color:#FE7133;
 }
 
 .navbar-right a:hover{
@@ -167,9 +198,14 @@ top:0;
 left:0;
 }
 
-#video-bg{
+video{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: -100;
   width:100%;
- 
+  height:100%;
+  overflow:hidden;
 }
 
 .inputErrors .inputErrorsApp {
@@ -343,13 +379,16 @@ a .ng-hide-remove      { animation:0.5s flipInX ease; }
 
 @media (min-width: 321px) and (max-width: 480px)
 {
-
-
+.logo{
+	
+}
 }
 
 @media (min-width: 240px) and (max-width: 320px)
 {
- 
+.logo{
+	
+}
 }
 
 

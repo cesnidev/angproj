@@ -29,10 +29,14 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
         $routeProvider
         .when('/signup',{
 			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,60000);return 'views/login.html';}
+				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
+			controller: 'SignUpCtrl'
+		})
+		.when('/signupo',{
+			templateUrl: 'views/signup.html',
 			controller: 'SignUpCtrl'
 		})
 		.when('/show',{
@@ -55,7 +59,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			redirectTo: '/'
 		}).when('/home',{
 			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;return 'views/login.html';}
+				if(EventicaLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
 				else
 					return 'views/home.html';
 			},

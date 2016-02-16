@@ -28,7 +28,7 @@ eventica
             $scope.credentials.auth.email=$scope.log.email;
             $scope.credentials.auth.password=$scope.log.password;
 			console.log("JSON: "+JSON.stringify($scope.credentials));
-			var response = EventicaLogin.login($scope.credentials);
+			var response = EventicaLogin.login($scope.credentials,false);
 		}
 		else
 		{
@@ -48,7 +48,7 @@ eventica
                         $scope.credentials.auth.info.picture=user.picture;
                         $scope.credentials.auth.info.password='google';
                         //console.log("JSON: "+JSON.stringify($scope.credentials));
-                		var response = EventicaLogin.register($scope.credentials);
+                		var response = EventicaLogin.register($scope.credentials,true);
 						console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {
@@ -69,7 +69,7 @@ eventica
                         $scope.credentials.auth.info.email=response.email;
                         $scope.credentials.auth.info.password='facebook';
                         // console.log("JSON: "+JSON.stringify($scope.credentials));
-                        var response = EventicaLogin.register($scope.credentials);
+                        var response = EventicaLogin.register($scope.credentials,true);
                         
                     });
                     

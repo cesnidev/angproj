@@ -90,7 +90,7 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 			{
 				if ($scope.binfo.$valid) {
 					$scope.jbasic.basic = $scope.basicinfo;
-		            EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
+					EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
 		            	$scope.animate_next(c);
 		            });

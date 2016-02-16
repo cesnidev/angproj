@@ -32,10 +32,14 @@ eventica.factory('EventicaResource', function($resource) {
   var data;
   var errors;
 
-	eventicalogin.register = function (dataregister) {
+	eventicalogin.register = function (dataregister,social) {
     	var cookie = {};
+      var url = 'http://localhost:3000/api/v1/normal/register/';
 
-		$http.post('http://localhost:3000/api/v1/auth/',dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
+      if(social)
+        url = 'http://localhost:3000/api/v1/social/register/';
+
+		$http.post(url,dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
       data=response.data.data;
       errors = response.data.errors;
@@ -97,9 +101,14 @@ eventica.factory('EventicaResource', function($resource) {
 		});
   };
 
-  eventicalogin.login = function(credentials){
+  eventicalogin.login = function(credentials,social){
     var cookie={};
-    $http.post('http://localhost:3000/api/v1/login',credentials,{}).then(function successCallback(response){
+    var url = 'http://localhost:3000/api/v1/normal/login/';
+
+      if(social)
+        url = 'http://localhost:3000/api/v1/social/login/';
+
+    $http.post(url,credentials,{}).then(function successCallback(response){
       data=response.data.data;
       errors = response.data.errors;
       console.log("sucess: "+JSON.stringify(response));

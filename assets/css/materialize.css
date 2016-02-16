@@ -8092,7 +8092,7 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #FE7133;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
@@ -8100,7 +8100,13 @@ small {
 }
 
 .btn:hover, .btn-large:hover {
-  background-color: #2bbbad;
+  /*background-color: #2bbbad;*/
+  background-color:#fff;
+  color:#FE7133;
+  border-style:solid;
+  border-width:2px;
+  border-radius:20px;
+  border-color:#FE7133;
 }
 
 .btn-floating {
@@ -8776,8 +8782,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #dc222b;
-  box-shadow: 0 1px 0 0 #dc222b;
+  border-bottom: 1px solid #FE7133;
+  box-shadow: 0 1px 0 0 #FE7133;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -8792,7 +8798,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #dc222b;
+  color: #FE7133;
 }
 /*modificado el color de focus*/
 

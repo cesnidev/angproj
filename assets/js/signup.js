@@ -3,6 +3,7 @@ var current_fs, next_fs, previous_fs;
 var left, opacity, scale; 
 var animating,pass=false; 
 jQuery(document).ready(function($) {
+    $(".button-collapse").sideNav();
     $('select').material_select();
     $('input[name=submit]').prop('disabled',false);
     $('input[name=submit]').css('background-color' ,'');

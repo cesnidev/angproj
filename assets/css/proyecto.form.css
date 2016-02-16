@@ -74,7 +74,7 @@
 }*/
 #eventicaforms .action-button
 {
-	background: #dc222b;
+	background: #F57133;
 	border: 0 none;
 	border-radius: 1px;
 	color: white;
@@ -86,7 +86,7 @@
 }
 #eventicaforms .action-button:hover, #eventicaforms .action-button:focus
 {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #dc222b;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #FE7133;
 }
 .fs-title
 {
@@ -145,7 +145,7 @@
 }
 #progressbar li:first-child:before
 {
-	background: #dc222b;
+	background: #FE7133;
 	color: white;
 }
 #progressbar li:first-child:after
@@ -154,7 +154,7 @@
 }
 #progressbar li.active:before, #progressbar li.active:after
 {
-	background: #dc222b;
+	background: #FE7133;
 	color: white;
 }
 #progressbar li.cactive:before, #progressbar li.cactive:after
