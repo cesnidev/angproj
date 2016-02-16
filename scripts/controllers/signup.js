@@ -11,6 +11,30 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		console.log("Cookie Content: "+$scope.user);
 
 		var allcomplete = $scope.user.forms;
+
+		if(allcomplete.basic !== undefined)
+		{
+			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+		}
+		if(allcomplete.profile !== undefined)
+		{
+			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+		}
+		if(allcomplete.experience !== undefined)
+		{
+			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(3)).addClass("active");
+		}
+		if(allcomplete.availability !== undefined)
+		{
+			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(3)).addClass("active");
+			$("#progressbar li").eq($("fieldset").index(4)).addClass("active");
+		}
+
 		if(allcomplete.basic !== undefined && allcomplete.profile !== undefined && allcomplete.experience !== undefined && allcomplete.availability !== undefined && allcomplete.legal !== undefined)
 			$location.path('/home');
 	}
