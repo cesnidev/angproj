@@ -16,7 +16,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	AppId:"a556e38454da7a7d6ce2be1954222fed",
 	Min_Age:19,
 	Max_Age:30,
-	IP:'192.168.0.108'
+	IP:'localhost'
 })
 .config(function($routeProvider, $locationProvider,cssInjectorProvider,EventicaLoginProvider,Stats,GooglePlusProvider){
 		cssInjectorProvider.setSinglePageMode(true);
@@ -26,17 +26,19 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
         apiKey: 'UuOPEsw-fKItFCvrERj89HUR'
      });
 
-		/**/
-        $routeProvider
-        .when('/signup',{
+		/*.when('/signup',{
 			templateUrl: function(params){
 				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
 			controller: 'SignUpCtrl'
-		})
-		.when('/signupo',{
+		})*/
+
+		/**/
+        $routeProvider
+        
+		.when('/signup',{
 			templateUrl: 'views/signup.html',
 			controller: 'SignUpCtrl'
 		})

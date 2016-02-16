@@ -102,7 +102,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
   };
 
   eventicalogin.login = function(credentials,social){
-    var cookie={};
+    var cookie={forms:{}};
     $rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
     var url = 'http://l'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
@@ -122,14 +122,18 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
           cookie.image=data.attributes.picture;
           cookie.token=data.relations.tokens[0].attributes.token;
           cookie.provider = data.attributes.provider;
-          Session.StoreSession(cookie);
-          
-          if(data.relations.basic.attributes){
-            console.log("Basic Form: "+JSON.stringify(data.relations.basic.attributes));
-            $rootScope.forms.basicinfo=data.relations.basic.attributes;
-          }
-          else
-            console.log("Basic not found");
+
+            if(data.relations.basic !== undefined)
+              cookie.forms.basic=true;
+            if(data.relations.profile !== undefined)
+              cookie.forms.profile=true;
+            if(data.relations.experience !== undefined)
+              cookie.forms.experience=true;
+            if(data.relations.availability !== undefined)
+              cookie.forms.availability=true;
+            if(data.relations.legal !== undefined)
+              cookie.forms.legal=true;
+            Session.StoreSession(cookie);
 
           $window.location.href = '#/signup';
       } else{

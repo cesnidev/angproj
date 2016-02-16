@@ -40,7 +40,7 @@
 
 			<!-- fieldsets -->
 
-			<fieldset id="basicinfo_form" nf-if="$root.forms.basicinfo">
+			<fieldset id="basicinfo_form" ng-if="user.forms.basic == undefined">
 				<md-content layout-padding class="inputErrors">
 			<form name="binfo" id="basicuser" ng-submit="submit()" novalidate ng-cloak>
 
