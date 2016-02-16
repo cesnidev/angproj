@@ -1,5 +1,32 @@
 <section ng-controller="SignUpCtrl">
-<div ng-include="'views/assets/signup.html'"></div>
+<div class="container">
+            <div class="header row" style="border-bottom: 3px solid #FE7133;" >
+                <div class="col s12 m6 l4">
+                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.eventicateam.com/img/Logo4.png"></a>
+                </div>
+                <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
+                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					    <li class="collection-item avatar">
+					      <img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <span class="title">{{ user.user}}</span>
+					      <p>{{ user.email }}
+					      </p>
+					    </li>
+					 </ul>
+
+                	<!--<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					   <This is a dropdown
+					</a>-->
+
+					<ul id='demoDropdown' class='dropdown-content'>
+					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
+					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
+					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
+					</ul>
+                </div>
+            </div>
+        </div><br>
 
 <div id="eventicaforms" class="inputErrors" >
 
@@ -489,7 +516,7 @@
 											 		<label class="active" for="emrgncylast_name">Last Name</label>
 											 		<input type="text" ng-model="basicinfo.emergency_lastname"  id="emrgncylastname" name="emrgncylast_name" required />
 											   
-											   <div class="eventicaerror" ng-messages="binfo.emrgncylast_name.$error" role="alert">
+											   <div class="eventicaerror" ng-messages="binfo.emrgncy_lastname.$error" role="alert">
 													<div ng-message="required">
 														Last name is required.
 													</div>
@@ -666,25 +693,24 @@
 			<fieldset id="profile_form">
 			<md-content>
 			<form name="prof" id="profile" data-abide="ajax">
-				<!--<a tooltipped ng-click="anatex('#profile_form')" ng-model="basicinfo.anima" class="nextbasic btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Animate</a>-->
 				<h1>Profile</h1>
 				<h2 class="fs-title">Gender</h2>
 				
 				<div class="row">
-								<div class="l5 col">&nbsp;
-								</div>
-								<div class="l2 s12 col">
-									<div class="switch">
-									    <label>
-									      Male
-									      <input ng-model="profile.gender" id="gender" name="gender" type="checkbox">
-									      <span class="lever"></span>
-									      Female
-									    </label>
-									  </div>
-								</div>
+					<div class="l5 col">&nbsp;
+					</div>
+					<div class="l2 s12 col">
+						<div class="switch">
+						    <label>
+						      Male
+						      <input ng-model="profile.gender" id="gender" name="gender" type="checkbox">
+						      <span class="lever"></span>
+						      Female
+						    </label>
+						  </div>
+					</div>
 
-								<div class="l5 col"></div>
+					<div class="l5 col"></div>
 				</div>
 				<br><hr>
 				<h2 class="fs-title">Characteristics (for Outfits, Costumes, Roles, Casting, Characters, etc)</h2>
