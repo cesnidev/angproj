@@ -15,7 +15,8 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 .constant('EventicaConfig',{
 	AppId:"a556e38454da7a7d6ce2be1954222fed",
 	Min_Age:19,
-	Max_Age:30
+	Max_Age:30,
+	IP:'192.168.0.108'
 })
 .config(function($routeProvider, $locationProvider,cssInjectorProvider,EventicaLoginProvider,Stats,GooglePlusProvider){
 		cssInjectorProvider.setSinglePageMode(true);

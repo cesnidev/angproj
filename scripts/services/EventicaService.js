@@ -1,5 +1,5 @@
 eventica.factory('EventicaResource', function($resource) {
-		return $resource("http://localhost:3000/api/v1/", {
+		return $resource("http://"+EventicaConfig.IP+":3000/api/v1/", {
 			id: "@id"
 		}, {
 			update: {
@@ -7,37 +7,37 @@ eventica.factory('EventicaResource', function($resource) {
 			},
       saveBasicInfo:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/basics'
+        url:'http://'+EventicaConfig.IP+':3000/api/v1/basics'
       },
       saveProfile:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/profiles'
+        url:'http://'+EventicaConfig.IP+':3000/api/v1/profiles'
       },
       saveExperience:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/experiences'
+        url:'http://'+EventicaConfig.IP+':3000/api/v1/experiences'
       },
       saveAvailability:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/availabilities'
+        url:'http://'+EventicaConfig.IP+':3000/api/v1/availabilities'
       },
       saveLegal:{
         method:'POST',
-        url:'http://localhost:3000/api/v1/legals'
+        url:'http://'+EventicaConfig.IP+':3000/api/v1/legals'
       }
 		});
 	})
-.factory('EventicaLogin', function (Session,$http,$location,$window,$rootScope) {
+.factory('EventicaLogin', function (Session,$http,$location,$window,$rootScope,EventicaConfig) {
   var eventicalogin = {};
   var data;
   var errors;
 
 	eventicalogin.register = function (dataregister,social) {
     	var cookie = {};
-      var url = 'http://localhost:3000/api/v1/normal/register/';
+      var url = 'http://'+EventicaConfig.IP+':3000/api/v1/normal/register/';
 
       if(social)
-        url = 'http://localhost:3000/api/v1/social/register/';
+        url = 'http://'+EventicaConfig.IP+':3000/api/v1/social/register/';
 
 		$http.post(url,dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
@@ -104,10 +104,10 @@ eventica.factory('EventicaResource', function($resource) {
   eventicalogin.login = function(credentials,social){
     var cookie={};
     $rootScope.forms={basicinfo:{}};
-    var url = 'http://localhost:3000/api/v1/normal/login/';
+    var url = 'http://l'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
       if(social)
-        url = 'http://localhost:3000/api/v1/social/login/';
+        url = 'http://'+EventicaConfig.IP+':3000/api/v1/social/login/';
 
     $http.post(url,credentials,{}).then(function successCallback(response){
       data=response.data.data;
