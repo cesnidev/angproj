@@ -8,31 +8,26 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	{
 		$scope.url = $location.absUrl();
 		$scope.user = Session.getSession();
-		console.log("Cookie Content: "+$scope.user);
+		console.log("Cookie Content: "+JSON.stringify($scope.user));
 
 		var allcomplete = $scope.user.forms;
 
-		if(allcomplete.basic !== undefined)
+		if(allcomplete.basic != undefined)
 		{
-			<li id="basicinfo_form" class="active">Basic Info</li>
-				<li id="profile_form"  class="">Profile</li>
-				<li id="experience_form" class="">Experience</li>
-				<li id="availability_form" class="">Availability</li>
-				<li id="legal_form"
 			$("#profile_progress").addClass("active");
 		}
-		if(allcomplete.profile !== undefined)
+		if(allcomplete.profile != undefined)
 		{
 			$("#profile_progress").addClass("active");
 			$("#experience_progress").addClass("active");
 		}
-		if(allcomplete.experience !== undefined)
+		if(allcomplete.experience != undefined)
 		{
 			$("#profile_progress").addClass("active");
 			$("#experience_progress").addClass("active");
 			$("#availability_progress").addClass("active");
 		}
-		if(allcomplete.availability !== undefined)
+		if(allcomplete.availability != undefined)
 		{
 			$("#profile_progress").addClass("active");
 			$("#experience_progress").addClass("active");
@@ -40,7 +35,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			$("#legal_progress").addClass("active");
 		}
 
-		if(allcomplete.basic !== undefined && allcomplete.profile !== undefined && allcomplete.experience !== undefined && allcomplete.availability !== undefined && allcomplete.legal !== undefined)
+		if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
 			$location.path('/home');
 	}
 
@@ -68,24 +63,6 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	      }
 	    }
 	};
-
-	/*angular.element('basicuser').ready(function () {
-        if($rootScope.forms.basicinfo){
-		$scope.basicinfo = $rootScope.forms.basicinfo;
-		if($scope.binfo.$valid){
-			console.log("Forma basicinfo terminada, redirigiendo al dashboard");
-			notificar("Basic Info Form Finished welcome.");
-		}
-		else
-		{
-			console.log("faltan campos por terminar.");
-		}
-	}
-	else{
-		console.log("la forma no existe");
-		$scope.basicinfo = { "emergency_info": "", "emergency_address2": "", "ship_address1": "", "ship_city": "", "ship_state": "", "ship_zip": "", "address2": "", "referred": "", "middle_initial": "" };
-	}
-    });*/
 
 
 	$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};

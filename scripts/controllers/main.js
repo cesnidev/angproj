@@ -12,8 +12,8 @@ eventica
 			$scope.img = $scope.user.image;
 	}
 
-	//if(EventicaLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
-	//	$location.path("/home");//checar el issue cuando te llevan a home y necesitas dar back
+	if(EventicaLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
+		$location.path("/home");//checar el issue cuando te llevan a home y necesitas dar back
 	if(!EventicaLogin.isAuthenticated())
 		$location.path("/login");
 

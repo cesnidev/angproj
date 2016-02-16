@@ -93,7 +93,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
         notificar(response.errors);
         
       }
-      return reponse;
+      return response;
 
 		}, function errorCallback(response) {
 			notificar(response.data.errors[0]);
@@ -123,15 +123,15 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
           cookie.token=data.relations.tokens[0].attributes.token;
           cookie.provider = data.attributes.provider;
 
-            if(data.relations.basic !== undefined)
+            if(data.relations.basic != undefined)
               cookie.forms.basic=true;
-            if(data.relations.profile !== undefined)
+            if(data.relations.profile != undefined)
               cookie.forms.profile=true;
-            if(data.relations.experience !== undefined)
+            if(data.relations.experience != undefined)
               cookie.forms.experience=true;
-            if(data.relations.availability !== undefined)
+            if(data.relations.availability != undefined)
               cookie.forms.availability=true;
-            if(data.relations.legal !== undefined)
+            if(data.relations.legal != undefined)
               cookie.forms.legal=true;
             Session.StoreSession(cookie);
 
