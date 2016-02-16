@@ -1,6 +1,6 @@
 'use strict';
 
-eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
+eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin,$root) {
 
 	$scope.url = $location.absUrl();
 	$scope.user = Session.getSession();
@@ -28,7 +28,25 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 	    }
 	};
 
-	$scope.basicinfo = { "emergency_info": "", "emergency_address2": "", "ship_address1": "", "ship_city": "", "ship_state": "", "ship_zip": "", "address2": "", "referred": "", "middle_initial": "" };
+	if($root.forms.basicinfo){
+		$scope.basicinfo = $root.forms.basicinfo;
+		if($scope.binfo.$valid){
+			console.log("Forma basicinfo terminada, redirigiendo al dashboard");
+			notificar("Basic Info Form Finished welcome.");
+
+		}
+		else
+		{
+			console.log("faltan campos por terminar.");
+		}
+	}
+	else{
+		console.log("la forma no existe");
+		$scope.basicinfo = { "emergency_info": "", "emergency_address2": "", "ship_address1": "", "ship_city": "", "ship_state": "", "ship_zip": "", "address2": "", "referred": "", "middle_initial": "" };
+	}
+	
+
+
 	$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};
 	$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 	$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};

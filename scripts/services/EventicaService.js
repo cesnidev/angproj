@@ -27,7 +27,7 @@ eventica.factory('EventicaResource', function($resource) {
       }
 		});
 	})
-.factory('EventicaLogin', function (Session,$http,$location,$window) {
+.factory('EventicaLogin', function (Session,$http,$location,$window,$root) {
   var eventicalogin = {};
   var data;
   var errors;
@@ -122,7 +122,14 @@ eventica.factory('EventicaResource', function($resource) {
           cookie.token=data.relations.tokens[0].attributes.token;
           cookie.provider = data.attributes.provider;
           Session.StoreSession(cookie);
-          $window.location.href = '#/home';
+          if(data.relations.basic.attributes){
+            console.log("Basic Form: "+JSON.stringify(data.relations.basic.attributes));
+            $root.forms.basicinfo=data.relations.basic.attributes;
+          }
+          else
+            console.log("Basic not found");
+
+          $window.location.href = '#/signup';
       } else{
         console.log("Sucess with errors: "+errors);
         notificar(errors.errors);
