@@ -690,7 +690,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="profile_form">
+			<fieldset id="profile_form" ng-if="user.forms.profile == undefined">
 			<md-content>
 			<form name="prof" id="profile" data-abide="ajax">
 				<h1>Profile</h1>
@@ -1275,7 +1275,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="experience_form">
+			<fieldset id="experience_form" ng-if="user.forms.experience == undefined">
 			<md-content>
 			<form id="experience" name="exp" data-abide="ajax">
 				<h1>Experience</h1>
@@ -1951,7 +1951,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="availability_form">
+			<fieldset id="availability_form" ng-if="user.forms.availability == undefined">
 			<md-content>
 			<form id="availability" name="avail" data-abide="ajax">
 				<h1>Availability</h1>
@@ -2192,7 +2192,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="legal_form">
+			<fieldset id="legal_form" ng-if="user.forms.legal == undefined">
 			<md-content>
 			<form id="legal" name="legl" data-abide="ajax" novalidate>
 				<h1>Legal</h1>
