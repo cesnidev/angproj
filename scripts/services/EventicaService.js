@@ -27,7 +27,7 @@ eventica.factory('EventicaResource', function($resource) {
       }
 		});
 	})
-.factory('EventicaLogin', function (Session,$http,$location,$window,$root) {
+.factory('EventicaLogin', function (Session,$http,$location,$window,$rootScope) {
   var eventicalogin = {};
   var data;
   var errors;
@@ -103,6 +103,7 @@ eventica.factory('EventicaResource', function($resource) {
 
   eventicalogin.login = function(credentials,social){
     var cookie={};
+    $rootScope.forms={basicinfo:{}};
     var url = 'http://localhost:3000/api/v1/normal/login/';
 
       if(social)
@@ -122,9 +123,10 @@ eventica.factory('EventicaResource', function($resource) {
           cookie.token=data.relations.tokens[0].attributes.token;
           cookie.provider = data.attributes.provider;
           Session.StoreSession(cookie);
+          
           if(data.relations.basic.attributes){
             console.log("Basic Form: "+JSON.stringify(data.relations.basic.attributes));
-            $root.forms.basicinfo=data.relations.basic.attributes;
+            $rootScope.forms.basicinfo=data.relations.basic.attributes;
           }
           else
             console.log("Basic not found");

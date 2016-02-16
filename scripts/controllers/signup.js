@@ -1,6 +1,6 @@
 'use strict';
 
-eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin,$root) {
+eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
 
 	$scope.url = $location.absUrl();
 	$scope.user = Session.getSession();
@@ -28,12 +28,11 @@ eventica.controller('SignUpCtrl', function($scope,EventicaResource,cssInjector,$
 	    }
 	};
 
-	if($root.forms.basicinfo){
-		$scope.basicinfo = $root.forms.basicinfo;
+	if($rootScope.forms.basicinfo){
+		$scope.basicinfo = $rootScope.forms.basicinfo;
 		if($scope.binfo.$valid){
 			console.log("Forma basicinfo terminada, redirigiendo al dashboard");
 			notificar("Basic Info Form Finished welcome.");
-
 		}
 		else
 		{

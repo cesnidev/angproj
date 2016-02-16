@@ -1,6 +1,6 @@
 'use strict';
 eventica
-.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session,EventicaConfig,GooglePlus){
+.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session,EventicaConfig,GooglePlus,$rootScope){
 	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
 	cssInjector.add("assets/css/proyecto.form.css");
 	cssInjector.add("assets/css/fileup/dropzone.css");
@@ -12,8 +12,8 @@ eventica
 			$scope.img = $scope.user.image;
 	}
 
-	if(EventicaLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
-		$location.path("/home");//checar el issue cuando te llevan a home y necesitas dar back
+	//if(EventicaLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
+	//	$location.path("/home");//checar el issue cuando te llevan a home y necesitas dar back
 	if(!EventicaLogin.isAuthenticated())
 		$location.path("/login");
 
