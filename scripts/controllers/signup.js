@@ -14,25 +14,30 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 
 		if(allcomplete.basic !== undefined)
 		{
-			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+			<li id="basicinfo_form" class="active">Basic Info</li>
+				<li id="profile_form"  class="">Profile</li>
+				<li id="experience_form" class="">Experience</li>
+				<li id="availability_form" class="">Availability</li>
+				<li id="legal_form"
+			$("#profile_progress").addClass("active");
 		}
 		if(allcomplete.profile !== undefined)
 		{
-			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
+			$("#profile_progress").addClass("active");
+			$("#experience_progress").addClass("active");
 		}
 		if(allcomplete.experience !== undefined)
 		{
-			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(3)).addClass("active");
+			$("#profile_progress").addClass("active");
+			$("#experience_progress").addClass("active");
+			$("#availability_progress").addClass("active");
 		}
 		if(allcomplete.availability !== undefined)
 		{
-			$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(2)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(3)).addClass("active");
-			$("#progressbar li").eq($("fieldset").index(4)).addClass("active");
+			$("#profile_progress").addClass("active");
+			$("#experience_progress").addClass("active");
+			$("#availability_progress").addClass("active");
+			$("#legal_progress").addClass("active");
 		}
 
 		if(allcomplete.basic !== undefined && allcomplete.profile !== undefined && allcomplete.experience !== undefined && allcomplete.availability !== undefined && allcomplete.legal !== undefined)

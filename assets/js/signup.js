@@ -24,11 +24,11 @@ jQuery(document).ready(function($) {
     }
     else if(!document.getElementById("experience")){
         current_fs = $('.nextavailability').parent().parent();
-        next_fs = current_fs.next();
+        next_fs = current_fs.next()
     }
     else if(!document.getElementById("availability")){
         current_fs = $('.nextlegal').parent().parent();
-        next_fs = current_fs.next();
+        next_fs = current_fs.next()
     }
     else{
         current_fs = $('.nextbasic').parent().parent();
