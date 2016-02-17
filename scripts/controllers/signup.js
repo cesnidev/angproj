@@ -1,7 +1,7 @@
 'use strict';
 
 eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
-
+	var allcompletecookie={basicinfo:false,profile:false,experience:false,availability:false,legal:false};
 	if(!EventicaLogin.isAuthenticated())
 		$location.path("/login");
 	else
@@ -11,39 +11,69 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		console.log("Cookie Content: "+JSON.stringify($scope.user));
 
 		var allcomplete = $scope.user.forms;
+		
 
-		console.log('contenido forms relation  : '+allcomplete);
+		console.log('contenido forms relation  : '+JSON.stringify(allcomplete));
+
+		if(Session.get('completeforms')==undefined)
+		{
+			Session.save('completeforms',allcompletecookie);
+		}
+		allcompletecookie = Session.get('completeforms');
+		
+
 		if(allcomplete !=undefined)
 		{
-			if(allcomplete.basicinfo != undefined)
+			if(allcomplete.basic != undefined)
 			{
-				$("#profile_progress").addClass("active");
+				console.log('$("#progressbar li").eq(0).addClass("active");');
+				allcompletecookie.basicinfo=true;
+				Session.save('completeforms',allcompletecookie);
+				$("#progressbar li").eq(0).addClass("active");
 			}
 			if(allcomplete.profile != undefined)
 			{
-				$("#profile_progress").addClass("active");
-				$("#experience_progress").addClass("active");
+				//angular.element( document.querySelector("#profile_form") ).remove();
+				allcompletecookie.basicinfo=true;
+				allcompletecookie.profile=true;
+				Session.save('completeforms',allcompletecookie);
+				$("#progressbar li").eq(1).addClass("active");
 			}
 			if(allcomplete.experience != undefined)
 			{
-				$("#profile_progress").addClass("active");
-				$("#experience_progress").addClass("active");
-				$("#availability_progress").addClass("active");
+				//angular.element( document.querySelector("#experience_form") ).remove();
+				allcompletecookie.basicinfo=true;
+				allcompletecookie.profile=true;
+				allcompletecookie.experience=true;
+				Session.save('completeforms',allcompletecookie);
+				$("#progressbar li").eq(2).addClass("active");
 			}
 			if(allcomplete.availability != undefined)
 			{
-				$("#profile_progress").addClass("active");
-				$("#experience_progress").addClass("active");
-				$("#availability_progress").addClass("active");
-				$("#legal_progress").addClass("active");
+				//angular.element( document.querySelector("#availability_form") ).remove();
+				allcompletecookie.basicinfo=true;
+				allcompletecookie.experience=true;
+				allcompletecookie.availability=true;
+				allcompletecookie.profile=true;
+				Session.save('completeforms',allcompletecookie);
+				$("#progressbar li").eq(3).addClass("active");
 			}
 			if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
-				$location.path('/home');
+			{
+				//angular.element( document.querySelector("#legal_form") ).remove();
+				$("#progressbar li").eq(4).addClass("active");
+				$location.path('/home');allcompletecookie.basicinfo=true;
+				allcompletecookie.experience=true;
+				allcompletecookie.availability=true;
+				allcompletecookie.profile=true;
+				allcompletecookie.legal=true;
+				Session.save('completeforms',allcompletecookie);}
+		}
 		}
 		
 
 		
-	}
+	
 
 	if(EventicaLogin.isAuthenticated()){
 		$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};

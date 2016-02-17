@@ -13,7 +13,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	expired:"Your session has been expired,please login again"
 })
 .constant('EventicaConfig',{
-	AppId:"a556e38454da7a7d6ce2be1954222fed",
+	AppId:"b4e76bcad453c5bf421f86fc52a30cf6",
 	Min_Age:19,
 	Max_Age:30,
 	IP:'localhost'
@@ -44,10 +44,6 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 					return 'views/signup.html';
 			},
 			controller: 'SignUpCtrl'
-		})
-		.when('/test',{
-			templateUrl: 'views/signup.html',
-			controller: 'IndexCtrl'
 		})
 		.when('/show',{
 			templateUrl: function(params){
