@@ -448,7 +448,7 @@
 											<div class="input-field">
 												<label class="active" for="ship_state">State</label>
 												
-												<select class="" ng-model="basicinfo.ship_state" name="ship_state" id="ship_state" disabled="basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" ng-required="!basicinfo.same_as_home_mailing" material-select >
+												<select class="browser-default" ng-model="basicinfo.ship_state" name="ship_state" id="ship_state" disabled="basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" ng-required="!basicinfo.same_as_home_mailing" material-select >
 												    <option ng-repeat="state in states">{{state}}</option>
 												</select>
 
@@ -551,7 +551,7 @@
 									      </div>-->
 									      <div class="input-field">
 												<label class="active" for="emrgncyrelation">Relation</label>
-												<select required ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select >
+												<select class="browser-default" required ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select >
 												    <option ng-repeat="rel in relation">{{rel}}</option>
 												</select>
 
@@ -614,7 +614,7 @@
 										<div class="col s12 l3">
 
 										<div class="input-field">
-												<label class="active" for="emrgncystate">State</label>
+												<label class="browser-default active" for="emrgncystate">State</label>
 												<select required class="" ng-model="basicinfo.emergency_state" id="emrgncystate" name="emrgncystate" material-select >
 												    <option ng-repeat="st in states">{{st}}</option>
 												</select>
