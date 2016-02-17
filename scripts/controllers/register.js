@@ -1,6 +1,6 @@
 'use strict';
 
-eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,EventicaLogin,$location,GooglePlus,$Facebook) {
+eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,EventicaLogin,$location,GooglePlus) {
 
 	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
 

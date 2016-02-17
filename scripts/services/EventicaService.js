@@ -118,8 +118,8 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
       data=response.data.data;
       errors = response.data.errors;
       console.log("sucess: "+JSON.stringify(response));
-      console.log("sucess data: "+JSON.stringify(data));
-      console.log("Token: "+data.relations.tokens[0].attributes.token);
+      //console.log("sucess data: "+JSON.stringify(data));
+      //console.log("Token: "+data.relations.tokens[0].attributes.token);
       if (errors==''|| !errors) {
           cookie.id = data.id;
           cookie.user=data.attributes.name;
@@ -165,33 +165,4 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
   };
  
   return eventicalogin;
-}).factory('$Facebook', function() {
-   var facebook={};
-
-   facebook.getMyInfo = function(){
-      var myinfo={};
-      FB.api('/me',{fields:'email,picture,birthday,name'} ,function (response) {
-                  
-            //console.log("Response Data: "+JSON.stringify(response));
-
-        FB.api('/'+response.id+'/picture?width=800&height=800',function (response) {
-            console.log("Response Image: "+JSON.stringify(response.data.url));
-            myinfo.url = response.data.url;
-
-          return myinfo;
-        });
-    });
-   };
-
-   facebook.isOnline = function(){
-      FB.getLoginStatus(function(response) {
-        if (response.status == 'connected')
-          return true;
-        else
-          return false;
-      });
-   };
-
-   return facebook;
-   
 });

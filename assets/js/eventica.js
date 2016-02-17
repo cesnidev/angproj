@@ -1,7 +1,8 @@
 function notificar(msg){
     $('.top-left').notify({
                     message: { text: msg },
-                    type:'blackgloss'
+                    type:'blackgloss',
+                    fadeOut: { enabled: true, delay: 100 }
                   }).show();
 }
 function notificar(msg,style){
