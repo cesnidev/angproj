@@ -12,7 +12,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 
 		var allcomplete = $scope.user.forms;
 
-		console.log('contenido forms relation: '+allcomplete);
+		console.log('contenido forms relation  : '+allcomplete);
 		if(allcomplete.basic != undefined)
 		{
 			$("#profile_progress").addClass("active");
