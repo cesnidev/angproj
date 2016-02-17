@@ -14,17 +14,6 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
             $scope.credentials.auth.info.password=$scope.reg.password;
 			console.log("JSON: "+JSON.stringify($scope.credentials));
 			var response = EventicaLogin.register($scope.credentials,false);
-			console.log(JSON.stringify(response));
-			if(response.data.errors=='')
-			{
-				//exito
-				$location.path('/signup');
-			}
-			else
-			{
-				//fallo
-				console.log(response.errors);
-			}
 		}
 		else
 		{
