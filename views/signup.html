@@ -1269,7 +1269,7 @@
 
 			     <form action="http://alpha.eventicateam.com/index.php/api/up" class="dropzone" dropzone="dropzoneConfig" ></form><br>
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="profileclick('#profile_form')" ng-show="prof.$valid" ng-model="profile.submit" class="col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
 
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
@@ -1945,7 +1945,7 @@
 				</div><br>
 				{{ experience | json }}
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form')" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -2186,7 +2186,7 @@
 				</div></div></div>
 				{{ availability | json }}
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form')" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -2293,7 +2293,7 @@
 							</div>
 							
 							<br><br>
-					<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="legalclick('#legal_form')" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
+					<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="legalclick('#legal_form',legl)" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
 
 					<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#legal_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				
