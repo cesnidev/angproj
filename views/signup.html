@@ -8,7 +8,7 @@
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
 					      <img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" alt="" class="circle picture">
-					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <img ng-show="basicinfo.social" ng-src="{{ img }}" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -96,7 +96,7 @@
 				        	
 				        </div>
 						
-					</div>	
+				</div>	
 
 			        
 			        
@@ -477,7 +477,7 @@
 											<div class="input-field">
 												<label class="active" for="ship_state">State</label>
 												
-												<select class="" ng-model="basicinfo.ship_state" name="ship_state" id="ship_state" disabled="basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" ng-required="!basicinfo.same_as_home_mailing" material-select watch>
+												<select class="" ng-model="basicinfo.ship_state" name="ship_state" id="ship_state" disabled="basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" ng-required="!basicinfo.same_as_home_mailing" material-select >
 												    <option ng-repeat="state in states">{{state}}</option>
 												</select>
 
@@ -566,7 +566,7 @@
 
 											<!--<div class="input-field">
 												<label class="active" for="emrgncyrelation">Relation</label>
-												<select required class="" ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select watch>
+												<select required class="" ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select >
 												    <option ng-repeat="rel in relation">{{rel.abbrev}}</option>
 												</select>
 									        
@@ -580,7 +580,7 @@
 									      </div>-->
 									      <div class="input-field">
 												<label class="active" for="emrgncyrelation">Relation</label>
-												<select required ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select watch>
+												<select required ng-model="basicinfo.emergency_relation" id="emrgncyrelation" name="emrgncyrelation" material-select >
 												    <option ng-repeat="rel in relation">{{rel}}</option>
 												</select>
 
@@ -644,7 +644,7 @@
 
 										<div class="input-field">
 												<label class="active" for="emrgncystate">State</label>
-												<select required class="" ng-model="basicinfo.emergency_state" id="emrgncystate" name="emrgncystate" material-select watch>
+												<select required class="" ng-model="basicinfo.emergency_state" id="emrgncystate" name="emrgncystate" material-select >
 												    <option ng-repeat="st in states">{{st}}</option>
 												</select>
 
@@ -705,7 +705,7 @@
 								</div>
 								<div class="col s12 l6">
 									<div class="input-field">
-									    <textarea ng-model="basicinfo.emergency_info" class="materialize-textarea" watch></textarea>
+									    <textarea ng-model="basicinfo.emergency_info" class="materialize-textarea" ></textarea>
 									    <label>Please provide any information we should know in case of an emergency:</label>
 									</div>
 								</div>

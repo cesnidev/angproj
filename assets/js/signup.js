@@ -14,7 +14,8 @@ jQuery(document).ready(function($) {
 
     }
 
-    if(!document.getElementById("basicuser")){
+    
+    if(!document.getElementById("basicuser") && !$('#basicuser').hasClass('ng-hide')){
         current_fs = $('.nextprofile').parent().parent();
         next_fs = current_fs.next();
     }
