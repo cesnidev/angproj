@@ -142,7 +142,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			if(c)
 			{
 				$scope.basicinfo.ship_address1=$scope.basicinfo.address1;
-				$scope.basicinfo.ship_address2=$scope.basicinfo.address2;
+				$scope.basicinfo.ship_address2=$scope.basicinfo.addres2;
 				$scope.basicinfo.ship_city=$scope.basicinfo.city;
 				$scope.basicinfo.ship_state=$scope.basicinfo.state;
 				$scope.basicinfo.ship_zip=$scope.basicinfo.zip;
@@ -159,6 +159,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		};
 		$scope.basicinfoclick = function(c)
 		{
+			console.log("BINFO FORM: "+JSON.stringify($scope.binfo));
 			if(EventicaLogin.isAuthenticated())
 			{
 				if ($scope.binfo.$valid) {

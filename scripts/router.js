@@ -60,11 +60,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: 'views/register.html',
 			controller: 'RegisterCtrl'
 		}).when('/view',{
-			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
-				else
-					return 'views/view.html';
-			},
+			templateUrl: 'views/view.html',
 			controller: 'ViewCtrl'
 		}).when('/',{
 			templateUrl: 'views/welcome.html',

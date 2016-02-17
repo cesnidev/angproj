@@ -42,7 +42,7 @@
 
 			<fieldset id="basicinfo_form" ng-if="user.forms.basic == undefined">
 				<md-content layout-padding class="inputErrors">
-			<form name="binfo" id="basicuser" ng-submit="submit()" novalidate ng-cloak>
+			<form name="binfo" ng-submit="submit()" novalidate ng-cloak>
 
 				
 
@@ -292,6 +292,7 @@
 								</div>
 								<div class="col s12 l4"></div>
 				</div>
+				Contenido Address 1: {{ basicinfo.address1 }}
 				<div class="row">
 								<div class="col s12 l2">
 									<label class="inline"><font size="-1">Address Line 2:</font></label>
