@@ -1,12 +1,15 @@
 'use strict';
 
-eventica.controller('ViewCtrl',function($scope,Session){
+eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin){
+	
 
-	$scope.user = Session.getSession();
-	console.log("COOKIE: "+JSON.stringify(Session.get('token')));
-
-	if($scope.user.provider=='facebook'||$scope.user.provider=='google')
-		$scope.img = $scope.user.image;
+	if(EventicaLogin.isAuthenticated())
+	{
+		$scope.user = Session.getSession();
+		console.log("COOKIE: "+JSON.stringify(Session.get('token')));
+		if($scope.user.provider=='facebook'||$scope.user.provider=='google')
+			$scope.img = $scope.user.image;
+	}
 
 	$scope.users=[
 		{name:'Armando',descripcion:"Informacion General del BA",photo:"1.jpg",age:"29"},

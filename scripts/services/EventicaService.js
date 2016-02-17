@@ -27,7 +27,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
       }
 		});
 	})
-.factory('EventicaLogin', function (Session,$http,$location,$window,$rootScope,EventicaConfig) {
+.factory('EventicaLogin', function (Session,$http,$location,$window,$rootScope,EventicaConfig,Stats) {
   var eventicalogin = {};
   var data;
   var errors;
@@ -93,11 +93,16 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
         notificar(response.errors);
         
       }
-      return response;
 
 		}, function errorCallback(response) {
-			notificar(response.data.errors[0]);
-      return response;
+      if(response!=undefined)
+      {
+        notificar(response.data.errors[0]);
+      }
+      else
+      {
+        notificar(Stats.missed);
+      }
 		});
   };
 
@@ -141,9 +146,14 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
         notificar(errors.errors);
       };
     },function errorCallback(response){
+       if(response!=undefined)
+        {
           notificar(response.data.errors[0]);
-        
-        
+        }
+        else
+        {
+          notificar(Stats.missed);
+        }
     });
   }
  

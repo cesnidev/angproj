@@ -27,7 +27,7 @@
             <i class="mdi-social-person-outline prefix"></i>
             <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
             <label for="email" class="center-align active">Email</label>
-            <div class="eventicaerror" ng-messages="flogin.email.$error" role="alert">
+            <div class="eventicaerror" ng-show="flogin.email.$touched" ng-messages="flogin.email.$error" role="alert">
               <div ng-message="required">Email is required.</div>
               <div ng-message="pattern">This is not a email.</div>
             </div>

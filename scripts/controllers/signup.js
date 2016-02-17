@@ -12,6 +12,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 
 		var allcomplete = $scope.user.forms;
 
+		console.log('contenido forms relation: '+allcomplete);
 		if(allcomplete.basic != undefined)
 		{
 			$("#profile_progress").addClass("active");
@@ -39,15 +40,17 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			$location.path('/home');
 	}
 
+	if(EventicaLogin.isAuthenticated()){
+		$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
+		$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
+		$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
+		$scope.javailability = {token:$scope.user.token,app_id:EventicaConfig.AppId,availability:''};
+		$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
 
-	$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
-	$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
-	$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
-	$scope.javailability = {token:$scope.user.token,app_id:EventicaConfig.AppId,availability:''};
-	$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
-
-	if($scope.user.provider=='facebook'||$scope.user.provider=='google')
-		$scope.img = $scope.user.image;
+		if($scope.user.provider=='facebook'||$scope.user.provider=='google')
+			$scope.img = $scope.user.image;
+	}
+	
 
 	cssInjector.add("assets/css/proyecto.form.css");
 
