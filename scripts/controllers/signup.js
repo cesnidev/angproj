@@ -158,12 +158,12 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			}
 			 
 		};
-		$scope.basicinfoclick = function(c)
+		$scope.basicinfoclick = function(c,form)
 		{
 			console.log("BINFO FORM: "+JSON.stringify($scope.binfo));
 			if(EventicaLogin.isAuthenticated())
 			{
-				if ($scope.binfo.$valid) {
+				if (form.$valid) {
 					$scope.jbasic.basic = $scope.basicinfo;
 					EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));

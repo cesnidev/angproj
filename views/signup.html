@@ -42,7 +42,7 @@
 
 			<fieldset id="basicinfo_form" ng-if="user.forms.basic == undefined">
 				<md-content layout-padding class="inputErrors">
-			<form name="binfo" ng-submit="submit()" novalidate ng-cloak>
+			<form name="binfo" novalidate ng-cloak>
 
 				
 
@@ -686,7 +686,7 @@
 				
 				Basic Info: {{ basicinfo | json }}
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="basicinfoclick('#basicinfo_form')" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="basicinfoclick('#basicinfo_form',binfo)" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#basicinfo_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
 			</md-content>
