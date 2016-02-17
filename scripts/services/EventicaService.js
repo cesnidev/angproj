@@ -130,6 +130,9 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
 
             if(data.relations.basic != undefined)
               cookie.forms.basic=true;
+            else
+              console.log('no existe basic');
+
             if(data.relations.profile != undefined)
               cookie.forms.profile=true;
             if(data.relations.experience != undefined)

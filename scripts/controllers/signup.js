@@ -13,31 +13,36 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		var allcomplete = $scope.user.forms;
 
 		console.log('contenido forms relation  : '+allcomplete);
-		if(allcomplete.basic != undefined)
+		if(allcomplete !=undefined)
 		{
-			$("#profile_progress").addClass("active");
+			if(allcomplete.basicinfo != undefined)
+			{
+				$("#profile_progress").addClass("active");
+			}
+			if(allcomplete.profile != undefined)
+			{
+				$("#profile_progress").addClass("active");
+				$("#experience_progress").addClass("active");
+			}
+			if(allcomplete.experience != undefined)
+			{
+				$("#profile_progress").addClass("active");
+				$("#experience_progress").addClass("active");
+				$("#availability_progress").addClass("active");
+			}
+			if(allcomplete.availability != undefined)
+			{
+				$("#profile_progress").addClass("active");
+				$("#experience_progress").addClass("active");
+				$("#availability_progress").addClass("active");
+				$("#legal_progress").addClass("active");
+			}
+			if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
+				$location.path('/home');
 		}
-		if(allcomplete.profile != undefined)
-		{
-			$("#profile_progress").addClass("active");
-			$("#experience_progress").addClass("active");
-		}
-		if(allcomplete.experience != undefined)
-		{
-			$("#profile_progress").addClass("active");
-			$("#experience_progress").addClass("active");
-			$("#availability_progress").addClass("active");
-		}
-		if(allcomplete.availability != undefined)
-		{
-			$("#profile_progress").addClass("active");
-			$("#experience_progress").addClass("active");
-			$("#availability_progress").addClass("active");
-			$("#legal_progress").addClass("active");
-		}
+		
 
-		if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
-			$location.path('/home');
+		
 	}
 
 	if(EventicaLogin.isAuthenticated()){
