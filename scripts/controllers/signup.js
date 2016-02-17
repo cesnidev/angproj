@@ -1,7 +1,7 @@
 'use strict';
 
 eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
-	var allcompletecookie={basicinfo:false,profile:false,experience:false,availability:false,legal:false};
+	$scope.allcompletecookie;
 	if(!EventicaLogin.isAuthenticated())
 		$location.path("/login");
 	else
@@ -18,9 +18,10 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		if(Session.get('completeforms')==undefined)
 		{
 			console.log('no existe la cookie creando');
-			Session.save('completeforms',allcompletecookie);
+			$scope.allcompletecookie ={basicinfo:false,profile:false,experience:false,availability:false,legal:false};
+			Session.save('completeforms',$scope.allcompletecookie);
 		}
-		allcompletecookie = Session.get('completeforms');
+		$scope.allcompletecookie = Session.get('completeforms');
 		
 
 		if(allcomplete !=undefined)
@@ -28,47 +29,47 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			if(allcomplete.basic != undefined)
 			{
 				console.log('$("#progressbar li").eq(0).addClass("active");');
-				allcompletecookie.basicinfo=true;
-				Session.save('completeforms',allcompletecookie);
+				$scope.allcompletecookie.basicinfo=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 				$("#profile_progress").addClass("active");
 			}
 			if(allcomplete.profile != undefined)
 			{
 				//angular.element( document.querySelector("#profile_form") ).remove();
-				allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				Session.save('completeforms',allcompletecookie);
+				$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 				$("#experience_progress").addClass("active");
 			}
 			if(allcomplete.experience != undefined)
 			{
 				//angular.element( document.querySelector("#experience_form") ).remove();
-				allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				allcompletecookie.experience=true;
-				Session.save('completeforms',allcompletecookie);
+				$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				$scope.allcompletecookie.experience=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 				$("#availability_progress").addClass("active");
 			}
 			if(allcomplete.availability != undefined)
 			{
 				//angular.element( document.querySelector("#availability_form") ).remove();
-				allcompletecookie.basicinfo=true;
-				allcompletecookie.experience=true;
-				allcompletecookie.availability=true;
-				allcompletecookie.profile=true;
-				Session.save('completeforms',allcompletecookie);
+				$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.experience=true;
+				$scope.allcompletecookie.availability=true;
+				$scope.allcompletecookie.profile=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 				$("#legal_progress").addClass("active");
 			}
 			if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
 			{
 				//angular.element( document.querySelector("#legal_form") ).remove();
 				$("#progressbar li").eq(4).addClass("active");
-				$location.path('/home');allcompletecookie.basicinfo=true;
-				allcompletecookie.experience=true;
-				allcompletecookie.availability=true;
-				allcompletecookie.profile=true;
-				allcompletecookie.legal=true;
-				Session.save('completeforms',allcompletecookie);}
+				$location.path('/home');$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.experience=true;
+				$scope.allcompletecookie.availability=true;
+				$scope.allcompletecookie.profile=true;
+				$scope.allcompletecookie.legal=true;
+				Session.save('completeforms',$scope.allcompletecookie);}
 		}
 		}
 		
@@ -168,8 +169,8 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.jbasic.basic = $scope.basicinfo;
 					EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
-		            	allcompletecookie.basicinfo=true;
-						Session.save('completeforms',allcompletecookie);
+		            	$scope.allcompletecookie.basicinfo=true;
+						Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
 	        	}
@@ -197,9 +198,9 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.jprofile.profile = $scope.profile;
 	            	EventicaResource.saveBasicInfo($scope.jprofile).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
-		            	allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				Session.save('completeforms',allcompletecookie);
+		            	$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
 	        	}
@@ -222,10 +223,10 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.jexperience.basic = $scope.experience;
 	            	EventicaResource.saveExperience($scope.jexperience).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
-		            	allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				allcompletecookie.experience=true;
-				Session.save('completeforms',allcompletecookie);
+		            	$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				$scope.allcompletecookie.experience=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
 	        	}
@@ -249,11 +250,11 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.javailability.availability = $scope.availability;
 	            	EventicaResource.saveAvailability($scope.javailability).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
-		            	allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				allcompletecookie.experience=true;
-				allcompletecookie.availability=true;
-				Session.save('completeforms',allcompletecookie);
+		            	$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				$scope.allcompletecookie.experience=true;
+				$scope.allcompletecookie.availability=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
 	        	}
@@ -276,12 +277,12 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.jlegal.legal = $scope.legal;
 	            	EventicaResource.saveLegal($scope.jlegal).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
-		            	allcompletecookie.basicinfo=true;
-				allcompletecookie.profile=true;
-				allcompletecookie.experience=true;
-				allcompletecookie.availability=true;
-				allcompletecookie.legal=true;
-				Session.save('completeforms',allcompletecookie);
+		            	$scope.allcompletecookie.basicinfo=true;
+				$scope.allcompletecookie.profile=true;
+				$scope.allcompletecookie.experience=true;
+				$scope.allcompletecookie.availability=true;
+				$scope.allcompletecookie.legal=true;
+				Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
 	        	}
