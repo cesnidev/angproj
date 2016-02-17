@@ -104,7 +104,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
   eventicalogin.login = function(credentials,social){
     var cookie={forms:{}};
     $rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
-    var url = 'http://l'+EventicaConfig.IP+':3000/api/v1/normal/login/';
+    var url = 'http://'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
       if(social)
         url = 'http://'+EventicaConfig.IP+':3000/api/v1/social/login/';
