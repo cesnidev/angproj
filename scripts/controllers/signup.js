@@ -196,7 +196,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			{
 				if (form.$valid) {
 					$scope.jprofile.profile = $scope.profile;
-	            	EventicaResource.saveBasicInfo($scope.jprofile).$promise.then(function(response){
+	            	EventicaResource.saveProfile($scope.jprofile).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
 		            	$scope.allcompletecookie.basicinfo=true;
 				$scope.allcompletecookie.profile=true;
