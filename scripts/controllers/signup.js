@@ -6,6 +6,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		$location.path("/login");
 	else
 	{
+		$scope.croppedDataUrl = '';
 		$scope.url = $location.absUrl();
 		$scope.user = Session.getSession();
 		console.log("Cookie Content: "+JSON.stringify($scope.user));

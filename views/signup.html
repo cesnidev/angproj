@@ -7,11 +7,12 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<div ng-if="angular">
+					    	<div ng-show="angular">
 					    		<!-- registered by email-->
+					         		{{ croppedDataUrl }}
 					    		<img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
 					    	</div>
-					    	<div ng-if="angular">
+					    	<div ng-show="!angular">
 					    		<!-- registered by social network-->
 					    		<div ng-if="basicinfo.social==false">
 					    			<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
@@ -104,7 +105,7 @@
 
 				        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="col l12 s12 m12 cropArea dropzone">
 						            <img-crop image="picFile  | ngfDataUrl"                 
-						            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+						            result-image="croppedDataUrl">
 						            </img-crop>
 						        </div>
 						        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
