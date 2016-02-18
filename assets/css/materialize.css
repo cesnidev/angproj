@@ -11017,7 +11017,7 @@ select {
 
 .picker__date-display {
   text-align: center;
-  background-color: #26a69a;
+  background-color: #FE7133;
   color: #fff;
   padding-bottom: 15px;
   font-weight: 300;
@@ -11027,11 +11027,11 @@ select {
 .picker__nav--next:hover {
   cursor: pointer;
   color: #000000;
-  background: #a1ded8;
+  background: #FE5918;
 }
 
 .picker__weekday-display {
-  background-color: #1f897f;
+  background-color: #FE5912;
   padding: 10px;
   font-weight: 200;
   letter-spacing: .5;
@@ -11080,7 +11080,7 @@ select {
 }
 
 .picker__day.picker__day--today {
-  color: #26a69a;
+  color: #FE7133;
 }
 
 .picker__day.picker__day--today.picker__day--selected {
