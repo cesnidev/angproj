@@ -8,7 +8,7 @@
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
 					    	<img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" style="background-color:#FE7133;" alt="" class="circle picture">
-					      <img ng-show="basicinfo.social" ng-src="{{ img }}"  alt="" class="circle picture">
+					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -932,7 +932,7 @@
 				</div>
 				<br>
 
-				<div id="male_data" ng-show="profile.gender=='male'">
+				<div id="male_data" class="hub" ng-show="profile.gender=='male'">
 
 				<hr>
 				<h2 class="fs-title">Male Specific</h2>
@@ -1012,7 +1012,7 @@
 				<br><hr>
 
 				</div>
-				<div id="female_data" ng-show="profile.gender=='female'">
+				<div id="female_data" class="hub" ng-show="profile.gender=='female'">
 				<hr>
 				<h2 class="fs-title">Female Specific</h2>
 
@@ -1292,7 +1292,7 @@
 						<div class="row">
 							<div class="row">
 								<p class="left">Enter one brand per field.</p><br>
-								<div class="row collapse" id="exp1">
+								<div class="row collapse hub" ng-show="brands>0">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.brand1" placeholder="Experience 1">
 							        </div>
@@ -1300,7 +1300,7 @@
 							          <a class="btn postfix">1</a>
 							        </div>
 							    </div>
-							    <div class="row collapse " id="exp2">
+							    <div class="row collapse hub " ng-show="brands>=2">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.brand2" placeholder="Experience 2">
 							        </div>
@@ -1308,7 +1308,7 @@
 							          <a  class="btn postfix">2</a>
 							        </div>
 							    </div>
-							    <div class="row collapse " id="exp3">
+							    <div class="row collapse hub " ng-show="brands>=3">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.brand3" placeholder="Experience 3">
 							        </div>
@@ -1316,7 +1316,7 @@
 							          <a class="btn postfix">3</a>
 							        </div>
 							    </div>
-							    <div class="row collapse " id="exp4">
+							    <div class="row collapse hub " ng-show="brands>=4">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.brand4" placeholder="Experience 4">
 							        </div>
@@ -1324,7 +1324,7 @@
 							          <a class="btn postfix">4</a>
 							        </div>
 							    </div>
-							    <div class="row collapse " id="exp5">
+							    <div class="row collapse hub " ng-show="brands==5">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.brand5" placeholder="Experience 5">
 							        </div>
@@ -1334,8 +1334,8 @@
 							    </div>
 							</div>
 							<div class="row">
-								<div class="l6 s6 m6 col"><button class="btn radius" id="add_exp">+Add</button></div>
-								<div class="l6 s6 m6 col"><button class="btn radius" id="del_exp">Delete</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" ng-click="addbrands()" id="add_exp">+Add</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" ng-click="delbrands()" id="del_exp">Delete</button></div>
 							</div>
 						</div>
 						
@@ -1348,7 +1348,7 @@
 						<div class="row">
 							<div class="row">
 								<p class="left">Enter one job per field.</p><br>
-								<div class="row collapse" id="brand1">
+								<div class="row collapse hub" ng-show="jobs>0">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job1" placeholder="Job 1">
 							        </div>
@@ -1356,7 +1356,7 @@
 							          <a class="btn postfix" id="del_job_1">1</a>
 							        </div>
 							    </div>
-							    <div class="row collapse" id="brand2">
+							    <div class="row collapse hub" ng-show="jobs>=2">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job2" placeholder="Job 2">
 							        </div>
@@ -1364,7 +1364,7 @@
 							          <a class="btn postfix" id="del_job_2">2</a>
 							        </div>
 							    </div>
-							    <div class="row collapse" id="brand3">
+							    <div class="row collapse hub" ng-show="jobs>=3">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job3" placeholder="Job 3">
 							        </div>
@@ -1372,7 +1372,7 @@
 							          <a class="btn postfix" id="del_job_3">3</a>
 							        </div>
 							    </div>
-							    <div class="row collapse" id="brand4">
+							    <div class="row collapse hub" ng-show="jobs>=4">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job4" placeholder="Job 4">
 							        </div>
@@ -1380,7 +1380,7 @@
 							          <a class="btn postfix" id="del_job_4">4</a>
 							        </div>
 							    </div>
-							    <div class="row collapse" id="brand5">
+							    <div class="row collapse hub" ng-show="jobs==5">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job5" placeholder="Job 5">
 							        </div>
@@ -1390,8 +1390,8 @@
 							    </div>
 							</div>
 							<div class="row">
-								<div class="l6 s6 m6 col"><button class="btn radius" id="add_brand">+Add</button></div>
-								<div class="l6 s6 m6 col"><button class="btn radius" id="del_job">Delete</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" ng-click="addjobs()" ng-init="jobs=0" id="add_brand">+Add</button></div>
+								<div class="l6 s6 m6 col"><button class="btn radius" ng-click="deljobs()" id="del_job">Delete</button></div>
 							</div>
 						</div>
 						
@@ -1402,6 +1402,7 @@
 				<br>
 				<h2 class="fs-title">Event Experience</h2><hr>
 
+				
 				<div class="row">
 								<div class="l7 s12 offset-1 col">
 									<div class="row">
@@ -2321,7 +2322,7 @@
 										        <p>We do not share your social security number with anyone outside the platform. The information is encrypted and only accessible by authorized employees. Access to view your Social Security number is for accounting purposes and to fulfill IRS requirements only.</p>
 										    </div>
 										    <div class="modal-footer">
-										        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+										        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
 										    </div>
 										</div>
 									</div>
@@ -2341,7 +2342,7 @@
 								        <p>Please review our Company Agreement</p>
 								    </div>
 								    <div class="modal-footer">
-								        <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+								        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
 								    </div>
 								</div>
 							</div>

@@ -6,6 +6,8 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		$location.path("/login");
 	else
 	{
+		$scope.jobs=0;
+		$scope.brands=0;
 		$scope.url = $location.absUrl();
 		$scope.user = Session.getSession();
 		console.log("Cookie Content: "+JSON.stringify($scope.user));
@@ -363,7 +365,22 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	        easing: 'easeInOutBack'
 	    });
 	};
-
+	$scope.addbrands() = function(){
+		if($scope.brands<5)
+			$scope.brands = $scope.brands+1;
+	};
+	$scope.delbrands() = function(){
+		if($scope.brands>0)
+			$scope.brands = $scope.brands-1;
+	};
+	$scope.addjobs() = function(){
+		if($scope.jobs<5)
+			$scope.jobs = $scope.jobs+1;
+	};
+	$scope.deljobs() = function(){
+		if($scope.jobs>0)
+			$scope.jobs = $scope.jobs-1;
+	};
 	/* End Stuff Functions*/
 
 

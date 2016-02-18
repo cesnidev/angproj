@@ -440,6 +440,15 @@ video#bgvid {
     background-size: cover; 
 }
 
+.hub.ng-hide-add, .hub.ng-hide-remove {
+  transition: all linear 0.2s;
+}
+
+.hub.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
 
 
 

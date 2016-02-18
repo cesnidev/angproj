@@ -1,6 +1,6 @@
 'use strict';
 
-eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin,$location){
+eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin){
 	
 
 	if(EventicaLogin.isAuthenticated())
@@ -52,13 +52,6 @@ eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin,$location){
     		}
     			
     		}
-	    };
-	 $scope.logout = function(){
-	    	//checar si es sesion por social media o email
-	    	if(Session.closeSession())
-	    		$location.path('/login');
-	    	else
-	    		$location.path('/login');
 	    };
     
 });
