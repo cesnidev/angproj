@@ -2278,7 +2278,7 @@
 								        </div>
 								        <div class="s9 col input-field">
 								        	<label class="active" for="account_n">Account Number</label>
-								          <input type="text" required name="account_n" ng-model="legal.account_number" id="account_n" ng-pattern="[0-9]{10,12}">
+								          <input type="text" required name="account_n" ng-model="legal.account_number" id="account_n" ng-pattern="/^[1-9]\d*$/">
 								          <div class="eventicaerror" ng-messages="legl.account_n.$error">
 								          	<div ng-message="required">Account Number is required.</div>
 								          	<div ng-message="pattern">Please provide a valid account number.</div>
