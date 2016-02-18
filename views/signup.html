@@ -7,8 +7,12 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					      <img ng-show="!basicinfo.social" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">
-					      <img ng-show="basicinfo.social" ng-src="{{ img }}" alt="" class="circle picture">
+					    	<div ng-if="basicinfo.social==false">
+					    		<img ng-show="" id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
+					    	</div>
+					    	<div ng-if="basicinfo.social==true">
+					    		<img ng-show="" id="social_pic" ng-src="{{ img }}" alt="" class="circle picture">		
+					    	</div>
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -52,7 +56,8 @@
 			          <h2 class="fs-title">Profile Image</h2>
 				</div>
 				<div class="row">
-					Testing Img: <img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">
+					Testing Img: <img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture"> <br>
+					Social Picture: {{ basicinfo.social }}
 				</div>
 				<div class="row">
 					<div ng-switch on="user.provider">
@@ -68,7 +73,7 @@
 						<div ng-switch-when="google_oauth2">
 							<div class="col s12 l2 offset-l2" align="center">
 								<p>
-							      <input type="checkbox"  ng-model="basicinfo.social" class="n" id="filled-in-box" />
+							      <input type="checkbox"  ng-model="basicinfo.social" ng-init="basicinfo.social=false" class="n" id="filled-in-box" />
 							      <label for="filled-in-box" style="color:black;">Use my google image</label>
 							    </p>
 								
