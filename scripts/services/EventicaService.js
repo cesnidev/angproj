@@ -109,55 +109,75 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
   eventicalogin.login = function(credentials,social){
     var cookie={forms:{}};
     $rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
-    var url = 'http://'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
-      if(social)
-        url = 'http://'+EventicaConfig.IP+':3000/api/v1/social/login/';
 
-    $http.post(url,credentials,{}).then(function successCallback(response){
-      data=response.data.data;
-      errors = response.data.errors;
-      console.log("sucess: "+JSON.stringify(response));
-      //console.log("sucess data: "+JSON.stringify(data));
-      //console.log("Token: "+data.relations.tokens[0].attributes.token);
-      if (errors==''|| !errors) {
-          cookie.id = data.id;
-          cookie.user=data.attributes.name;
-          cookie.email= data.attributes.email;
-          cookie.image=data.attributes.picture;
-          cookie.token=data.relations.tokens[0].attributes.token;
-          cookie.provider = data.attributes.provider;
+  cookie.id ='12345';
+  cookie.user='Calcomm';
+  cookie.email= credentials.auth.email;
+  cookie.image= 'http://www.linkedinsider.com.au/wp-content/uploads/2014/09/profile.png';
+  cookie.token='12345';
+  cookie.provider = 'facebook'; 
+  
+  if(credentials.auth.email=='admin@mail.com' && credentials.auth.password=='admin')
+  {
+     Session.StoreSession(cookie);
+    $window.location.href = '#/show'; 
+  }
+  else{
+    notificar("Invalid Session");
+  }
+ 
 
-            if(data.relations.basic != undefined)
-              cookie.forms.basic=true;
-            else
-              console.log('no existe basic');
 
-            if(data.relations.profile != undefined)
-              cookie.forms.profile=true;
-            if(data.relations.experience != undefined)
-              cookie.forms.experience=true;
-            if(data.relations.availability != undefined)
-              cookie.forms.availability=true;
-            if(data.relations.legal != undefined)
-              cookie.forms.legal=true;
-            Session.StoreSession(cookie);
+    // var url = 'http://'+EventicaConfig.IP+':3000/api/v1/normal/login/';
 
-          $window.location.href = '#/signup';
-      } else{
-        console.log("Sucess with errors: "+errors);
-        notificar(errors.errors);
-      };
-    },function errorCallback(response){
-       if(response!=undefined)
-        {
-          notificar(response.data.errors[0]);
-        }
-        else
-        {
-          notificar(Stats.missed);
-        }
-    });
+    //   if(social)
+    //     url = 'http://'+EventicaConfig.IP+':3000/api/v1/social/login/';
+
+    // $http.post(url,credentials,{}).then(function successCallback(response){
+    //   data=response.data.data;
+    //   errors = response.data.errors;
+    //   console.log("sucess: "+JSON.stringify(response));
+    //   //console.log("sucess data: "+JSON.stringify(data));
+    //   //console.log("Token: "+data.relations.tokens[0].attributes.token);
+    //   if (errors==''|| !errors) {
+    //       cookie.id = data.id;
+    //       cookie.user=data.attributes.name;
+    //       cookie.email= data.attributes.email;
+    //       cookie.image=data.attributes.picture;
+    //       cookie.token=data.relations.tokens[0].attributes.token;
+    //       cookie.provider = data.attributes.provider;
+
+    //         if(data.relations.basic != undefined)
+    //           cookie.forms.basic=true;
+    //         else
+    //           console.log('no existe basic');
+
+    //         if(data.relations.profile != undefined)
+    //           cookie.forms.profile=true;
+    //         if(data.relations.experience != undefined)
+    //           cookie.forms.experience=true;
+    //         if(data.relations.availability != undefined)
+    //           cookie.forms.availability=true;
+    //         if(data.relations.legal != undefined)
+    //           cookie.forms.legal=true;
+    //         Session.StoreSession(cookie);
+
+    //       $window.location.href = '#/signup';
+    //   } else{
+    //     console.log("Sucess with errors: "+errors);
+    //     notificar(errors.errors);
+    //   };
+    // },function errorCallback(response){
+    //    if(response!=undefined)
+    //     {
+    //       notificar(response.data.errors[0]);
+    //     }
+    //     else
+    //     {
+    //       notificar(Stats.missed);
+    //     }
+    // });
   }
  
   eventicalogin.isAuthenticated = function () {

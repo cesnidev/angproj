@@ -37,14 +37,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 
 		/**/
         $routeProvider
-		.when('/signup',{
-			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
-				else
-					return 'views/signup.html';
-			},
-			controller: 'SignUpCtrl'
-		})
+		
 		.when('/show',{
 			templateUrl: function(params){
 				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
@@ -56,9 +49,6 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 		.when('/login',{
 			templateUrl: 'views/login.html',
 			controller: 'MainCtrl'
-		}).when('/register',{
-			templateUrl: 'views/register.html',
-			controller: 'RegisterCtrl'
 		}).when('/view',{
 			templateUrl: 'views/view.html',
 			controller: 'ViewCtrl'
