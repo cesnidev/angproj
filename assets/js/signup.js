@@ -275,6 +275,7 @@ $(function() {
         });
 
         $('#add_exp').click(function(){
+            console.log("experience counter: "+experience_c);
             if(experience_c<6){$('#exp'+experience_c).show('slow');experience_c++;}
             return false;
         });
@@ -285,6 +286,7 @@ $(function() {
         });
 
         $('#add_brand').click(function(){
+             console.log("jobs counter: "+job_c);
             if(job_c<6){$('#brand'+job_c).show('slow');job_c++;}
             return false;
         });

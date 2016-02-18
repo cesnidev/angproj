@@ -43,7 +43,7 @@
 
 			<fieldset id="basicinfo_form" ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
 				<md-content layout-padding class="inputErrors">
-			<form name="binfo" novalidate ng-cloak>
+			<form name="binfo" novalidate novalidate ng-cloak>
 
 				
 
@@ -694,7 +694,7 @@
 
 			<fieldset id="profile_form" ng-if="user.forms.profile == undefined || allcompletecookie.profile == false">
 			<md-content>
-			<form name="prof" id="profile" data-abide="ajax">
+			<form name="prof" novalidate id="profile" data-abide="ajax">
 				<h1>Profile</h1>
 				<h2 class="fs-title">Gender</h2>
 				
@@ -1279,8 +1279,8 @@
 			</fieldset>
 
 			<fieldset id="experience_form" ng-if="user.forms.experience == undefined || allcompletecookie.experience == false">
-			<md-content
-			<form id="experience" name="exp" data-abide="ajax">
+			<md-content>
+			<form id="experience" name="exp" novalidate data-abide="ajax">
 				<h1>Experience</h1>
 
 				<div class="row">
@@ -1959,7 +1959,7 @@
 
 			<fieldset id="availability_form" ng-if="user.forms.availability == undefined || allcompletecookie.availability == false">
 			<md-content>
-			<form id="availability" name="avail" data-abide="ajax">
+			<form id="availability" name="avail" novalidate data-abide="ajax">
 				<h1>Availability</h1>
 				<h2 class="fs-title">Driving</h2><hr>
 				<div class="row">
@@ -2200,7 +2200,7 @@
 
 			<fieldset id="legal_form" ng-if="user.forms.legal == undefined || allcompletecookie.legal == false">
 			<md-content>
-			<form id="legal" name="legl" data-abide="ajax" novalidate>
+			<form id="legal" name="legl" novalidate data-abide="ajax" novalidate>
 				<h1>Legal</h1>
 				<h2 class="fs-title">Legal</h2><hr>
 				<div class="row">

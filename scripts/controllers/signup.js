@@ -224,7 +224,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			if(EventicaLogin.isAuthenticated())
 			{
 				if (form.$valid) {
-					$scope.jexperience.basic = $scope.experience;
+					$scope.jexperience.experience = $scope.experience;
 	            	EventicaResource.saveExperience($scope.jexperience).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
 		            	$scope.allcompletecookie.basicinfo=true;
