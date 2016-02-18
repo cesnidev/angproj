@@ -704,7 +704,7 @@
 						<div class="switch">
 						    <label>
 						      Male
-						      <input ng-model="profile.gender" ng-init="profile.gender=male" ng-false-value="'male'" ng-true-value="'female'" id="gender" name="gender" type="checkbox">
+						      <input ng-model="profile.gender" ng-init="profile.gender='male'" ng-false-value="'male'" ng-true-value="'female'" id="gender" name="gender" type="checkbox">
 						      <span class="lever"></span>
 						      Female
 						    </label>
@@ -772,13 +772,10 @@
 									        <div class="s12 col input-field">
 									        	<label class="active" for="weight">Weight</label>
 
-												<input ng-model="profile.weight" id="weight"  name="weight" required ng-pattern="99.99"/>
+												<input ng-model="profile.weight" id="weight"  name="weight" required ui-mask="99.99"/>
 											<div class="eventicaerror" ng-messages="prof.weight.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Weight is required.
-												</div>
-												<div ng-message="pattern">
-													Weight must be valid.
 												</div>
 												
 											</div>
