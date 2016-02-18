@@ -7,12 +7,18 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<div ng-if="basicinfo.social==false || user.provider=='angular'">
-					    		<img ng-show="" id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
+					    	<div ng-if="user.provider=='angular'">
+					    		<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
 					    	</div>
-					    	<div ng-if="basicinfo.social==true">
-					    		<img ng-show="" id="social_pic" ng-src="{{ img }}" alt="" class="circle picture">		
+					    	<div ng-if="user.provider!='angular'">
+					    		<div ng-if="basicinfo.social==false">
+					    			<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
+						    	</div>
+						    	<div ng-if="basicinfo.social==true">
+						    		<img id="social_pic" ng-src="{{ img }}" alt="" class="circle picture">		
+						    	</div>
 					    	</div>
+					    	
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
