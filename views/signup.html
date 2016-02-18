@@ -292,7 +292,6 @@
 								</div>
 								<div class="col s12 l4"></div>
 				</div>
-				Contenido Address 1: {{ basicinfo.address1 }}
 				<div class="row">
 								<div class="col s12 l2">
 									<label class="inline"><font size="-1">Address Line 2:</font></label>
@@ -705,7 +704,7 @@
 						<div class="switch">
 						    <label>
 						      Male
-						      <input ng-model="profile.gender" ng-false-value="'male'" ng-true-value="'female'" id="gender" name="gender" type="checkbox">
+						      <input ng-model="profile.gender" ng-init="profile.gender=false" ng-false-value="'male'" ng-true-value="'female'" id="gender" name="gender" type="checkbox">
 						      <span class="lever"></span>
 						      Female
 						    </label>
@@ -714,7 +713,6 @@
 
 					<div class="l5 col"></div>
 				</div>
-				Gender Value: {{ profile.gender }}
 				<br><hr>
 				<h2 class="fs-title">Characteristics (for Outfits, Costumes, Roles, Casting, Characters, etc)</h2>
 
@@ -724,8 +722,11 @@
 										<div class="l6 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
+
+
 									          		
-    								<select class="browser-default" ng-model="profile.height" name="height" required>
+    								<label class="active" for="height">Height</label>
+    								<select class="browser-default" ng-model="profile.height" name="height" id="height" required>
     									<option value="" disabled selected>--</option>
                                     	<option value="4'10">4'10</option>
                                     	<option value="4'11">4'11</option>
@@ -758,7 +759,6 @@
                                     	<option value="6'12">6'12</option>
     								  
     								</select>
-    								<label>Heigh</label>
     								<div class="eventicaerror" ng-messages="prof.height.$error" role="alert">
 											<div ng-message="required">Height is required.</div>
 									</div>
@@ -771,7 +771,7 @@
 									        <div class="s12 col input-field">
 									        	<label class="active" for="weight">Weight</label>
 
-												<input ng-model="profile.weight" id="weight"  name="weight" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
+												<input ng-model="profile.weight" id="weight"  name="weight" required ng-pattern="/^[-+]?[1-9.]\d*$/"/>
 											<div class="eventicaerror" ng-messages="prof.weight.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Weight is required.
@@ -798,7 +798,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="eyecolor" ng-model="profile.eye_color" required>
+				    								<label class="active" for="eyecolor">Eye Color</label>
+				    								<select class="browser-default" name="eyecolor" id="eyecolor" ng-model="profile.eye_color" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="Blue">Blue</option>
 				                                    	<option value="Brown">Brown</option>
@@ -806,7 +807,7 @@
 				                                    	<option value="Hazel">Hazel</option>
 				                                    	<option value="Gray">Gray</option>
 				    								</select>
-				    							<label>Eye Color</label>
+				    							
 				    							<div class="eventicaerror" ng-messages="prof.eyecolor.$error" role="alert">
 														<div ng-message="required">eye color is required.</div>
 												</div>
@@ -816,7 +817,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="haircolor" ng-model="profile.hair_color" required>
+				    								<label class="active" for="haircolor">Hair Color</label>
+				    								<select class="browser-default" id="haircolor" name="haircolor" ng-model="profile.hair_color" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="Auburn">Auburn</option>
 				                                    	<option value="Black">Black</option>
@@ -824,7 +826,6 @@
 				                                    	<option value="Brunette">Brunette</option>
 				                                    	<option value="Other">Other</option>
 				    								</select>
-				    							<label>Hair Color</label>
 				    							<div class="eventicaerror" ng-messages="prof.haircolor.$error" role="alert">
 														<div ng-message="required">hair color is required.</div>
 												</div>
@@ -834,7 +835,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="hairlength" ng-model="profile.hair_length" required>
+				    								<label class="active" for="hairlength">Hair Length</label>
+				    								<select class="browser-default" name="hairlength" id="hairlength" ng-model="profile.hair_length" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="Short">Short</option>
 				                                    	<option value="Medium">Medium</option>
@@ -842,7 +844,6 @@
 				                                    	<option value="Bald">Bald</option>
 				    								  
 				    								</select>
-				    							<label>Hair Length</label>
 				    							<div class="eventicaerror" ng-messages="prof.hairlength.$error" role="alert">
 														<div ng-message="required">hair length is required.</div>
 												</div>
@@ -859,7 +860,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="tshirt" ng-model="profile.tshirt_size" required>
+				    								<label class="active" for="tshirt">T-Shirt Size</label>
+				    								<select class="browser-default" name="tshirt" id="tshirt" ng-model="profile.tshirt_size" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="XS">XS</option>
 				                                    	<option value="S">S</option>
@@ -868,7 +870,6 @@
 				                                    	<option value="XL">XL</option>
 				                                    	<option value="XXL+">XXL+</option>
 				    								</select>
-				    							<label>T-Shirt Size</label>
 				    							<div class="eventicaerror" ng-messages="prof.tshirt.$error" role="alert">
 														<div ng-message="required">t-shirt size is required.</div>
 												</div>
@@ -878,7 +879,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="pantsize" ng-model="profile.pants_size" required>
+				    								<label class="active" for="pantsize">Pants Shorts Size</label>
+				    								<select class="browser-default" name="pantsize" id="pantsize" ng-model="profile.pants_size" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="XS">XS</option>
 				                                    	<option value="S">S</option>
@@ -887,7 +889,6 @@
 				                                    	<option value="XL">XL</option>
 				                                    	<option value="XXL+">XXL+</option>
 				    								</select>
-				    							<label>Pants Shorts Size</label>
 				    							<div class="eventicaerror" ng-messages="prof.pantsize.$error" role="alert">
 														<div ng-message="required">pants shorts size is required.</div>
 												</div>
@@ -897,7 +898,8 @@
 										<div class="l4 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="shoesize" ng-model="profile.shoes_size" required>
+				    								<label class="active" for="shoesize">Shoe Size</label>
+				    								<select class="browser-default" name="shoesize" id="shoesize" ng-model="profile.shoes_size" required>
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="5">5</option>
 				                                    	<option value="5.5">5.5</option>
@@ -920,7 +922,6 @@
 														<option value="14">14</option>
 				                                    	<option value="14+">14+</option>	 
 				    								</select>
-				    							<label>Shoe Size</label>
 				    							<div class="eventicaerror" ng-messages="prof.shoesize.$error" role="alert">
 														<div ng-message="required">shoe size is required.</div>
 												</div>
@@ -944,7 +945,8 @@
 										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="chest" ng-model="profile.chest" >
+				    								<label class="active" for="chest">Chest</label> 
+				    								<select class="browser-default" id="chest" name="chest" ng-model="profile.chest" >
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="36">36</option>
 				                                    	<option value="38">38</option>
@@ -955,7 +957,6 @@
 				                                    	<option value="48">48</option>
 				                                    	<option value="50">50</option>
 				    								</select>
-				    							<label>Chest</label>
 				    							<div class="eventicaerror" ng-messages="prof.chest.$error" role="alert">
 														<div ng-message="required">chest is required.</div>
 												</div>
@@ -965,7 +966,8 @@
 										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="jacketsize" ng-model="profile.jacket_size">
+				    								<label class="active" for="jacketsize">Jacket Size</label> 
+				    								<select class="browser-default" name="jacketsize" id="jacketsize" ng-model="profile.jacket_size">
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="36">36</option>
 				                                    	<option value="38">38</option>
@@ -976,7 +978,7 @@
 				                                    	<option value="48">48</option>
 				                                    	<option value="50">50</option>
 				    								</select>
-				    							<label>Jacket Size</label>
+				    							
 				    							<div class="eventicaerror" ng-messages="prof.jacketsize.$error" role="alert">
 														<div ng-message="required">ejacket size is required.</div>
 												</div>
@@ -986,7 +988,8 @@
 										<div class="l3 s12 col">
 											<div class="row collapse">
 									        <div class="s12 col input-field">
-				    								<select class="browser-default" name="waist" ng-model="profile.waist" >
+				    								<label class="active" for="waist">Waist</label>
+				    								<select class="browser-default" name="waist" id="waist" ng-model="profile.waist" >
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="28">28</option>
 				                                    	<option value="30">30</option>
@@ -997,7 +1000,6 @@
 				                                    	<option value="40">40</option>
 				                                    	<option value="42">42</option>
 				    								</select>
-				    							<label>Waist</label>
 				    							<div class="eventicaerror" ng-messages="prof.waist.$error" role="alert">
 														<div ng-message="required">waist is required.</div>
 												</div>
@@ -1022,7 +1024,8 @@
 										<div class="l4 s12 m12 col">
 											<div class="row collapse">
 									        <div class="s12 l12 m12 col input-field">
-				    								<select class="browser-default" name="waistfemale" ng-model="profile.waist" >
+				    								<label class="active" for="waistfemale">Waist</label>
+				    								<select class="browser-default" name="waistfemale" id="waistfemale" ng-model="profile.waist" >
 				    								    <option selected="selected">--</option>
 				                                    	<option value="24">24</option>
 				                                    	<option value="25">25</option>
@@ -1036,7 +1039,6 @@
 				                                    	<option value="33">33</option>
 				                                    	<option value="34+">34+</option>
 				    								</select>
-				    							<label>Waist</label>
 				    							<div class="eventicaerror" ng-messages="prof.waistfemale.$error" role="alert">
 														<div ng-message="required">waist is required.</div>
 												</div>
@@ -1046,7 +1048,8 @@
 										<div class="l4 s12 m12 col">
 											<div class="row collapse">
 									        <div class="s12 l12 m12 col input-field">
-				    								<select class="browser-default" name="hips" ng-model="profile.hips">
+				    								<label class="active" for="hips">Hips</label>
+				    								<select class="browser-default" name="hips" id="hips" ng-model="profile.hips">
 				    								    <option value="" disabled selected>--</option>
 				                                    	<option value="33">33</option>
 				                                    	<option value="34">34</option>
@@ -1061,7 +1064,6 @@
 				                                    	<option value="43">43</option>
 				                                    	<option value="44+">44+</option>
 				    								</select>
-				    							<label>Hips</label>
 				    							<div class="eventicaerror" ng-messages="prof.hips.$error" role="alert">
 														<div ng-message="required">hips is required.</div>
 												</div>
@@ -1071,7 +1073,8 @@
 										<div class="l4 s12 m12 col">
 											<div class="row collapse">
 									        <div class="s12 m12 l12 col input-field">
-				    								<select class="browser-default" name="dressize" ng-model="profile.dress_size">
+				    								<label class="active" for="dressize">Dress Size</label>
+				    								<select class="browser-default" name="dressize" id="dressize" ng-model="profile.dress_size">
 				    								    <option value="" selected="selected">--</option>
 				                                    	<option value="0">0</option>
 				                                    	<option value="2">2</option>
@@ -1081,7 +1084,6 @@
 				                                    	<option value="10">10</option>
 				                                    	<option value="12+">12+</option>
 				    								</select>
-				    							<label>Dress Size</label>
 				    							<div class="eventicaerror" ng-messages="prof.dressize.$error" role="alert">
 														<div ng-message="required">dress size is required.</div>
 												</div>
@@ -1104,7 +1106,8 @@
 											<label class="inline"><font size="-1">Native/First Language:</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="nflanguage" ng-model="profile.first_language" required>
+    								<label class="active" for="nflanguage">Native/First Language: </label>
+    								<select class="browser-default" name="nflanguage" id="nflanguage" ng-model="profile.first_language" required>
     								    <option value="" disabled selected="selected">--</option>
                                     	<option value="English">English</option>
                                     	<option value="Spanish">Spanish</option>
@@ -1115,7 +1118,6 @@
                                     	<option value="Russian">Russian</option>
                                     	<option value="Chinese">Chinese</option>
     								</select>
-    							<label>Native/First Language: </label>
     							<div class="eventicaerror" ng-messages="prof.nflanguage.$error" role="alert">
 														<div ng-message="required">native/first language is required.</div>
 												</div>
@@ -1131,7 +1133,8 @@
 											<label class="inline"><font size="-1">Second Language:</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="slanguage" ng-model="profile.second_language">
+    								<label class="active" for="slanguage">Second Language: </label>
+    								<select class="browser-default" name="slanguage" id="slanguage" ng-model="profile.second_language">
     								    <option value="" selected="selected" disabled>*optional</option>
                                     	<option value="English">English</option>
                                     	<option value="Spanish">Spanish</option>
@@ -1142,7 +1145,6 @@
                                     	<option value="Russian">Russian</option>
                                     	<option value="Chinese">Chinese</option>
     								</select>
-    							<label>Second Language</label> <!-- cesni mark checar referencias desde profile -->
 										</div>
 									</div>
 								</div>
@@ -1409,7 +1411,8 @@
 											<label class="inline"><font size="-1">How many events have you worked?</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="hmevents" ng-model="experience.many_events" required>
+    								<label class="active" for="hmevents">How many events have you worked?</label> 
+    								<select class="browser-default" name="hmevents" id="hmevents" ng-model="experience.many_events" required>
     									<option value="" selected disabled>select one</option>
                                     	<option value="0" >0</option>
                                     	<option value="10-25">10-25</option>
@@ -1417,7 +1420,7 @@
                                     	<option value="50-100">50-100</option>
                                     	<option value="100+">100+</option>
     								</select>
-    							<label>How many events have you worked?</label>
+    							
     							<div class="eventicaerror" ng-messages="exp.hmevents.$error">
     								<div ng-message="required">required.</div>
     							</div>
@@ -1433,7 +1436,8 @@
 											<label class="inline"><font size="-1">How long have you been doing events:</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="hlevents" ng-model="experience.doing_events" required>
+    								<label class="active" for="hlevents">How long have you been doing events:</label>
+    								<select class="browser-default" name="hlevents" id="hlevents" ng-model="experience.doing_events" required>
     								<option value="" selected disabled>select one</option>
                                     	<option value="Just Getting Started" >Just Getting Started</option>
                                     	<option value="Less than a year">Less than a year</option>
@@ -1441,7 +1445,7 @@
                                     	<option value="3-5 years">3-5 years</option>
                                     	<option value="5 years or more">5 years or more</option>
     								</select>
-    							<label>How long have you been doing events:</label>
+    							
     							<div class="eventicaerror" ng-messages="exp.hlevents.$error">
     								<div ng-message="required">required.</div>
     							</div>
@@ -1457,14 +1461,14 @@
 											<label class="inline"><font size="-1">How many events have you activated?</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="hmactivated" ng-model="experience.activated_events" required>
+    								<label class="active" for="hmactivated">How many events have you activated?</label> 
+    								<select class="browser-default" name="hmactivated" id="hmactivated" ng-model="experience.activated_events" required>
     								<option value="" selected disabled>select one</option>
                                     	<option value="0" >0</option>
                                     	<option value="1-5">1-5</option>
                                     	<option value="6-10">6-10</option>
                                     	<option value="More than 10">More than 10</option>
     								</select>
-    							<label>How many events have you activated?</label>
     							<div class="eventicaerror" ng-messages="exp.hmactivated.$error">
     								<div ng-message="required">required.</div>
     							</div>
@@ -1480,14 +1484,14 @@
 											<label class="inline"><font size="-1">How many different brands do you work with on a regular basis?</font></label>
 										</div>
 										<div class="l6 s12 m12 col input-field">
-    								<select class="browser-default" name="hmbrands" ng-model="experience.ifferent_brands" required>
+    								<label class="active" for="hmbrands">How many different brands do you work with on a regular basis?</label>
+    								<select class="browser-default" name="hmbrands" id="hmbrands" ng-model="experience.ifferent_brands" required>
                                     	<option value="" selected disabled>select one</option>
                                     	<option value="0">0</option>
                                     	<option value="1-5">1-5</option>
                                     	<option value="6-10">6-10</option>
                                     	<option value="More than 10">More than 10</option>
     								</select>
-    							<label>How many different brands do you work with on a regular basis?</label>
     							<div class="eventicaerror" ng-messages="exp.hmbrands.$error">
     								<div ng-message="required">required.</div>
     							</div>
@@ -1631,7 +1635,8 @@
 											<div class="row ">
         									<label class="left">What level of education have you completed?</label>
 									        <div class="s12 l6 col input-field">
-    								<select class="browser-default" name="educationlevel" ng-model="experience.education_level" required>
+    								<label class="active" for="educationlevel">What level of education have you completed?</label>
+    								<select class="browser-default" name="educationlevel" id="educationlevel" ng-model="experience.education_level" required>
     									<option value="" selected disabled>select one</option>
                                     	<option value="High School" >High School</option>
                                     	<option value="Associate Degree">Associate Degree</option>
@@ -1640,7 +1645,6 @@
                                     	<option value="Ph. D.">Ph. D.</option>
                                     	<option value="Other">Other</option>
                                     </select>
-    							<label>What level of education have you completed?</label>
     							<div class="eventicaerror" ng-messages="exp.educationlevel.$error" role="alert">
     								<div  ng-message="required">
     									level education is required.
