@@ -85,7 +85,14 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
 
 		if($scope.user.provider=='facebook'||$scope.user.provider=='google_oauth2')
+		{
+			$scope.angular=false;
 			$scope.img = $scope.user.image;
+		}
+		else
+		{
+			$scope.angular=true;
+		}
 	}
 	
 

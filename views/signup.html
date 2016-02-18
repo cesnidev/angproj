@@ -7,11 +7,11 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<div ng-if="user.provider=='angular'">
+					    	<div ng-if="angular">
 					    		<!-- registered by email-->
 					    		<img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
 					    	</div>
-					    	<div ng-if="user.provider!='angular'">
+					    	<div ng-if="angular">
 					    		<!-- registered by social network-->
 					    		<div ng-if="basicinfo.social==false">
 					    			<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
@@ -64,7 +64,9 @@
 			          <h2 class="fs-title">Profile Image</h2>
 				</div>
 				<div class="row">
+
 					Testing Img: <img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture"> <br>
+					Show/hide: {{ angular }}
 					Social Picture: {{ basicinfo.social }}
 					Provider: {{ user.provider }} is angular {{ user.provider=='angular' }}
 				</div>
