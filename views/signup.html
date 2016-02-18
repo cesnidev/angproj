@@ -39,8 +39,8 @@
 			</ul>
 
 			<!-- fieldsets -->
-
-			<fieldset id="basicinfo_form" ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
+			<div ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
+				<fieldset id="basicinfo_form" >
 				<md-content layout-padding class="inputErrors">
 			<form name="binfo" novalidate ng-cloak>
 
@@ -697,6 +697,9 @@
 			</form>
 			</md-content>
 			</fieldset>
+			</div>
+
+			
 
 			<fieldset id="profile_form" ng-if="user.forms.profile == undefined || allcompletecookie.profile == false">
 			<md-content>
