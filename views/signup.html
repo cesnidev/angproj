@@ -8,9 +8,11 @@
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
 					    	<div ng-if="user.provider=='angular'">
-					    		<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
+					    		<!-- registered by email-->
+					    		<img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
 					    	</div>
 					    	<div ng-if="user.provider!='angular'">
+					    		<!-- registered by social network-->
 					    		<div ng-if="basicinfo.social==false">
 					    			<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
 						    	</div>
