@@ -6,7 +6,6 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		$location.path("/login");
 	else
 	{
-		$scope.croppedDataUrl = '';
 		$scope.url = $location.absUrl();
 		$scope.user = Session.getSession();
 		console.log("Cookie Content: "+JSON.stringify($scope.user));
@@ -78,23 +77,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		
 	
 
-	if(EventicaLogin.isAuthenticated()){
-		$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
-		$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
-		$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
-		$scope.javailability = {token:$scope.user.token,app_id:EventicaConfig.AppId,availability:''};
-		$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
 
-		if($scope.user.provider=='facebook'||$scope.user.provider=='google_oauth2')
-		{
-			$scope.angular=false;
-			$scope.img = $scope.user.image;
-		}
-		else
-		{
-			$scope.angular=true;
-		}
-	}
 	
 
 	cssInjector.add("assets/css/proyecto.form.css");
@@ -112,7 +95,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	    }
 	};
 
-	$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","basicinfo.ship_address2":""};
+	$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","basicinfo.ship_address2":"","social":false};
 	$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};
 	$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 	$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};
@@ -146,6 +129,19 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	$scope.cesni=["0","1-5","6-10","More than 10"];
 	$scope.cesni=["High School","Associate Degree","Bachelors Degree","Masters Degree","Ph. D.","Other"];
 	/* END INITS*/
+
+		if(EventicaLogin.isAuthenticated()){
+		$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
+		$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
+		$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
+		$scope.javailability = {token:$scope.user.token,app_id:EventicaConfig.AppId,availability:''};
+		$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
+
+		if($scope.user.provider=='facebook'||$scope.user.provider=='google_oauth2')
+		{
+			$scope.img = $scope.user.image;
+		}
+	}
 
 
 	/* Start Click Functions*/

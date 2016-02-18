@@ -7,21 +7,8 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<div ng-show="angular">
-					    		<!-- registered by email-->
-					         		{{ croppedDataUrl }}
-					    		<img ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">	
-					    	</div>
-					    	<div ng-show="!angular">
-					    		<!-- registered by social network-->
-					    		<div ng-if="basicinfo.social==false">
-					    			<img id="upload_pic" ng-src="{{ croppedDataUrl }}" alt="" class="circle picture">		
-						    	</div>
-						    	<div ng-if="basicinfo.social==true">
-						    		<img id="social_pic" ng-src="{{ img }}" alt="" class="circle picture">		
-						    	</div>
-					    	</div>
-					    	
+					    	<img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -76,7 +63,7 @@
 						<div ng-switch-when="facebook">
 							<div class="col s12 l2 offset-l2" align="center">
 								<p>
-							      <input type="checkbox" ng-model="basicinfo.social" ng-init="basicinfo.social=false" class="n" id="filled-in-box" />
+							      <input type="checkbox" ng-model="basicinfo.social" class="n" id="filled-in-box" />
 							      <label for="filled-in-box" style="color:black;">Use my facebook image</label>
 							    </p>
 								
@@ -85,7 +72,7 @@
 						<div ng-switch-when="google_oauth2">
 							<div class="col s12 l2 offset-l2" align="center">
 								<p>
-							      <input type="checkbox"  ng-model="basicinfo.social" ng-init="basicinfo.social=false" class="n" id="filled-in-box" />
+							      <input type="checkbox"  ng-model="basicinfo.social" class="n" id="filled-in-box" />
 							      <label for="filled-in-box" style="color:black;">Use my google image</label>
 							    </p>
 								
@@ -105,7 +92,7 @@
 
 				        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="col l12 s12 m12 cropArea dropzone">
 						            <img-crop image="picFile  | ngfDataUrl"                 
-						            result-image="croppedDataUrl">
+						            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
 						            </img-crop>
 						        </div>
 						        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
@@ -116,7 +103,7 @@
 				        	
 				        </div>
 						
-				</div>	
+					</div>	
 
 			        
 			        
