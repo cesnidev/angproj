@@ -1947,8 +1947,7 @@
 						
 					</div>
 				</div><br>
-				{{ experience | json }}
-				Valid EXP: {{ exp.$valid }}
+				<!-- {{ experience | json }} -->
 
 				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
 
@@ -2189,7 +2188,7 @@
 						</div>
 					</div>
 				</div></div></div>
-				{{ availability | json }}
+				<!-- {{ availability | json }} -->
 
 				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
 

@@ -284,12 +284,13 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	            	EventicaResource.saveLegal($scope.jlegal).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
 		            	$scope.allcompletecookie.basicinfo=true;
-				$scope.allcompletecookie.profile=true;
-				$scope.allcompletecookie.experience=true;
-				$scope.allcompletecookie.availability=true;
-				$scope.allcompletecookie.legal=true;
-				Session.save('completeforms',$scope.allcompletecookie);
-		            	$scope.animate_next(c);
+						$scope.allcompletecookie.profile=true;
+						$scope.allcompletecookie.experience=true;
+						$scope.allcompletecookie.availability=true;
+						$scope.allcompletecookie.legal=true;
+						Session.save('completeforms',$scope.allcompletecookie);
+		            	//$scope.animate_next(c);
+		            	$location.path('/home');
 		            });
 	        	}
 	        	else
