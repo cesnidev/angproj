@@ -74,13 +74,6 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 				Session.save('completeforms',$scope.allcompletecookie);}
 		}
 		}
-		
-
-		
-	
-
-
-	
 
 	cssInjector.add("assets/css/proyecto.form.css");
 
@@ -96,6 +89,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 	      }
 	    }
 	};
+	console.log($scope.drozone);
 
 	$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","basicinfo.ship_address2":"","social":false};
 	$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};
@@ -172,6 +166,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			if(EventicaLogin.isAuthenticated())
 			{
 				if (form.$valid) {
+					$scope.basicinfo.picture = $scope.croppedDataUrl;
 					$scope.jbasic.basic = $scope.basicinfo;
 					EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
@@ -201,14 +196,19 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			if(EventicaLogin.isAuthenticated())
 			{
 				if (form.$valid) {
-					$scope.jprofile.profile = $scope.profile;
-	            	EventicaResource.saveProfile($scope.jprofile).$promise.then(function(response){
+					if($scope.imgs>=3){
+						$scope.jprofile.profile = $scope.profile;
+	            		EventicaResource.saveProfile($scope.jprofile).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
 		            	$scope.allcompletecookie.basicinfo=true;
-				$scope.allcompletecookie.profile=true;
-				Session.save('completeforms',$scope.allcompletecookie);
+						$scope.allcompletecookie.profile=true;
+						Session.save('completeforms',$scope.allcompletecookie);
 		            	$scope.animate_next(c);
 		            });
+					}else {
+						notificar('you must upload at least 3 pictures.');
+					}
+					
 	        	}
 	        	else
 	        	{
@@ -225,7 +225,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		{
 			if(EventicaLogin.isAuthenticated())
 			{
-				if (form.$valid) {
+				if (form.$valid) { 
 					$scope.jexperience.experience = $scope.experience;
 	            	EventicaResource.saveExperience($scope.jexperience).$promise.then(function(response){
 		            	console.log(JSON.stringify(response));
@@ -382,6 +382,68 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		if($scope.jobs>0)
 			$scope.jobs = $scope.jobs-1;
 	};
+
+	$scope.setpic = function(){
+		$scope.basicinfo.profilepic = $scope.img;
+	};
+
+	$scope.addimgs = function(){
+		switch ($scope.imgs) {
+			case 1:
+				if($scope.profile.pic1.data==undefined)
+				{
+					notificar('first complete the existing fields before add more.');
+					return;
+				}
+				break;
+			case 2:
+				if($scope.profile.pic1.data==undefined||$scope.profile.pic2.data==undefined)
+				{
+					notificar('first complete the existing fields before add more.');
+					return;
+				}
+				break;
+			case 3:
+				if($scope.profile.pic1.data==undefined||$scope.profile.pic2.data==undefined||$scope.profile.pic3.data==undefined)
+				{
+					notificar('first complete the existing fields before add more.');
+					return;
+				}
+				break;
+			case 4:
+				if($scope.profile.pic1.data==undefined||$scope.profile.pic2.data==undefined||$scope.profile.pic3.data==undefined||$scope.profile.pic4.data==undefined)
+				{
+					notificar('first complete the existing fields before add more.');
+					return;
+				}
+				break;
+		}
+		if($scope.imgs<5)
+			$scope.imgs = $scope.imgs+1;
+	};
+	$scope.delimgs = function(){
+		switch ($scope.imgs) {
+			case 1:
+				$scope.profile.pic1='';
+				break;
+			case 2:
+				$scope.profile.pic2='';
+				break;
+			case 3:
+				$scope.profile.pic3='';
+				break;
+			case 4:
+				$scope.profile.pic4='';
+				break;
+			case 5:
+				$scope.profile.pic5='';
+				break;
+		}
+		if($scope.imgs>0)
+			$scope.imgs = $scope.imgs-1;
+		
+	};
+
 	/* End Stuff Functions*/
 
 

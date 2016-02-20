@@ -7,7 +7,7 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					    	<img ng-show="!basicinfo.social" ng-src="{{basicinfo.picture.data}}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
@@ -57,7 +57,7 @@
 						<div ng-switch-when="facebook">
 							<div class="col s12 l2 offset-l2" align="center">
 								<p>
-							      <input type="checkbox" ng-model="basicinfo.social" class="n" id="filled-in-box" />
+							      <input type="checkbox" ng-model="basicinfo.social" ng-click="setpic()" class="n" id="filled-in-box" />
 							      <label for="filled-in-box" style="color:black;">Use my facebook image</label>
 							    </p>
 								
@@ -66,7 +66,7 @@
 						<div ng-switch-when="google_oauth2">
 							<div class="col s12 l2 offset-l2" align="center">
 								<p>
-							      <input type="checkbox"  ng-model="basicinfo.social" class="n" id="filled-in-box" />
+							      <input type="checkbox"  ng-model="basicinfo.social" ng-click="setpic()" class="n" id="filled-in-box" />
 							      <label for="filled-in-box" style="color:black;">Use my google image</label>
 							    </p>
 								
@@ -78,36 +78,40 @@
 						&nbsp;
 					</div>
 				</div>
+				
 
 				<div class="row picture" ng-show="!basicinfo.social">
 					<div class="l12 s12 m12">
-						<button ngf-select ng-model="picFile" accept="image/*" class="btn waves-effect">Select Picture</button><br><br><br>
-				        <div class="row" align="center">
 
-				        		<div ngf-drop ng-model="basicinfo.picFile" name="picFile" ngf-pattern="image/*" class="col l12 s12 m12 cropArea dropzone">
-						            <img-crop image="picFile  | ngfDataUrl"                 
-						            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
-						            </img-crop>
-						        </div>
-						        <div class="eventicaerror" ng-messages="binfo.picFile.$error">
-						        	<div ng-message="required">
-						        		profile image required.
-						        	</div>
-						        </div>
-				        	
-				        </div>
-						
+						<div class="row">
+							<div class="l3 s12 col">
+								&nbsp;
+							</div>
+							<div class="l6 s12 col" align="center">
+								<div class="file-field input-field btn">
+							      <div id="upload_tabc" >
+							        <span>License/Permit</span>
+							        <input type="file" ng-file-model="basicinfo.picture" />
+							      </div>
+							    </div>
+							</div>
+							<div class="l3 s12 col">
+								&nbsp;
+							</div>
+						</div>
+						<div class="row">
+								
+							<div class="l3 s12 col">
+								&nbsp;
+							</div>
+							<div class="l6 s12 col" align="center">
+								<img class="dropzone" ng-src="{{ basicinfo.picture.data }}" style="width:100%;height:100%;" alt="">
+							</div>
+							<div class="l3 s12 col">
+								&nbsp;
+							</div>
+						</div>
 					</div>	
-
-			        
-			        
-			        <!--<button ng-click="upload(croppedDataUrl)">Submit</button>--> 
-			            
-			        <span class="progress" ng-show="progress >= 0">
-			          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-			        </span>
-			        <span ng-show="result">Upload Successful</span>
-			        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 		        </div>
 		        <div class="row">
 		        	<h2 class="fs-title">Sign Up / Basic Information</h2>
@@ -686,7 +690,7 @@
 				
 				<!--Basic Info: {{ basicinfo | json }}-->
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="basicinfoclick('#basicinfo_form',binfo)" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Submit</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="basicinfoclick('#basicinfo_form',binfo)" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Profile!!"> Submit</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#basicinfo_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
 			</md-content>
@@ -1266,11 +1270,106 @@
   					</div>
 				</div><br>
 
-				<!-- {{ profile | json }} -->
+				<div class="row">
+					<div class="col l3 s6 m6">
+						&nbsp;
+					</div>
+					<div class="col l3 s6 m6">
+						<button class="btn orange" ng-click="addimgs()" >Add More Pictures</button>
+					</div>
+					<div class="col l3 s6 m6">
+						<button class="btn orange" ng-click="delimgs()" >Delete Pictures</button>
+					</div>
+					
+				</div> <br>
+				<div class="row picture" >
+					<div class="col l4 hub" ng-show="imgs>0">
+						<div class="row dropzone" >
+							<div class="row"><img ng-src="{{ profile.pic1.data }}" ng-show="profile.pic1.data!=undefined" style="width:100%;height:200px;" alt="">
+							</div>
+							<div class="row">
+								<div class="col l12">
+									<div class="file-field input-field btn">
+										<span>Select Img</span>
+							       		<input type="file" ng-file-model="profile.pic1" />
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col l4 hub" ng-show="imgs>=2">
+						<div class="row dropzone" >
+							<div class="row"><img ng-src="{{ profile.pic2.data }}" ng-show="profile.pic2.data!=undefined" style="width:100%;height:200px;" alt="">
+							</div>
+							<div class="row">
+								<div class="col l12">
+									<div class="file-field input-field btn">
+										<span>Select Img</span>
+							       		<input type="file" ng-file-model="profile.pic2" />
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col l4 hub" ng-show="imgs>=3">
+						<div class="row dropzone" >
+							<div class="row"><img ng-src="{{ profile.pic3.data }}" ng-show="profile.pic3.data!=undefined" style="width:100%;height:200px;" alt="">
+							</div>
+							<div class="row">
+								<div class="col l12">
+									<div class="file-field input-field btn">
+										<span>Select Img</span>
+							       		<input type="file" ng-file-model="profile.pic3" />
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>	
+		        </div>
+		        <div class="row">
+		        	<div class="col l3">&nbsp;</div>
+		        	<div class="col l3 hub" ng-show="imgs>=4">
+						<div class="row dropzone" >
+							<div class="row"><img ng-src="{{ profile.pic4.data }}" ng-show="profile.pic4.data!=undefined" style="width:100%;height:200px;" alt="">
+							</div>
+							<div class="row">
+								<div class="col l12">
+									<div class="file-field input-field btn">
+										<span>Select Img</span>
+							       		<input type="file" ng-file-model="profile.pic4" />
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col l3 hub" ng-show="imgs>=5">
+						<div class="row dropzone" >
+							<div class="row"><img ng-src="{{ profile.pic5.data }}" ng-show="profile.pic5.data!=undefined" style="width:100%;height:200px;" alt="">
+							</div>
+							<div class="row">
+								<div class="col l12">
+									<div class="file-field input-field btn">
+										<span>Select Img</span>
+							       		<input type="file" ng-file-model="profile.pic5" />
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col l3">&nbsp;</div>
+		        </div>
 
-			     <form action="http://alpha.eventicateam.com/index.php/api/up" class="dropzone" dropzone="dropzoneConfig" ></form><br>
-
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Experience!!"> Next</a>
 
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
@@ -1531,7 +1630,7 @@
 											<div class="file-field input-field">
 										      <div id="upload_tabc" class="btn">
 										        <span>License/Permit</span>
-										        <input type="file" ng-file-model="experiencae.tabc_image" />
+										        <input type="file" ng-file-model="experience.tabc_image" />
 										      </div>
 										    </div>
 										</div>
@@ -1541,7 +1640,7 @@
 											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
 										</div>
 										<div class="l5 s12 m12 col">
-											<img class="dropzone" ng-src="{{ experiencae.uploadtabc.data }}" style="width:100%;height:100%;" alt="">
+											<img class="dropzone" ng-src="{{ experience.tabc_image.data }}" style="width:100%;height:100%;" alt="">
 										</div>
 									</div>
 								</div>
@@ -1949,7 +2048,7 @@
 				</div><br>
 				<!-- {{ experience | json }} -->
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Availability!!"> Next</a>
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -2000,7 +2099,7 @@
 											<div class="file-field input-field">
 										      <div id="upload_tabc" class="btn">
 										        <span>License/Permit</span>
-										        <input type="file" ng-file-model="experiencae.valid_license_image" />
+										        <input type="file" ng-file-model="availability.driver_image" />
 										      </div>
 										    </div>
 										</div>
@@ -2010,7 +2109,7 @@
 											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
 										</div>
 										<div class="l5 s12 m12 col">
-											<img class="dropzone" ng-src="{{ experiencae.uploadtabc.data }}" style="width:100%;height:100%;" alt="">
+											<img class="dropzone" ng-src="{{ availability.driver_image.data }}" style="width:100%;height:100%;" alt="">
 										</div>
 									</div>
 								</div>
@@ -2190,7 +2289,7 @@
 				</div></div></div>
 				<!-- {{ availability | json }} -->
 
-				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!"> Next</a>
+				<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Legal!!"> Next</a>
 
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_next('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -2351,7 +2450,7 @@
 							</div>
 							
 							<br><br>
-					<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="legalclick('#legal_form',legl)" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Submit</a>
+					<a tooltipped ng-if="url.indexOf('signup')>-1" ng-click="legalclick('#legal_form',legl)" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Finish!!">Submit</a>
 
 					<a tooltipped ng-if="url.indexOf('show')>-1" ng-click="animate_previous('#legal_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				
