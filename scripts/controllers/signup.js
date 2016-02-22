@@ -6,11 +6,12 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 		$location.path("/login");
 	else
 	{
+		$scope.imgs=0;
 		cssInjector.add("assets/css/proyecto.form.css");
 		/* START INITS*/
 			
 			$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
-			$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false};
+			$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false,picture1:'',picture2:'',picture3:'',picture4:'',picture5:'',};
 			$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 			$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};
 			$scope.availability = {"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
@@ -32,11 +33,68 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			$scope.hairlength=["Short","Medium","Long","Bald"];
 			$scope.tshirt=["XS","S","M","L","XL","XXL+"];
 			/* END INITS*/
+
+			$scope.addimgs = function(){
+				switch ($scope.imgs) {
+					case 1:
+						if($scope.profile.picture1.data==undefined)
+						{
+							notificar('first complete the existing fields before add more.');
+							return;
+						}
+					break;
+					case 2:
+						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined)
+						{
+							notificar('first complete the existing fields before add more.');
+							return;
+						}
+					break;
+					case 3:
+						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined)
+						{
+							notificar('first complete the existing fields before add more.');
+							return;
+						}
+					break;
+					case 4:
+						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined||$scope.profile.picture4.data==undefined)
+						{
+							notificar('first complete the existing fields before add more.');
+							return;
+						}
+					break;
+				}
+				if($scope.imgs<5)
+					$scope.imgs = $scope.imgs+1;
+			};
+			$scope.delimgs = function(){
+				switch ($scope.imgs) {
+					case 1:
+						$scope.profile.picture1='';
+					break;
+					case 2:
+						$scope.profile.picture2='';
+					break;
+					case 3:
+						$scope.profile.picture3='';
+					break;
+					case 4:
+						$scope.profile.picture4='';
+					break;
+					case 5:
+						$scope.profile.picture5='';
+					break;
+				}
+				if($scope.imgs>0)
+					$scope.imgs = $scope.imgs-1;
+				
+			};
+
 		if(($location.absUrl().indexOf('signup')>-1)) //is signup view
 		{
 			$scope.onlyview = false;
-			$scope.jobs=0;
-			$scope.brands=0;
+			
 			$scope.url = $location.absUrl();
 			$scope.user = Session.getSession();
 			var allcomplete = $scope.user.forms;	
@@ -312,64 +370,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 				$scope.basicinfo.picture = $scope.img;
 			};
 			
-			$scope.addimgs = function(){
-				console.log('current imgs: '+$scope.imgs);
-				switch ($scope.imgs) {
-					case 1:
-						if($scope.profile.picture1.data==undefined)
-						{
-							notificar('first complete the existing fields before add more.');
-							return;
-						}
-					break;
-					case 2:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined)
-						{
-							notificar('first complete the existing fields before add more.');
-							return;
-						}
-					break;
-					case 3:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined)
-						{
-							notificar('first complete the existing fields before add more.');
-							return;
-						}
-					break;
-					case 4:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined||$scope.profile.picture4.data==undefined)
-						{
-							notificar('first complete the existing fields before add more.');
-							return;
-						}
-					break;
-				}
-				if($scope.imgs<5)
-					$scope.imgs = $scope.imgs+1;
-			};
-			$scope.delimgs = function(){
-				console.log('current imgs: '+$scope.imgs);
-				switch ($scope.imgs) {
-					case 1:
-						$scope.profile.picture1='';
-					break;
-					case 2:
-						$scope.profile.picture2='';
-					break;
-					case 3:
-						$scope.profile.picture3='';
-					break;
-					case 4:
-						$scope.profile.picture4='';
-					break;
-					case 5:
-						$scope.profile.picture5='';
-					break;
-				}
-				if($scope.imgs>0)
-					$scope.imgs = $scope.imgs-1;
-				
-			};
+
 			
 			$scope.delete = function(){
 				cssInjector.removeAll();

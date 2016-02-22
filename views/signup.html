@@ -606,7 +606,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="profile_form" ng-disabled="onlyview" ng-if="user.forms.profile == undefined || allcompletecookie.profile == false">
+			<fieldset id="profile_form" ng-disabled="!onlyview" ng-if="user.forms.profile == undefined || allcompletecookie.profile == false">
 			<md-content>
 			<form name="prof" novalidate id="profile" data-abide="ajax">
 				<h1>Profile</h1>
@@ -1207,6 +1207,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="col l4 hub" ng-show="imgs>=2">
 						<div class="row dropzone" >
 							<div class="row"><img ng-src="{{ profile.picture2.data }}" ng-show="profile.picture2.data!=undefined" style="width:100%;height:200px;" alt="">
