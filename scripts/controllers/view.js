@@ -44,7 +44,6 @@ eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin,$rootScope,
     		}
 	};
 	$scope.moreinfo = function(data) {
-		console.log(data);
 		Session.remove('basicinfo');
 		$rootScope.info=data;
 		$location.path('/show');

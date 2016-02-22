@@ -35,19 +35,19 @@
 		</div> <hr>
 
 	</div>
-	<div class="col l8">
+	<div class="col l8 m12 ">
 		<div >
 	<div class="row">
-		<div class="col l4"   ng-repeat="userx in users | filter: AgeRange(search.from,search.to) | filter:search.gender">
-		<div class="card ">
+		<div class="col l4 s6 m4"   ng-repeat="userx in users | filter: AgeRange(search.from,search.to) | filter:search.gender">
+		<div class="card hoverable" style="cursor:help;">
 		      <div class="card-image">
 		        <img ng-src="assets/img/profiles/{{userx.photo}}">
-		        <span class="card-title">{{userx.name}}</span>
+		        <span class="card-title">{{userx.firstname}}</span>
 		      </div>
 		      <div class="card-content">
 		        <p>
-		        	Age: {{ userx.age }} 
-		        	Gender: {{ userx.gender }}<br>
+		        	Age: {{ userx.age }} <br>
+		        	Gender: {{ userx.gender }}
 		        </p>
 		      </div>
 		      <div class="card-action">
