@@ -41,7 +41,7 @@
 		<div class="col l4"   ng-repeat="userx in users | filter: AgeRange(search.from,search.to) | filter:search.gender">
 		<div class="card ">
 		      <div class="card-image">
-		        <img src="assets/img/profiles/{{ userx.photo }}">
+		        <img ng-src="assets/img/profiles/{{userx.photo}}">
 		        <span class="card-title">{{userx.name}}</span>
 		      </div>
 		      <div class="card-content">

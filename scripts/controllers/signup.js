@@ -313,6 +313,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			};
 			
 			$scope.addimgs = function(){
+				console.log('current imgs: '+$scope.imgs);
 				switch ($scope.imgs) {
 					case 1:
 						if($scope.profile.picture1.data==undefined)
@@ -347,6 +348,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 					$scope.imgs = $scope.imgs+1;
 			};
 			$scope.delimgs = function(){
+				console.log('current imgs: '+$scope.imgs);
 				switch ($scope.imgs) {
 					case 1:
 						$scope.profile.picture1='';
