@@ -34,7 +34,7 @@
 			</ul>
 
 			<!-- fieldsets -->
-			<fieldset id="basicinfo_form" ng-disabled="onlyview" ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
+			<fieldset id="basicinfo_form" ng-disabled="!onlyview" ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
 				<md-content layout-padding class="inputErrors">
 			<form name="binfo" novalidate novalidate ng-cloak>
 
@@ -170,7 +170,7 @@
 											    id="inputCreated"
 											    ng-model="basicinfo.birthday"
 											    container="body"
-											    format="dd/mm/yyyy"
+											    format="mm/dd/yyyy"
 											    months-full="{{ month }}"
 											    months-short="{{ monthShort }}"
 											    weekdays-full="{{ weekdaysFull }}" 

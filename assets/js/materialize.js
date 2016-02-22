@@ -6352,7 +6352,7 @@ DatePicker.defaults = (function( prefix ) {
         weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
 
         // Today and clear
-        today: 'Today',
+        today: '',
         clear: 'Clear',
         close: 'Close',
 

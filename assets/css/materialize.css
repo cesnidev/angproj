@@ -8063,6 +8063,7 @@ small {
   line-height: 36px;
   outline: 0;
   padding: 0 2rem;
+  color:#0089ec;
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
@@ -8225,7 +8226,7 @@ button.btn-floating {
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
-  color: #343434;
+  color: #0089ec;
   cursor: pointer;
 }
 
@@ -10937,6 +10938,7 @@ select {
   font-size: .8em;
   padding: .66em 0;
   font-weight: bold;
+  color:#0089ec;
   width: 33%;
   display: inline-block;
   vertical-align: bottom;
@@ -11097,7 +11099,7 @@ select {
   border-radius: 50%;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
-  background-color: #26a69a;
+  background-color: #FE5912;
   color: #ffffff;
 }
 
@@ -11115,7 +11117,7 @@ select {
 .picker__close, .picker__today {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #26a69a;
+  color: #0089ec;
 }
 
 .picker__nav--prev:before,
