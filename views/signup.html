@@ -1181,14 +1181,14 @@
 				</div><br>
 
 				<div class="row">
-					<div class="col l3 s6 m6">
+					<div class="col l3 s12 m6">
 						&nbsp;
 					</div>
 					<div class="col l3 s6 m6">
-						<button class="btn orange" ng-click="addimgs()" >Add More Pictures</button>
+						<button class="btn orange" ng-click="addimgs()" > + Pictures</button>
 					</div>
 					<div class="col l3 s6 m6">
-						<button class="btn orange" ng-click="delimgs()" >Delete Pictures</button>
+						<button class="btn orange" ng-click="delimgs()" > - Pictures</button>
 					</div>
 					
 				</div> <br>
@@ -1242,8 +1242,8 @@
 					</div>	
 		        </div>
 		        <div class="row">
-		        	<div class="col l3">&nbsp;</div>
-		        	<div class="col l3 hub" ng-show="imgs>=4">
+		        	<div class="col l2">&nbsp;</div>
+		        	<div class="col l4 hub" ng-show="imgs>=4">
 						<div class="row dropzone" >
 							<div class="row"><img ng-src="{{ profile.picture4.data }}" ng-show="profile.picture4.data!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
@@ -1259,7 +1259,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col l3 hub" ng-show="imgs>=5">
+					<div class="col l4 hub" ng-show="imgs>=5">
 						<div class="row dropzone" >
 							<div class="row"><img ng-src="{{ profile.picture5.data }}" ng-show="profile.picture5.data!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
@@ -1275,7 +1275,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col l3">&nbsp;</div>
+					<div class="col l2">&nbsp;</div>
 		        </div>
 
 				<a tooltipped ng-if="!onlyview" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Experience!!"> Next</a>
@@ -2260,13 +2260,13 @@
 				</div>
 							<h2 class="fs-title">Social Security</h2><hr>
 							<div class="row">
-								<div class="l4 col">
+								<div class="l4 s12 col">
 									
 								     <div class="row collapse prefix-radius">
 								        <div class="s3 col">
 								          <span class="prefix"><i class="step fi-lock size-24"></i></span>
 								        </div>
-								        <div class="s9 col input-field">
+								        <div class="s12 col input-field">
 								        	<label class="active" for="bank">Bank Name</label>
 								          <input type="text" required name="bank" ng-model="legal.bank_name" id="bank" >
 								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.bank.$error">
@@ -2278,7 +2278,7 @@
 								        <div class="s3 col">
 								          <span class="prefix"><i class="step fi-lock size-24"></i></span>
 								        </div>
-								        <div class="s9 col input-field">
+								        <div class="s12 col input-field">
 								        	<label class="active" for="account_n">Account Number</label>
 								          <input type="text" required name="account_n" ng-model="legal.account_number" id="account_n" ng-pattern="/^[1-9]\d*$/">
 								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.account_n.$error">
@@ -2291,7 +2291,7 @@
 								        <div class="s3 col">
 								          <span class="prefix"><i class="step fi-lock size-24"></i></span>
 								        </div>
-								        <div class="s9 col input-field">
+								        <div class="s12 col input-field">
 								        	<label class="active" for="abar">ABA Routing</label>
 								          <input type="text" required name="abar" ng-model="legal.aba_routing" id="abar" ui-mask="999999999">
 								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.abar.$error">
@@ -2303,7 +2303,7 @@
 								        <div class="s3 col">
 								          <span class="prefix"><i class="step fi-lock size-24"></i></span>
 								        </div>
-								        <div class="s9 col input-field">
+								        <div class="s12 col input-field">
 								        	<label class="active" for="ssn">Social Security Number</label>
 								          <input type="text" required name="ssn" ng-model="legal.social_security_number" id="ssn" ui-mask="999-99-9999">
 								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.ssn.$error">
@@ -2311,41 +2311,41 @@
 								          </div>
 								        </div>
 								     </div>
-									<div class="row">
-										
-										<div class="col">
+								     <div class="row">
+										<div class="s6 l6 col">
 										    <a class="" href='#why' modal>Why do we need this?</a>
-										</div>
-										<div id="why" class="modal">
+										    <div id="why" class="modal">
 										    <div class="modal-content">
 										        <h4>Why need this</h4>
 										        <p>We do not share your social security number with anyone outside the platform. The information is encrypted and only accessible by authorized employees. Access to view your Social Security number is for accounting purposes and to fulfill IRS requirements only.</p>
 										    </div>
 										    <div class="modal-footer">
-										        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+										        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
 										    </div>
 										</div>
-									</div>
+										</div>
+										<div class="s6 l6 col">
+									<a class="" href='#calcomm' modal>Cal-Comm Agreement</a>
+										    <div id="calcomm" class="modal">
+											    <div class="modal-content">
+											        <h4>Company Agreement</h4>
+											        <p>Please review our Company Agreement</p>
+											    </div>
+											    <div class="modal-footer">
+											        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+											    </div>
+											</div>
+								</div>
+										
+							</div>
+									
 								</div>
 								<div class="l4 col">
 									
 								</div>
 								<div class="l4 col"></div>
 							</div>
-							<div class="row" align="center">
-								<div class="col">
-										    <a class="" href='#calcomm' modal>Cal-Comm Agreement</a>
-								</div>
-								<div id="calcomm" class="modal">
-								    <div class="modal-content">
-								        <h4>Company Agreement</h4>
-								        <p>Please review our Company Agreement</p>
-								    </div>
-								    <div class="modal-footer">
-								        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-								    </div>
-								</div>
-							</div>
+							
 							
 							<div class="row">
 								<input id="termsofs" ng-model="legal.accept_decline" type="checkbox" required><label for="termsofs">Agree Terms of Service and Privacy Policies</label>
