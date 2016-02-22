@@ -1285,7 +1285,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="experience_form" ng-disabled="onlyview" ng-if="user.forms.experience == undefined || allcompletecookie.experience == false">
+			<fieldset id="experience_form" ng-disabled="!onlyview" ng-if="user.forms.experience == undefined || allcompletecookie.experience == false">
 			<md-content>
 			<form id="experience" name="exp" novalidate data-abide="ajax">
 				<h1>Experience</h1>
