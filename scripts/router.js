@@ -14,7 +14,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 })
 .constant('EventicaConfig',{
 	AppId:"e86aea35d849802cdf17e00d965c7bd9",
-	Min_Age:17,
+	Min_Age:18,
 	Max_Age:30,
 	IP:'localhost'
 })
