@@ -230,11 +230,11 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 				{
 					if (form.$valid) {
 						if($scope.imgs>=3){
-							$scope.profile.picture1 = profile.picture1.data;
-							$scope.profile.picture2 = profile.picture2.data;
-							$scope.profile.picture3 = profile.picture3.data;
-							$scope.profile.picture4 = profile.picture4.data;
-							$scope.profile.picture5 = profile.picture5.data;
+							$scope.profile.picture1 = $scope.profile.picture1.data;
+							$scope.profile.picture2 = $scope.profile.picture2.data;
+							$scope.profile.picture3 = $scope.profile.picture3.data;
+							$scope.profile.picture4 = $scope.profile.picture4.data;
+							$scope.profile.picture5 = $scope.profile.picture5.data;
 							$scope.jprofile.profile = $scope.profile;
 							EventicaResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
