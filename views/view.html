@@ -29,23 +29,10 @@
 			<p>Age</p>
 		</div>
 		<div class="row dropzone">
-			<div class="col l5"> <input type="text" placeholder="from" ng-model="search.from"> </div>
+			<div class="col l5"> <input type="text" style="text-align:center;" placeholder="from" ng-model="search.from"> </div>
 			<div class="col l2" align="center"> to </div>
-			<div class="col l5"> <input type="text" placeholder="to" ng-model="search.to" > </div>		
+			<div class="col l5"> <input type="text" style="text-align:center;" placeholder="to" ng-model="search.to" > </div>		
 		</div> <hr>
-
-		<div class="row" align="center">
-			<p>Criterio 1</p>
-		</div>
-		<div class="row dropzone"></div> <hr>
-		<div class="row" align="center">
-			<p>Criterio 2</p>
-		</div>
-		<div class="row dropzone"></div> <hr>
-		<div class="row" align="center">
-			<p>Criterio 3</p>
-		</div>
-		<div class="row dropzone"></div> <hr>
 
 	</div>
 	<div class="col l8">
@@ -64,7 +51,7 @@
 		        </p>
 		      </div>
 		      <div class="card-action">
-		        <a >More Info...</a>
+		        <a style="cursor:pointer;" ng-click="moreinfo(userx)" >More Info...</a>
 		      </div>
 		    </div>
 		</div>

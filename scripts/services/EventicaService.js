@@ -43,16 +43,16 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
 		.then(function successCallback(response) {
       data=response.data.data;
       errors = response.data.errors;
-			console.log("sucess: "+JSON.stringify(response.data));
-      console.log("sucess data: "+JSON.stringify(data));
-      console.log("Token: "+response.data.data.relations.tokens[0].attributes.token);
+			//console.log("sucess: "+JSON.stringify(response.data));
+      //console.log("sucess data: "+JSON.stringify(data));
+      //console.log("Token: "+response.data.data.relations.tokens[0].attributes.token);
       if(errors==''|| !errors)
       {
         switch(dataregister.auth.provider){
             case 'facebook':
-            console.log('facebook elegido');
+            //console.log('facebook elegido');
               FB.api('/'+dataregister.auth.uid+'/picture?width=800&height=800',function (picture) {
-                console.log("picture: "+JSON.stringify(picture));
+                //console.log("picture: "+JSON.stringify(picture));
                 cookie.id = dataregister.auth.uid;
                 cookie.user=dataregister.auth.info.name;
                 cookie.email= dataregister.auth.info.email;
@@ -60,7 +60,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
                 cookie.token=data.relations.tokens[0].attributes.token;
                 cookie.provider = dataregister.auth.provider;
                 Session.StoreSession(cookie);
-                console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
+                //console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
                 $window.location.href = '#/signup';
               });
               break;
@@ -89,7 +89,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
       }
       else
       {
-        console.log(response.errors);
+        //console.log(response.errors);
         notificar(response.errors);
         
       }
@@ -117,9 +117,9 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
     $http.post(url,credentials,{}).then(function successCallback(response){
       data=response.data.data;
       errors = response.data.errors;
-      console.log("sucess: "+JSON.stringify(response));
-      //console.log("sucess data: "+JSON.stringify(data));
-      //console.log("Token: "+data.relations.tokens[0].attributes.token);
+      //console.log("sucess: "+JSON.stringify(response));
+      ////console.log("sucess data: "+JSON.stringify(data));
+      ////console.log("Token: "+data.relations.tokens[0].attributes.token);
       if (errors==''|| !errors) {
           cookie.id = data.id;
           cookie.user=data.attributes.name;
@@ -131,7 +131,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
             if(data.relations.basic != undefined)
               cookie.forms.basic=true;
             else
-              console.log('no existe basic');
+              //console.log('no existe basic');
 
             if(data.relations.profile != undefined)
               cookie.forms.profile=true;
@@ -145,7 +145,7 @@ eventica.factory('EventicaResource', function($resource,EventicaConfig) {
 
           $window.location.href = '#/signup';
       } else{
-        console.log("Sucess with errors: "+errors);
+        //console.log("Sucess with errors: "+errors);
         notificar(errors.errors);
       };
     },function errorCallback(response){

@@ -27,7 +27,7 @@ eventica
 			$scope.credentials.auth.uid='12345';
             $scope.credentials.auth.email=$scope.log.email;
             $scope.credentials.auth.password=$scope.log.password;
-			console.log("JSON: "+JSON.stringify($scope.credentials));
+			//console.log("JSON: "+JSON.stringify($scope.credentials));
 			var response = EventicaLogin.login($scope.credentials,false);
 		}
 		else
@@ -38,7 +38,7 @@ eventica
 	$scope.ingoogle = function() {
 		$scope.credentials.auth.provider="google";
 			 GooglePlus.login().then(function (response) {
-            console.log(response);
+            //console.log(response);
             
 
             GooglePlus.getUser().then(function (user) {
@@ -47,12 +47,12 @@ eventica
                         $scope.credentials.auth.info.email=user.email;
                         $scope.credentials.auth.info.picture=user.picture;
                         $scope.credentials.auth.info.password='google';
-                        //console.log("JSON: "+JSON.stringify($scope.credentials));
+                        ////console.log("JSON: "+JSON.stringify($scope.credentials));
                 		var response = EventicaLogin.login($scope.credentials,true);
-						console.log("USER: "+JSON.stringify(user));
+						//console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {
-            console.log(err);
+            //console.log(err);
             notificar('User cancelled login or did not fully authorize.');
         });
 	};
@@ -63,12 +63,12 @@ eventica
             if (response.authResponse) {
                var url = '/me';
                     FB.api(url,{fields:'email,picture,birthday,name'} ,function (response) {
-                  		console.log("JSON: "+JSON.stringify(response));
+                  		//console.log("JSON: "+JSON.stringify(response));
                         $scope.credentials.auth.uid=response.id;
                         $scope.credentials.auth.info.name=response.name;
                         $scope.credentials.auth.info.email=response.email;
                         $scope.credentials.auth.info.password='facebook';
-                        // console.log("JSON: "+JSON.stringify($scope.credentials));
+                        // //console.log("JSON: "+JSON.stringify($scope.credentials));
                         var response = EventicaLogin.login($scope.credentials,true);
                         
                     });
