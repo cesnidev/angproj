@@ -11,8 +11,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 		cssInjector.add("assets/css/proyecto.form.css");
 		/* START INITS*/
 			
-			$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
-			$scope.fakebasicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
+			//$scope.work_basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
+			//using a filled data for testing
+			$scope.basicinfo = { "address1": "asdasdasd", "addres2": "asdasdasd", "ship_address1": "asdasdasd", "ship_address2": "asdasdasd", "social": false, "firstname": "asdadasd", "middle_initial": "asdasd", "lastname": "asdasd", "birthday": "02/17/1998", "referred": "asdasdasd", "city": "asdasdad", "state": "AR", "zip": "22222", "phone": "1231231231", "same_as_home_mailing": true, "ship_city": "asdasdad", "ship_state": "AR", "ship_zip": "22222", "emergency_firstname": "sdadasdasd", "emergency_lastname": "asdasdasd", "emergency_relation": "Brother", "emergency_address1": "asdasdasdasd", "emergency_address2": "asdasd", "emergency_city": "asdads", "emergency_state": "CA", "emergency_zip": "22222", "emergency_phone": "1231231231", "emergency_info": "asdasdasd" }
 			$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false,picture1:'',picture2:'',picture3:'',picture4:'',picture5:'',};
 			$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 			$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};
@@ -491,7 +492,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 	};
 }])
 
-.service('upload', ["$http", "$q", function ($http, $q) 
+.service('upload', ["$http", "$q", function ($http, $q,CalcommConfig) 
 {
 	this.uploadFile = function(file, data)
 	{
