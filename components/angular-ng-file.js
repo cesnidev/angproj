@@ -16,7 +16,7 @@
                                 lastModifiedDate: changeEvent.target.files[0].lastModifiedDate,
                                 name: changeEvent.target.files[0].name,
                                 size: changeEvent.target.files[0].size,
-                                type: changeEvent.target.files[0].type,
+                                content-type: changeEvent.target.files[0].type,
                                 data: loadEvent.target.result
                             };
                         });
