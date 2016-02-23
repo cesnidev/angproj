@@ -1,6 +1,6 @@
 'use strict';
 
-calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin,Upload) {
+calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin,upload) {
 	
 	$scope.allcompletecookie;
 	if(!CalcommLogin.isAuthenticated())
