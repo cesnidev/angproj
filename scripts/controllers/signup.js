@@ -271,6 +271,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					notificar("your session is incorrect");
 				}*/
+				console.log($scope.profile);
 			    upload.uploadFile($scope.profile.picture1, $scope.profile,$scope.user.token,CalcommConfig.AppId).then(function(res)
 				{
 					console.log(res);
@@ -493,7 +494,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 	};
 }])
 
-.service('upload',function ($http, $q,CalcommConfig) 
+.service('upload',function ($http, $q) 
 {
 	this.uploadFile = function(file, data,token,id)
 	{
