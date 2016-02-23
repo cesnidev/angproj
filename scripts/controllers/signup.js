@@ -276,7 +276,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 
 			    $scope.profile.picture1.upload.then(function (response) {
 			      $timeout(function () {
-			        file.result = response.data;
+			        $scope.profile.picture1.result = response.data;
 			        notificar(response,50000);
 			      });
 			    }, function (response) {
@@ -284,7 +284,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			        $scope.errorMsg = response.status + ': ' + response.data;
 			    }, function (evt) {
 			      // Math.min is to fix IE which reports 200% sometimes
-			      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			      $scope.profile.picture1.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 			    });
 				
 			};
