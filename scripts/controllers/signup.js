@@ -269,23 +269,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					notificar("your session is incorrect");
 				}*/
-			    $scope.profile.picture1.upload = Upload.upload({
-			      url: 'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
-			      data: {profile: $scope.profile.picture1},
-			    });
-
-			    $scope.profile.picture1.upload.then(function (response) {
-			      $timeout(function () {
-			        $scope.profile.picture1.result = response.data;
-			        notificar(response,50000);
-			      });
-			    }, function (response) {
-			      if (response.status > 0)
-			        $scope.errorMsg = response.status + ': ' + response.data;
-			    }, function (evt) {
-			      // Math.min is to fix IE which reports 200% sometimes
-			      $scope.profile.picture1.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-			    });
+			    upload.uploadFile($scope.profile.picture1, $scope.profile).then(function(res)
+				{
+					console.log(res);
+				})
 				
 			};
 			$scope.experienceclick = function(c,form)
@@ -491,5 +478,42 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
      return function(birthdate) { 
            return calculateAge(birthdate);
      }; 
-});
+}).directive('uploaderModel', ["$parse", function ($parse) {
+	return {
+		restrict: 'A',
+		link: function (scope, iElement, iAttrs) 
+		{
+			iElement.on("change", function(e)
+			{
+				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+			});
+		}
+	};
+}])
+
+.service('upload', ["$http", "$q", function ($http, $q) 
+{
+	this.uploadFile = function(file, data)
+	{
+		var deferred = $q.defer();
+		var formData = new FormData();
+		formData.append("data", data);
+		formData.append("file", file);
+		return $http.post('http://'+CalcommConfig.IP+':3000/api/v1/profiles', formData, {
+			headers: {
+				"Content-type": undefined
+			},
+			transformRequest: angular.identity
+		})
+		.success(function(res)
+		{
+			deferred.resolve(res);
+		})
+		.error(function(msg, code)
+		{
+			deferred.reject(msg);
+		})
+		return deferred.promise;
+	}	
+}])
 
