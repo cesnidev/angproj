@@ -1,7 +1,7 @@
 'use strict';
 
-var eventica = angular.module('Client');
-eventica.controller('IndexCtrl', function($scope) {
+var calcomm = angular.module('Client');
+calcomm.controller('IndexCtrl', function($scope) {
 
 });
 	

@@ -19,7 +19,7 @@
             <a href="#/"><img src="assets/img/logo4.png" class="logo" alt="" class="circle responsive-img valign profile-image-login">
           </a></div>
         </div>
-        <div class="eventicaerror" align="center" ng-if="msj!=null">
+        <div class="calcommerror" align="center" ng-if="msj!=null">
             	Error: {{ msj }}
         </div>
         <div class="row margin">
@@ -27,7 +27,7 @@
             <i class="mdi-social-person-outline prefix"></i>
             <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
             <label for="email" class="center-align active">Email</label>
-            <div class="eventicaerror" ng-show="flogin.email.$touched" ng-messages="flogin.email.$error" role="alert">
+            <div class="calcommerror" ng-show="flogin.email.$touched" ng-messages="flogin.email.$error" role="alert">
               <div ng-message="required">Email is required.</div>
               <div ng-message="pattern">This is not a email.</div>
             </div>
@@ -38,7 +38,7 @@
             <i class="mdi-action-lock-outline prefix"></i>
             <input required id="password" name="passwordl" type="password" ng-model="log.password">
             <label for="password" class="active">Password</label>
-            <div class="eventicaerror" ng-messages="flogin.passwordl.$error" role="alert">
+            <div class="calcommerror" ng-messages="flogin.passwordl.$error" role="alert">
             	<div ng-message="required">Password is required.</div>
             </div>
           </div>

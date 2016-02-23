@@ -1,9 +1,9 @@
 'use strict';
 
-eventica.controller('ViewCtrl',function($scope,Session,EventicaLogin,$rootScope,$location){
+calcomm.controller('ViewCtrl',function($scope,Session,CalcommLogin,$rootScope,$location){
 	
 
-	if(EventicaLogin.isAuthenticated())
+	if(CalcommLogin.isAuthenticated())
 	{
 		$scope.user = Session.getSession();
 		//console.log("COOKIE: "+JSON.stringify(Session.get('token')));

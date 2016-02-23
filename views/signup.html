@@ -2,7 +2,7 @@
 <div class="container">
             <div class="header row" style="border-bottom: 3px solid #FE7133;" >
                 <div class="col s12 m6 l4">
-                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.eventicateam.com/img/Logo4.png"></a>
+                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="http://alpha.calcommteam.com/img/Logo4.png"></a>
                 </div>
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
@@ -23,7 +23,7 @@
             </div>
         </div><br>
 
-<div id="eventicaforms" class="inputErrors" >
+<div id="calcommforms" class="inputErrors" >
 
 			<ul id="progressbar">
 				<li id="basicinfo_progress" class="active">Basic Info</li>
@@ -120,7 +120,7 @@
 							<label class="active" for="first_name">First Name</label>
 						   <input required="" type="text" name="first_name" id="first_name" ng-model="basicinfo.firstname">
 
-						   <div class="eventicaerror ng-inactive" ng-show="!onlyview" ng-messages="binfo.first_name.$error">
+						   <div class="calcommerror ng-inactive" ng-show="!onlyview" ng-messages="binfo.first_name.$error">
 					          <div ng-message="required">First name is required and must be a real name.</div>
 					        </div>
 					        </div>
@@ -139,7 +139,7 @@
 					        <div class="input-field">
 							<label class="active" for="last_name">Last Name</label>
 						   <input ng-minlength="5" required="" type="text" name="last_name" id="last_name" ng-model="basicinfo.lastname">
-					        <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.last_name.$error">
+					        <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.last_name.$error">
 					          <div ng-message="required">Last name is required.</div>
 					          <div ng-message="minlength">At least 5 chars.</div>
 					        </div>
@@ -179,7 +179,7 @@
 											    disable="disable" 
 											    min="{{ minDate }}" 
 											    max="{{ maxDate }}" required select-years="15" />
-											    <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.created.$error">
+											    <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.created.$error">
 										          <div ng-message="required">Date is required.</div>
 										        </div>
 								      
@@ -215,7 +215,7 @@
 									<div class="input-field">
 										<label class="active" for="address1">Address Line 1: Number, street</label>
 									<input type="text" ng-model="basicinfo.address1" id="address1"  name="address1"  required />
-									<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.address1.$error" role="alert">
+									<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.address1.$error" role="alert">
 										<div ng-message="required">
 											Address Line 1 is required.
 										</div>
@@ -243,7 +243,7 @@
 											<div class="input-field">
 											<label class="active" for="city">City</label>
 			    							<input type="text" ng-model="basicinfo.city"  name="city" required />
-											   <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.city.$error" role="alert">
+											   <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.city.$error" role="alert">
 													<div ng-message="required">
 														City is required.
 													</div>
@@ -261,7 +261,7 @@
 												</select>
 									        
 
-									        <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.state.$error">
+									        <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.state.$error">
 									        	<div ng-message="required">
 									        		State is required.
 									        	</div>
@@ -276,7 +276,7 @@
 											<div class="input-field">
 												<label class="active" for="zip">Zip</label>
 												<input ng-minlength="5" ng-model="basicinfo.zip" id="zip"  name="zip" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
-											<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.zip.$error"  ng-messages-multiple role="alert">
+											<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.zip.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Zip Code is required.
 												</div>
@@ -307,7 +307,7 @@
 										<input type="text" ng-model="basicinfo.phone" id="phoneme" name="phone" required ui-mask="(999) 999-9999">
 										
 									
-										<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.phone.$error" role="alert">
+										<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.phone.$error" role="alert">
 											<div ng-message="required">
 												Phone Number is required and must be numbers .
 											</div>
@@ -343,7 +343,7 @@
 									<label class="active" for="ship_address1">Number , Street </label>
 									<input type="text" ng-disabled="basicinfo.same_as_home_mailing" id="ship_address1" ng-model="basicinfo.ship_address1"  name="ship_address1" ng-required="!basicinfo.same_as_home_mailing" />
 									
-									<div class="eventicaerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_address1.$error" role="alert">
+									<div class="calcommerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_address1.$error" role="alert">
 												<div ng-message="required" >
 													Address is required.
 												</div>
@@ -370,7 +370,7 @@
 										<div class="col s12 l6">
 											<label class="active" for="shipcity">City</label>
 			    							<input type="text" ng-model="basicinfo.ship_city" id="ship_city" ng-disabled="basicinfo.same_as_home_mailing"  name="ship_city" ng-required="!basicinfo.same_as_home_mailing" />
-											   <div class="eventicaerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_city.$error" role="alert">
+											   <div class="calcommerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_city.$error" role="alert">
 												<div ng-message="required">
 													City is required.
 												</div>
@@ -384,7 +384,7 @@
 												    <option ng-repeat="state in states">{{state}}</option>
 												</select>
 
-									        <div class="eventicaerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_state.$error">
+									        <div class="calcommerror" ng-show="!onlyview" ng-show="!basicinfo.same_as_home_mailing" ng-messages="binfo.ship_state.$error">
 									        	<div ng-message="required">
 									        		State is required.
 									        	</div>
@@ -401,7 +401,7 @@
 
 												
 										
-												<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.ship_zip.$error"  ng-messages-multiple role="alert">
+												<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.ship_zip.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Zip Code is required.
 												</div>
@@ -436,7 +436,7 @@
 											 		<label class="active" for="emrgncyfirst_name">First Name</label>
 											 		<input type="text"  id="emrgncyfirst_name" ng-model="basicinfo.emergency_firstname" name="emrgncyfirst_name" required />
 											   
-											   <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncyfirst_name.$error" role="alert">
+											   <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyfirst_name.$error" role="alert">
 													<div ng-message="required">
 														First name is required and must be a real name.
 													</div>
@@ -449,7 +449,7 @@
 											 		<label class="active" for="emrgncylast_name">Last Name</label>
 											 		<input type="text" ng-model="basicinfo.emergency_lastname"  id="emrgncylastname" name="emrgncylast_name" required />
 											   
-											   <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncy_lastname.$error" role="alert">
+											   <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncy_lastname.$error" role="alert">
 													<div ng-message="required">
 														Last name is required.
 													</div>
@@ -472,7 +472,7 @@
 												    <option ng-repeat="rel in relation">{{rel}}</option>
 												</select>
 
-									        <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncyrelation.$error">
+									        <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyrelation.$error">
 									        	<div ng-message="required">
 									        		Relation is required.
 									        	</div>
@@ -495,7 +495,7 @@
 									<div class="input-field">
 										<label class="active" for="emrgncyaddress1">Number , Street</label>
 										<input ng-model="basicinfo.emergency_address1" name="emrgncyaddress1" id="emrgncyaddress1" required type="text">
-										<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncyaddress1.$error" role="alert">
+										<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyaddress1.$error" role="alert">
 											<div ng-message="required">Address is required.</div>
 										</div>
 									</div>
@@ -523,7 +523,7 @@
 											<div class="input-field">
 												<label class="active" for="emrgncycity">City</label>
 												<input type="text" name="emrgncycity" id="emrgncycity" ng-model="basicinfo.emergency_city" required>
-												<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncycity.$error" role="alert">
+												<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncycity.$error" role="alert">
 													<div ng-message="required">City is required.</div>
 												</div>
 											</div>
@@ -537,7 +537,7 @@
 												</select>
 
 
-									        <div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncystate.$error">
+									        <div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncystate.$error">
 									        	<div ng-message="required">
 									        		State is required.
 									        	</div>
@@ -551,7 +551,7 @@
 												<input ng-minlength="5" ng-pattern="/^[-+]?[1-9]\d*$/" type="text" name="emrgncyzip" id="emrgncyzip" ng-model="basicinfo.emergency_zip" required>
 
 
-												<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncyzip.$error"  ng-messages-multiple role="alert">
+												<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyzip.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Zip Code is required.
 												</div>
@@ -579,7 +579,7 @@
 									<div class="input-field">
 										<label class="active" for="emrgncyphone">(000) 000-0000</label>
 										<input type="text" name="emrgncyphone" id="emrgncyphone" ng-model="basicinfo.emergency_phone" required ui-mask="(999) 999-9999">
-										<div class="eventicaerror" ng-show="!onlyview" ng-messages="binfo.emrgncyphone.$error" role="alert">
+										<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyphone.$error" role="alert">
 											<div ng-message="required">Phone Number is required and must be numbers.</div>
 										</div>
 									</div>
@@ -674,7 +674,7 @@
                                     	<option value="6'12">6'12</option>
     								  
     								</select>
-    								<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.height.$error" role="alert">
+    								<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.height.$error" role="alert">
 											<div ng-message="required">Height is required.</div>
 									</div>
     							
@@ -687,7 +687,7 @@
 									        	<label class="active" for="weight">Weight example (30.00) Kgs.</label>
 
 												<input ng-model="profile.weight" id="weight"  name="weight" required ui-mask="99.99"/>
-											<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.weight.$error"  ng-messages-multiple role="alert">
+											<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.weight.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Weight is required.
 												</div>
@@ -720,7 +720,7 @@
 				                                    	<option value="Gray">Gray</option>
 				    								</select>
 				    							
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.eyecolor.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.eyecolor.$error" role="alert">
 														<div ng-message="required">eye color is required.</div>
 												</div>
 											</div>
@@ -738,7 +738,7 @@
 				                                    	<option value="Brunette">Brunette</option>
 				                                    	<option value="Other">Other</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.haircolor.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.haircolor.$error" role="alert">
 														<div ng-message="required">hair color is required.</div>
 												</div>
 											</div>
@@ -756,7 +756,7 @@
 				                                    	<option value="Bald">Bald</option>
 				    								  
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.hairlength.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.hairlength.$error" role="alert">
 														<div ng-message="required">hair length is required.</div>
 												</div>
 											</div>
@@ -782,7 +782,7 @@
 				                                    	<option value="XL">XL</option>
 				                                    	<option value="XXL+">XXL+</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.tshirt.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.tshirt.$error" role="alert">
 														<div ng-message="required">t-shirt size is required.</div>
 												</div>
 											</div>
@@ -801,7 +801,7 @@
 				                                    	<option value="XL">XL</option>
 				                                    	<option value="XXL+">XXL+</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.pantsize.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.pantsize.$error" role="alert">
 														<div ng-message="required">pants shorts size is required.</div>
 												</div>
 											</div>
@@ -834,7 +834,7 @@
 														<option value="14">14</option>
 				                                    	<option value="14+">14+</option>	 
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.shoesize.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.shoesize.$error" role="alert">
 														<div ng-message="required">shoe size is required.</div>
 												</div>
 											</div>
@@ -869,7 +869,7 @@
 				                                    	<option value="48">48</option>
 				                                    	<option value="50">50</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.chest.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.chest.$error" role="alert">
 														<div ng-message="required">chest is required.</div>
 												</div>
 											</div>
@@ -891,7 +891,7 @@
 				                                    	<option value="50">50</option>
 				    								</select>
 				    							
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.jacketsize.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.jacketsize.$error" role="alert">
 														<div ng-message="required">ejacket size is required.</div>
 												</div>
 											</div>
@@ -912,7 +912,7 @@
 				                                    	<option value="40">40</option>
 				                                    	<option value="42">42</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.waist.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.waist.$error" role="alert">
 														<div ng-message="required">waist is required.</div>
 												</div>
 											</div>
@@ -951,7 +951,7 @@
 				                                    	<option value="33">33</option>
 				                                    	<option value="34+">34+</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.waistfemale.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.waistfemale.$error" role="alert">
 														<div ng-message="required">waist is required.</div>
 												</div>
 											</div>
@@ -976,7 +976,7 @@
 				                                    	<option value="43">43</option>
 				                                    	<option value="44+">44+</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.hips.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.hips.$error" role="alert">
 														<div ng-message="required">hips is required.</div>
 												</div>
 											</div>
@@ -996,7 +996,7 @@
 				                                    	<option value="10">10</option>
 				                                    	<option value="12+">12+</option>
 				    								</select>
-				    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.dressize.$error" role="alert">
+				    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.dressize.$error" role="alert">
 														<div ng-message="required">dress size is required.</div>
 												</div>
 											</div>
@@ -1030,7 +1030,7 @@
                                     	<option value="Russian">Russian</option>
                                     	<option value="Chinese">Chinese</option>
     								</select>
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="prof.nflanguage.$error" role="alert">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="prof.nflanguage.$error" role="alert">
 														<div ng-message="required">native/first language is required.</div>
 												</div>
 										</div>
@@ -1427,7 +1427,7 @@
                                     	<option value="100+">100+</option>
     								</select>
     							
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="exp.hmevents.$error">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="exp.hmevents.$error">
     								<div ng-message="required">required.</div>
     							</div>
 										</div>
@@ -1452,7 +1452,7 @@
                                     	<option value="5 years or more">5 years or more</option>
     								</select>
     							
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="exp.hlevents.$error">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="exp.hlevents.$error">
     								<div ng-message="required">required.</div>
     							</div>
 										</div>
@@ -1475,7 +1475,7 @@
                                     	<option value="6-10">6-10</option>
                                     	<option value="More than 10">More than 10</option>
     								</select>
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="exp.hmactivated.$error">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="exp.hmactivated.$error">
     								<div ng-message="required">required.</div>
     							</div>
 										</div>
@@ -1498,7 +1498,7 @@
                                     	<option value="6-10">6-10</option>
                                     	<option value="More than 10">More than 10</option>
     								</select>
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="exp.hmbrands.$error">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="exp.hmbrands.$error">
     								<div ng-message="required">required.</div>
     							</div>
 										</div>
@@ -1651,7 +1651,7 @@
                                     	<option value="Ph. D.">Ph. D.</option>
                                     	<option value="Other">Other</option>
                                     </select>
-    							<div class="eventicaerror" ng-show="!onlyview" ng-messages="exp.educationlevel.$error" role="alert">
+    							<div class="calcommerror" ng-show="!onlyview" ng-messages="exp.educationlevel.$error" role="alert">
     								<div  ng-message="required">
     									level education is required.
     								</div>
@@ -2269,7 +2269,7 @@
 								        <div class="s12 col input-field">
 								        	<label class="active" for="bank">Bank Name</label>
 								          <input type="text" required name="bank" ng-model="legal.bank_name" id="bank" >
-								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.bank.$error">
+								          <div class="calcommerror" ng-show="!onlyview" ng-messages="legl.bank.$error">
 								          	<div ng-message="required">Please provide a Bank Name.</div>
 								          </div>
 								        </div>
@@ -2281,7 +2281,7 @@
 								        <div class="s12 col input-field">
 								        	<label class="active" for="account_n">Account Number</label>
 								          <input type="text" required name="account_n" ng-model="legal.account_number" id="account_n" ng-pattern="/^[1-9]\d*$/">
-								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.account_n.$error">
+								          <div class="calcommerror" ng-show="!onlyview" ng-messages="legl.account_n.$error">
 								          	<div ng-message="required">Account Number is required.</div>
 								          	<div ng-message="pattern">Please provide a valid account number.</div>
 								          </div>
@@ -2294,7 +2294,7 @@
 								        <div class="s12 col input-field">
 								        	<label class="active" for="abar">ABA Routing</label>
 								          <input type="text" required name="abar" ng-model="legal.aba_routing" id="abar" ui-mask="999999999">
-								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.abar.$error">
+								          <div class="calcommerror" ng-show="!onlyview" ng-messages="legl.abar.$error">
 								          	<div ng-message="required">Required.</div>
 								          </div>
 								        </div>
@@ -2306,7 +2306,7 @@
 								        <div class="s12 col input-field">
 								        	<label class="active" for="ssn">Social Security Number</label>
 								          <input type="text" required name="ssn" ng-model="legal.social_security_number" id="ssn" ui-mask="999-99-9999">
-								          <div class="eventicaerror" ng-show="!onlyview" ng-messages="legl.ssn.$error">
+								          <div class="calcommerror" ng-show="!onlyview" ng-messages="legl.ssn.$error">
 								          	<div ng-message="required">Please provide your Social Security Number.</div>
 								          </div>
 								        </div>

@@ -1,9 +1,9 @@
 'use strict';
 
-eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cssInjector,$window,Session,$location,EventicaConfig,EventicaLogin) {
+calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin) {
 	
 	$scope.allcompletecookie;
-	if(!EventicaLogin.isAuthenticated())
+	if(!CalcommLogin.isAuthenticated())
 		$location.path("/login");
 	else
 	{
@@ -23,8 +23,8 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			$scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 			$scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 			$scope.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-			$scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * 365 * EventicaConfig.Max_Age ))).toISOString();
-			$scope.maxDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * 365 * EventicaConfig.Min_Age ))).toISOString();
+			$scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * 365 * CalcommConfig.Max_Age ))).toISOString();
+			$scope.maxDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * 365 * CalcommConfig.Min_Age ))).toISOString();
 			
 			$scope.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 			$scope.relation = ["Mother","Father","Grand Parent","Brother","Sister","Child","Friend","Aunt","Uncle","Partner"];
@@ -163,12 +163,12 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			
 			
 			
-			if(EventicaLogin.isAuthenticated()){
-				$scope.jbasic = {token:$scope.user.token,app_id:EventicaConfig.AppId,basic:''};
-				$scope.jprofile = {token:$scope.user.token,app_id:EventicaConfig.AppId,profile:''};
-				$scope.jexperience = {token:$scope.user.token,app_id:EventicaConfig.AppId,experience:''};
-				$scope.javailability = {token:$scope.user.token,app_id:EventicaConfig.AppId,availability:''};
-				$scope.jlegal = {token:$scope.user.token,app_id:EventicaConfig.AppId,legal:''};
+			if(CalcommLogin.isAuthenticated()){
+				$scope.jbasic = {token:$scope.user.token,app_id:CalcommConfig.AppId,basic:''};
+				$scope.jprofile = {token:$scope.user.token,app_id:CalcommConfig.AppId,profile:''};
+				$scope.jexperience = {token:$scope.user.token,app_id:CalcommConfig.AppId,experience:''};
+				$scope.javailability = {token:$scope.user.token,app_id:CalcommConfig.AppId,availability:''};
+				$scope.jlegal = {token:$scope.user.token,app_id:CalcommConfig.AppId,legal:''};
 				
 				if($scope.user.provider=='facebook'||$scope.user.provider=='google_oauth2')
 				{
@@ -200,12 +200,12 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			$scope.basicinfoclick = function(c,form)
 			{
 				//console.log("BINFO FORM: "+JSON.stringify($scope.binfo));
-				if(EventicaLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
 						$scope.basicinfo.picture = $scope.basicinfo.picture.data;
 						$scope.jbasic.basic = $scope.basicinfo;
-						EventicaResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
+						CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							Session.save('completeforms',$scope.allcompletecookie);
@@ -227,7 +227,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			
 			$scope.profileclick = function(c,form)
 			{
-				if(EventicaLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
 						if($scope.imgs>=3){
@@ -237,7 +237,7 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 							$scope.profile.picture4 = $scope.profile.picture4.data;
 							$scope.profile.picture5 = $scope.profile.picture5.data;
 							$scope.jprofile.profile = $scope.profile;
-							EventicaResource.saveProfile($scope.jprofile).$promise.then(function(response){
+							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
 								$scope.allcompletecookie.profile=true;
@@ -262,13 +262,13 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			};
 			$scope.experienceclick = function(c,form)
 			{
-				if(EventicaLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) { 
 						$scope.availability.driver_image = $scope.availability.driver_image.data;
 						$scope.experience.tabc_image = $scope.experience.tabc_image.data;
 						$scope.jexperience.experience = $scope.experience;
-						EventicaResource.saveExperience($scope.jexperience).$promise.then(function(response){
+						CalcommResource.saveExperience($scope.jexperience).$promise.then(function(response){
 							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;
@@ -291,11 +291,11 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			};
 			$scope.availabilityclick = function(c,form)
 			{
-				if(EventicaLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
 						$scope.javailability.availability = $scope.availability;
-						EventicaResource.saveAvailability($scope.javailability).$promise.then(function(response){
+						CalcommResource.saveAvailability($scope.javailability).$promise.then(function(response){
 							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;
@@ -318,11 +318,11 @@ eventica.controller('SignUpCtrl', function($rootScope,$scope,EventicaResource,cs
 			};
 			$scope.legalclick = function(c,form)
 			{
-				if(EventicaLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
 						$scope.jlegal.legal = $scope.legal;
-						EventicaResource.saveLegal($scope.jlegal).$promise.then(function(response){
+						CalcommResource.saveLegal($scope.jlegal).$promise.then(function(response){
 							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;

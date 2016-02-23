@@ -1,8 +1,8 @@
 'use strict';
 
-eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,EventicaLogin,$location,GooglePlus) {
+calcomm.controller('RegisterCtrl', function($scope,CalcommConfig,$rootScope,CalcommLogin,$location,GooglePlus) {
 
-	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
+	$scope.credentials={app_id:CalcommConfig.AppId,auth:{info:{}}};
 
 	$scope.email = function(){
 		$scope.credentials.auth.provider="angular";
@@ -13,7 +13,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
             $scope.credentials.auth.info.email=$scope.reg.email;
             $scope.credentials.auth.info.password=$scope.reg.password;
 			//console.log("JSON: "+JSON.stringify($scope.credentials));
-			var response = EventicaLogin.register($scope.credentials,false);
+			var response = CalcommLogin.register($scope.credentials,false);
 		}
 		else
 		{
@@ -36,7 +36,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.info.email=response.email;
                         $scope.credentials.auth.info.password='facebook';
                         // //console.log("JSON: "+JSON.stringify($scope.credentials));
-                        var response = EventicaLogin.register($scope.credentials,true);
+                        var response = CalcommLogin.register($scope.credentials,true);
                         
                     });
                     
@@ -60,7 +60,7 @@ eventica.controller('RegisterCtrl', function($scope,EventicaConfig,$rootScope,Ev
                         $scope.credentials.auth.info.picture=user.picture;
                         $scope.credentials.auth.info.password='google';
                         ////console.log("JSON: "+JSON.stringify($scope.credentials));
-                		var response = EventicaLogin.register($scope.credentials,true);
+                		var response = CalcommLogin.register($scope.credentials,true);
 						//console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {

@@ -1,20 +1,20 @@
 'use strict';
-eventica
-.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,EventicaLogin,Upload,$timeout,Session,EventicaConfig,GooglePlus,$rootScope){
-	$scope.credentials={app_id:EventicaConfig.AppId,auth:{info:{}}};
+calcomm
+.controller('MainCtrl',function($scope,cssInjector,$location,$routeParams,CalcommLogin,Upload,$timeout,Session,CalcommConfig,GooglePlus,$rootScope){
+	$scope.credentials={app_id:CalcommConfig.AppId,auth:{info:{}}};
 	cssInjector.add("assets/css/proyecto.form.css");
 	cssInjector.add("assets/css/fileup/dropzone.css");
 
-	if(EventicaLogin.isAuthenticated())
+	if(CalcommLogin.isAuthenticated())
 	{
 		$scope.user = Session.getSession();
 		if($scope.user.provider=='facebook'||$scope.user.provider=='google')
 			$scope.img = $scope.user.image;
 	}
 
-	if(EventicaLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
+	if(CalcommLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
 		$location.path("/home");//checar el issue cuando te llevan a home y necesitas dar back
-	if(!EventicaLogin.isAuthenticated())
+	if(!CalcommLogin.isAuthenticated())
 		$location.path("/login");
 
 
@@ -28,7 +28,7 @@ eventica
             $scope.credentials.auth.email=$scope.log.email;
             $scope.credentials.auth.password=$scope.log.password;
 			//console.log("JSON: "+JSON.stringify($scope.credentials));
-			var response = EventicaLogin.login($scope.credentials,false);
+			var response = CalcommLogin.login($scope.credentials,false);
 		}
 		else
 		{
@@ -48,7 +48,7 @@ eventica
                         $scope.credentials.auth.info.picture=user.picture;
                         $scope.credentials.auth.info.password='google';
                         ////console.log("JSON: "+JSON.stringify($scope.credentials));
-                		var response = EventicaLogin.login($scope.credentials,true);
+                		var response = CalcommLogin.login($scope.credentials,true);
 						//console.log("USER: "+JSON.stringify(user));
             });
         }, function (err) {
@@ -69,7 +69,7 @@ eventica
                         $scope.credentials.auth.info.email=response.email;
                         $scope.credentials.auth.info.password='facebook';
                         // //console.log("JSON: "+JSON.stringify($scope.credentials));
-                        var response = EventicaLogin.login($scope.credentials,true);
+                        var response = CalcommLogin.login($scope.credentials,true);
                         
                     });
                     

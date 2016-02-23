@@ -50,7 +50,7 @@ boady{
 
 .left{
     text-align:left;
-	margin-top:10px;
+    margin-top:10px;
 }
 
 .boton {
@@ -59,7 +59,7 @@ boady{
 }
 
 .logo{
-	width:100px;
+    width:100px;
 }
 
 .disabledo {
@@ -78,16 +78,16 @@ boady{
 .boton.calcomm {
     border-color: #FE7133;
     width:180px;
-	/*background-color:#FE7133;*/
+    /*background-color:#FE7133;*/
     margin-left: 40px;
-	/*color: #fff;*/
-	color:#FE7133;
-	background-color:#fff;
+    /*color: #fff;*/
+    color:#FE7133;
+    background-color:#fff;
 }
 .boton.calcomm:hover {
-	border-color: #FE7133;
-	background-color: #FE7133;
-	-webkit-transition: background-color 300ms ease-out;
+    border-color: #FE7133;
+    background-color: #FE7133;
+    -webkit-transition: background-color 300ms ease-out;
     transition: background-color 300ms ease-out;
     
     color: #fff;
@@ -95,15 +95,15 @@ boady{
 .boton.calcommr {
     border-color: #fff;
     width:180px;
-	/*background-color:#FE7133;*/
+    /*background-color:#FE7133;*/
     margin-left: 40px;
-	/*color: #fff;*/
-	color:#fff;
-	background-color:#FE7133;
+    /*color: #fff;*/
+    color:#fff;
+    background-color:#FE7133;
 }
 .boton.calcommr:hover {
-	background-color: #fff;
-	-webkit-transition: background-color 300ms ease-out;
+    background-color: #fff;
+    -webkit-transition: background-color 300ms ease-out;
     transition: background-color 300ms ease-out;
     
     color: #FE7133;
@@ -140,8 +140,8 @@ boady{
     border-radius: 6px
 }
 .logo{
-	width:250px; 
-	margin-top:10px;
+    width:250px; 
+    margin-top:10px;
 }
 
 .navigation{
@@ -226,41 +226,41 @@ video{
     margin: 10px 0 0 25px; }
 
 .inlinet{
-	margin-top:100px;
-	text-align:center;
-	vertical-align:middle;
+    margin-top:100px;
+    text-align:center;
+    vertical-align:middle;
 }
 
-.eventicaerror {
+.calcommerror {
     transition:1s linear all;
 }
 
-.eventicaerror.ng-active {
-	color:red;
+.calcommerror.ng-active {
+    color:red;
   animation: my_fade_animation 0.5s linear;
   -webkit-animation: my_fade_animation 0.5s linear;
   
 }
-.eventicaerror.ng-active-enter {
-	color:blue;
+.calcommerror.ng-active-enter {
+    color:blue;
   animation: my_fade_animation 0.5s linear;
   -webkit-animation: my_fade_animation 0.5s linear;
   
 }
-.eventicaerror.ng-inactive {
-	color:red;
+.calcommerror.ng-inactive {
+    color:red;
  animation: my_fade_animation 0.5s linear;
   -webkit-animation: my_fade_animation 0.5s linear;
 }
 
-.eventicaerror.ng-enter {
-	color:red;
+.calcommerror.ng-enter {
+    color:red;
   animation: my_fade_animation 0.5s linear;
   -webkit-animation: my_fade_animation 0.5s linear;
   
 }
-.eventicaerror.ng-leave {
-	color:red;
+.calcommerror.ng-leave {
+    color:red;
   animation: my_fade_animation 0.5s linear;
   -webkit-animation: my_fade_animation 0.5s linear;
 }
@@ -380,18 +380,16 @@ a .ng-hide-remove      { animation:0.5s flipInX ease; }
 @media (min-width: 321px) and (max-width: 480px)
 {
 .logo{
-	
+    
 }
 }
 
 @media (min-width: 240px) and (max-width: 320px)
 {
 .logo{
-	
+    
 }
 }
-
-
 
 .cropArea {
     background: #E4E4E0;
@@ -449,14 +447,3 @@ video#bgvid {
   opacity: 0;
   padding: 0 10px;
 }
-
-
-
-
-
-
-
-
-
-
-

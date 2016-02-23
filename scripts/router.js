@@ -12,13 +12,13 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	missed:"Unrecognized Error",
 	expired:"Your session has been expired,please login again"
 })
-.constant('EventicaConfig',{
+.constant('CalcommConfig',{
 	AppId:"e86aea35d849802cdf17e00d965c7bd9",
 	Min_Age:18,
 	Max_Age:30,
 	IP:'localhost'
 })
-.config(function($routeProvider, $locationProvider,cssInjectorProvider,EventicaLoginProvider,Stats,GooglePlusProvider){
+.config(function($routeProvider, $locationProvider,cssInjectorProvider,CalcommLoginProvider,Stats,GooglePlusProvider){
 		cssInjectorProvider.setSinglePageMode(true);
 
 		GooglePlusProvider.init({
@@ -29,7 +29,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
         $routeProvider
 		.when('/signup',{
 			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
@@ -37,7 +37,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 		})
 		.when('/show',{
 			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
@@ -59,7 +59,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			redirectTo: '/'
 		}).when('/home',{
 			templateUrl: function(params){
-				if(EventicaLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
 				else
 					return 'views/home.html';
 			},
