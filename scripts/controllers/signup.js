@@ -271,7 +271,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			    upload.uploadFile($scope.jprofile).then(function(res)
 				{
 					console.log(res);
-				})*?/
+				})*/
 				
 			};
 			$scope.experienceclick = function(c,form)
