@@ -12,6 +12,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 		/* START INITS*/
 			
 			$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
+			$scope.fakebasicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
 			$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false,picture1:'',picture2:'',picture3:'',picture4:'',picture5:'',};
 			$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 			$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};
@@ -268,12 +269,12 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					notificar("your session is incorrect");
 				}*/
-			    file.upload = Upload.upload({
+			    $scope.profile.picture1.upload = Upload.upload({
 			      url: 'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
 			      data: {profile: $scope.profile.picture1},
 			    });
 
-			    file.upload.then(function (response) {
+			    $scope.profile.picture1.upload.then(function (response) {
 			      $timeout(function () {
 			        file.result = response.data;
 			        notificar(response,50000);
