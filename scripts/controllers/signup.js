@@ -500,7 +500,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 		var formData = new FormData();
 		formData.append("data", data);
 		formData.append("file", file);
-		return $http.post('http://'+CalcommConfig.IP+':3000/api/v1/profiles', formData, {
+		return $http.post('http://localhost:3000/api/v1/profiles', formData, {
 			headers: {
 				"Content-type": undefined
 			},
