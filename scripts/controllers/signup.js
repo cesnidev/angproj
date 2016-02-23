@@ -239,15 +239,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			$scope.profileclick = function(c,form)
 			{
-				/*if(CalcommLogin.isAuthenticated())
+				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						if($scope.imgs>=3){
-							$scope.profile.picture1 = $scope.profile.picture1.data;
-							$scope.profile.picture2 = $scope.profile.picture2.data;
-							$scope.profile.picture3 = $scope.profile.picture3.data;
-							$scope.profile.picture4 = $scope.profile.picture4.data;
-							$scope.profile.picture5 = $scope.profile.picture5.data;
+						if($scope.imgs>=1){
 							$scope.jprofile.profile = $scope.profile;
 							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
@@ -270,13 +265,13 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				else
 				{
 					notificar("your session is incorrect");
-				}*/
-				$scope.jprofile.profile = $scope.profile;
+				}
+				/*$scope.jprofile.profile = $scope.profile;
 				console.log($scope.jprofile);
 			    upload.uploadFile($scope.jprofile).then(function(res)
 				{
 					console.log(res);
-				})
+				})*?/
 				
 			};
 			$scope.experienceclick = function(c,form)
