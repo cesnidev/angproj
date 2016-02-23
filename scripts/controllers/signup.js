@@ -504,7 +504,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 		formData.append('app_id',id);
 		formData.append("data", data);
 		formData.append("file", file);
-		console.log("FormData: "+formData);
+		console.log("FormData: "+JSON.stringify(formData));
 		return $http.post('http://localhost:3000/api/v1/profiles', formData, {
 			headers: {
 				"Content-type": undefined
