@@ -244,6 +244,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						if($scope.imgs>=1){
 							$scope.jprofile.profile = $scope.profile;
+							console.log($scope.jprofile);
+							console.log(JSON.stringify($scope.jprofile));
 							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
