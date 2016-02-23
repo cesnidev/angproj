@@ -226,7 +226,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				else
 				{
+					$location.path('/login');
 					notificar("your session is incorrect");
+
 				}
 				
 				
@@ -258,6 +260,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					}
 					else
 					{
+						$location.path('/login');
 						notificar("you must complete the register");
 					}
 				}
@@ -291,6 +294,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				else
 				{
+					$location.path('/login');
 					notificar("your session is incorrect");
 				}
 				
@@ -319,6 +323,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				else
 				{
+					$location.path('/login');
 					notificar("your session is incorrect");
 				}
 				
@@ -348,6 +353,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				else
 				{
+					$location.path('/login');
 					notificar("your session is incorrect");
 				}
 				
