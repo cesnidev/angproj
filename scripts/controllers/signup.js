@@ -199,19 +199,25 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			};
 			$scope.basicinfoclick = function(c,form)
 			{
-				//console.log("BINFO FORM: "+JSON.stringify($scope.binfo));
+
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						 console.log(JSON.stringify($scope.basicinfo.picture));
-						$scope.basicinfo.picture = $scope.basicinfo.picture.data;
-						$scope.jbasic.basic = $scope.basicinfo;
-						CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
-							//console.log(JSON.stringify(response));
-							$scope.allcompletecookie.basicinfo=true;
-							Session.save('completeforms',$scope.allcompletecookie);
-							$scope.animate_next(c);
-						});
+						if($scope.basicinfo.picture)
+						{
+							$scope.basicinfo.picture = $scope.basicinfo.picture.data;//onyl applies to select picture no facebook no google
+							$scope.jbasic.basic = $scope.basicinfo;
+							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
+								//console.log(JSON.stringify(response));
+								$scope.allcompletecookie.basicinfo=true;
+								Session.save('completeforms',$scope.allcompletecookie);
+								$scope.animate_next(c);
+							});
+						}
+						else{
+							notificar('you must choose your profile picture');
+						}
+						
 					}
 					else
 					{
