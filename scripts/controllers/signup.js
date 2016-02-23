@@ -1,6 +1,6 @@
 'use strict';
 
-calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin) {
+calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin,Upload) {
 	
 	$scope.allcompletecookie;
 	if(!CalcommLogin.isAuthenticated())
@@ -236,7 +236,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			$scope.profileclick = function(c,form)
 			{
-				if(CalcommLogin.isAuthenticated())
+				/*if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
 						if($scope.imgs>=3){
@@ -267,7 +267,24 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				else
 				{
 					notificar("your session is incorrect");
-				}
+				}*/
+			    file.upload = Upload.upload({
+			      url: 'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
+			      data: {profile: $scope.profile.picture1},
+			    });
+
+			    file.upload.then(function (response) {
+			      $timeout(function () {
+			        file.result = response.data;
+			        notificar(response,50000);
+			      });
+			    }, function (response) {
+			      if (response.status > 0)
+			        $scope.errorMsg = response.status + ': ' + response.data;
+			    }, function (evt) {
+			      // Math.min is to fix IE which reports 200% sometimes
+			      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			    });
 				
 			};
 			$scope.experienceclick = function(c,form)
