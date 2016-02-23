@@ -273,6 +273,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}*/
 				console.log($scope.profile);
 				$scope.jprofile.profile = $scope.profile;
+				console.log($scope.profile);
 			    upload.uploadFile($scope.jprofile).then(function(res)
 				{
 					console.log(res);
@@ -497,7 +498,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 
 .service('upload',function ($http, $q) 
 {
-	this.uploadFile = function(file, data,token,id)
+	this.uploadFile = function(data)
 	{
 		var deferred = $q.defer();
 		var formData = new FormData();
