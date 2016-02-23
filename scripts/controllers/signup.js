@@ -203,9 +203,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						if($scope.basicinfo.picture)
-						{
-							$scope.basicinfo.picture = $scope.basicinfo.picture.data;//onyl applies to select picture no facebook no google
+						// if($scope.basicinfo.picture)
+						// {
+						// 	$scope.basicinfo.picture = $scope.basicinfo.picture.data;//onyl applies to select picture no facebook no google
 							$scope.jbasic.basic = $scope.basicinfo;
 							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
@@ -213,10 +213,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 								Session.save('completeforms',$scope.allcompletecookie);
 								$scope.animate_next(c);
 							});
-						}
-						else{
-							notificar('you must choose your profile picture');
-						}
+						// }
+						// else{
+						// 	notificar('you must choose your profile picture');
+						// }
 						
 					}
 					else
