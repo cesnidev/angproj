@@ -271,9 +271,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					notificar("your session is incorrect");
 				}*/
-				console.log($scope.profile);
 				$scope.jprofile.profile = $scope.profile;
-				console.log($scope.profile);
+				console.log($scope.jprofile);
 			    upload.uploadFile($scope.jprofile).then(function(res)
 				{
 					console.log(res);
@@ -501,12 +500,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 	this.uploadFile = function(data)
 	{
 		var deferred = $q.defer();
-		var formData = new FormData();
-		formData.append('token',token);
-		formData.append('app_id',id);
-		formData.append("data", data);
-		formData.append("file", file);
-		console.log("FormData: "+JSON.stringify(formData));
+		//var formData = new FormData();
 		return $http.post('http://localhost:3000/api/v1/profiles', data, {
 			headers: {
 				"Content-type": undefined
