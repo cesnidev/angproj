@@ -203,6 +203,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
+						 console.log(JSON.stringify($scope.basicinfo.picture));
 						$scope.basicinfo.picture = $scope.basicinfo.picture.data;
 						$scope.jbasic.basic = $scope.basicinfo;
 						CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
