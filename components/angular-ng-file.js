@@ -12,12 +12,12 @@
                     reader.onload = function (loadEvent) {
                         scope.$apply(function () {
                             scope.ngFileModel = {
-                                lastModified: changeEvent.target.files[0].lastModified,
-                                lastModifiedDate: changeEvent.target.files[0].lastModifiedDate,
-                                name: changeEvent.target.files[0].name,
-                                size: changeEvent.target.files[0].size,
+                                'lastModified': changeEvent.target.files[0].lastModified,
+                                'lastModifiedDate': changeEvent.target.files[0].lastModifiedDate,
+                                'name': changeEvent.target.files[0].name,
+                                'size': changeEvent.target.files[0].size,
                                 'content-type': changeEvent.target.files[0].type,
-                                data: loadEvent.target.result
+                                'body': loadEvent.target.result
                             };
                         });
                     }
