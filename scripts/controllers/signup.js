@@ -251,7 +251,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				            fd.append('app_id','e86aea35d849802cdf17e00d965c7bd9');
 				            fd.append('profile',$scope.profile);
 				            //$scope.profile.picture1 = $scope.profile.picture1.body; 
-				            $scope.jprofile = $scope.profile;
+				            $scope.jprofile.profile = $scope.profile;
 				            CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 											
 							});
