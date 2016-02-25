@@ -246,7 +246,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 							$scope.jprofile.profile = $scope.profile;
 							console.log(JSON.stringify($scope.jprofile));
 							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
-								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
 								$scope.allcompletecookie.profile=true;
 								Session.save('completeforms',$scope.allcompletecookie);

@@ -19,19 +19,19 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
       },
       saveExperience:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences',
         transformRequest: angular.identity,
         headers: { 'Content-Type': undefined }
       },
       saveAvailability:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities',
         transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
       },
       saveLegal:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/legals'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/legals',
         transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
       }
