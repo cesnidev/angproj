@@ -7,33 +7,23 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 			},
       saveBasicInfo:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/basics',
-        transformRequest: angular.identity,
-        headers: { 'Content-Type': undefined }
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/basics'
       },
       saveProfile:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
-        transformRequest: angular.identity,
-        headers: { 'Content-Type': undefined }
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles'
       },
       saveExperience:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences',
-        transformRequest: angular.identity,
-        headers: { 'Content-Type': undefined }
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences'
       },
       saveAvailability:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities',
-        transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities'
       },
       saveLegal:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/legals',
-        transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/legals'
       }
 		});
 	})
