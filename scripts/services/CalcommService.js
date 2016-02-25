@@ -11,7 +11,9 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
       },
       saveProfile:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
+        transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
       },
       saveExperience:{
         method:'POST',

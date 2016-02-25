@@ -243,16 +243,27 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					if (form.$valid) {
 						if($scope.imgs>=1){
-							$scope.jprofile.profile = $scope.profile;
-							console.log($scope.jprofile);
-							console.log(JSON.stringify($scope.jprofile));
-							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
-								//console.log(JSON.stringify(response));
-								$scope.allcompletecookie.basicinfo=true;
-								$scope.allcompletecookie.profile=true;
-								Session.save('completeforms',$scope.allcompletecookie);
-								$scope.animate_next(c);
+
+
+							var fd = new FormData();
+				        	fd.append('picture1', $scope.profile.picture1);
+				            fd.append('token',$scope.user.token);
+				            fd.append('app_id','e86aea35d849802cdf17e00d965c7bd9');
+				            fd.append('profile',$scope.profile);
+				            CalcommResource.saveProfile(fd).$promise.then(function(response){
+											
 							});
+
+							// $scope.jprofile.profile = $scope.profile;
+							// console.log($scope.jprofile);
+							// console.log(JSON.stringify($scope.jprofile));
+							// CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
+							// 	//console.log(JSON.stringify(response));
+							// 	$scope.allcompletecookie.basicinfo=true;
+							// 	$scope.allcompletecookie.profile=true;
+							// 	Session.save('completeforms',$scope.allcompletecookie);
+							// 	$scope.animate_next(c);
+							// });
 							}else {
 							notificar('you must upload at least 3 pictures.');
 						}
@@ -518,8 +529,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
                     	//scope.previewo = loadEvent.target.result;
                     	scope.previewo = 'somepo';
                     }
-                    reader.readAsDataURL(iElement[0].files[0]);
-				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+                  //  reader.readAsDataURL(iElement[0].files[0]);
+				//$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
 			});
 		}
 	};
