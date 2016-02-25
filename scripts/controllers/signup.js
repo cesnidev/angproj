@@ -529,8 +529,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
                     	//scope.previewo = loadEvent.target.result;
                     	scope.previewo = 'somepo';
                     }
-                  //  reader.readAsDataURL(iElement[0].files[0]);
-				//$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+                    reader.readAsDataURL(iElement[0].files[0]);
+				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
 			});
 		}
 	};
