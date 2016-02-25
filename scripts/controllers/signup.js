@@ -244,8 +244,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						if($scope.imgs>=1){
 							$scope.jprofile.profile = $scope.profile;
-							console.log($scope.jprofile);
-							console.log(JSON.stringify($scope.jprofile));
 							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
@@ -396,6 +394,29 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			$scope.setpic = function(){
 				$scope.basicinfo.picture = $scope.img;
 			};
+			$scope.loadpreview = function(input){
+				if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+
+			        reader.onload = function (e) {
+			            $('#blah').attr('src', e.target.result);
+			        }
+
+			        reader.readAsDataURL(input.files[0]);
+			    }
+			};
+			$scope.profilepreview = function(input){
+				console.log(input);
+				if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+
+			        reader.onload = function (e) {
+			            $('#blah').attr('src', e.target.result);
+			        }
+			        $scope.profpic = reader.readAsDataURL(input.files[0]);;
+			        //reader.readAsDataURL(input.files[0]);
+			    }
+			};
 			
 
 			
@@ -486,12 +507,18 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 		{
 			iElement.on("change", function(e)
 			{
+				var reader = new FileReader();
+                    reader.onload = function (loadEvent) {
+                    	scope.$apply(function () {
+                    		scope.previewo = loadEvent.target.result;
+                    	});
+                    }
+                    reader.readAsDataURL(iElement[0].files[0]);
 				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
 			});
 		}
 	};
 }])
-
 .service('upload',function ($http, $q) 
 {
 	this.uploadFile = function(data)

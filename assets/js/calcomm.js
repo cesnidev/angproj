@@ -28,6 +28,10 @@ $(function(){
     }
   );
    $(".dropdown-button").dropdown();
+
+
+ 
+
 });    
 
 document.onkeydown = function(){
@@ -45,4 +49,22 @@ document.onkeydown = function(){
                 return false;
             }
     }
-} 
+}
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#profilepicpreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$(".gui").change(function(){
+    console.log('changed profile image')
+   // readURL(this);
+});
+
+

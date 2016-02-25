@@ -7,23 +7,33 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 			},
       saveBasicInfo:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/basics'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/basics',
+        transformRequest: angular.identity,
+        headers: { 'Content-Type': undefined }
       },
       saveProfile:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles'
+        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles',
+        transformRequest: angular.identity,
+        headers: { 'Content-Type': undefined }
       },
       saveExperience:{
         method:'POST',
         url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences'
+        transformRequest: angular.identity,
+        headers: { 'Content-Type': undefined }
       },
       saveAvailability:{
         method:'POST',
         url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities'
+        transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
       },
       saveLegal:{
         method:'POST',
         url:'http://'+CalcommConfig.IP+':3000/api/v1/legals'
+        transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
       }
 		});
 	})
