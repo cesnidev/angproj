@@ -167,10 +167,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			
 			if(CalcommLogin.isAuthenticated()){
-				$scope.jbasic = {token:$scope.user.token,app_id:CalcommConfig.AppId,basic:'';
-				$scope.jprofile = {token:$scope.user.token,app_id:CalcommConfig.AppId,profile:'';
-				$scope.jexperience = {token:$scope.user.token,app_id:CalcommConfig.AppId,experience:'';
-				$scope.javailability = {token:$scope.user.token,app_id:CalcommConfig.AppId,availability:'';
+				$scope.jbasic = {token:$scope.user.token,app_id:CalcommConfig.AppId,basic:''};
+				$scope.jprofile = {token:$scope.user.token,app_id:CalcommConfig.AppId,profile:''};
+				$scope.jexperience = {token:$scope.user.token,app_id:CalcommConfig.AppId,experience:''};
+				$scope.javailability = {token:$scope.user.token,app_id:CalcommConfig.AppId,availability:''};
 				$scope.jlegal = {token:$scope.user.token,app_id:CalcommConfig.AppId,legal:''};
 				
 				if($scope.user.provider=='facebook'||$scope.user.provider=='google_oauth2')
@@ -244,8 +244,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						if($scope.imgs>=1){
 							$scope.jprofile.profile = $scope.profile;
+							console.log($scope.jprofile);
 							console.log(JSON.stringify($scope.jprofile));
 							CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
+								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
 								$scope.allcompletecookie.profile=true;
 								Session.save('completeforms',$scope.allcompletecookie);
@@ -512,6 +514,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
                     	scope.$apply(function () {
                     		scope.previewo = loadEvent.target.result;
                     	});
+                    	console.log('loader file reader:'+loadEvent.target.result);
+                    	//scope.previewo = loadEvent.target.result;
+                    	scope.previewo = 'somepo';
                     }
                     reader.readAsDataURL(iElement[0].files[0]);
 				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
