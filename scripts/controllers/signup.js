@@ -41,28 +41,28 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			$scope.addimgs = function(){
 				switch ($scope.imgs) {
 					case 1:
-						if($scope.profile.picture1.data==undefined)
+						if($scope.profile.picture1.body==undefined)
 						{
 							notificar('first complete the existing fields before add more.');
 							return;
 						}
 					break;
 					case 2:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined)
+						if($scope.profile.picture1.body==undefined||$scope.profile.picture2.body==undefined)
 						{
 							notificar('first complete the existing fields before add more.');
 							return;
 						}
 					break;
 					case 3:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined)
+						if($scope.profile.picture1.body==undefined||$scope.profile.picture2.body==undefined||$scope.profile.picture3.body==undefined)
 						{
 							notificar('first complete the existing fields before add more.');
 							return;
 						}
 					break;
 					case 4:
-						if($scope.profile.picture1.data==undefined||$scope.profile.picture2.data==undefined||$scope.profile.picture3.data==undefined||$scope.profile.picture4.data==undefined)
+						if($scope.profile.picture1.body==undefined||$scope.profile.picture2.body==undefined||$scope.profile.picture3.body==undefined||$scope.profile.picture4.body==undefined)
 						{
 							notificar('first complete the existing fields before add more.');
 							return;
