@@ -16,7 +16,7 @@
                                 'lastModifiedDate': changeEvent.target.files[0].lastModifiedDate,
                                 'name': changeEvent.target.files[0].name,
                                 'size': changeEvent.target.files[0].size,
-                                'content-type': changeEvent.target.files[0].type,
+                                'content_type': changeEvent.target.files[0].type,
                                 'body': loadEvent.target.result
                             };
                         });
