@@ -269,8 +269,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) { 
-						$scope.availability.driver_image = $scope.availability.driver_image.data;
-						$scope.experience.tabc_image = $scope.experience.tabc_image.data;
 						$scope.jexperience.experience = $scope.experience;
 						CalcommResource.saveExperience($scope.jexperience).$promise.then(function(response){
 							//console.log(JSON.stringify(response));

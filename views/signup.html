@@ -7,7 +7,7 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<img ng-src="{{basicinfo.picture.data}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					    	<img ng-src="{{basicinfo.picture.body}}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -81,7 +81,7 @@
 								<div class="file-field input-field btn">
 							      <div id="upload_tabc" >
 							        <span>Select Profile Picture</span>
-							        <input type="file" id="basicinfopicture" uploader-model="basicinfo.picture" />
+							        <input type="file" id="basicinfopicture" ng-file-model="basicinfo.picture" />
 							      </div>
 							    </div>
 							</div>
@@ -95,7 +95,7 @@
 								&nbsp;
 							</div>
 							<div class="l6 s12 col" align="center">
-								<img ng-src="{{ previewo }}" class="dropzone" style="width:100%;height:100%;" alt="">
+								<img ng-src="{{ basicinfo.picture.body }}" class="dropzone" style="width:100%;height:100%;" alt="">
 							</div>
 							<div class="l3 s12 col">
 								&nbsp;
@@ -1196,7 +1196,7 @@
 				<div class="row picture" >
 					<div class="col l4 hub" ng-show="imgs>0">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture1.body }}" ng-show="profile.picture1.data!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture1.body }}" ng-show="profile.picture1.body!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
 							<div class="row">
 								<div class="col l12">
@@ -1211,13 +1211,13 @@
 
 					<div class="col l4 hub" ng-show="imgs>=2">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture2.body }}" ng-show="profile.picture2.data!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture2.body }}" ng-show="profile.picture2.body!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
 							<div class="row">
 								<div class="col l12">
 									<div class="file-field input-field btn">
 										<span>Select Img</span>
-							       		<input type="file" uploader-model="profile.picture2" />
+							       		<input type="file" ng-file-model="profile.picture2" />
 									</div>
 									
 								</div>
@@ -1227,13 +1227,13 @@
 					</div>
 					<div class="col l4 hub" ng-show="imgs>=3">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture3.data }}" ng-show="profile.picture3.data!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture3.body }}" ng-show="profile.picture3.body!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
 							<div class="row">
 								<div class="col l12">
 									<div class="file-field input-field btn">
 										<span>Select Img</span>
-							       		<input type="file" uploader-model="profile.picture3" />
+							       		<input type="file" ng-file-model="profile.picture3" />
 									</div>
 									
 								</div>
@@ -1246,13 +1246,13 @@
 		        	<div class="col l2">&nbsp;</div>
 		        	<div class="col l4 hub" ng-show="imgs>=4">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture4.data }}" ng-show="profile.picture4.data!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture4.body }}" ng-show="profile.picture4.body!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
 							<div class="row">
 								<div class="col l12">
 									<div class="file-field input-field btn">
 										<span>Select Img</span>
-							       		<input type="file" uploader-model="profile.picture4" />
+							       		<input type="file" ng-file-model="profile.picture4" />
 									</div>
 									
 								</div>
@@ -1262,13 +1262,13 @@
 					</div>
 					<div class="col l4 hub" ng-show="imgs>=5">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture5.data }}" ng-show="profile.picture5.data!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture5.body }}" ng-show="profile.picture5.body!=undefined" style="width:100%;height:200px;" alt="">
 							</div>
 							<div class="row">
 								<div class="col l12">
 									<div class="file-field input-field btn">
 										<span>Select Img</span>
-							       		<input type="file" uploader-model="profile.picture5" />
+							       		<input type="file" ng-file-model="profile.picture5" />
 									</div>
 									
 								</div>
@@ -1541,7 +1541,7 @@
 											<div class="file-field input-field">
 										      <div id="upload_tabc" class="btn">
 										        <span>License/Permit</span>
-										        <input type="file" uploader-model="experience.tabc_image" />
+										        <input type="file" ng-file-model="experience.tabc_image" />
 										      </div>
 										    </div>
 										</div>
@@ -1551,7 +1551,7 @@
 											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
 										</div>
 										<div class="l5 s12 m12 col">
-											<img class="dropzone" ng-src="{{ experience.tabc_image.data }}" style="width:100%;height:100%;" alt="">
+											<img class="dropzone" ng-src="{{ experience.tabc_image.body }}" style="width:100%;height:100%;" alt="">
 										</div>
 									</div>
 								</div>
@@ -2009,7 +2009,7 @@
 											<div class="file-field input-field">
 										      <div id="upload_tabc" class="btn">
 										        <span>License/Permit</span>
-										        <input type="file" uploader-model="availability.driver_image" />
+										        <input type="file" ng-file-model="availability.driver_image" />
 										      </div>
 										    </div>
 										</div>
@@ -2019,7 +2019,7 @@
 											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
 										</div>
 										<div class="l5 s12 m12 col">
-											<img class="dropzone" ng-src="{{ availability.driver_image.data }}" style="width:100%;height:100%;" alt="">
+											<img class="dropzone" ng-src="{{ availability.driver_image.body }}" style="width:100%;height:100%;" alt="">
 										</div>
 									</div>
 								</div>
