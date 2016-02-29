@@ -2,6 +2,8 @@
 
 calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin,upload) {
 	
+
+	
 	$scope.allcompletecookie;
 	if(!CalcommLogin.isAuthenticated())
 		$location.path("/login");
@@ -409,6 +411,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			        reader.readAsDataURL(input.files[0]);
 			    }
 			};
+			
 						
 			$scope.deletes = function(){
 				cssInjector.removeAll();

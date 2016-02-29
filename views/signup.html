@@ -7,7 +7,7 @@
                 <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
                 	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
 					    <li class="collection-item avatar">
-					    	<img ng-src="{{basicinfo.picture.body}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					    	<img ng-src="{{basicinfo.profile_picture.body}}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
 					      <p>{{ user.email }}
 					      </p>
@@ -41,35 +41,10 @@
 				<div class="row">
 			          <h2 class="fs-title">Profile Image</h2>
 				</div>
-				<div class="row">
-					<div ng-switch on="user.provider">
-						<div ng-switch-when="facebook">
-							<div class="col s12 l2 offset-l2" align="center">
-								<p>
-							      <input type="checkbox" ng-model="basicinfo.social" ng-click="setpic()" class="n" id="filled-in-box" />
-							      <label for="filled-in-box" style="color:black;">Use my facebook image</label>
-							    </p>
-								
-							</div>
-						</div>
-						<div ng-switch-when="google_oauth2">
-							<div class="col s12 l2 offset-l2" align="center">
-								<p>
-							      <input type="checkbox"  ng-model="basicinfo.social" ng-click="setpic()" class="n" id="filled-in-box" />
-							      <label for="filled-in-box" style="color:black;">Use my google image</label>
-							    </p>
-								
-							</div>
-						</div>
-					</div>
-					
-					<div class="col s12 l8 left" style="text-align:left;">
-						&nbsp;
-					</div>
-				</div>
+				
 				
 
-				<div class="row picture" ng-show="!basicinfo.social">
+				<div class="row picture" >
 					<div class="l12 s12 m12">
 
 						<div class="row">
@@ -80,7 +55,7 @@
 								<div class="btn">
 							      <div id="upload_tabc" >
 							        <span>Select Profile Picture</span>
-							        <input type="file" id="basicinfopicture" ng-file-model="basicinfo.picture" />
+							        <input type="file" id="basicinfopicture" ng-file-model="basicinfo.profile_picture" />
 							      </div>
 							    </div>
 							</div>
@@ -94,7 +69,7 @@
 								&nbsp;
 							</div>
 							<div class="l6 s12 col" align="center">
-								<img ng-src="{{ basicinfo.picture.body }}" class="dropzone" style="width:100%;height:100%;" alt="">
+								<img ng-src="{{ basicinfo.profile_picture.body }}" class="dropzone" style="width:100%;height:100%;" alt="">
 							</div>
 							<div class="l3 s12 col">
 								&nbsp;
