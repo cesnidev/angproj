@@ -412,6 +412,37 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			    }
 			};
 			
+			$scope.toB64 = function(url){
+				var xhr = new XMLHttpRequest();
+
+				// Use JSFiddle logo as a sample image to avoid complicating
+				// this example with cross-domain issues.
+				xhr.open( "GET", url, true );
+
+				// Ask for the result as an ArrayBuffer.
+				xhr.responseType = "arraybuffer";
+
+				xhr.onload = function( e ) {
+					// Obtain a blob: URL for the image data.
+					var arrayBufferView = new Uint8Array( this.response );
+					var blob = new Blob( [ arrayBufferView ], { type: "image/jpeg" } );
+					var urlCreator = window.URL || window.webkitURL;
+					var imageUrl = urlCreator.createObjectURL( blob );
+					var img = document.querySelector( "#photo" );
+					img.src = imageUrl;
+					console.debug(imageUrl);
+					var reader = new FileReader();
+				reader.onload = function (e) {
+					var data = this.result;
+					console.debug("Works: "+ url);
+				  }
+				  reader.readAsDataURL(imageUrl);
+				};
+
+				xhr.send();
+				
+				 }
+			
 						
 			$scope.deletes = function(){
 				cssInjector.removeAll();

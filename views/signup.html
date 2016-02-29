@@ -1962,16 +1962,7 @@
 										</div>
 									
 						</div>
-						<div class="row center" id="upload_drivlic_" style="display:none;">
-							<div class="row">
-								<p >Please provide an image of your driver's license</p>
-							</div>
-							<div class="row">
-								<button id="upload_drivlic" class="btn radius" ng-model="availability.drivlic" style="background-color:gray;" disabled>Upload image</button>
-							</div>
-									
-						</div>
-						<div class="row" id="upload_drivlic_" style="display:none;">
+						<div class="row" id="upload_drivlic_" ng-show="availability.valid_license">
 								<div class="l7 s12 offset-l1 col">
 									<div class="row">
 										<div class="l7 s12 col">
