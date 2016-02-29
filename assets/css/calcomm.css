@@ -109,6 +109,12 @@ boady{
     color: #FE7133;
 }
 
+.picture-rounded{
+	width:50%;
+	height:auto;
+	border-radius:10px;
+	box-shadow:5px 5px 8px #aaa;
+}
 
 .boton {
     border-style: solid;

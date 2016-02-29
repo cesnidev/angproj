@@ -8,14 +8,13 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 	else
 	{
 		$scope.imgs=0;
+		$scope.brands=0;
+		$scope.jobsx=0;
 		cssInjector.add("assets/css/proyecto.form.css");
 		/* START INITS*/
 			
-			//$scope.work_basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
-			//using a filled data for testing
-			$scope.basicinfo = { "address1": "asdasdasd", "addres2": "asdasdasd", "ship_address1": "asdasdasd", "ship_address2": "asdasdasd", "social": false, "firstname": "asdadasd", "middle_initial": "asdasd", "lastname": "asdasd", "birthday": "02/17/1998", "referred": "asdasdasd", "city": "asdasdad", "state": "AR", "zip": "22222", "phone": "1231231231", "same_as_home_mailing": true, "ship_city": "asdasdad", "ship_state": "AR", "ship_zip": "22222", "emergency_firstname": "sdadasdasd", "emergency_lastname": "asdasdasd", "emergency_relation": "Brother", "emergency_address1": "asdasdasdasd", "emergency_address2": "asdasd", "emergency_city": "asdads", "emergency_state": "CA", "emergency_zip": "22222", "emergency_phone": "1231231231", "emergency_info": "asdasdasd" }
-			//$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false,picture1:'',picture2:'',picture3:'',picture4:'',picture5:'',};
-			$scope.profile = { "waist": "32", "jacketsize": "", "chest": "42", "hips": "", "dressize": "", "waistfemale": "", "nflanguage": "", "slanguage": "", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false, "gender": "male", "height": "4'12", "weight": "1231", "eye_color": "Green", "hair_color": "Auburn", "hair_length": "Medium", "tshirt_size": "M", "pants_size": "S", "shoes_size": "5.5", "jacket_size": "40", "first_language": "German", "second_language": "Italian", "english_accent": true, "spanish_fluently": true };
+			$scope.basicinfo = {"address1":"","addres2":"","ship_address1":"","ship_address2":"","social":false};
+			$scope.profile = {"waist": "", "jacketsize": "", "chest": "","hips":"","dressize":"","waistfemale":"","nflanguage":"","slanguage":"", "piercings": false, "tatoos": false, "englishfuently": false, "englishacent": false,picture1:'',picture2:'',picture3:'',picture4:'',picture5:'',};
 			$scope.legal={"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
 			$scope.experience={"tabcertified": false, "xptech": false, "capinfo": false, "xpsocial": false, "emodeling": false, "flashmg": false, "tradeshow": false, "sampling": false, "indoor": false, "driving": false, "hostess": false, "promos": false, "techp": false, "streeteam": false, "demostore": false, "natours": false, "liquor": false, "outdoor": false, "costume": false, "setbd": false, "retailsales": false, "bambass": false, "teaml": false, "emcee": false, "model": false, "driver": false};
 			$scope.availability = {"licensev":false,"ownmb":false,"apitm":false,"days":false,"cmdays":false,"cmmonths":false,"sshift":false,"lshift":false,"mshift":false,"ashift":false,"lmshift":false,"hshift":false,"bshift":false};
@@ -105,7 +104,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			if(Session.get('completeforms')==undefined)
 			{
-				//console.log('no existe la cookie creando');
 				$scope.allcompletecookie ={basicinfo:false,profile:false,experience:false,availability:false,legal:false};
 				Session.save('completeforms',$scope.allcompletecookie);
 			}
@@ -116,14 +114,12 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			{
 				if(allcomplete.basic != undefined)
 				{
-					//console.log('$("#progressbar li").eq(0).addClass("active");');
 					$scope.allcompletecookie.basicinfo=true;
 					Session.save('completeforms',$scope.allcompletecookie);
 					$("#profile_progress").addClass("active");
 				}
 				if(allcomplete.profile != undefined)
 				{
-					//angular.element( document.querySelector("#profile_form") ).remove();
 					$scope.allcompletecookie.basicinfo=true;
 					$scope.allcompletecookie.profile=true;
 					Session.save('completeforms',$scope.allcompletecookie);
@@ -131,7 +127,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				if(allcomplete.experience != undefined)
 				{
-					//angular.element( document.querySelector("#experience_form") ).remove();
 					$scope.allcompletecookie.basicinfo=true;
 					$scope.allcompletecookie.profile=true;
 					$scope.allcompletecookie.experience=true;
@@ -140,7 +135,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				if(allcomplete.availability != undefined)
 				{
-					//angular.element( document.querySelector("#availability_form") ).remove();
 					$scope.allcompletecookie.basicinfo=true;
 					$scope.allcompletecookie.experience=true;
 					$scope.allcompletecookie.availability=true;
@@ -150,7 +144,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				}
 				if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
 				{
-					//angular.element( document.querySelector("#legal_form") ).remove();
 					$("#progressbar li").eq(4).addClass("active");
 					$location.path('/home');$scope.allcompletecookie.basicinfo=true;
 					$scope.allcompletecookie.experience=true;
@@ -160,11 +153,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					Session.save('completeforms',$scope.allcompletecookie);
 				}
 			}
-			
-			
-			
-			
-			
 			
 			if(CalcommLogin.isAuthenticated()){
 				$scope.jbasic = {token:$scope.user.token,app_id:CalcommConfig.AppId,basic:''};
@@ -206,20 +194,18 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						// if($scope.basicinfo.picture)
-						// {
-						// 	$scope.basicinfo.picture = $scope.basicinfo.picture.data;//onyl applies to select picture no facebook no google
+						 if($scope.basicinfo.picture)
+						 {
 							$scope.jbasic.basic = $scope.basicinfo;
 							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
-								//console.log(JSON.stringify(response));
 								$scope.allcompletecookie.basicinfo=true;
 								Session.save('completeforms',$scope.allcompletecookie);
 								$scope.animate_next(c);
 							});
-						// }
-						// else{
-						// 	notificar('you must choose your profile picture');
-						// }
+						}
+						 else{
+						 	notificar('you must choose your profile picture');
+						}
 						
 					}
 					else
@@ -242,11 +228,15 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						if($scope.imgs>=1){
+						if($scope.imgs>=3 && !$scope.empyImgs($scope.imgs)){
 				            $scope.jprofile.profile = $scope.profile;
 				            CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
-											
+								$scope.allcompletecookie.basicinfo=true;
+								$scope.allcompletecookie.profile=true;
+								Session.save('completeforms',$scope.allcompletecookie);
+								$scope.animate_next(c);		
 							});
+							console.debug($scope.jprofile);
 							}else {
 							notificar('you must upload at least 3 pictures.');
 						}
@@ -271,7 +261,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) { 
 						$scope.jexperience.experience = $scope.experience;
 						CalcommResource.saveExperience($scope.jexperience).$promise.then(function(response){
-							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;
 							$scope.allcompletecookie.experience=true;
@@ -299,7 +288,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						$scope.javailability.availability = $scope.availability;
 						CalcommResource.saveAvailability($scope.javailability).$promise.then(function(response){
-							//console.log(JSON.stringify(response));
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;
 							$scope.allcompletecookie.experience=true;
@@ -327,14 +315,13 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						$scope.jlegal.legal = $scope.legal;
 						CalcommResource.saveLegal($scope.jlegal).$promise.then(function(response){
-							//console.log(JSON.stringify(response));
+							
 							$scope.allcompletecookie.basicinfo=true;
 							$scope.allcompletecookie.profile=true;
 							$scope.allcompletecookie.experience=true;
 							$scope.allcompletecookie.availability=true;
 							$scope.allcompletecookie.legal=true;
 							Session.save('completeforms',$scope.allcompletecookie);
-							//$scope.animate_next(c);
 							$location.path('/home');
 						});
 					}
@@ -351,7 +338,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				
 			};
 			$scope.logout = function(){
-				//checar si es sesion por social media o email
 				if(Session.closeSession())
 					$location.path('/login');
 				else
@@ -361,6 +347,32 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			
 			/* Start Stuff Functions*/
+			$scope.empyImgs = function(ln){
+				var empty = false; 
+				switch(ln){
+					case 1:
+						if(($scope.profile.picture1==undefined||$scope.profile.picture1.body==undefined))
+							empty=true;
+						break;
+					case 2:
+						if(($scope.profile.picture1==undefined||$scope.profile.picture1.body==undefined)||($scope.profile.picture2==undefined||$scope.profile.picture2.body==undefined))
+							empty=true;
+						break;
+					case 3:
+						if(($scope.profile.picture1==undefined||$scope.profile.picture1.body==undefined)||($scope.profile.picture2==undefined||$scope.profile.picture2.body==undefined)||($scope.profile.picture3==undefined||$scope.profile.picture3.body==undefined))
+							empty=true;
+						break;
+					case 4:
+						if(($scope.profile.picture1==undefined||$scope.profile.picture1.body==undefined)||($scope.profile.picture2==undefined||$scope.profile.picture2.body==undefined)||($scope.profile.picture3==undefined||$scope.profile.picture3.body==undefined)||($scope.profile.picture4==undefined||$scope.profile.picture4.body==undefined))
+							empty=true;
+						break;
+					case 5:
+						if(($scope.profile.picture1==undefined||$scope.profile.picture1.body==undefined)||($scope.profile.picture2==undefined||$scope.profile.picture2.body==undefined)||($scope.profile.picture3==undefined||$scope.profile.picture3.body==undefined)||($scope.profile.picture4==undefined||$scope.profile.picture4.body==undefined)||($scope.profile.picture5==undefined||$scope.profile.picture5.body==undefined))
+							empty=true;
+						break;
+				}
+				return empty;
+			}
 			
 			$scope.addbrands = function(){
 				if($scope.brands<5)
@@ -371,13 +383,17 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					$scope.brands = $scope.brands-1;
 			};
 			$scope.addjobs = function(){
-				if($scope.jobs<5)
-					$scope.jobs = $scope.jobs+1;
+				if($scope.jobsx<5)
+					$scope.jobsx = $scope.jobsx+1;
 			};
 			$scope.deljobs = function(){
-				if($scope.jobs>0)
-					$scope.jobs = $scope.jobs-1;
+				if($scope.jobsx>0)
+					$scope.jobsx = $scope.jobsx-1;
 			};
+			$scope.settabc = function(active){
+				if(!active)
+					delete $scope.experience.tabc_image;
+			}
 			
 			$scope.setpic = function(){
 				$scope.basicinfo.picture = $scope.img;
@@ -393,22 +409,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			        reader.readAsDataURL(input.files[0]);
 			    }
 			};
-			$scope.profilepreview = function(input){
-				console.log(input);
-				if (input.files && input.files[0]) {
-			        var reader = new FileReader();
-
-			        reader.onload = function (e) {
-			            $('#blah').attr('src', e.target.result);
-			        }
-			        $scope.profpic = reader.readAsDataURL(input.files[0]);;
-			        //reader.readAsDataURL(input.files[0]);
-			    }
-			};
-			
-
-			
-			$scope.delete = function(){
+						
+			$scope.deletes = function(){
 				cssInjector.removeAll();
 			};
 		}
@@ -475,13 +477,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 	}//END IF AUTHENTICATED
 }).filter('age', function() {
      function calculateAge(v) { 
-     	console.log('filter with: '+v);
      	var birthday = new Date(v);
-     	console.log('Date parameter: '+birthday);
          var ageDifMs = Date.now() - birthday.getTime();
-         console.log('AgeDifMs: '+ageDate);
          var ageDate = new Date(ageDifMs);
-         console.log('AgeDate: '+ageDate);
          return Math.abs(ageDate.getUTCFullYear() - 1970);
      }
 
@@ -500,7 +498,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
                     	scope.$apply(function () {
                     		scope.previewo = loadEvent.target.result;
                     	});
-                    	console.log('loader file reader:'+loadEvent.target.result);
                     	//scope.previewo = loadEvent.target.result;
                     	scope.previewo = 'somepo';
                     }

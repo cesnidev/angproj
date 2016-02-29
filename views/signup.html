@@ -75,10 +75,9 @@
 						<div class="row">
 							<div class="l3 s12 col">
 								&nbsp;
-								<input type="file" class="gui" />
 							</div>
-							<div class="l6 s12 col" align="center">
-								<div class="file-field input-field btn">
+							<div class="l6 s12 col file-field input-field" align="center">
+								<div class="btn">
 							      <div id="upload_tabc" >
 							        <span>Select Profile Picture</span>
 							        <input type="file" id="basicinfopicture" ng-file-model="basicinfo.picture" />
@@ -1196,11 +1195,11 @@
 				<div class="row picture" >
 					<div class="col l4 hub" ng-show="imgs>0">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture1.body }}" ng-show="profile.picture1.body!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture1.body }}" ng-show="profile.picture1.body!=undefined" class="picture-rounded" alt="">
 							</div>
 							<div class="row">
-								<div class="col l12">
-									<div class="file-field input-field btn">
+								<div class="col l12 file-field input-field">
+									<div class="btn">
 										<span>Select Img</span>
 							       		<input type="file" ng-file-model="profile.picture1" />
 									</div>
@@ -1211,11 +1210,11 @@
 
 					<div class="col l4 hub" ng-show="imgs>=2">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture2.body }}" ng-show="profile.picture2.body!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture2.body }}" ng-show="profile.picture2.body!=undefined" class="picture-rounded" alt="">
 							</div>
 							<div class="row">
-								<div class="col l12">
-									<div class="file-field input-field btn">
+								<div class="col l12 file-field input-field">
+									<div class="btn">
 										<span>Select Img</span>
 							       		<input type="file" ng-file-model="profile.picture2" />
 									</div>
@@ -1227,11 +1226,11 @@
 					</div>
 					<div class="col l4 hub" ng-show="imgs>=3">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture3.body }}" ng-show="profile.picture3.body!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture3.body }}" ng-show="profile.picture3.body!=undefined" class="picture-rounded" alt="">
 							</div>
 							<div class="row">
-								<div class="col l12">
-									<div class="file-field input-field btn">
+								<div class="col l12 file-field input-field">
+									<div class="btn">
 										<span>Select Img</span>
 							       		<input type="file" ng-file-model="profile.picture3" />
 									</div>
@@ -1246,11 +1245,11 @@
 		        	<div class="col l2">&nbsp;</div>
 		        	<div class="col l4 hub" ng-show="imgs>=4">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture4.body }}" ng-show="profile.picture4.body!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture4.body }}" ng-show="profile.picture4.body!=undefined" class="picture-rounded" alt="">
 							</div>
 							<div class="row">
-								<div class="col l12">
-									<div class="file-field input-field btn">
+								<div class="col l12 file-field input-field">
+									<div class="btn">
 										<span>Select Img</span>
 							       		<input type="file" ng-file-model="profile.picture4" />
 									</div>
@@ -1262,11 +1261,11 @@
 					</div>
 					<div class="col l4 hub" ng-show="imgs>=5">
 						<div class="row dropzone" >
-							<div class="row"><img ng-src="{{ profile.picture5.body }}" ng-show="profile.picture5.body!=undefined" style="width:100%;height:200px;" alt="">
+							<div class="row"><img ng-src="{{ profile.picture5.body }}" ng-show="profile.picture5.body!=undefined" class="picture-rounded" alt="">
 							</div>
 							<div class="row">
-								<div class="col l12">
-									<div class="file-field input-field btn">
+								<div class="col l12 file-field input-field">
+									<div class="btn">
 										<span>Select Img</span>
 							       		<input type="file" ng-file-model="profile.picture5" />
 									</div>
@@ -1278,8 +1277,6 @@
 					</div>
 					<div class="col l2">&nbsp;</div>
 		        </div>
-
-		        {{ profile | json}}
 
 				<a tooltipped ng-if="!onlyview" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Experience!!"> Next</a>
 
@@ -1358,7 +1355,7 @@
 						<div class="row">
 							<div class="row">
 								<p class="left">Enter one job per field.</p><br>
-								<div class="row collapse hub" ng-show="jobs>0">
+								<div class="row collapse hub" ng-show="jobsx>0">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job1" placeholder="Job 1">
 							        </div>
@@ -1366,7 +1363,7 @@
 							          <a class="btn postfix" id="del_job_1">1</a>
 							        </div>
 							    </div>
-							    <div class="row collapse hub" ng-show="jobs>=2">
+							    <div class="row collapse hub" ng-show="jobsx>=2">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job2" placeholder="Job 2">
 							        </div>
@@ -1374,7 +1371,7 @@
 							          <a class="btn postfix" id="del_job_2">2</a>
 							        </div>
 							    </div>
-							    <div class="row collapse hub" ng-show="jobs>=3">
+							    <div class="row collapse hub" ng-show="jobsx>=3">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job3" placeholder="Job 3">
 							        </div>
@@ -1382,7 +1379,7 @@
 							          <a class="btn postfix" id="del_job_3">3</a>
 							        </div>
 							    </div>
-							    <div class="row collapse hub" ng-show="jobs>=4">
+							    <div class="row collapse hub" ng-show="jobsx>=4">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job4" placeholder="Job 4">
 							        </div>
@@ -1390,7 +1387,7 @@
 							          <a class="btn postfix" id="del_job_4">4</a>
 							        </div>
 							    </div>
-							    <div class="row collapse hub" ng-show="jobs==5">
+							    <div class="row collapse hub" ng-show="jobsx==5">
 							        <div class="s10 col">
 							          <input type="text" ng-model="experience.job5" placeholder="Job 5">
 							        </div>
@@ -1520,7 +1517,7 @@
 											<div class="row">
 												<div class="l4 s4  col">
 													<div class="switch">
-													  <input id="tabcertified" ng-model="experience.tabc_ciertified" type="checkbox" >
+													  <input id="tabcertified" ng-click="settabc(experience.tabc_ciertified)" ng-model="experience.tabc_ciertified" type="checkbox" >
 													  <label for="tabcertified"></label>
 													</div>
 												</div>
@@ -1531,16 +1528,16 @@
 								</div>
 								<div class="l3 col"></div>
 				</div>
-				<div class="row" id="upload_tabc_" style="display:none;">
+				<div class="row hub" id="upload_tabc_" ng-show="experience.tabc_ciertified">
 								<div class="l7 s12 offset-l1 col">
 									<div class="row">
 										<div class="l7 s12 col">
-											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
+											<label class="inline" disabled><font size="-1">Please upload TABC certified</font></label>
 										</div>
-										<div class="l5 s12 col">
-											<div class="file-field input-field">
+										<div class="l5 s12 col file-field input-field">
+											<div class="">
 										      <div id="upload_tabc" class="btn">
-										        <span>License/Permit</span>
+										        <span>Upload TABC Image</span>
 										        <input type="file" ng-file-model="experience.tabc_image" />
 										      </div>
 										    </div>
@@ -1548,10 +1545,10 @@
 									</div>
 									<div class="row">
 										<div class="l7 s12 m12 col" align="center">
-											<label class="inline" disabled><font size="-1">Please upload license/permit?</font></label>
+											<label class="inline" disabled><font size="-1">Please upload TABC certified</font></label>
 										</div>
 										<div class="l5 s12 m12 col">
-											<img class="dropzone" ng-src="{{ experience.tabc_image.body }}" style="width:100%;height:100%;" alt="">
+											<img class="dropzone picture-rounded" ng-show="experience.tabc_image" ng-src="{{ experience.tabc_image.body }}" alt="">
 										</div>
 									</div>
 								</div>

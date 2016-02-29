@@ -13,10 +13,10 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	expired:"Your session has been expired,please login again"
 })
 .constant('CalcommConfig',{
-	AppId:"e86aea35d849802cdf17e00d965c7bd9",
+	AppId:"f9899f931eddd3299cbaa3eaca6b67a3",
 	Min_Age:18,
 	Max_Age:30,
-	IP:'localhost'
+	IP:'45.55.30.212'
 })
 .config(function($routeProvider, $locationProvider,cssInjectorProvider,CalcommLoginProvider,Stats,GooglePlusProvider){
 		cssInjectorProvider.setSinglePageMode(true);
@@ -29,7 +29,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
         $routeProvider
 		.when('/signup',{
 			templateUrl: function(params){
-				if(CalcommLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
@@ -37,7 +37,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 		})
 		.when('/show',{
 			templateUrl: function(params){
-				if(CalcommLoginProvider.$get().isAuthenticated()==false){params.message=Stats.notlogin;notificar(Stats.notlogin,6000);return 'views/login.html';}
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
 					return 'views/signup.html';
 			},
@@ -50,7 +50,11 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: 'views/register.html',
 			controller: 'RegisterCtrl'
 		}).when('/view',{
-			templateUrl: 'views/view.html',
+			templateUrl: function(params){
+				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
+				else
+					return 'views/view.html';
+			},
 			controller: 'ViewCtrl'
 		}).when('/',{
 			templateUrl: 'views/welcome.html',

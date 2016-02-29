@@ -1,29 +1,26 @@
 calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
-		return $resource("http://"+CalcommConfig.IP+":3000/api/v1/", {
+		return $resource("http://"+CalcommConfig.IP+"/api/v1/", {
 			id: "@id"
 		}, {
-			update: {
-				method: "PUT"
-			},
       saveBasicInfo:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/basics'
+        url:'http://'+CalcommConfig.IP+'/api/v1/basics'
       },
       saveProfile:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/profiles'
+        url:'http://'+CalcommConfig.IP+'/api/v1/profiles'
       },
       saveExperience:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/experiences'
+        url:'http://'+CalcommConfig.IP+'/api/v1/experiences'
       },
       saveAvailability:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/availabilities'
+        url:'http://'+CalcommConfig.IP+'/api/v1/availabilities'
       },
       saveLegal:{
         method:'POST',
-        url:'http://'+CalcommConfig.IP+':3000/api/v1/legals'
+        url:'http://'+CalcommConfig.IP+'/api/v1/legals'
       }
 		});
 	})
@@ -34,25 +31,20 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 
 	calcommlogin.register = function (dataregister,social) {
     	var cookie = {};
-      var url = 'http://'+CalcommConfig.IP+':3000/api/v1/normal/register/';
+      var url = 'http://'+CalcommConfig.IP+'/api/v1/normal/register/';
 
       if(social)
-        url = 'http://'+CalcommConfig.IP+':3000/api/v1/social/register/';
+        url = 'http://'+CalcommConfig.IP+'/api/v1/social/register/';
 
 		$http.post(url,dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
       data=response.data.data;
       errors = response.data.errors;
-			//console.log("sucess: "+JSON.stringify(response.data));
-      //console.log("sucess data: "+JSON.stringify(data));
-      //console.log("Token: "+response.data.data.relations.tokens[0].attributes.token);
       if(errors==''|| !errors)
       {
         switch(dataregister.auth.provider){
             case 'facebook':
-            //console.log('facebook elegido');
               FB.api('/'+dataregister.auth.uid+'/picture?width=800&height=800',function (picture) {
-                //console.log("picture: "+JSON.stringify(picture));
                 cookie.id = dataregister.auth.uid;
                 cookie.user=dataregister.auth.info.name;
                 cookie.email= dataregister.auth.info.email;
@@ -60,7 +52,6 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
                 cookie.token=data.relations.tokens[0].attributes.token;
                 cookie.provider = dataregister.auth.provider;
                 Session.StoreSession(cookie);
-                //console.log("ALMACENADA LA COOKIE Y REDIRECCIONANDO");
                 $window.location.href = '#/signup';
               });
               break;
@@ -89,7 +80,6 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
       }
       else
       {
-        //console.log(response.errors);
         notificar(response.errors);
         
       }
@@ -109,17 +99,14 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
   calcommlogin.login = function(credentials,social){
     var cookie={forms:{}};
     $rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
-    var url = 'http://'+CalcommConfig.IP+':3000/api/v1/normal/login/';
+    var url = 'http://'+CalcommConfig.IP+'/api/v1/normal/login/';
 
       if(social)
-        url = 'http://'+CalcommConfig.IP+':3000/api/v1/social/login/';
+        url = 'http://'+CalcommConfig.IP+'/api/v1/social/login/';
 
     $http.post(url,credentials,{}).then(function successCallback(response){
       data=response.data.data;
       errors = response.data.errors;
-      //console.log("sucess: "+JSON.stringify(response));
-      ////console.log("sucess data: "+JSON.stringify(data));
-      ////console.log("Token: "+data.relations.tokens[0].attributes.token);
       if (errors==''|| !errors) {
           cookie.id = data.id;
           cookie.user=data.attributes.name;
@@ -130,9 +117,6 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 
             if(data.relations.basic != undefined)
               cookie.forms.basic=true;
-            else
-              //console.log('no existe basic');
-
             if(data.relations.profile != undefined)
               cookie.forms.profile=true;
             if(data.relations.experience != undefined)
@@ -145,7 +129,6 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 
           $window.location.href = '#/signup';
       } else{
-        //console.log("Sucess with errors: "+errors);
         notificar(errors.errors);
       };
     },function errorCallback(response){
