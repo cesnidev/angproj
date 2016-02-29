@@ -196,7 +196,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
-						 if($scope.basicinfo.picture!=undefined)
+						 if($scope.basicinfo.profile_picture)
 						 {
 							$scope.jbasic.basic = $scope.basicinfo;
 							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
