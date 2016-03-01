@@ -1,9 +1,6 @@
 'use strict';
 
 calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssInjector,$window,Session,$location,CalcommConfig,CalcommLogin,upload) {
-	
-
-	
 	$scope.allcompletecookie;
 	if(!CalcommLogin.isAuthenticated())
 		$location.path("/login");
@@ -198,6 +195,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 					if (form.$valid) {
 						 if($scope.basicinfo.profile_picture)
 						 {
+							$("#loginp").removeClass("ng-hide").addClass('ng-show');
 							$scope.jbasic.basic = $scope.basicinfo;
 							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
 								$scope.allcompletecookie.basicinfo=true;
@@ -231,6 +229,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				{
 					if (form.$valid) {
 						if($scope.imgs>=3 && !$scope.empyImgs($scope.imgs)){
+							$("#loginp").removeClass("ng-hide").addClass('ng-show');
 				            $scope.jprofile.profile = $scope.profile;
 				            CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
 								$scope.allcompletecookie.basicinfo=true;
@@ -260,7 +259,8 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			{
 				if(CalcommLogin.isAuthenticated())
 				{
-					if (form.$valid) { 
+					if (form.$valid) {
+						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.jexperience.experience = $scope.experience;
 						CalcommResource.saveExperience($scope.jexperience).$promise.then(function(response){
 							$scope.allcompletecookie.basicinfo=true;
@@ -288,6 +288,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
+						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.javailability.availability = $scope.availability;
 						CalcommResource.saveAvailability($scope.javailability).$promise.then(function(response){
 							$scope.allcompletecookie.basicinfo=true;
@@ -315,6 +316,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				if(CalcommLogin.isAuthenticated())
 				{
 					if (form.$valid) {
+						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.jlegal.legal = $scope.legal;
 						CalcommResource.saveLegal($scope.jlegal).$promise.then(function(response){
 							

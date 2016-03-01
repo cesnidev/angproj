@@ -565,7 +565,7 @@
 				<div class="row">
 								<div class="col s12 l2">
 									<label class="inline"><font size="-1">Please provide any information we should know in case of an emergency:</font></label>
-								</div>
+								</div> 
 								<div class="col s12 l6">
 									<div class="input-field">
 									    <textarea ng-model="basicinfo.emergency_info" class="materialize-textarea" ></textarea>
@@ -576,7 +576,11 @@
 				</div>
 
 				<a tooltipped ng-if="!onlyview" ng-click="basicinfoclick('#basicinfo_form',binfo)" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Profile!!"> Submit</a>
+				<div class="row hub ng-hide" id="loginp" align="center">
+					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#basicinfo_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
+				
 			</form>
 			</md-content>
 			</fieldset>
@@ -1254,7 +1258,9 @@
 		        </div>
 
 				<a tooltipped ng-if="!onlyview" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Experience!!"> Next</a>
-
+				<div class="row hub ng-hide" id="loginp" align="center">
+					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</md-content>
@@ -1931,6 +1937,9 @@
 				</div><br>
 
 				<a tooltipped ng-if="!onlyview" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Availability!!"> Next</a>
+				<div class="row hub ng-hide" id="loginp" align="center">
+					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+				</div>
 
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -1968,8 +1977,8 @@
 										<div class="l7 s12 col">
 											<label class="inline" disabled><font size="-1">Please provide an image of your driver's license</font></label>
 										</div>
-										<div class="l5 s12 col file-field input-field">
-											<div class="">
+										<div class="l5 s12 col">
+											<div class="file-field input-field">
 										      <div id="upload_tabc" class="btn">
 										        <span>License/Permit</span>
 										        <input type="file" ng-file-model="availability.driver_image" />
@@ -2162,7 +2171,9 @@
 				</div></div></div>
 
 				<a tooltipped ng-if="!onlyview" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Legal!!"> Next</a>
-
+				<div class="row hub ng-hide" id="loginp" align="center">
+					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</form>
@@ -2303,7 +2314,7 @@
 											</div>
 								</div>
 										
-							</div>
+							</div> 
 									
 								</div>
 								<div class="l4 col">
@@ -2319,7 +2330,9 @@
 							
 							<br><br>
 					<a tooltipped ng-if="!onlyview" ng-click="legalclick('#legal_form',legl)" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Finish!!">Submit</a>
-
+					<div class="row hub ng-hide" id="loginp" align="center">
+						<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+					</div>
 					<a tooltipped ng-if="onlyview" ng-click="animate_previous('#legal_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				
 			</form>

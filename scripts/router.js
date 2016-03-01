@@ -13,7 +13,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 	expired:"Your session has been expired,please login again"
 })
 .constant('CalcommConfig',{
-	AppId:"f9899f931eddd3299cbaa3eaca6b67a3",
+	AppId:"76716437257af59683d0e7b6259f29c4",
 	Min_Age:18,
 	Max_Age:30,
 	IP:'45.55.30.212'
@@ -39,7 +39,12 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: function(params){
 				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
-					return 'views/signup.html';
+				{
+					if(CalcommLoginProvider.$get().getEmail=='calcommadmin@calcommevents.com')
+						return 'views/view.html';
+					else
+						return 'views/welcome.html';
+				}
 			},
 			controller: 'SignUpCtrl'
 		})
@@ -53,7 +58,12 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: function(params){
 				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
 				else
-					return 'views/view.html';
+				{
+					if(CalcommLoginProvider.$get().getEmail=='calcommadmin@calcommevents.com')
+						return 'views/view.html';
+					else
+						return 'views/welcome.html';
+				}
 			},
 			controller: 'ViewCtrl'
 		}).when('/',{

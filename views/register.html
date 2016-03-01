@@ -35,7 +35,7 @@
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input id="email" name="email" required type="email" ng-model="reg.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
+            <input id="email" name="email" required type="email" ng-model="reg.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail||calcommevents)\.com*$/">
             <label for="email" class="center-align active">Email</label>
             <div class="calcommerror" ng-messages="flogin.email.$error" role="alert">
               <div ng-message="required">Email is required.</div>
@@ -58,7 +58,9 @@
             <a ng-click="email()" ng-model="login.submit2" class="btn calcomm radius col s12">Continue</a>
           </div>
         </div>
-        <hr>
+        <div class="row hub ng-hide" id="loginp" align="center">
+			<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+		</div> 
         <div align="center">
         	<span><strong>Or</strong></span><span><strong> Register with:</strong></span>
         </div><br>
@@ -70,9 +72,9 @@
             <div ng-click="facebook()" style=" cursor:pointer;" class="social facebook"><i class="icon-facebook-sign icon-2x"> </i>Register</div>
             </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12 m12 l6">
-            <p class="margin medium-small"><a class="btn calcomm waves-effect" href="#/login">Login</a></p>
+        <div class="row" align="center">
+          <div class="input-field col s12 m12 l12">
+				<a class="btn calcomm waves-effect" href="#/login">Login</a>
           </div>
           <div class="input-field col s6 m6 l6">
               &nbsp;

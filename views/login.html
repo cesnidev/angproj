@@ -19,13 +19,10 @@
             <a href="#/"><img src="assets/img/Logo4.png" class="logo" alt="" class="circle responsive-img valign profile-image-login">
           </a></div>
         </div>
-        <div class="calcommerror" align="center" ng-if="msj!=null">
-            	Error: {{ msj }}
-        </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail)\.com*$/">
+            <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail|calcommevents)\.com*$/">
             <label for="email" class="center-align active">Email</label>
             <div class="calcommerror" ng-show="flogin.email.$touched" ng-messages="flogin.email.$error" role="alert">
               <div ng-message="required">Email is required.</div>
@@ -48,8 +45,11 @@
             <a ng-click="submitlogin()" ng-disabled="!flogin.$valid" ng-model="login.submit2" class="btn calcomm radius col s12">login</a>
 
           </div>
-        </div>
-        <hr>
+		  
+        </div>  
+		<div class="row hub ng-hide" id="loginp" align="center">
+			<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+		</div>
         <div class="row">
           <div class="col l6 s6">
             <div ng-click="ingoogle()" style=" cursor:pointer;" class="social google-pluse"><i class="icon-google-plus icon-2x"></i>&nbsp;Login</div>
@@ -58,13 +58,10 @@
             <div ng-click="infacebook()" style=" cursor:pointer;" class="social facebook"><i class="icon-facebook-sign icon-2x"></i>&nbsp;&nbsp;Login</div>
             </div>
         </div><br>
-        <div class="row">
-          <div class="input-field col s12 m12 l6">
-            <p class="margin medium-small"><a class="btn calcomm waves-effect" href="#/register">Register Now!</a></p>
-          </div>
-          <div class="input-field col s6 m6 l6">
-              &nbsp;
-          </div>          
+        <div class="row" align="center">
+          <div class="input-field col s12 m12 l12">
+		  <a class="btn calcomm waves-effect" href="#/register">Register Now!</a>
+          </div>       
         </div>
 
       </form>
