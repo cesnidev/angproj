@@ -4,8 +4,8 @@
                 <div class="col s12 m6 l4">
                     <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="assets/img/Logo4.png"></a>
                 </div>
-                <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
-                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+                <div class="col l4  offset-l4 s10 offset-s1 m6" style="margin-top:10px;" align="right">
+                	<ul class="collection" href='javascript:void(0);' data-activates='calcommmenu' dropdown data-hover="true">
 					    <li class="collection-item avatar">
 					    	<img ng-src="{{basicinfo.profile_picture.body}}" style="background-color:#FE7133;" alt="" class="circle picture">
 					      <span class="title">{{ user.user}}</span>
@@ -14,7 +14,7 @@
 					    </li>
 					 </ul>
 
-					<ul id='demoDropdown' class='dropdown-content'>
+					<ul id='calcommmenu' class='dropdown-content'>
 					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
 					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
 					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
@@ -33,8 +33,8 @@
 				<li id="legal_progress" class="">Legal</li>
 			</ul>
 
-			<!-- fieldsets -->
-			<fieldset id="basicinfo_form" ng-disabled="onlyview" ng-if="user.forms.basic == undefined || allcompletecookie.basicinfo == false">
+			<!-- fieldsets --> 
+			<fieldset id="basicinfo_form" ng-disabled="onlyview" ng-if="user.forms.basic == false">
 				<md-content layout-padding class="inputErrors">
 			<form name="binfo" novalidate novalidate ng-cloak>
 
@@ -48,10 +48,10 @@
 					<div class="l12 s12 m12">
 
 						<div class="row">
-							<div class="l3 s12 col">
+							<div class="l5 s1 m4 col">
 								&nbsp;
 							</div>
-							<div class="l6 s12 col file-field input-field" align="center">
+							<div class="l4 s11 m5 col file-field input-field" align="center">
 								<div class="btn">
 							      <div id="upload_tabc" >
 							        <span>Select Profile Picture</span>
@@ -250,7 +250,7 @@
 										<div class="col s12 l3">
 											<div class="input-field">
 												<label class="active" for="zip">Zip</label>
-												<input ng-minlength="5" ng-model="basicinfo.zip" id="zip"  name="zip" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
+												<input ng-maxlength="5" ng-minlength="5" ng-model="basicinfo.zip" id="zip"  name="zip" required ng-pattern="/^[-+]?[1-9]\d*$/"/>
 											<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.zip.$error"  ng-messages-multiple role="alert">
 												<div ng-message="required">
 													Zip Code is required.
@@ -258,8 +258,11 @@
 												<div ng-message="pattern">
 													Zip Code must be a number.
 												</div>
+												<div ng-message="maxlength">
+													Zip Code contain 5 numbers.
+												</div>
 												<div ng-message="minlength">
-													Zip Code must be lower than 5.
+													Zip Code contain 5 numbers.
 												</div>
 												
 											</div>
@@ -372,7 +375,7 @@
 										<div class="col s12 l3">
 											<div class="input-field">
 												<label class="active" for="ship_zip">Zip</label>
-												<input ng-minlength="5" type="text" ng-model="basicinfo.ship_zip" ng-required="!basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" id="ship_zip" name="ship_zip" required="!basicinfo.same_as_home_mailing" ng-pattern="/^[-+]?[1-9]\d*$/"/>
+												<input ng-minlength="5" ng-maxlength="5" type="text" ng-model="basicinfo.ship_zip" ng-required="!basicinfo.same_as_home_mailing" ng-disabled="basicinfo.same_as_home_mailing" id="ship_zip" name="ship_zip" required="!basicinfo.same_as_home_mailing" ng-pattern="/^[-+]?[1-9]\d*$/"/>
 
 												
 										
@@ -383,8 +386,11 @@
 												<div ng-message="pattern">
 													Zip Code must be a number.
 												</div>
+												<div ng-message="maxlength">
+													Zip Code contain 5 numbers.
+												</div>
 												<div ng-message="minlength">
-													Zip Code must be lower than 5.
+													Zip Code contain 5 numbers.
 												</div>
 												
 											</div>
@@ -523,7 +529,7 @@
 										<div class="col s12 l3">
 											<div class="input-field">
 												<label class="active" for="emrgncyzip">Zip</label>
-												<input ng-minlength="5" ng-pattern="/^[-+]?[1-9]\d*$/" type="text" name="emrgncyzip" id="emrgncyzip" ng-model="basicinfo.emergency_zip" required>
+												<input ng-minlength="5" ng-maxlength="5" ng-pattern="/^[-+]?[1-9]\d*$/" type="text" name="emrgncyzip" id="emrgncyzip" ng-model="basicinfo.emergency_zip" required>
 
 
 												<div class="calcommerror" ng-show="!onlyview" ng-messages="binfo.emrgncyzip.$error"  ng-messages-multiple role="alert">
@@ -533,8 +539,11 @@
 												<div ng-message="pattern">
 													Zip Code must be a number.
 												</div>
+												<div ng-message="maxlength">
+													Zip Code contain 5 numbers.
+												</div>
 												<div ng-message="minlength">
-													Zip Code must be lower than 5.
+													Zip Code contain 5 numbers.
 												</div>
 												
 											</div>
@@ -577,7 +586,7 @@
 
 				<a tooltipped ng-if="!onlyview" ng-click="basicinfoclick('#basicinfo_form',binfo)" ng-show="binfo.$valid" ng-model="basicinfo.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Profile!!"> Submit</a>
 				<div class="row hub ng-hide" id="loginp" align="center">
-					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+					<img src="assets/img/loading.gif" style="width:30%;;"/>
 				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#basicinfo_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 				
@@ -585,7 +594,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="profile_form" ng-disabled="onlyview" ng-if="user.forms.profile == undefined || allcompletecookie.profile == false">
+			<fieldset id="profile_form" ng-disabled="onlyview" ng-if="user.forms.profile == false">
 			<md-content>
 			<form name="prof" novalidate id="profile" data-abide="ajax">
 				<h1>Profile</h1>
@@ -1259,14 +1268,14 @@
 
 				<a tooltipped ng-if="!onlyview" ng-click="profileclick('#profile_form',prof)" ng-show="prof.$valid" ng-model="profile.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Experience!!"> Next</a>
 				<div class="row hub ng-hide" id="loginp" align="center">
-					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+					<img src="assets/img/loading.gif" style="width:30%;;"/>
 				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#profile_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
 			</md-content>
 			</fieldset>
 
-			<fieldset id="experience_form" ng-disabled="onlyview" ng-if="user.forms.experience == undefined || allcompletecookie.experience == false">
+			<fieldset id="experience_form" ng-disabled="onlyview" ng-if="user.forms.experience == false">
 			<md-content>
 			<form id="experience" name="exp" novalidate data-abide="ajax">
 				<h1>Experience</h1>
@@ -1938,7 +1947,7 @@
 
 				<a tooltipped ng-if="!onlyview" ng-click="experienceclick('#experience_form',exp)" ng-show="exp.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Availability!!"> Next</a>
 				<div class="row hub ng-hide" id="loginp" align="center">
-					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+					<img src="assets/img/loading.gif" style="width:30%;;"/>
 				</div>
 
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#experience_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
@@ -1947,7 +1956,7 @@
 			</md-content>
 			</fieldset>
 
-			<fieldset id="availability_form" ng-disabled="onlyview" ng-if="user.forms.availability == undefined || allcompletecookie.availability == false">
+			<fieldset id="availability_form" ng-disabled="onlyview" ng-if="user.forms.availability == false">
 			<md-content>
 			<form id="availability" name="avail" novalidate data-abide="ajax">
 				<h1>Availability</h1>
@@ -2172,7 +2181,7 @@
 
 				<a tooltipped ng-if="!onlyview" ng-click="availabilityclick('#availability_form',avail)" ng-show="avail.$valid" ng-model="experience.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Go to Legal!!"> Next</a>
 				<div class="row hub ng-hide" id="loginp" align="center">
-					<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+					<img src="assets/img/loading.gif" style="width:30%;;"/>
 				</div>
 				<a tooltipped ng-if="onlyview" ng-click="animate_previous('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				<a tooltipped ng-if="onlyview" ng-click="animate_next('#availability_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Next</a>
@@ -2331,7 +2340,7 @@
 							<br><br>
 					<a tooltipped ng-if="!onlyview" ng-click="legalclick('#legal_form',legl)" ng-show="legl.$valid" ng-model="legl.submit" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="Finish!!">Submit</a>
 					<div class="row hub ng-hide" id="loginp" align="center">
-						<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+						<img src="assets/img/loading.gif" style="width:30%;;"/>
 					</div>
 					<a tooltipped ng-if="onlyview" ng-click="animate_previous('#legal_form')" class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="10" data-tooltip="I wanna register now!!">Previous</a>
 				

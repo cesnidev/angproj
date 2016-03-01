@@ -82,10 +82,11 @@ calcomm
 	};
 	
     $scope.logout = function(){
+		Session.remove("completeforms");
 		if(Session.closeSession())
-		$location.path('/login');
+			$location.path('/login');
 		else
-		$location.path('/login');
+			$location.path('/login');
 	};
     
 	

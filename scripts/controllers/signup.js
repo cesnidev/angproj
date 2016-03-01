@@ -99,59 +99,29 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			
 			$scope.url = $location.absUrl();
 			$scope.user = Session.getSession();
-			var allcomplete = $scope.user.forms;	
 			
-			if(Session.get('completeforms')==undefined)
-			{
-				$scope.allcompletecookie ={basicinfo:false,profile:false,experience:false,availability:false,legal:false};
-				Session.save('completeforms',$scope.allcompletecookie);
-			}
-			$scope.allcompletecookie = Session.get('completeforms');
-			
-			
-			if(allcomplete !=undefined)
-			{
-				if(allcomplete.basic != undefined)
+				if($scope.user.forms.basic)
 				{
-					$scope.allcompletecookie.basicinfo=true;
-					Session.save('completeforms',$scope.allcompletecookie);
 					$("#profile_progress").addClass("active");
 				}
-				if(allcomplete.profile != undefined)
+				if($scope.user.forms.profile)
 				{
-					$scope.allcompletecookie.basicinfo=true;
-					$scope.allcompletecookie.profile=true;
-					Session.save('completeforms',$scope.allcompletecookie);
 					$("#experience_progress").addClass("active");
 				}
-				if(allcomplete.experience != undefined)
+				if($scope.user.forms.experience)
 				{
-					$scope.allcompletecookie.basicinfo=true;
-					$scope.allcompletecookie.profile=true;
-					$scope.allcompletecookie.experience=true;
-					Session.save('completeforms',$scope.allcompletecookie);
 					$("#availability_progress").addClass("active");
 				}
-				if(allcomplete.availability != undefined)
+				if($scope.user.forms.availability)
 				{
-					$scope.allcompletecookie.basicinfo=true;
-					$scope.allcompletecookie.experience=true;
-					$scope.allcompletecookie.availability=true;
-					$scope.allcompletecookie.profile=true;
-					Session.save('completeforms',$scope.allcompletecookie);
 					$("#legal_progress").addClass("active");
 				}
-				if(allcomplete.basic != undefined && allcomplete.profile != undefined && allcomplete.experience != undefined && allcomplete.availability != undefined && allcomplete.legal != undefined)
+				if($scope.user.forms.basic && $scope.user.forms.profile && $scope.user.forms.experience && $scope.user.forms.availability && $scope.user.forms.legal )
 				{
 					$("#progressbar li").eq(4).addClass("active");
-					$location.path('/home');$scope.allcompletecookie.basicinfo=true;
-					$scope.allcompletecookie.experience=true;
-					$scope.allcompletecookie.availability=true;
-					$scope.allcompletecookie.profile=true;
-					$scope.allcompletecookie.legal=true;
-					Session.save('completeforms',$scope.allcompletecookie);
+					$location.path('/home');
 				}
-			}
+			
 			
 			if(CalcommLogin.isAuthenticated()){
 				$scope.jbasic = {token:$scope.user.token,app_id:CalcommConfig.AppId,basic:''};
@@ -198,8 +168,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 							$("#loginp").removeClass("ng-hide").addClass('ng-show');
 							$scope.jbasic.basic = $scope.basicinfo;
 							CalcommResource.saveBasicInfo($scope.jbasic).$promise.then(function(response){
-								$scope.allcompletecookie.basicinfo=true;
-								Session.save('completeforms',$scope.allcompletecookie);
+								
+								$scope.user.forms.basic=true;
+								Session.StoreSession($scope.user);
 								$scope.animate_next(c);
 							});
 						}
@@ -232,12 +203,11 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 							$("#loginp").removeClass("ng-hide").addClass('ng-show');
 				            $scope.jprofile.profile = $scope.profile;
 				            CalcommResource.saveProfile($scope.jprofile).$promise.then(function(response){
-								$scope.allcompletecookie.basicinfo=true;
-								$scope.allcompletecookie.profile=true;
-								Session.save('completeforms',$scope.allcompletecookie);
+								$scope.user.forms.basic=true;
+								$scope.user.forms.profile=true;
+								Session.StoreSession($scope.user);
 								$scope.animate_next(c);		
 							});
-							console.debug($scope.jprofile);
 							}else {
 							notificar('you must upload at least 3 pictures.');
 						}
@@ -263,10 +233,12 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.jexperience.experience = $scope.experience;
 						CalcommResource.saveExperience($scope.jexperience).$promise.then(function(response){
-							$scope.allcompletecookie.basicinfo=true;
-							$scope.allcompletecookie.profile=true;
-							$scope.allcompletecookie.experience=true;
-							Session.save('completeforms',$scope.allcompletecookie);
+							$scope.user.forms.basic=true;
+							$scope.user.forms.profile=true;
+							$scope.user.forms.experience=true;
+							
+								Session.StoreSession($scope.user);
+							console.debug(response);
 							$scope.animate_next(c);
 						});
 					}
@@ -291,11 +263,11 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.javailability.availability = $scope.availability;
 						CalcommResource.saveAvailability($scope.javailability).$promise.then(function(response){
-							$scope.allcompletecookie.basicinfo=true;
-							$scope.allcompletecookie.profile=true;
-							$scope.allcompletecookie.experience=true;
-							$scope.allcompletecookie.availability=true;
-							Session.save('completeforms',$scope.allcompletecookie);
+							$scope.user.forms.basic=true;
+							scope.user.forms.profile=true;
+							scope.user.forms.experience=true;
+							scope.user.forms.availability=true;
+								Session.StoreSession($scope.user);
 							$scope.animate_next(c);
 						});
 					}
@@ -319,13 +291,12 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 						$("#loginp").removeClass("ng-hide").addClass('ng-show');
 						$scope.jlegal.legal = $scope.legal;
 						CalcommResource.saveLegal($scope.jlegal).$promise.then(function(response){
-							
-							$scope.allcompletecookie.basicinfo=true;
-							$scope.allcompletecookie.profile=true;
-							$scope.allcompletecookie.experience=true;
-							$scope.allcompletecookie.availability=true;
-							$scope.allcompletecookie.legal=true;
-							Session.save('completeforms',$scope.allcompletecookie);
+							$scope.user.forms.basic=true;
+							scope.user.forms.profile=true;
+							scope.user.forms.experience=true;
+							scope.user.forms.availability=true;
+							scope.user.forms.legal=true;
+							Session.StoreSession($scope.user);
 							$location.path('/home');
 						});
 					}
@@ -342,6 +313,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 				
 			};
 			$scope.logout = function(){
+				Session.remove("completeforms");
 				if(Session.closeSession())
 					$location.path('/login');
 				else
@@ -413,37 +385,6 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			        reader.readAsDataURL(input.files[0]);
 			    }
 			};
-			
-			$scope.toB64 = function(url){
-				var xhr = new XMLHttpRequest();
-
-				// Use JSFiddle logo as a sample image to avoid complicating
-				// this example with cross-domain issues.
-				xhr.open( "GET", url, true );
-
-				// Ask for the result as an ArrayBuffer.
-				xhr.responseType = "arraybuffer";
-
-				xhr.onload = function( e ) {
-					// Obtain a blob: URL for the image data.
-					var arrayBufferView = new Uint8Array( this.response );
-					var blob = new Blob( [ arrayBufferView ], { type: "image/jpeg" } );
-					var urlCreator = window.URL || window.webkitURL;
-					var imageUrl = urlCreator.createObjectURL( blob );
-					var img = document.querySelector( "#photo" );
-					img.src = imageUrl;
-					console.debug(imageUrl);
-					var reader = new FileReader();
-				reader.onload = function (e) {
-					var data = this.result;
-					console.debug("Works: "+ url);
-				  }
-				  reader.readAsDataURL(imageUrl);
-				};
-
-				xhr.send();
-				
-				 }
 			
 						
 			$scope.deletes = function(){

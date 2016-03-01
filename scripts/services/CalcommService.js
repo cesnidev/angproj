@@ -106,7 +106,7 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 	};
 	
 	calcommlogin.login = function(credentials,social){
-		var cookie={forms:{}};
+		var cookie={forms:{basic:false,profile:false,experience:false,availability:false,legal:false,}};
 		$rootScope.forms={basicinfo:{},profile:{},experience:{},availability:{},legal:{}};
 		var url = 'http://'+CalcommConfig.IP+'/api/v1/normal/login/';
 		
@@ -117,6 +117,7 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 			data=response.data.data;
 			errors = response.data.errors;
 			if (errors==''|| !errors) {
+				
 				cookie.id = data.id;
 				cookie.user=data.attributes.name;
 				cookie.email= data.attributes.email;
@@ -125,15 +126,15 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 				cookie.provider = data.attributes.provider;
 				
 				if(data.relations.basic != undefined)
-				cookie.forms.basic=true;
+					cookie.forms.basic=true;
 				if(data.relations.profile != undefined)
-				cookie.forms.profile=true;
+					cookie.forms.profile=true;
 				if(data.relations.experience != undefined)
-				cookie.forms.experience=true;
+					cookie.forms.experience=true;
 				if(data.relations.availability != undefined)
-				cookie.forms.availability=true;
+					cookie.forms.availability=true;
 				if(data.relations.legal != undefined)
-				cookie.forms.legal=true;
+					cookie.forms.legal=true;
 				Session.StoreSession(cookie);
 				$rootScope.loading=false;
 				$("#loginp").removeClass("ng-show").addClass('ng-hide');
