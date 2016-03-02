@@ -39,13 +39,8 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: function(params){
 				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin,6000);return 'views/login.html';}
 				else
-				{
-					/*if(CalcommLoginProvider.$get().getEmail=='calcommadmin@calcommevents.com')
-						return 'views/signup.html';
-					else
-						return 'views/welcome.html';*/
-					return 'views/signup.html'; 
-				}
+					return 'views/signup.html';
+				
 			},
 			controller: 'SignUpCtrl'
 		})
@@ -59,14 +54,7 @@ angular.module('Client',['ngFileUpload', 'ngImgCrop','ng-file-model','ngResource
 			templateUrl: function(params){
 				if(CalcommLoginProvider.$get().isAuthenticated()==false){notificar(Stats.notlogin);return 'views/login.html';}
 				else
-				{
-					/*if(CalcommLoginProvider.$get().getEmail=='calcommadmin@calcommevents.com')
-						return 'views/view.html';
-					else
-						return 'views/welcome.html';*/
 					return 'views/view.html';
-					
-				}
 			},
 			controller: 'ViewCtrl'
 		}).when('/',{

@@ -265,9 +265,9 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 						$scope.javailability.availability = $scope.availability;
 						CalcommResource.saveAvailability($scope.javailability).$promise.then(function(response){
 							$scope.user.forms.basic=true;
-							scope.user.forms.profile=true;
-							scope.user.forms.experience=true;
-							scope.user.forms.availability=true;
+							$scope.user.forms.profile=true;
+							$scope.user.forms.experience=true;
+							$scope.user.forms.availability=true;
 								Session.StoreSession($scope.user);
 							$scope.animate_next(c);
 						});
@@ -293,10 +293,10 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 						$scope.jlegal.legal = $scope.legal;
 						CalcommResource.saveLegal($scope.jlegal).$promise.then(function(response){
 							$scope.user.forms.basic=true;
-							scope.user.forms.profile=true;
-							scope.user.forms.experience=true;
-							scope.user.forms.availability=true;
-							scope.user.forms.legal=true;
+							$scope.user.forms.profile=true;
+							$scope.user.forms.experience=true;
+							$scope.user.forms.availability=true;
+							$scope.user.forms.legal=true;
 							Session.StoreSession($scope.user);
 							$location.path('/home');
 						});
@@ -399,7 +399,11 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			if(Session.get('basicinfo')==undefined){
 				Session.save('basicinfo',$rootScope.info);
 			}
-				$scope.basicinfo = Session.get('basicinfo');
+			$scope.basicinfo = Session.get('basicinfo');
+			
+			$scope.user = Session.getSession();
+			if($scope.user.email!='calcommadmin@calcommevents.com')
+				$location.path("/");
 		}
 		
 		$scope.animate_next = function(container){

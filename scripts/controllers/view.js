@@ -6,14 +6,11 @@ calcomm.controller('ViewCtrl',function($scope,Session,CalcommLogin,$rootScope,$l
 	if(CalcommLogin.isAuthenticated())
 	{
 		$scope.user = Session.getSession();
-		var getAll = {token:$scope.user.token,app_id:CalcommConfig.AppId};
+		if($scope.user.email!='calcommadmin@calcommevents.com')
+			$location.path("/");
+		console.debug($scope.user.email);
 		
-		/*$http.get('http://'+CalcommConfig.IP+'/api/v1/users',getAll,{}).then(
-		function successCallback(response){
-			console.debug(response);
-		},function errorCallback(response){
-			console.debug(response);
-		});*/
+		var getAll = {token:$scope.user.token,app_id:CalcommConfig.AppId};
 		
 		$http({
 		  method: 'GET',
