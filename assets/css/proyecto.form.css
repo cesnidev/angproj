@@ -1,0 +1,164 @@
+.size-12 { font-size: 12px; }
+  
+.size-14 { font-size: 14px; }
+
+.size-16 { font-size: 16px; }
+
+.size-18 { font-size: 18px; }
+
+.size-21 { font-size: 21px; }
+
+.size-24 { font-size: 24px; }
+
+.size-36 { font-size: 36px; }
+
+.size-48 { font-size: 48px; }
+
+.size-60 { font-size: 60px; }
+
+.size-72 { font-size: 72px; }
+
+.hidex{
+	visibility:hidden;
+}
+.showx{
+	visibility:visible;
+}
+#email{
+    text-transform: lowercase;
+}
+
+.checktag{
+	padding-top: 5px;
+}
+#calcommforms
+{
+	margin: 50px auto;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	margin-bottom:100px;
+}
+#calcommforms fieldset
+{
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	box-sizing: border-box;
+	margin: 0 2%;
+	padding: 20px 30px;
+	position: absolute;
+	width: 96%;
+}
+#calcommforms fieldset form
+{
+	visibility:visible;
+}
+#calcommforms fieldset:not(:first-of-type)
+{
+	display: none;
+}
+/*
+#calcommforms input, #calcommforms textarea
+{
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: #2C3E50;
+	font-family: montserrat;
+	font-size: 13px;
+	margin-bottom: 10px;
+	padding: 15px;
+	width: 100%;
+}*/
+#calcommforms .action-button
+{
+	background: #F57133;
+	border: 0 none;
+	border-radius: 1px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	margin: 10px 5px;
+	padding: 10px 5px;
+	width: 100px;
+}
+#calcommforms .action-button:hover, #calcommforms .action-button:focus
+{
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #FE7133;
+}
+.fs-title
+{
+	color: #2C3E50;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-weight:bold;
+	
+}
+.fs-subtitle
+{
+	color: #666;
+	font-size: 13px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+#progressbar
+{
+	counter-reset: step;
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+#progressbar li
+{
+	color: black;
+	float: left;
+	font-size: 0.7rem;
+	list-style-type: none;
+	position: relative;
+	text-transform: uppercase;
+	width: 20%;
+}
+#progressbar li:before
+{
+	background: white;
+	border-radius: 3px;
+	color: #333;
+	content: counter(step);
+	counter-increment: step;
+	display: block;
+	font-size: 10px;
+	line-height: 20px;
+	margin: 0 auto 5px auto;
+	width: 20px;
+}
+#progressbar li:after
+{
+	background: white;
+	content: '';
+	height: 2px;
+	left: -50%;
+	position: absolute;
+	top: 9px;
+	width: 100%;
+	z-index: -1;
+}
+#progressbar li:first-child:before
+{
+	background: #FE7133;
+	color: white;
+}
+#progressbar li:first-child:after
+{
+	content: none;
+}
+#progressbar li.active:before, #progressbar li.active:after
+{
+	background: #FE7133;
+	color: white;
+}
+#progressbar li.cactive:before, #progressbar li.cactive:after
+{
+	background-color:#E3E3E3;
+	color: white;
+}
