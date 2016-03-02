@@ -10,13 +10,21 @@ calcomm
 	{
 		$scope.user = Session.getSession();
 		if($scope.user.provider=='facebook'||$scope.user.provider=='google')
-		$scope.img = $scope.user.image;
+			$scope.img = $scope.user.image;
 	}
 	
 	if(CalcommLogin.isAuthenticated()&&!$location.absUrl().indexOf("home")>-1)
-	$location.path("/home");
+		$location.path("/home");
 	if(!CalcommLogin.isAuthenticated())
-	$location.path("/login");
+		$location.path("/login");
+	
+	document.onkeydown = function(){
+		if(event.keyCode==13)
+		{
+			if($scope.flogin.$valid)
+				$scope.submitlogin();
+		}	
+	}
 	
 	
 	

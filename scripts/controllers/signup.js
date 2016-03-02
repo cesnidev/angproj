@@ -100,6 +100,7 @@ calcomm.controller('SignUpCtrl', function($rootScope,$scope,CalcommResource,cssI
 			$scope.url = $location.absUrl();
 			$scope.user = Session.getSession();
 			
+			
 				if($scope.user.forms.basic)
 				{
 					$("#profile_progress").addClass("active");

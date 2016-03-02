@@ -30,7 +30,7 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 	var errors;
 	
 	calcommlogin.register = function (dataregister,social) {
-		var cookie = {};
+		var cookie={forms:{basic:false,profile:false,experience:false,availability:false,legal:false,}};
 		var url = 'http://'+CalcommConfig.IP+'/api/v1/normal/register/';
 		
 		if(social)
@@ -38,7 +38,7 @@ calcomm.factory('CalcommResource', function($resource,CalcommConfig) {
 		
 		$http.post(url,dataregister,{"headers" : "Content-Type=application/x-www-form-urlencoded; charset=UTF-8"})
 		.then(function successCallback(response) {
-			console.debug(response);
+			
 			data=response.data.data;
 			errors = response.data.errors;
 			if(errors==''|| !errors)
