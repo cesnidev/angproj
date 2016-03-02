@@ -2188,8 +2188,9 @@
 			</form>
 			</md-content>
 			</fieldset>
+			
 
-			<fieldset id="legal_form" ng-disabled="onlyview" ng-if="user.forms.legal == undefined || allcompletecookie.legal == false">
+			<fieldset id="legal_form" ng-disabled="onlyview" ng-if="user.forms.legal == false">
 			<md-content>
 			<form id="legal" name="legl" novalidate data-abide="ajax" novalidate>
 				<h1>Legal</h1>
