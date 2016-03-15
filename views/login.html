@@ -1,0 +1,69 @@
+
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+
+
+  <div id="login-page" class="row">
+    <div class="l4">&nbsp;</div>
+    <div class="col s10 offset-s1 l4 offset-l4 z-depth-4 card-panel">
+      <form class="login-form" name="flogin" novalidate ng-controller="LoginCtrl">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <a href="#/"><img src="assets/img/Logo4.png" class="logo" alt="" class="circle responsive-img valign profile-image-login">
+            
+          </a></div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="email" name="email" required type="email" ng-model="log.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail|calcommevents)\.com*$/">
+            <label for="email" class="center-align active">Email</label>
+            <div class="calcommerror" ng-show="flogin.email.$touched" ng-messages="flogin.email.$error" role="alert">
+              <div ng-message="required">Email is required.</div>
+              <div ng-message="pattern">This is not a email.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input required id="password" name="passwordl" type="password" ng-model="log.password">
+            <label for="password" class="active">Password</label>
+            <div class="calcommerror" ng-messages="flogin.passwordl.$error" role="alert">
+            	<div ng-message="required">Password is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a ng-click="submitlogin()" ng-disabled="!flogin.$valid" ng-model="login.submit2" class="btn calcomm radius col s12">login</a>
+
+          </div>
+		  
+        </div>  
+		<div class="row hub ng-hide" id="loginp" align="center">
+			<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+		</div>
+        <div class="row">
+          <div class="col l6 s6">
+            <div ng-click="ingoogle()" style=" cursor:pointer;" class="social google-pluse"><i class="icon-google-plus icon-2x"></i>&nbsp;Login</div>
+            </div>
+          <div class="col l6 s6">
+            <div ng-click="infacebook()" style=" cursor:pointer;" class="social facebook"><i class="icon-facebook-sign icon-2x"></i>&nbsp;&nbsp;Login</div>
+            </div>
+        </div><br>
+        <div class="row" align="center">
+          <div class="input-field col s12 m12 l12">
+		  <a class="btn calcomm waves-effect" href="#/register">Register Now!</a>
+          </div>       
+        </div>
+
+      </form>
+    </div>
+  </div>

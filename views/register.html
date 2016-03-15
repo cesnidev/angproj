@@ -1,0 +1,103 @@
+
+
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+
+
+  <div id="login-page" class="row">
+    <div class="l4">&nbsp;</div>
+    <div class="col s10 offset-s1 l4 offset-l4 z-depth-4 card-panel">
+      <form class="login-form" name="flogin" novalidate ng-controller="RegisterCtrl">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <a href="#/"><img src="assets/img/Logo4.png" class="logo" alt="" class="circle responsive-img valign profile-image-login">
+          </a></div>
+        </div>
+        <div class="calcommerror" align="center" ng-if="msj!=null">
+            	Error: {{ msj }}
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="username" name="username" required type="text" ng-model="reg.username">
+            <label for="username" class="center-align active">Username</label>
+            <div class="calcommerror" ng-messages="flogin.username.$error" role="alert">
+            	<div ng-message="required">Username is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="email" name="email" required type="email" ng-model="reg.email" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(hotmail|live|msn|gmail|yahoo|outlook|iCloud|aol|mail||calcommevents)\.com*$/">
+            <label for="email" class="center-align active">Email</label>
+            <div class="calcommerror" ng-messages="flogin.email.$error" role="alert">
+              <div ng-message="required">Email is required.</div>
+              <div ng-message="pattern">This is not a email.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input required id="password" name="passwordl" type="password" ng-model="reg.password">
+            <label for="password" class="active">Password</label>
+            <div class="calcommerror" ng-messages="flogin.passwordl.$error" role="alert">
+            	<div ng-message="required">Password is required.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a ng-click="email()" ng-model="login.submit2" class="btn calcomm radius col s12">Continue</a>
+          </div>
+        </div>
+        <div class="row hub ng-hide" id="loginp" align="center">
+			<img src="assets/img/loading.gif" style="width:40%;height:50px;"/>
+		</div> 
+        <div align="center">
+        	<span><strong>Or</strong></span><span><strong> Register with:</strong></span>
+        </div><br>
+        <div class="row">
+          <div class="col l6 s6">
+            <div ng-click="google()" style=" cursor:pointer;" class="social google-pluse"><i class="icon-google-plus icon-2x"></i> Register</div>
+            </div>
+          <div class="col l6 s6">
+            <div ng-click="facebook()" style=" cursor:pointer;" class="social facebook"><i class="icon-facebook-sign icon-2x"> </i>Register</div>
+            </div>
+        </div>
+        <div class="row" align="center">
+          <div class="input-field col s12 m12 l12">
+				<a class="btn calcomm waves-effect" href="#/login">Login</a>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              &nbsp;
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+
+  <!--prism-->
+  <!--
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script type="text/javascript" src="assets/js/prism/prism.js"></script>
+  <!--scrollbar--
+  <script type="text/javascript" src="assets/js/scrollbar/scrollbar.min.js"></script>
+
+      <!--plugins.js - Some Specific JS codes for Plugin Settings--
+    <script type="text/javascript" src="assets/js/plugins.min.js"></script>
+    -->

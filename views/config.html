@@ -1,0 +1,139 @@
+<div ng-controller="CalcommCtrl">
+	<div ng-include="'views/assets/nav.html'"></div>
+	<section>
+	<div class="row">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<ul class="tabs" style="overflow:hidden;" tabs>
+						<li class="tab col s3"><a class="active" href="#profile">Profile</a></li>
+						<li ng-if="!advance" class="tab col s3"><a  href="#settings">Basic Info</a></li>
+						<li ng-if="!advance" class="tab col s3"><a href="#settings2">Profile</a></li>
+						<li ng-if="!advance" class="tab col s3"><a href="#settings3">Experience</a></li>
+						<li ng-if="!advance" class="tab col s3"><a href="#settings4">Availability</a></li>
+						<li ng-if="!advance" class="tab col s3"><a href="#settings5">Legal</a></li>
+					</ul>
+				</div>
+
+				<div id="profile" class="col s12 hub" style="margin-top:30px;">
+					<div class="row">
+						<div class="col l3 " align="center">
+							<div class="row">
+								<div class="col l10 offset-l1 offset-s2 s8">
+									<img src="assets/img/avatar.png" style="width:80%;" alt="" class="circle">
+								</div>
+								<div class="col l12 s12">
+									<h2 style="margin-bottom:0px;font-weight:bold;color:#888;"> {{ user.user }}  </h2> <br>
+<!--									<i class="material-icons left tiny fix-tiny">email</i>-->
+									<p style="margin-top:-10px;" class="green-text"> {{ user.email }}  </p>
+								</div>
+								<div class="col l12 s12">
+									<a ng-click="logout()" class="btn">Logout</a> 
+								</div>
+								<div class="col l12 s12">
+									<div class="hr-container">
+									  <span class="hr-text">
+										Profile
+									  </span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col l9 s12 m12 border">
+							<div class="row">
+								<div class="col offset-l1  l9  s11 m12">
+									<div class="row">
+										<div class="col l4"> &nbsp; </div>
+										<div class="col l8">
+											<div class="input-field">
+											   <label class="active" for="username">Username: </label>
+											   <input required="" type="text" name="username" id="username" ng-model="edit.username">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col l4"> &nbsp; </div>
+										<div class="col l8">
+											<div class="input-field">
+											   <label class="active" for="username2">Username: </label>
+											   <input required="" type="text" name="username" id="username2" ng-model="edit.username">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col l4"> &nbsp; </div>
+										<div class="col l8">
+											<div class="input-field">
+											   <label class="active" for="username3">Username: </label>
+											   <input required="" type="text" name="username" id="username3" ng-model="edit.username">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col l4"> &nbsp; </div>
+										<div class="col l8">
+											<div class="input-field">
+											   <label class="active" for="username4">Username: </label>
+											   <input required="" type="text" name="username" id="username4" ng-model="edit.username">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col l4"> &nbsp; </div>
+										<div class="col l8">
+											<div class="input-field">
+											   <label class="active" for="username5">Username: </label>
+											   <input required="" type="text" name="username" id="username5" ng-model="edit.username">
+											</div>
+										</div>
+									</div>
+									
+									<hr style="color:#eee;background-color:#eee;">
+									<div class="row" align="right">
+										<a ng-click="save()" class="btn green">Save</a>
+										<a ng-click="cancel()" class="btn orange">Cancel</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="settings" class="col s12" style="display: none;">Basic Info</div>
+				<div id="settings2" class="col s12" style="display: none;">Profile</div>
+				<div id="settings3" class="col s12" style="display: none;">Experience</div>
+				<div id="settings4" class="col s12" style="display: none;">Availability</div>
+				<div id="settings5" class="col s12" style="display: none;">Legal</div>
+			</div>
+			
+		</div>
+<!--
+		<div class="col offset-l1 l10">
+			<div class="row">
+				<div class="col l3 " align="center">
+					<div class="row">
+						<div class="col l12 s12">
+							<img src="assets/img/avatar.png" style="width:80%;" alt="" class="circle">
+						</div>
+					</div>
+				</div>
+				<div class="col l9" style="border:1px solid #222;border-radius:5px;">
+					<div class="row">
+						<div class="col offset-l3 l8 ">
+							<div class="row"></div>
+							<hr>
+							<div class="row" align="right">
+								<a href="" class="btn green">Save</a>
+								<a href="" class="btn orange">Cancel</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+-->
+	</div>
+		
+		
+</div>
+	

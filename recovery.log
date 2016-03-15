@@ -1,0 +1,830 @@
+__bionic_open_tzdata: couldn't find any tzdata when looking for localtime!
+__bionic_open_tzdata: couldn't find any tzdata when looking for GMT!
+__bionic_open_tzdata: couldn't find any tzdata when looking for posixrules!
+Starting TWRP 2.8.6.0 on Wed Feb 11 00:08:34 1970
+ (pid 150)
+RECOVERY_SDCARD_ON_DATA := true
+TW_POWER_BUTTON := 107
+TW_NO_USB_STORAGE := true
+I:Found brightness file at '/sys/class/leds/lcd-backlight/brightness'
+I:TWFunc::Set_Brightness: Setting brightness control to 255
+Starting the UI...Pixel format: 720x1280 @ 32bpp
+Pixel format: RGBX_8888
+Not using qualcomm overlay, 'mdssfb_80000'
+framebuffer: fd 4 (720 x 1280)
+TW_SCREEN_BLANK_ON_BOOT := true
+I:Scaling the curtain width 0.666667x and height 0.666667x
+=> Linking mtab
+Moving /etc/twrp.fstab -> /etc/recovery.fstab
+=> Processing recovery.fstab
+I:Processing '/data'
+I:Setting up '/data' as data/media emulated storage.
+I:Created '/sdcard' folder.
+I:mount -o bind '/data/media' '/sdcard' process ended with RC=0
+I:TWFunc::Remove_MTP_Storage unable to locate partition for 0
+I:mount -o bind '/data/media/0' '/sdcard' process ended with RC=0
+I:Processing '/cache'
+I:Processing '/system'
+I:Processing '/boot'
+I:Processing '/recovery'
+I:Processing '/pds'
+I:Processing '/sdcard1'
+I:Created '/sdcard1' folder.
+I:Processing '/usb-otg'
+I:Created '/usb-otg' folder.
+I:Backup folder set to '/data/media/0/TWRP/BACKUPS/ZX1D92KFCH'
+I:Settings storage is '/data/media/0'
+Updating partition details...
+I:Data backup size is 2972MB, free: 6000MB.
+I:Unable to mount '/usb-otg'
+I:Actual block device: '', current file system: 'auto'
+...done
+I:Unmounting main partitions...
+
+
+Partition Logs:
+/data | /dev/block/mmcblk0p38 | Size: 13091MB Used: 2972MB Free: 6000MB Backup Size: 2972MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_During_Factory_Reset Wipe_Available_in_GUI IsPresent Has_Data_Media Can_Encrypt_Backup Use_Userdata_Encryption Is_Storage Is_Settings_Storage 
+   Symlink_Path: /data/media/0
+   Symlink_Mount_Point: /sdcard
+   Primary_Block_Device: /dev/block/mmcblk0p38
+   Length: -16384
+   Display_Name: Data
+   Storage_Name: Internal Storage
+   Backup_Path: /data
+   Backup_Name: data
+   Backup_Display_Name: Data
+   Storage_Path: /data/media/0
+   Current_File_System: f2fs
+   Fstab_File_System: f2fs
+   Backup_Method: files
+   Mount_Flags=0x       0, Mount_Options=inline_xattr
+   MTP_Storage_ID: 65537
+
+/cache | /dev/block/mmcblk0p35 | Size: 525MB Used: 8MB Free: 516MB Backup Size: 8MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_During_Factory_Reset Wipe_Available_in_GUI IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p35
+   Display_Name: Cache
+   Storage_Name: Cache
+   Backup_Path: /cache
+   Backup_Name: cache
+   Backup_Display_Name: Cache
+   Storage_Path: /cache
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/system | /dev/block/mmcblk0p36 | Size: 1086MB Used: 1062MB Free: 24MB Backup Size: 1062MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_Available_in_GUI IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p36
+   Display_Name: System
+   Storage_Name: System
+   Backup_Path: /system
+   Backup_Name: system
+   Backup_Display_Name: System
+   Storage_Path: /system
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/boot | /dev/block/mmcblk0p31 | Size: 9MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p31
+   Display_Name: Boot
+   Storage_Name: boot
+   Backup_Path: /boot
+   Backup_Name: boot
+   Backup_Display_Name: Boot
+   Storage_Path: /boot
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/recovery | /dev/block/mmcblk0p32 | Size: 10MB
+   Flags: IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p32
+   Display_Name: Recovery
+   Storage_Name: recovery
+   Backup_Path: /recovery
+   Backup_Name: recovery
+   Backup_Display_Name: Recovery
+   Storage_Path: /recovery
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/pds | /dev/block/mmcblk0p26 | Size: 3MB
+   Flags: Can_Be_Backed_Up IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p26
+   Display_Name: PDS
+   Storage_Name: PDS
+   Backup_Path: /pds
+   Backup_Name: pds
+   Backup_Display_Name: PDS
+   Storage_Path: /pds
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/sdcard1 | /dev/block/mmcblk1p1 | Size: 1853MB Used: 1460MB Free: 392MB Backup Size: 1460MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Wipe_Available_in_GUI Removable IsPresent Is_Storage 
+   Primary_Block_Device: /dev/block/mmcblk1p1
+   Alternate_Block_Device: /dev/block/mmcblk1
+   Display_Name: MicroSD Card
+   Storage_Name: MicroSD Card
+   Backup_Path: /sdcard1
+   Backup_Name: sdcard1
+   Backup_Display_Name: MicroSD Card
+   Storage_Path: /sdcard1
+   Current_File_System: vfat
+   Fstab_File_System: auto
+   Backup_Method: files
+   MTP_Storage_ID: 65538
+
+/usb-otg |  | Size: 0MB Used: 0MB Free: 0MB Backup Size: 0MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Wipe_Available_in_GUI Removable Is_Storage 
+   Primary_Block_Device: /dev/block/sda1
+   Alternate_Block_Device: /dev/block/sda
+   Display_Name: USB OTG
+   Storage_Name: USB OTG
+   Backup_Path: /usb-otg
+   Backup_Name: usb-otg
+   Backup_Display_Name: USB OTG
+   Storage_Path: /usb-otg
+   Current_File_System: auto
+   Fstab_File_System: auto
+   Backup_Method: files
+   MTP_Storage_ID: 65539
+
+I:Loading package: TWRP (/script/ui.xml)
+I:Load XML directly
+I:Loading package: TWRP (/data/media/0/TWRP/theme/ui.zip)
+I:Loading zip theme
+I:Loading package: TWRP (/twres/ui.xml)
+I:Load XML directly
+I:Checking resolution...
+I:Scaling theme width 0.666667x and height 0.666667x, offsets x: 0 y: 0
+I:Loading resources...
+open_png /twres/images/twrplogo.png
+libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+open_png /twres/images/menu-button.png
+open_png /twres/images/file.png
+open_png /twres/images/folder.png
+open_png /twres/images/slideout.png
+open_png /twres/images/indeterminate001.png
+open_png /twres/images/indeterminate002.png
+open_png /twres/images/indeterminate003.png
+open_png /twres/images/indeterminate004.png
+open_png /twres/images/indeterminate005.png
+open_png /twres/images/indeterminate006.png
+open_png /twres/images/indeterminate007.png
+open_png /twres/images/progress_empty.png
+open_png /twres/images/progress_fill.png
+open_png /twres/images/checkbox_empty.png
+open_png /twres/images/checkbox_checked.png
+open_png /twres/images/radio_empty.png
+open_png /twres/images/radio_selected.png
+open_png /twres/images/medium-button.png
+open_png /twres/images/sort-button.png
+open_png /twres/images/minus-button.png
+open_png /twres/images/plus-button.png
+open_png /twres/images/home-icon.png
+open_png /twres/images/back-icon.png
+open_png /twres/images/slider.png
+open_png /twres/images/slider-used.png
+open_png /twres/images/slider-touch.png
+open_png /twres/images/unlock.png
+open_png /twres/images/keyboard1.png
+open_png /twres/images/keyboard2.png
+open_png /twres/images/keyboard3.png
+open_png /twres/images/keyboard4.png
+open_png /twres/images/cursor.png
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:PageSet::CheckInclude loading filename: '/twres/portrait.xml'
+I:Loading included resources...
+I:Loading included variables...
+I:Loading mouse cursor...
+I:Loading included pages...
+I:Loading page main
+I:Loading page main2
+I:Loading page install
+I:Loading page flash_confirm
+I:Loading page flash_zip
+I:Loading page flash_done
+I:Loading page install_image
+I:Loading page flashimage_confirm
+I:Loading page clear_vars
+I:Loading page confirm_action
+I:Loading page action_page
+I:Loading page singleaction_page
+I:Loading page action_complete
+I:Loading page filecheck
+I:Loading page rebootcheck
+I:Loading page wipe
+I:Loading page advancedwipe
+I:Loading page formatdata
+I:Loading page formatdata_confirm
+I:Loading page checkpartitionlist
+I:Loading page partitionoptions
+I:Loading page refreshfilesystem
+I:Loading page selectfilesystem
+I:Loading page backup
+I:Loading page backupname1
+I:Loading page backupname2
+I:Loading page backupencryption
+I:Loading page backupencryption2
+I:Loading page checkbackuppassword
+I:Loading page backup_run
+I:Loading page restore
+I:Unable to open '/data/media/0/TWRP/BACKUPS/ZX1D92KFCH'
+I:Loading page restore_read
+I:Loading page restore_decrypt
+I:Loading page try_restore_decrypt
+I:Loading page restore_select
+I:Loading page renamebackup
+I:Loading page restore_run
+I:Loading page selectstorage
+I:Loading page mount
+I:Loading page usb_mount
+I:Loading page usb_umount
+I:Loading page reboot
+I:Loading page settings
+I:Loading page timezone
+I:Loading page screen
+I:Loading page Vibrate
+I:Loading page advanced
+I:Loading page partsdcard
+I:Loading page htcdumlock
+I:Loading page lock
+I:Loading page filemanagerlist
+I:Loading page filemanageroptions
+I:Loading page choosedestinationfolder
+I:Loading page filemanagerrenamefile
+I:Loading page filemanagerrenamefolder
+I:Loading page filemanagerchmod
+I:Loading page filemanagerconfirm
+I:Loading page filemanageracction
+I:Loading page decrypt
+I:Loading page decrypt_pattern
+I:Loading page trydecrypt
+I:Loading page terminalfolder
+I:Loading page terminalcommand
+I:Loading page sideload
+I:Loading page fixperms
+I:Loading page installsu
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+I:Switching packages (TWRP)
+SELinux contexts loaded from /file_contexts
+Full SELinux support is present.
+E:Cannot load volume /misc!
+E:Cannot load volume /misc!
+Startup Commands: 
+ro.com.google.clientidbase=android-google
+ro.com.android.dateformat=MM-dd-yyyy
+ro.com.android.dataroaming=true
+ro.com.android.wifi-watchlist=GoogleGuest
+ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
+ro.boot.cid=0xC
+ro.boot.emmc=true
+ro.boot.mode=normal
+ro.boot.hwrev=0x8400
+ro.boot.radio=0x6
+ro.boot.device=titan
+ro.boot.fsg-id=
+ro.boot.carrier=niimx
+ro.boot.selinux=permissive
+ro.boot.baseband=msm
+ro.boot.hardware=qcom
+ro.boot.serialno=ZX1D92KFCH
+ro.boot.bootloader=0x4882
+ro.boot.write_protect=0
+ro.boot.powerup_reason=0x00000080
+ro.boot.secure_hardware=1
+ro.omni.device=titan
+ro.omni.version=5.0.2-20150325-titan-HOMEMADE
+ro.twrp.boot=1
+ro.twrp.version=2.8.6.0
+ro.wifi.channels=
+ro.allow.mock.location=1
+ro.board.platform=msm8226
+ro.build.id=LRX22G
+ro.build.date=Wed Mar 25 10:41:25 UTC 2015
+ro.build.date.utc=0
+ro.build.host=ded1.ktechnology.net
+ro.build.tags=test-keys
+ro.build.type=eng
+ro.build.user=dees_troy
+ro.build.display.id=omni_titan-eng 5.0.2 LRX22G def9b54bd2 test-keys
+ro.build.product=titan
+ro.build.version.sdk=21
+ro.build.version.release=5.0.2
+ro.build.version.codename=REL
+ro.build.version.incremental=def9b54bd2
+ro.build.version.all_codenames=REL
+ro.build.description=omni_titan-eng 5.0.2 LRX22G def9b54bd2 test-keys
+ro.build.fingerprint=Motorola/omni_titan/titan:5.0.2/LRX22G/def9b54bd2:eng/test-keys
+ro.build.characteristics=default
+ro.config.ringtone=Orion.ogg
+ro.config.alarm_alert=Argon.ogg
+ro.config.notification_sound=pixiedust.ogg
+ro.dalvik.vm.native.bridge=0
+ro.kernel.android.checkjni=1
+ro.secure=0
+ro.zygote=zygote32
+ro.carrier=unknown
+ro.product.cpu.abi=armeabi-v7a
+ro.product.cpu.abi2=armeabi
+ro.product.cpu.abilist=armeabi-v7a,armeabi
+ro.product.cpu.abilist32=armeabi-v7a,armeabi
+ro.product.cpu.abilist64=
+ro.product.name=omni_titan
+ro.product.board=MSM8226
+ro.product.brand=Motorola
+ro.product.model=Moto G 2014
+ro.product.device=titan
+ro.product.locale.region=US
+ro.product.locale.language=en
+ro.product.manufacturer=Motorola
+ro.baseband=msm
+ro.bootmode=normal
+ro.hardware=qcom
+ro.revision=33792
+ro.serialno=ZX1D92KFCH
+ro.bootloader=0x4882
+ro.debuggable=1
+ro.modversion=OmniROM-5.0.2-20150325-titan-HOMEMADE
+ro.factorytest=0
+ro.setupwizard.enterprise_mode=1
+net.bt.name=Android
+net.change=net.bt.name
+init.svc.adbd=running
+init.svc.healthd=running
+init.svc.ueventd=running
+init.svc.recovery=running
+init.svc.set_permissive=stopped
+twrp.crash_counter=0
+dalvik.vm.isa.arm.features=div
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+dalvik.vm.dex2oat-filter=interpret-only
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.image-dex2oat-filter=verify-none
+persist.sys.usb.config=adb
+persist.sys.dalvik.vm.lib.2=libart.so
+persist.sys.root_access=1
+service.adb.root=1
+keyguard.no_require_sim=true
+
+I:Copying file /cache/recovery/log to /cache/recovery/last_log
+tw_get_context got selinux context: u:object_r:media_rw_data_file:s0
+I:Got default contexts and file mode for storage files.
+I:Attempt to load settings from settings file...
+I:Loading settings from '/data/media/0/TWRP/.twrps'.
+I:Backup folder set to '/data/media/0/TWRP/BACKUPS/ZX1D92KFCH'
+I:Copying file /etc/recovery.fstab to /cache/recovery/recovery.fstab
+I:Version number saved to '/cache/recovery/.version'
+I:Unable to mount '/usb-otg'
+I:Actual block device: '', current file system: 'auto'
+__bionic_open_tzdata: couldn't find any tzdata when looking for CST6CDT!
+__bionic_open_tzdata: couldn't find any tzdata when looking for posixrules!
+I:TWFunc::Set_Brightness: Setting brightness control to 255
+I:TWFunc::Fixup_Time: Pre-fix date and time: 1970-02-10--19-09-05
+I:TWFunc::Fixup_Time: Setting time offset from file /sys/class/rtc/rtc0/since_epoch
+I:TWFunc::Fixup_Time: will attempt to use the ats files now.
+I:TWFunc::Fixup_Time: Setting time offset from file /data/time/ats_2, offset 1453769431974
+I:TWFunc::Fixup_Time: Date and time corrected: 2016-03-06--18-59-35
+I:Enabling MTP during startup
+I:Starting MTP
+Starting MTP
+I:Get_Max_FileSize::maxFileSize: 4332075813437
+I:sending message to add 65537 '/data/media/0' 'Internal Storage'
+I:Message sent, add storage ID: 65537
+I:Get_Max_FileSize::maxFileSize: 4294967296
+I:sending message to add 65538 '/sdcard1' 'MicroSD Card'
+I:Message sent, add storage ID: 65538
+MTP Enabled
+I:Switching packages (TWRP)
+created new mtpserver object
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+mtppipe add storage 65537 '/data/media/0'
+MtpStorage id: 65537 path: /data/media/0
+mtppipe add storage 65538 '/sdcard1'
+MtpStorage id: 65538 path: /sdcard1
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'settings'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'screen'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'settings'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'advanced'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Loading package: TWRP (/data/media/0/TWRP/theme/ui.zip)
+I:Loading zip theme
+E:Failed to load package '/data/media/0/TWRP/theme/ui.zip'.
+I:Attempting to reload stock theme...
+I:Loading package: TWRP (/twres/ui.xml)
+I:Load XML directly
+I:Checking resolution...
+I:Scaling theme width 0.666667x and height 0.666667x, offsets x: 0 y: 0
+I:Loading resources...
+open_png /twres/images/twrplogo.png
+libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+open_png /twres/images/menu-button.png
+open_png /twres/images/file.png
+open_png /twres/images/folder.png
+open_png /twres/images/slideout.png
+open_png /twres/images/indeterminate001.png
+open_png /twres/images/indeterminate002.png
+open_png /twres/images/indeterminate003.png
+open_png /twres/images/indeterminate004.png
+open_png /twres/images/indeterminate005.png
+open_png /twres/images/indeterminate006.png
+open_png /twres/images/indeterminate007.png
+open_png /twres/images/progress_empty.png
+open_png /twres/images/progress_fill.png
+open_png /twres/images/checkbox_empty.png
+open_png /twres/images/checkbox_checked.png
+open_png /twres/images/radio_empty.png
+open_png /twres/images/radio_selected.png
+open_png /twres/images/medium-button.png
+open_png /twres/images/sort-button.png
+open_png /twres/images/minus-button.png
+open_png /twres/images/plus-button.png
+open_png /twres/images/home-icon.png
+open_png /twres/images/back-icon.png
+open_png /twres/images/slider.png
+open_png /twres/images/slider-used.png
+open_png /twres/images/slider-touch.png
+open_png /twres/images/unlock.png
+open_png /twres/images/keyboard1.png
+open_png /twres/images/keyboard2.png
+open_png /twres/images/keyboard3.png
+open_png /twres/images/keyboard4.png
+open_png /twres/images/cursor.png
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:PageSet::CheckInclude loading filename: '/twres/portrait.xml'
+I:Loading included resources...
+I:Loading included variables...
+I:Loading mouse cursor...
+I:Loading included pages...
+I:Loading page main
+I:Loading page main2
+I:Loading page install
+I:Loading page flash_confirm
+I:Loading page flash_zip
+I:Loading page flash_done
+I:Loading page install_image
+I:Loading page flashimage_confirm
+I:Loading page clear_vars
+I:Loading page confirm_action
+I:Loading page action_page
+I:Loading page singleaction_page
+I:Loading page action_complete
+I:Loading page filecheck
+I:Loading page rebootcheck
+I:Loading page wipe
+I:Loading page advancedwipe
+I:Loading page formatdata
+I:Loading page formatdata_confirm
+I:Loading page checkpartitionlist
+I:Loading page partitionoptions
+I:Loading page refreshfilesystem
+I:Loading page selectfilesystem
+I:Loading page backup
+I:Loading page backupname1
+I:Loading page backupname2
+I:Loading page backupencryption
+I:Loading page backupencryption2
+I:Loading page checkbackuppassword
+I:Loading page backup_run
+I:Loading page restore
+I:Unable to open '/data/media/0/TWRP/BACKUPS/ZX1D92KFCH'
+I:Loading page restore_read
+I:Loading page restore_decrypt
+I:Loading page try_restore_decrypt
+I:Loading page restore_select
+I:Loading page renamebackup
+I:Loading page restore_run
+I:Loading page selectstorage
+I:Loading page mount
+I:Loading page usb_mount
+I:Loading page usb_umount
+I:Loading page reboot
+I:Loading page settings
+I:Loading page timezone
+I:Loading page screen
+I:Loading page Vibrate
+I:Loading page advanced
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Loading page partsdcard
+I:Loading page htcdumlock
+I:Loading page lock
+I:Loading page filemanagerlist
+I:Loading page filemanageroptions
+I:Loading page choosedestinationfolder
+I:Loading page filemanagerrenamefile
+I:Loading page filemanagerrenamefolder
+I:Loading page filemanagerchmod
+I:Loading page filemanagerconfirm
+I:Loading page filemanageracction
+I:Loading page decrypt
+I:Loading page decrypt_pattern
+I:Loading page trydecrypt
+I:Loading page terminalfolder
+I:Loading page terminalcommand
+I:Loading page sideload
+I:Loading page fixperms
+I:Loading page installsu
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+I:Switching packages (TWRP)
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'advanced'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'wipe'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'advancedwipe'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'action_page'
+I:operation_start: 'Format'
+I:wipe list 'DALVIK;/cache;'
+I:wipe_path 'DALVIK'
+
+Wiping Dalvik Cache Directories...
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+Cleaned: /data/dalvik-cache...
+-- Dalvik Cache Directories Wipe Complete!
+
+I:wipe_path '/cache'
+Formatting Cache using make_ext4fs function.
+Creating filesystem with parameters:
+    Size: 560070656
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 6848
+    Inode size: 256
+    Journal blocks: 2136
+    Label: 
+    Blocks: 136736
+    Block groups: 5
+    Reserved block group size: 39
+Created filesystem with 11/34240 inodes and 4412/136736 blocks
+warning: wipe_block_device: Wipe via secure discard suppressed due to bug in EMMC firmware
+
+I:Recreating /cache/recovery folder.
+I:Copying file /etc/recovery.fstab to /cache/recovery/recovery.fstab
+I:Version number saved to '/cache/recovery/.version'
+Updating partition details...
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Data backup size is 1907MB, free: 7068MB.
+I:Unable to mount '/usb-otg'
+I:Actual block device: '', current file system: 'auto'
+...done
+I:Set page: 'action_complete'
+I:operation_end - status=0
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'clear_vars'
+I:Set page: 'advancedwipe'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'wipe'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'install'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'advanced'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'confirm_action'
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+MtpServer::run fd: 18
+E:request read returned -1, errno: 22, exiting MtpServer::run loop
+I:Set page: 'action_page'
+I:operation_start: 'Copy Log'
+I:Copying file /tmp/recovery.log to /data/media/0/recovery.log

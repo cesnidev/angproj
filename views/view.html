@@ -1,0 +1,221 @@
+<div class="row" ng-controller="ViewCtrl">
+<div ng-include="'views/assets/nav.html'"></div>
+	
+	<section>
+	
+		<div id="confirmmodal" class="modal">
+			<div class="modal-content">
+			  <h4>{{ confirm.title }}</h4>
+			  <p>{{ confirm.msg }}</p>
+			</div>
+			<div class="modal-footer">
+			  <a ng-click="confirm.pfunc()" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ confirm.positive }}</a>
+			  
+			  <a ng-click="confirm.nfunc()" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ confirm.negative }}</a>
+			</div>
+		  </div>
+		<div class="row" >
+			<div class="col l2 m12 s12 vertical-wrapper input-field">
+				<div class="row" align="center"><h4>Filter by:</h4></div> <hr>
+				
+				<div class="row" align="center" style="margin-bottom:0px;">
+					<p>Gender</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l6 s6" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.gender"
+							ng-true-value="'male'" ng-false-value="''" id="sm">
+							<label for="sm">Male</label>
+						</p>
+					</div>
+					<div class="col l6 s6" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.gender"
+							ng-true-value="'female'" ng-false-value="''" id="sf">
+							<label for="sf">Female</label>
+						</p>
+					</div>
+				</div> <hr>
+                
+                <div class="row" align="center">
+					<p>Register Status</p>
+				</div>
+				<div class="row dropzone" align="center">
+					<div class="col 112 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.status"
+							ng-true-value="'Completed'" ng-false-value="''" id="sc">
+							<label for="sc">Completed</label>
+						</p>
+					</div>
+					<div class="col l12 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.status"
+							ng-true-value="'In Progress'" ng-false-value="''" id="sp">
+							<label for="sp">In Progress</label>
+						</p>
+					</div>
+				</div> <hr>
+				<div class="row" align="center">
+					<p>TABC Certified</p>
+				</div>
+				<div class="row dropzone" align="center">
+					<div class="col 112 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.tabc"
+							ng-true-value="'1'" ng-false-value="''" id="tabcy">
+							<label for="tabcy">Yes</label>
+						</p>
+					</div>
+					<div class="col l12 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.tabc"
+							ng-true-value="'0'" ng-false-value="''" id="tabcn">
+							<label for="tabcn">No</label>
+						</p>
+					</div>
+				</div> <hr>
+				
+				<div class="row" align="center">
+					<p>Name</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l12 s12"> <input type="text" style="text-align:center;" placeholder="type a name" ng-model="search.name"> </div>		
+				</div> <hr>
+				
+				<div class="row" align="center">
+					<p>Age</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l5 s5"> <input type="text" style="text-align:center;" placeholder="from" ng-model="search.from"> </div>
+					<div class="col l2 s2" align="center"> to </div>
+					<div class="col l5 s5"> <input type="text" style="text-align:center;" placeholder="to" ng-model="search.to" > </div>		
+				</div> <hr>
+                
+				
+			</div>
+			<div class="col l8 m12 ">
+				<div class="row" align="center">
+					<h4 class="fs-title">Groups</h4>
+				</div>
+				<div class="row">
+					
+				</div>
+				<form name="groupsform" novalidate>
+					<div class="row" align="left">
+						<div class="col l6 s12 m12">
+							<div class="input-field">
+						   		 <i class="material-icons prefix"  ng-hide="!groupc.iconname">{{groupc.iconname}}</i>
+						   		 <i class="material-icons prefix hub" ng-hide="groupc.iconname">input</i>
+							   <label class="active" for="gname">Group Name - create a new group</label>
+							   <input required="" type="text" name="gname" id="gname" ng-model="groupc.name">
+
+							   <div class="calcommerror ng-inactive" ng-show="!onlyview" ng-messages="groupsform.gname.$error">
+								  <div ng-message="required">Group Name is required.</div>
+								</div>
+							</div>
+						</div>
+						<div class="col l3 s12 m12">
+							<label class="active" for="groupicon">Select Icon</label>
+							<select class="browser-default icons" ng-model="groupc.iconname"  name="groupicon" id="groupicon" required>
+								<option value="" disabled selected>--</option>
+								<option ng-repeat="icon in icons" value="{{icon}}"> <i class="material-icons"> {{ icon }} </i> </option>
+							</select>
+						</div>
+					</div>
+					<div class="row" align="left">
+						<a ng-click="creategroup()" class="btn green hub"><i class="material-icons">library_add</i>&nbsp;Create Group</a>
+						<a ng-click="saveChanges()" class="btn orange hub"><i class="fa fa-floppy-o"></i>&nbsp;Save Changes</a>
+					</div>
+					
+					
+					
+				
+				</form>
+				
+				<div class="row border" >
+					<p ng-if="groups==''">No Groups</p>
+					 <ul class="collapsible popout collapsible-poput" data-collapsible="accordion">
+						<li ng-repeat="group in groups" ng-if="group.status<3" class="deleteGroup"> 
+								<div class="collapsible-header" ng-if="group.name">
+									<i class="material-icons">{{ group.iconname }}</i> 
+										{{group.name}}
+									<a id="deletegroup" ng-click="delete($index)" class="secondary-content"><i class="fa fa-trash-o"></i></a> 
+									<a id="editgroup" ng-click="edit($index)" class="secondary-content"><i class="fa fa-pencil-square-o"></i></a>  
+								</div>
+									<div class="collapsible-body"   data-drop="droppable" data-jqyoui-options ng-model="groups[$index].users" jqyoui-droppable="{animate:true,onDrop:'restore($index)',onOver:'onfocus',index:'$index'}"> <br>
+									<h4>Drag Profiles Here</h4>
+									<div class="row">
+										<div class="chip col l3" ng-repeat="chip in groups[$index].users track by $index" data-drag="false" data-jqyoui-options  jqyoui-draggable ng-hide="!chip.attributes" >
+										<!--								<img ng-src="{{ showImg(chip.image) }}" ng-hide="!chip.image" alt="Contact Person">-->
+										<img src="assets/img/avatar.png" alt="Contact Person">
+										{{ chip.attributes.name }} 
+										<i class="material-icons">close</i> 
+									</div>
+									</div>
+									
+								</div>
+						 
+						</li>
+					  </ul>
+				</div>
+				<div class="row" align="left">
+						<a ng-click="collapse()" class="btn green hub">Expand/Collapse Profiles</a>
+					</div>
+				<div >
+					<div class="row">
+<!--						<div class="btn btn-primary col l3" ng-repeat="l in users" data-drag="true"  data-jqyoui-options="{revert: 'invalid'}" ng-model="l" jqyoui-draggable="{animate:true}" ng-hide="!l.attributes.name">{{l.attributes.name}}</div>-->
+						
+						  
+						<div id="profdet" class="col l4 s6 m4" data-drag="true"  data-jqyoui-options="{revert: 'invalid'}"  jqyoui-draggable="{animate:true}"     ng-repeat="staff in users | filter:ByStatus(search.status) | filter:ByGender(search.gender) | filter:ByAge(search.from,search.to) | filter:ByTABC(search.tabc) | filter:ByName(search.name)"  ng-model="staff">
+<!--						ng-model="users[$index]"-->
+							<ul class="collapsible" data-collapsible="accordion">
+							<li class="staff active">
+							  <div class="collapsible-header active"> <i class="material-icons">perm_identity</i> {{ staff.attributes.name }} {{staff.draggable}}</div>
+							  <div class="collapsible-body" style="cursor:move;border-radius:10px;display:block;">
+							  		<div class="card hoverable" >
+										<div class="card-image">
+												
+<!--											<img ng-if="staff.image" ng-src="{{ showImg(staff.image) }}">-->
+<!--											<img ng-if="!staff.image" ng-src="assets/img/avatar.png">-->
+												<img ng-src="assets/img/avatar.png">
+											<span class="card-title" style="color:black;">{{staff.attributes.name}}</span>
+										</div>
+										<div class="card-content">
+
+											<p>
+												<div>Register: {{ Status(staff.relations) }} <br></div>
+												<div ng-if="staff.relations.basic">Age: {{ staff.relations.basic.birthday | age}} years. <br></div>
+												<div ng-if="staff.relations.profile" style="text-transform:capitalize;">Gender: {{ staff.relations.profile.gender }} <br></div>
+												<div ng-if="staff.relations.experience">TABC: {{ isCert(staff.relations.experience.tabc_ciertified) }} <br></div>
+												<calcomm-rating max="maxValue" value='ratingValue'  is-readonly='isReadonly' staff="staff"></calcomm-rating> 
+<!--												hover='changeOnHover'	-->
+												<div ng-if="!staff.relations.basic"><br></div>
+												<div ng-if="!staff.relations.profile"><br></div> 
+												<div ng-if="!staff.relations.experience"><br></div>
+
+
+
+											</p>
+										</div>
+										<div class="card-action">
+											<a style="cursor:pointer;" ng-click="moreinfo(staff)" >More Info...</a>
+										</div>
+									</div>
+							  </div>
+							</li>
+						  </ul>
+						</div>
+						
+						
+					</div>
+					
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>	

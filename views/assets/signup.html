@@ -1,0 +1,24 @@
+<div class="container">
+            <div class="header row" style="border-bottom: 3px solid #FE7133;" >
+                <div class="col s12 m6 l4">
+                    <a href="#/" style="width:100%;margin-top:10px;"><img class="logo" src="assets/img/Logo4.png"></a>
+                </div>
+                <div class="col l4  offset-l4 s10 offset-s1 m6" align="right">
+                	<ul class="collection" href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+					    <li class="collection-item avatar">
+					      <img ng-show="!basicinfo.social" ng-src="{{croppedDataUrl}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <img ng-show="basicinfo.social" ng-src="{{ img }}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <span class="title">{{ user.user}}</span>
+					      <p>{{ user.email }}
+					      </p>
+					    </li>
+					 </ul>
+
+					<ul id='demoDropdown' class='dropdown-content'>
+					    <li><a href="javascript:void(0);"><i style="margin-top:-3px;" class="material-icons right">info_outline</i>Edit Profile</a></li>
+					    <li><a href="javascript:void(0);"><i  style="margin-top:-3px;"class="material-icons right">settings</i>Config</a></li>
+					    <li><a href="javascript:void(0);" ng-click="logout()"><i style="margin-top:-3px;" class="material-icons right">settings_power</i>Logout</a></li>
+					</ul>
+                </div>
+            </div>
+        </div><br>

@@ -1,0 +1,160 @@
+<div class="row" ng-controller="ViewCtrl">
+<div ng-include="'views/assets/nav.html'"></div>
+	
+	<section>
+	
+		<div id="confirmmodal" class="modal">
+			<div class="modal-content">
+			  <h4>{{ confirm.title }}</h4>
+			  <p>{{ confirm.msg }}</p>
+			</div>
+			<div class="modal-footer">
+			  <a ng-click="confirm.pfunc()" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ confirm.positive }}</a>
+			  
+			  <a ng-click="confirm.nfunc()" class=" modal-action modal-close waves-effect waves-green btn-flat">{{ confirm.negative }}</a>
+			</div>
+		  </div>
+		<div class="row" >
+			<div class="col l2 m12 s12 vertical-wrapper input-field">
+				<div class="row" align="center"><h4>Filter by:</h4></div> <hr>
+				
+				<div class="row" align="center" style="margin-bottom:0px;">
+					<p>Gender</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l6 s6" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.gender"
+							ng-true-value="'male'" ng-false-value="''" id="sm">
+							<label for="sm">Male</label>
+						</p>
+					</div>
+					<div class="col l6 s6" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.gender"
+							ng-true-value="'female'" ng-false-value="''" id="sf">
+							<label for="sf">Female</label>
+						</p>
+					</div>
+				</div> <hr>
+                
+                <div class="row" align="center">
+					<p>Register Status</p>
+				</div>
+				<div class="row dropzone" align="center">
+					<div class="col 112 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.status"
+							ng-true-value="'Completed'" ng-false-value="''" id="sc">
+							<label for="sc">Completed</label>
+						</p>
+					</div>
+					<div class="col l12 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.status"
+							ng-true-value="'In Progress'" ng-false-value="''" id="sp">
+							<label for="sp">In Progress</label>
+						</p>
+					</div>
+				</div> <hr>
+				<div class="row" align="center">
+					<p>TABC Certified</p>
+				</div>
+				<div class="row dropzone" align="center">
+					<div class="col 112 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.tabc"
+							ng-true-value="'1'" ng-false-value="''" id="tabcy">
+							<label for="tabcy">Yes</label>
+						</p>
+					</div>
+					<div class="col l12 s12 m12" align="center">
+						<p>
+							<input type="checkbox" ng-model="search.tabc"
+							ng-true-value="'0'" ng-false-value="''" id="tabcn">
+							<label for="tabcn">No</label>
+						</p>
+					</div>
+				</div> <hr>
+				
+				<div class="row" align="center">
+					<p>Name</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l12 s12"> <input type="text" style="text-align:center;" placeholder="type a name" ng-model="search.name"> </div>		
+				</div> <hr>
+				
+				<div class="row" align="center">
+					<p>Age</p>
+				</div>
+				<div class="row dropzone">
+					<div class="col l5 s5"> <input type="text" style="text-align:center;" placeholder="from" ng-model="search.from"> </div>
+					<div class="col l2 s2" align="center"> to </div>
+					<div class="col l5 s5"> <input type="text" style="text-align:center;" placeholder="to" ng-model="search.to" > </div>		
+				</div> <hr>
+               <div class="row" align="center">
+               		<button class="btn"> <i class="fa fa-folder-open"></i>Archive</button>
+               </div>
+                
+				
+			</div>
+			<div class="col l8 m12 ">
+				<div class="row" align="center">
+					<h4 class="fs-title">Candidates</h4>
+				</div>
+				
+				<div class="row" align="left">
+						<a ng-click="collapse()" class="btn green hub">Expand/Collapse Profiles</a>
+					</div>
+				<div >
+					<div class="row">
+<!--						<div class="btn btn-primary col l3" ng-repeat="l in users" data-drag="true"  data-jqyoui-options="{revert: 'invalid'}" ng-model="l" jqyoui-draggable="{animate:true}" ng-hide="!l.attributes.name">{{l.attributes.name}}</div>-->
+						
+						  
+						<div id="profdet" class="col l4 s6 m4" data-drag="true"  data-jqyoui-options="{revert: 'invalid'}"  jqyoui-draggable="{animate:true}"     ng-repeat="staff in users | filter:ByStatus(search.status) | filter:ByGender(search.gender) | filter:ByAge(search.from,search.to) | filter:ByTABC(search.tabc) | filter:ByName(search.name)"  ng-model="staff">
+<!--						ng-model="users[$index]"-->
+							<ul class="collapsible" data-collapsible="accordion">
+							<li class="staff active">
+							  <div class="collapsible-header active"> <i class="material-icons">perm_identity</i> {{ staff.attributes.name }} {{staff.draggable}} <a id="deletegroup" ng-click="archive(staff)" class="secondary-content"><i class="fa fa-folder-open"></i></a> <a id="editgroup" ng-click="approve(staff)" class="secondary-content"><i class="fa fa-check-circle-o"></i></a></div>
+							  <div class="collapsible-body" style="cursor:move;border-radius:10px;display:block;">
+							  		<div class="card hoverable" >
+										<div class="card-image">
+												<img ng-if="staff.image" ng-src="{{ showImg(staff.image) }}">
+												<img ng-if="!staff.image" ng-src="assets/img/avatar.png">
+											<span class="card-title" style="color:black;">{{staff.attributes.name}}</span>
+										</div>
+										<div class="card-content">
+
+											<p>
+												<div>Register: {{ Status(staff.relations) }} <br></div>
+												<div ng-if="staff.relations.basic">Age: {{ staff.relations.basic.birthday | age}} years. <br></div>
+												<div ng-if="staff.relations.profile" style="text-transform:capitalize;">Gender: {{ staff.relations.profile.gender }} <br></div>
+												<div ng-if="staff.relations.experience">TABC: {{ isCert(staff.relations.experience.tabc_ciertified) }} <br></div> 
+												<div ng-if="!staff.relations.basic"><br></div>
+												<div ng-if="!staff.relations.profile"><br></div> 
+												<div ng-if="!staff.relations.experience"><br></div>
+
+
+
+											</p>
+										</div>
+										<div class="card-action">
+											<a style="cursor:pointer;" ng-click="moreinfo(staff)" >More Info...</a>
+										</div>
+									</div>
+							  </div>
+							</li>
+						  </ul>
+						</div>
+						
+						
+					</div>
+					
+					
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>	

@@ -1,0 +1,40 @@
+<div class="container">
+            <div class="header row" style="border-bottom: 3px solid #FE7133;" >
+                <div class="col s12 m6 l4">
+                    <a href="#/home" style="width:100%;margin-top:10px;"><img class="logo" src="assets/img/Logo4.png"></a>
+                </div> 
+                <div class="col l3  offset-l5 s10 offset-s1 m6" align="right">
+                	<ul class="collection dropdown-button" href='javascript:void(0);' data-activates='calcommmenu' dropdown data-hover="true">
+					    <li class="collection-item avatar">
+					      <img ng-hide="user.forms.basic" ng-src="http://45.55.30.212{{user.image}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <img ng-hide="!user.forms.basic" ng-src="{{basicinfo.profile_picture.body}}" style="background-color:#FE7133;" alt="" class="circle picture">
+					      <span class="title">{{ user.user}}</span>
+					      <p>{{ user.email }}</p>
+					    </li>
+					 </ul>
+<!--					<div> menu calcommmenu </div>-->
+					<ul id='calcommmenu' class='dropdown-content container' style="display: none; width: 388px; position: absolute; top: -4.76837e-07px; left: 1079.57px; opacity: 1;">
+					    <li >
+					    	<a href="javascript:void(0);" ng-click="GoTo('/home')">
+					    	<i class="fa fa-home right fa-6"></i>Home</a>
+					    </li>
+					    <li>
+					    	<a href="javascript:void(0);" ng-click="GoTo('/config')">
+					    	<i class="fa fa-user right fa-6"></i>Profile</a>
+					    </li>
+					    <li ng-if="advance">
+					    	<a href="javascript:void(0);" ng-click="GoTo('/candidates')">
+					    	<i class="fa fa-th-list right fa-6"></i>Candidates</a>
+					    </li>
+					    <li ng-if="advance">
+					    	<a href="javascript:void(0);" ng-click="GoTo('/staff')">
+					    	<i class="fa fa-users right fa-6"></i>Staff</a>
+					    </li>
+					    <li>
+					    	<a href="javascript:void(0);" ng-click="logout()">
+					    	<i class="fa fa-power-off right fa-6"></i>Logout</a>
+					    </li>
+					</ul>  
+                </div>
+            </div>
+        </div><br>
